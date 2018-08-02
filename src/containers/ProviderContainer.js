@@ -1,7 +1,6 @@
 import React, { Component, Children } from "react";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import PropTypes from "prop-types";
-import { Provider } from "react-redux";
 import createStore from "../units/store";
 
 class Initializer extends Component {
