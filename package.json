@@ -21,14 +21,20 @@
     "web3": "^1.0.0-beta.35"
   },
   "scripts": {
-    "start:infra:local": "cd infra; docker-compose up",
-    "start:client": "react-scripts start",
-    "compile": "",
-    "deploy": "",
-    "start": "export SOLON_ENV=local; npm-run-all start:infra:local start:client",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "infra:ipfs:deploy": "sh ./infra/scripts/ipfs_deploy.sh",
+    "infra:geth:deploy": "sh ./infra/scripts/geth_deploy.sh",
+    "infra:geth:console": "sh ./infra/scripts/geth_console.sh",
+    "infra:start": "sh ./infra/scripts/start.sh",
+    "infra:stop": "sh ./infra/scripts/stop.sh",
+    "client:start": "react-scripts start",
+    "client:build": "react-scripts build",
+    "client:test": "react-scripts test --env=jsdom",
+    "contracts:compile": "sh ./contracts/scripts/compile.sh",
+    "geth:console": "npm-run-all infra:start infra:geth:console",
+    "geth:deploy": "npm-run-all infra:start infra:geth:deploy",
+    "ipfs:deploy": "npm-run-all infra:start infra:ipfs:deploy",
+    "deploy": "npm-run-all contacts:compile geth:deploy ipfs:deploy",
+    "start": "npm-run-all infra:start client:start"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.3"

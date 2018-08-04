@@ -1,0 +1,8 @@
+version: '2'
+services:
+  solidity:
+    container_name: solidity
+    image: ethereum/solc:0.4.24
+    volumes:
+    - ./solidity/:/contracts/solidity
+    - ./build/:/build
