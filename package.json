@@ -21,9 +21,16 @@
     "web3": "^1.0.0-beta.35"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:infra:local": "cd infra; docker-compose up",
+    "start:client": "react-scripts start",
+    "compile": "",
+    "deploy": "",
+    "start": "export SOLON_ENV=local; npm-run-all start:infra:local start:client",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.3"
   }
 }

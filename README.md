@@ -1593,9 +1593,9 @@ By default, the `package.json` of the generated project looks like this:
 
 ```js
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
+    "start": cli,
+    "build": cli,
+    "test": cli
 ```
 
 If you know that none of your tests depend on [jsdom](https://github.com/tmpvar/jsdom), you can safely remove `--env=jsdom`, and your tests will run faster:
