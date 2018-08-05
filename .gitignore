@@ -9,6 +9,7 @@
 # production
 /contracts/build
 /client/build
+/server/lib
 
 # misc
 .DS_Store

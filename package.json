@@ -1,9 +1,9 @@
 {
-  "name": "solon-web",
+  "name": "solon",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "cd client; yarn install; cd ../",
+    "postinstall": "cd client; yarn install; cd ../; cd server; yarn install; cd ../; cd contracts; yarn install; cd ../",
     "infra:ipfs:deploy": "sh ./infra/scripts/ipfs_deploy.sh",
     "infra:geth:deploy": "sh ./infra/scripts/geth_deploy.sh",
     "infra:geth:console": "sh ./infra/scripts/geth_console.sh",
