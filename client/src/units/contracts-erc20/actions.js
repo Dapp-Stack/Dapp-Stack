@@ -1,7 +1,7 @@
 import {
   createMethodCall,
   createMethodSend
-} from "../contracts";
+} from "../contracts/index";
 import {
   CONTRACT_NAME
 } from "./constants";

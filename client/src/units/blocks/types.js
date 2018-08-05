@@ -1,4 +1,4 @@
-import { createTypes } from "../subscribes";
+import { createTypes } from "../subscribes/index";
 
 export const newBlockHeaders = createTypes("blocks", "newBlockHeaders");
 

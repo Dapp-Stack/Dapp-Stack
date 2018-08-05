@@ -1,7 +1,7 @@
 import {
   createMethodCall,
   createMethodSend,
-} from "../contracts";
+} from "../contracts/index";
 import { CONTRACT_NAME } from "./constants";
 
 // Implements actions interface for ERC721: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md

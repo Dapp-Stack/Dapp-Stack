@@ -1,0 +1,13 @@
+{
+  "name": "solon-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "async": "^2.6.1",
+    "dockerode": "^2.5.5"
+  },
+  "scripts": {
+    "compile": "node ./scripts/compile.js",
+    "deploy": "node ./scripts/deploy.js"
+  }
+}

@@ -1,5 +1,5 @@
 import Web3 from "web3";
-import { createSaga } from "../contracts";
+import { createSaga } from "../contracts/index";
 
 import { CONTRACT_NAME } from "./constants";
 import abi from "./abi";
