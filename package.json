@@ -9,15 +9,21 @@
     "infra:geth:console": "sh ./infra/scripts/geth_console.sh",
     "infra:start": "sh ./infra/scripts/start.sh",
     "infra:stop": "sh ./infra/scripts/stop.sh",
+    "infra:reset": "sh ./infra/scripts/reset.sh",
     "client:start": "cd client; yarn start",
     "client:build": "cd client; react-scripts build",
     "client:test": "cd client; react-scripts test --env=jsdom",
-    "contracts:compile": "sh ./contracts/scripts/compile.sh",
-    "geth:console": "npm-run-all infra:start infra:geth:console",
+    "client:reset": "cd client; yarn reset",
+    "contracts:compile": "cd contracts; yarn compile",
+    "contracts:reset": "cd contracts; yarn reset",
+    "server:reset": "cd server; yarn reset",
     "geth:deploy": "npm-run-all infra:start infra:geth:deploy",
     "ipfs:deploy": "npm-run-all infra:start infra:ipfs:deploy",
     "deploy": "npm-run-all contacts:compile geth:deploy ipfs:deploy",
-    "start": "npm-run-all infra:start geth:deploy client:start"
+    "console": "npm-run-all infra:start infra:geth:console",
+    "start": "npm-run-all infra:start geth:deploy client:start",
+    "stop": "npm-run-all infra:stop",
+    "reset": "npm-run-all infra:reset server:reset client:reset contracts:reset"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.3"

@@ -8,6 +8,6 @@
   },
   "scripts": {
     "compile": "node ./scripts/compile.js",
-    "deploy": "node ./scripts/deploy.js"
+    "reset": "rm -rf build/*"
   }
 }

@@ -7,7 +7,8 @@
     "prod:build": "rimraf lib && babel src -d lib --ignore .test.js",
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete server",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "reset": "rm -rf lib"
   },
   "dependencies": {
     "eslint-plugin-jsx-a11y": "^6.1.1",
