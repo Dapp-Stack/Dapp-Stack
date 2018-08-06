@@ -11,12 +11,10 @@ class Initializer extends Component {
   constructor(props) {
     super(props);
 
-    if (props.provider) {
-      props.onInit(props.provider);
-    } else if (window.web3 && window.web3.currentProvider) {
+    if (window.web3 && window.web3.currentProvider) {
       props.onInit(window.web3.currentProvider);
     } else {
-      props.onInitFailed();
+      props.onInit("ws://localhost:8546");
     }
   }
 
@@ -31,11 +29,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: "WEB3/INIT",
         provider,
-      }),
-    onInitFailed: () =>
-      dispatch({
-        type: "WEB3/INIT_FAILED",
-      }),
+      })
   };
 };
 

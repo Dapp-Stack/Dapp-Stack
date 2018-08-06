@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 geth --datadir "/root/.ethereum/local" \
-     --mine \
      --networkid "1234" \
      --ws \
      --wsaddr "0.0.0.0" \
