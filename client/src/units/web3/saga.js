@@ -16,8 +16,11 @@ function createChannel(provider) {
 export function *initWeb3({payload}){
   const web3 = new Web3(payload.provider);
   const provider = web3.currentProvider;
-  const channel = yield call(createChannel, provider);
   yield put(actions.initWeb3Success(web3));
+  if (web3.currentProvider.isMetaMask) {
+    return;
+  }
+  const channel = yield call(createChannel, provider);
   while(true) {
     yield take(channel);
     yield put(actions.initWeb3Failure("Connection interrupted"));
