@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import accounts from "./accounts/reducer";
-import blocks from "./blocks/reducer";
+import web3Reduce from "./web3/reducer";
+import accountReducer from "./accounts/reducer";
 
-export default combineReducers({accounts, blocks});
+export default combineReducers({web3Reduce, accountReducer});

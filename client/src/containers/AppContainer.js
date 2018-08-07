@@ -23,7 +23,4 @@ class AppContainer extends Component {
   }
 }
 
-export default connect(({ accounts }) => ({
-  isLoading: accounts.isLoading,
-  accounts: accounts.items
-}))(AppContainer);
+export default connect(({ accounts }) => ({}))(AppContainer);

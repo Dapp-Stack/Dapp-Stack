@@ -2,6 +2,7 @@ import React, { Component, Children } from "react";
 import { connect, Provider } from "react-redux";
 import PropTypes from "prop-types";
 import createStore from "../units/store";
+import {initWeb3Request} from "../units/web3/actions"
 
 class Initializer extends Component {
   static propTypes = {
@@ -12,9 +13,9 @@ class Initializer extends Component {
     super(props);
 
     if (window.web3 && window.web3.currentProvider) {
-      props.onInit(window.web3.currentProvider);
+      props.onInit({ provider: window.web3.currentProvider });
     } else {
-      props.onInit("ws://localhost:8546");
+      props.onInit({ provider: "ws://localhost:8546" });
     }
   }
 
@@ -23,19 +24,11 @@ class Initializer extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onInit: provider =>
-      dispatch({
-        type: "WEB3/INIT",
-        provider,
-      })
-  };
-};
-
 const EnhancedInitializer = connect(
   state => state,
-  mapDispatchToProps
+  {
+    onInit: initWeb3Request
+  }
 )(Initializer);
 
 class ProviderContainer extends Component {
@@ -48,22 +41,13 @@ class ProviderContainer extends Component {
   }
 
   render() {
-    if (this.store) {
-      return (
-        <Provider store={this.store}>
-          <EnhancedInitializer {...this.props}>
-            {this.props.children}
-          </EnhancedInitializer>
-        </Provider>
-      );
-    } else {
-      console.log("existing store found");
-      return (
+    return (
+      <Provider store={this.store}>
         <EnhancedInitializer {...this.props}>
           {this.props.children}
         </EnhancedInitializer>
-      );
-    }
+      </Provider>
+    );
   }
 }
 
