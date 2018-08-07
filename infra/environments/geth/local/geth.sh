@@ -11,5 +11,5 @@ geth --datadir "/root/.ethereum/local" \
      --rpcaddr "0.0.0.0" \
      --rpcport "8545" \
      --rpccorsdomain '*' \
-      --etherbase "7df9a875a174b3bc565e6424a0050ebc1b2d1d82"
+     --dev
      init "/root/files/local/genesis.json"

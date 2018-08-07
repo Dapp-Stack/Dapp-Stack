@@ -1,18 +1,26 @@
 import types from "./types";
 
-const actions = {
-  getRequest: () => ({
-    type: types.GET_REQUEST,
-  }),
-  getFailure: error => ({
+const getAccountsRequest = function(){
+  return { type: types.GET_REQUEST }
+}
+
+const getAccountsFailure = function(error){
+  return {
     type: types.GET_FAILURE,
     payload: error,
     error: true,
-  }),
-  getSuccess: accounts => ({
+  }
+}
+
+const getAccountsSuccess = function(accounts){
+  return {
     type: types.GET_SUCCESS,
     payload: accounts,
-  }),
-};
+  }
+}
 
-export default actions;
+export default {
+  getAccountsRequest,
+  getAccountsFailure,
+  getAccountsSuccess
+};
