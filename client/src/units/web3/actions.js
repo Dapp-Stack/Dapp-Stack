@@ -14,3 +14,17 @@ export const initWeb3Failure = err => ({
   type: types.WEB3.INIT_FAILURE,
   payload: err
 });
+
+export const networkRequest = () => ({
+  type: types.WEB3.NETWORK_REQUEST
+});
+
+export const networkSuccess = (id) => ({
+  type: types.WEB3.NETWORD_SUCCESS,
+  payload: id
+});
+
+export const networkFailure = (err) => ({
+  type: types.WEB3.NETWORD_FAILURE,
+  payload: err
+});

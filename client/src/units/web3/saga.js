@@ -3,7 +3,7 @@ import * as types from './types';
 import Web3 from "web3";
 
 import { eventChannel } from 'redux-saga';
-import { put, takeEvery, call, take } from 'redux-saga/effects'
+import { put, takeEvery, call, take, select, all } from 'redux-saga/effects'
 
 function createChannel(provider) {
   return eventChannel(emit => {
@@ -27,6 +27,21 @@ export function *initWeb3({payload}){
   }
 }
 
+export function *networkRequest() {
+  try {
+    let web3 = yield select((state) => state.web3.instance);
+    const networkId = yield call(web3.eth.net.getId);
+    yield put(actions.networkSuccess(networkId));
+  } catch(error) {
+    yield put(actions.networkFailure(error));
+  }
+
+}
+
 export function *web3Saga() {
-  yield takeEvery(types.WEB3.INIT_REQUEST, initWeb3);
+  yield all([
+    yield takeEvery(types.WEB3.INIT_REQUEST, initWeb3),
+    yield takeEvery(types.WEB3.NETWORK_REQUEST, networkRequest)
+  ]);
+
 }
