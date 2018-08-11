@@ -17,7 +17,7 @@
     "contracts:reset": "cd contracts; yarn reset",
     "server:reset": "cd server; yarn reset",
     "server:start": "cd server; yarn start",
-    "console": "npm-run-all infra:start infra:geth:console",
+    "console": "npm-run-all infra:start infra:console",
     "start": "run-p infra:start server:start client:start",
     "stop": "npm-run-all infra:stop",
     "reset": "npm-run-all infra:reset server:reset client:reset contracts:reset"

@@ -15,12 +15,8 @@ const compile = function(contract, next) {
     '--allow-paths',
     '/solidity/src',
     '--optimize',
-    '--abi',
-    '--bin',
-    '--bin-runtime',
-    '--metadata',
-    '--ast',
-    '--asm',
+    '--combined-json',
+    'abi,asm,ast,bin,bin-runtime,clone-bin,devdoc,interface,opcodes,srcmap,srcmap-runtime,userdoc',
     '--overwrite',
     `/solidity/src/${contract.name}`];
   const options = { Binds: [`${__dirname}/../src:/solidity/src`, `${__dirname}/../build:/solidity/build`] };
