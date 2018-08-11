@@ -35,7 +35,6 @@ export function *networkRequest() {
   } catch(error) {
     yield put(actions.networkFailure(error));
   }
-
 }
 
 export function *web3Saga() {

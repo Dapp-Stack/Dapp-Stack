@@ -3,6 +3,8 @@ import * as types from './types'
 
 const initialState = {
   isLoading: false,
+  isConnected: false,
+  networkId: null,
   instance: null,
   error: null
 }
@@ -19,12 +21,14 @@ const web3Reducer = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         instance: payload,
+        isConnected: true,
         error: null
       };
     case types.WEB3.INIT_FAILURE:
       return {
         ...state,
         isLoading: false,
+        isConnected: false,
         error: payload
       };
     case types.WEB3.NETWORK_REQUEST:
@@ -43,6 +47,7 @@ const web3Reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
+        networkId: null,
         error: payload
       };
     default:

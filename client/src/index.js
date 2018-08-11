@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import "tabler-react/dist/Tabler.css";
+import 'semantic-ui-css/semantic.min.css';
 
 import AppContainer from './containers/AppContainer';
 import ProviderContainer from "./containers/ProviderContainer";
