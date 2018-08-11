@@ -1,0 +1,594 @@
+Attaching to ipfs-node, ethereum-node
+[33methereum-node |[0m WARN [08-04|19:12:23.093] Sanitizing cache to Go's GC limits       provided=1024 updated=666
+[33methereum-node |[0m INFO [08-04|19:12:23.094] Maximum peer count                       ETH=25 LES=0 total=25
+[33methereum-node |[0m INFO [08-04|19:12:23.101] Starting peer-to-peer node               instance=Geth/v1.8.14-unstable-35fcd2f4/linux-amd64/go1.10.3
+[33methereum-node |[0m INFO [08-04|19:12:23.101] Allocated cache and file handles         database=/root/.ethereum/local/geth/chaindata cache=499 handles=1024
+[33methereum-node |[0m INFO [08-04|19:12:23.141] Initialised chain configuration          config="{ChainID: 1 Homestead: 1150000 DAO: 1920000 DAOSupport: true EIP150: 2463000 EIP155: 2675000 EIP158: 2675000 Byzantium: 4370000 Constantinople: <nil> Engine: ethash}"
+[33methereum-node |[0m INFO [08-04|19:12:23.141] Disk storage enabled for ethash caches   dir=/root/.ethereum/local/geth/ethash count=3
+[33methereum-node |[0m INFO [08-04|19:12:23.141] Disk storage enabled for ethash DAGs     dir=/root/.ethash                     count=2
+[33methereum-node |[0m INFO [08-04|19:12:23.141] Initialising Ethereum protocol           versions="[63 62]" network=1234
+[33methereum-node |[0m INFO [08-04|19:12:23.143] Loaded most recent local header          number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:12:23.143] Loaded most recent local full block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:12:23.143] Loaded most recent local fast block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:12:23.144] Loaded local transaction journal         transactions=0 dropped=0
+[33methereum-node |[0m INFO [08-04|19:12:23.146] Regenerated local transaction journal    transactions=0 accounts=0
+[33methereum-node |[0m INFO [08-04|19:12:23.149] Starting P2P networking 
+[33methereum-node |[0m INFO [08-04|19:12:25.283] UDP listener up                          self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-04|19:12:25.283] RLPx listener up                         self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-04|19:12:25.287] IPC endpoint opened                      url=/root/.ethereum/local/geth.ipc
+[33methereum-node |[0m INFO [08-04|19:12:25.287] HTTP endpoint opened                     url=http://0.0.0.0:8545            cors=* vhosts=localhost
+[33methereum-node |[0m INFO [08-04|19:12:25.288] WebSocket endpoint opened                url=ws://[::]:8446
+[33methereum-node |[0m INFO [08-04|19:12:25.288] Transaction pool price threshold updated price=18000000000
+[33methereum-node |[0m INFO [08-04|19:12:25.290] Commit new empty mining work             number=1 uncles=0
+[33methereum-node |[0m INFO [08-04|19:12:25.293] Commit new full mining work              number=1 txs=0 uncles=0 elapsed=4.915ms
+[33methereum-node |[0m INFO [08-04|19:12:27.073] Generating DAG in progress               epoch=0 percentage=0 elapsed=1.205s
+[33methereum-node |[0m INFO [08-04|19:12:28.191] Generating DAG in progress               epoch=0 percentage=1 elapsed=2.324s
+[33methereum-node |[0m INFO [08-04|19:12:29.314] Generating DAG in progress               epoch=0 percentage=2 elapsed=3.447s
+[33methereum-node |[0m INFO [08-04|19:12:30.567] Generating DAG in progress               epoch=0 percentage=3 elapsed=4.700s
+[33methereum-node |[0m INFO [08-04|19:12:31.707] Generating DAG in progress               epoch=0 percentage=4 elapsed=5.840s
+[33methereum-node |[0m INFO [08-04|19:12:32.839] Generating DAG in progress               epoch=0 percentage=5 elapsed=6.972s
+[33methereum-node |[0m INFO [08-04|19:12:33.992] Generating DAG in progress               epoch=0 percentage=6 elapsed=8.125s
+[33methereum-node |[0m INFO [08-04|19:12:35.106] Generating DAG in progress               epoch=0 percentage=7 elapsed=9.239s
+[33methereum-node |[0m INFO [08-04|19:12:36.227] Generating DAG in progress               epoch=0 percentage=8 elapsed=10.360s
+[33methereum-node |[0m INFO [08-04|19:12:37.339] Generating DAG in progress               epoch=0 percentage=9 elapsed=11.472s
+[33methereum-node |[0m INFO [08-04|19:12:38.470] Generating DAG in progress               epoch=0 percentage=10 elapsed=12.603s
+[33methereum-node |[0m INFO [08-04|19:12:39.608] Generating DAG in progress               epoch=0 percentage=11 elapsed=13.741s
+[33methereum-node |[0m WARN [08-04|19:14:09.661] Sanitizing cache to Go's GC limits       provided=1024 updated=666
+[33methereum-node |[0m INFO [08-04|19:14:09.662] Maximum peer count                       ETH=25 LES=0 total=25
+[33methereum-node |[0m INFO [08-04|19:14:09.668] Starting peer-to-peer node               instance=Geth/v1.8.14-unstable-35fcd2f4/linux-amd64/go1.10.3
+[33methereum-node |[0m INFO [08-04|19:14:09.668] Allocated cache and file handles         database=/root/.ethereum/local/geth/chaindata cache=499 handles=1024
+[33methereum-node |[0m INFO [08-04|19:14:09.694] Initialised chain configuration          config="{ChainID: 1 Homestead: 1150000 DAO: 1920000 DAOSupport: true EIP150: 2463000 EIP155: 2675000 EIP158: 2675000 Byzantium: 4370000 Constantinople: <nil> Engine: ethash}"
+[33methereum-node |[0m INFO [08-04|19:14:09.694] Disk storage enabled for ethash caches   dir=/root/.ethereum/local/geth/ethash count=3
+[33methereum-node |[0m INFO [08-04|19:14:09.694] Disk storage enabled for ethash DAGs     dir=/root/.ethash                     count=2
+[33methereum-node |[0m INFO [08-04|19:14:09.694] Initialising Ethereum protocol           versions="[63 62]" network=1234
+[33methereum-node |[0m INFO [08-04|19:14:09.696] Loaded most recent local header          number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:14:09.696] Loaded most recent local full block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:14:09.696] Loaded most recent local fast block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:14:09.697] Loaded local transaction journal         transactions=0 dropped=0
+[33methereum-node |[0m INFO [08-04|19:14:09.699] Regenerated local transaction journal    transactions=0 accounts=0
+[33methereum-node |[0m INFO [08-04|19:14:09.701] Starting P2P networking 
+[33methereum-node |[0m INFO [08-04|19:14:11.829] UDP listener up                          self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-04|19:14:11.830] RLPx listener up                         self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-04|19:14:11.834] IPC endpoint opened                      url=/root/.ethereum/local/geth.ipc
+[33methereum-node |[0m INFO [08-04|19:14:11.835] HTTP endpoint opened                     url=http://0.0.0.0:8545            cors=* vhosts=localhost
+[33methereum-node |[0m INFO [08-04|19:14:11.835] WebSocket endpoint opened                url=ws://[::]:8446
+[33methereum-node |[0m INFO [08-04|19:14:11.835] Transaction pool price threshold updated price=18000000000
+[33methereum-node |[0m INFO [08-04|19:14:11.838] Commit new empty mining work             number=1 uncles=0
+[33methereum-node |[0m INFO [08-04|19:14:11.838] Commit new full mining work              number=1 txs=0 uncles=0 elapsed=2.362ms
+[33methereum-node |[0m INFO [08-04|19:14:13.522] Generating DAG in progress               epoch=0 percentage=0 elapsed=1.130s
+[33methereum-node |[0m INFO [08-04|19:14:14.656] Generating DAG in progress               epoch=0 percentage=1 elapsed=2.286s
+[33methereum-node |[0m INFO [08-04|19:14:15.880] Generating DAG in progress               epoch=0 percentage=2 elapsed=3.510s
+[33methereum-node |[0m INFO [08-04|19:14:16.974] Generating DAG in progress               epoch=0 percentage=3 elapsed=4.604s
+[33methereum-node |[0m INFO [08-04|19:14:18.093] Generating DAG in progress               epoch=0 percentage=4 elapsed=5.722s
+[33methereum-node |[0m INFO [08-04|19:14:19.146] Generating DAG in progress               epoch=0 percentage=5 elapsed=6.775s
+[33methereum-node |[0m INFO [08-04|19:14:20.095] Generating DAG in progress               epoch=0 percentage=6 elapsed=7.724s
+[33methereum-node |[0m INFO [08-04|19:14:21.128] Generating DAG in progress               epoch=0 percentage=7 elapsed=8.757s
+[33methereum-node |[0m INFO [08-04|19:14:22.229] Generating DAG in progress               epoch=0 percentage=8 elapsed=9.858s
+[36mipfs-node |[0m Changing user to ipfs
+[36mipfs-node |[0m ipfs version 0.4.15
+[36mipfs-node |[0m Found IPFS fs-repo at /data/ipfs
+[36mipfs-node |[0m Initializing daemon...
+[36mipfs-node |[0m Swarm listening on /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm listening on /ip4/172.18.0.3/tcp/4001
+[36mipfs-node |[0m Swarm listening on /p2p-circuit/ipfs/QmS9ugQ1F5PZ3vUqsS8CtrLQS2wHxrnWAjSnzbrWCpM9pt
+[36mipfs-node |[0m Swarm announcing /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm announcing /ip4/172.18.0.3/tcp/4001
+[36mipfs-node |[0m API server listening on /ip4/0.0.0.0/tcp/5001
+[36mipfs-node |[0m Gateway (readonly) server listening on /ip4/0.0.0.0/tcp/8080
+[36mipfs-node |[0m Daemon is ready
+[36mipfs-node |[0m Changing user to ipfs
+[36mipfs-node |[0m ipfs version 0.4.15
+[36mipfs-node |[0m Found IPFS fs-repo at /data/ipfs
+[36mipfs-node |[0m Initializing daemon...
+[36mipfs-node |[0m Swarm listening on /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm listening on /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m Swarm listening on /p2p-circuit/ipfs/QmS9ugQ1F5PZ3vUqsS8CtrLQS2wHxrnWAjSnzbrWCpM9pt
+[36mipfs-node |[0m Swarm announcing /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm announcing /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m API server listening on /ip4/0.0.0.0/tcp/5001
+[36mipfs-node |[0m Gateway (readonly) server listening on /ip4/0.0.0.0/tcp/8080
+[36mipfs-node |[0m Daemon is ready
+[36mipfs-node |[0m 
+[36mipfs-node |[0m Received interrupt signal, shutting down...
+[36mipfs-node |[0m (Hit ctrl-c again to force-shutdown the daemon.)
+[36mipfs-node |[0m Changing user to ipfs
+[36mipfs-node |[0m ipfs version 0.4.15
+[36mipfs-node |[0m Found IPFS fs-repo at /data/ipfs
+[36mipfs-node |[0m Initializing daemon...
+[36mipfs-node |[0m Swarm listening on /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm listening on /ip4/172.18.0.3/tcp/4001
+[36mipfs-node |[0m Swarm listening on /p2p-circuit/ipfs/QmS9ugQ1F5PZ3vUqsS8CtrLQS2wHxrnWAjSnzbrWCpM9pt
+[36mipfs-node |[0m Swarm announcing /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm announcing /ip4/172.18.0.3/tcp/4001
+[36mipfs-node |[0m API server listening on /ip4/0.0.0.0/tcp/5001
+[36mipfs-node |[0m Gateway (readonly) server listening on /ip4/0.0.0.0/tcp/8080
+[36mipfs-node |[0m Daemon is ready
+[36mipfs-node |[0m 
+[36mipfs-node |[0m Received interrupt signal, shutting down...
+[36mipfs-node |[0m (Hit ctrl-c again to force-shutdown the daemon.)
+[36mipfs-node |[0m [0;37m19:16:17.509 [31mERROR [0;34mipns-repub: [0mRepublisher failed to republish: process closing [0;37mrepub.go:78[0m
+[36mipfs-node |[0m Changing user to ipfs
+[36mipfs-node |[0m ipfs version 0.4.15
+[36mipfs-node |[0m Found IPFS fs-repo at /data/ipfs
+[36mipfs-node |[0m Initializing daemon...
+[36mipfs-node |[0m Swarm listening on /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm listening on /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m Swarm listening on /p2p-circuit/ipfs/QmS9ugQ1F5PZ3vUqsS8CtrLQS2wHxrnWAjSnzbrWCpM9pt
+[36mipfs-node |[0m Swarm announcing /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm announcing /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m API server listening on /ip4/0.0.0.0/tcp/5001
+[36mipfs-node |[0m Gateway (readonly) server listening on /ip4/0.0.0.0/tcp/8080
+[36mipfs-node |[0m Daemon is ready
+[36mipfs-node |[0m 
+[36mipfs-node |[0m Received interrupt signal, shutting down...
+[36mipfs-node |[0m (Hit ctrl-c again to force-shutdown the daemon.)
+[36mipfs-node |[0m Changing user to ipfs
+[36mipfs-node |[0m ipfs version 0.4.15
+[36mipfs-node |[0m Found IPFS fs-repo at /data/ipfs
+[36mipfs-node |[0m Initializing daemon...
+[36mipfs-node |[0m Swarm listening on /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm listening on /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m Swarm listening on /p2p-circuit/ipfs/QmS9ugQ1F5PZ3vUqsS8CtrLQS2wHxrnWAjSnzbrWCpM9pt
+[36mipfs-node |[0m Swarm announcing /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm announcing /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m API server listening on /ip4/0.0.0.0/tcp/5001
+[36mipfs-node |[0m Gateway (readonly) server listening on /ip4/0.0.0.0/tcp/8080
+[36mipfs-node |[0m Daemon is ready
+[36mipfs-node |[0m 
+[36mipfs-node |[0m Received interrupt signal, shutting down...
+[36mipfs-node |[0m (Hit ctrl-c again to force-shutdown the daemon.)
+[36mipfs-node |[0m [0;37m20:16:15.227 [31mERROR [0;34mipns-repub: [0mRepublisher failed to republish: process closing [0;37mrepub.go:78[0m
+[36mipfs-node |[0m Changing user to ipfs
+[36mipfs-node |[0m ipfs version 0.4.15
+[36mipfs-node |[0m Found IPFS fs-repo at /data/ipfs
+[36mipfs-node |[0m Initializing daemon...
+[36mipfs-node |[0m Swarm listening on /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm listening on /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m Swarm listening on /p2p-circuit/ipfs/QmS9ugQ1F5PZ3vUqsS8CtrLQS2wHxrnWAjSnzbrWCpM9pt
+[36mipfs-node |[0m Swarm announcing /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm announcing /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m API server listening on /ip4/0.0.0.0/tcp/5001
+[33methereum-node |[0m INFO [08-04|19:14:23.320] Generating DAG in progress               epoch=0 percentage=9 elapsed=10.950s
+[33methereum-node |[0m INFO [08-04|19:14:24.548] Generating DAG in progress               epoch=0 percentage=10 elapsed=12.177s
+[33methereum-node |[0m WARN [08-04|19:14:42.222] Sanitizing cache to Go's GC limits       provided=1024 updated=666
+[33methereum-node |[0m INFO [08-04|19:14:42.223] Maximum peer count                       ETH=25 LES=0 total=25
+[33methereum-node |[0m INFO [08-04|19:14:42.235] Starting peer-to-peer node               instance=Geth/v1.8.14-unstable-35fcd2f4/linux-amd64/go1.10.3
+[33methereum-node |[0m INFO [08-04|19:14:42.235] Allocated cache and file handles         database=/root/.ethereum/local/geth/chaindata cache=499 handles=1024
+[33methereum-node |[0m INFO [08-04|19:14:42.281] Initialised chain configuration          config="{ChainID: 1 Homestead: 1150000 DAO: 1920000 DAOSupport: true EIP150: 2463000 EIP155: 2675000 EIP158: 2675000 Byzantium: 4370000 Constantinople: <nil> Engine: ethash}"
+[33methereum-node |[0m INFO [08-04|19:14:42.281] Disk storage enabled for ethash caches   dir=/root/.ethereum/local/geth/ethash count=3
+[33methereum-node |[0m INFO [08-04|19:14:42.281] Disk storage enabled for ethash DAGs     dir=/root/.ethash                     count=2
+[33methereum-node |[0m INFO [08-04|19:14:42.281] Initialising Ethereum protocol           versions="[63 62]" network=1234
+[33methereum-node |[0m INFO [08-04|19:14:42.284] Loaded most recent local header          number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:14:42.284] Loaded most recent local full block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:14:42.284] Loaded most recent local fast block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:14:42.292] Loaded local transaction journal         transactions=0 dropped=0
+[33methereum-node |[0m INFO [08-04|19:14:42.295] Regenerated local transaction journal    transactions=0 accounts=0
+[33methereum-node |[0m INFO [08-04|19:14:42.297] Starting P2P networking 
+[33methereum-node |[0m INFO [08-04|19:14:44.408] UDP listener up                          self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-04|19:14:44.408] RLPx listener up                         self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-04|19:14:44.413] IPC endpoint opened                      url=/root/.ethereum/local/geth.ipc
+[33methereum-node |[0m INFO [08-04|19:14:44.414] HTTP endpoint opened                     url=http://0.0.0.0:8545            cors=* vhosts=localhost
+[33methereum-node |[0m INFO [08-04|19:14:44.415] WebSocket endpoint opened                url=ws://[::]:8446
+[33methereum-node |[0m INFO [08-04|19:14:44.415] Transaction pool price threshold updated price=18000000000
+[33methereum-node |[0m INFO [08-04|19:14:44.422] Commit new empty mining work             number=1 uncles=0
+[33methereum-node |[0m INFO [08-04|19:14:44.422] Commit new full mining work              number=1 txs=0 uncles=0 elapsed=7.042ms
+[33methereum-node |[0m INFO [08-04|19:14:46.137] Generating DAG in progress               epoch=0 percentage=0 elapsed=1.073s
+[33methereum-node |[0m INFO [08-04|19:14:47.330] Generating DAG in progress               epoch=0 percentage=1 elapsed=2.266s
+[33methereum-node |[0m INFO [08-04|19:14:48.452] Generating DAG in progress               epoch=0 percentage=2 elapsed=3.388s
+[33methereum-node |[0m INFO [08-04|19:14:49.579] Generating DAG in progress               epoch=0 percentage=3 elapsed=4.515s
+[33methereum-node |[0m INFO [08-04|19:14:50.700] Generating DAG in progress               epoch=0 percentage=4 elapsed=5.636s
+[33methereum-node |[0m INFO [08-04|19:14:51.878] Generating DAG in progress               epoch=0 percentage=5 elapsed=6.814s
+[33methereum-node |[0m INFO [08-04|19:14:53.008] Generating DAG in progress               epoch=0 percentage=6 elapsed=7.945s
+[33methereum-node |[0m INFO [08-04|19:14:54.089] Generating DAG in progress               epoch=0 percentage=7 elapsed=9.026s
+[33methereum-node |[0m INFO [08-04|19:14:55.215] Generating DAG in progress               epoch=0 percentage=8 elapsed=10.151s
+[33methereum-node |[0m INFO [08-04|19:14:56.116] Generating DAG in progress               epoch=0 percentage=9 elapsed=11.052s
+[33methereum-node |[0m INFO [08-04|19:14:57.043] Generating DAG in progress               epoch=0 percentage=10 elapsed=11.979s
+[33methereum-node |[0m INFO [08-04|19:14:58.119] Generating DAG in progress               epoch=0 percentage=11 elapsed=13.055s
+[33methereum-node |[0m INFO [08-04|19:14:59.215] Generating DAG in progress               epoch=0 percentage=12 elapsed=14.152s
+[33methereum-node |[0m INFO [08-04|19:15:00.473] Generating DAG in progress               epoch=0 percentage=13 elapsed=15.409s
+[33methereum-node |[0m INFO [08-04|19:15:01.376] Generating DAG in progress               epoch=0 percentage=14 elapsed=16.313s
+[33methereum-node |[0m INFO [08-04|19:15:02.331] Generating DAG in progress               epoch=0 percentage=15 elapsed=17.268s
+[33methereum-node |[0m INFO [08-04|19:15:03.445] Generating DAG in progress               epoch=0 percentage=16 elapsed=18.381s
+[33methereum-node |[0m INFO [08-04|19:15:04.616] Generating DAG in progress               epoch=0 percentage=17 elapsed=19.553s
+[33methereum-node |[0m INFO [08-04|19:15:06.298] Generating DAG in progress               epoch=0 percentage=18 elapsed=21.235s
+[33methereum-node |[0m INFO [08-04|19:15:07.488] Generating DAG in progress               epoch=0 percentage=19 elapsed=22.424s
+[33methereum-node |[0m INFO [08-04|19:15:08.601] Generating DAG in progress               epoch=0 percentage=20 elapsed=23.537s
+[33methereum-node |[0m INFO [08-04|19:15:09.748] Generating DAG in progress               epoch=0 percentage=21 elapsed=24.684s
+[33methereum-node |[0m INFO [08-04|19:15:10.994] Generating DAG in progress               epoch=0 percentage=22 elapsed=25.930s
+[33methereum-node |[0m INFO [08-04|19:15:12.111] Generating DAG in progress               epoch=0 percentage=23 elapsed=27.048s
+[33methereum-node |[0m INFO [08-04|19:15:13.217] Generating DAG in progress               epoch=0 percentage=24 elapsed=28.153s
+[33methereum-node |[0m INFO [08-04|19:15:14.312] Generating DAG in progress               epoch=0 percentage=25 elapsed=29.269s
+[33methereum-node |[0m INFO [08-04|19:15:15.486] Generating DAG in progress               epoch=0 percentage=26 elapsed=30.443s
+[33methereum-node |[0m INFO [08-04|19:15:16.620] Generating DAG in progress               epoch=0 percentage=27 elapsed=31.578s
+[33methereum-node |[0m INFO [08-04|19:15:17.759] Generating DAG in progress               epoch=0 percentage=28 elapsed=32.716s
+[33methereum-node |[0m INFO [08-04|19:15:18.876] Generating DAG in progress               epoch=0 percentage=29 elapsed=33.833s
+[33methereum-node |[0m INFO [08-04|19:15:19.984] Generating DAG in progress               epoch=0 percentage=30 elapsed=34.941s
+[33methereum-node |[0m INFO [08-04|19:15:21.081] Generating DAG in progress               epoch=0 percentage=31 elapsed=36.039s
+[33methereum-node |[0m INFO [08-04|19:15:22.354] Generating DAG in progress               epoch=0 percentage=32 elapsed=37.311s
+[33methereum-node |[0m INFO [08-04|19:15:23.455] Generating DAG in progress               epoch=0 percentage=33 elapsed=38.412s
+[33methereum-node |[0m INFO [08-04|19:15:24.699] Generating DAG in progress               epoch=0 percentage=34 elapsed=39.657s
+[33methereum-node |[0m INFO [08-04|19:15:25.823] Generating DAG in progress               epoch=0 percentage=35 elapsed=40.780s
+[33methereum-node |[0m INFO [08-04|19:15:26.775] Generating DAG in progress               epoch=0 percentage=36 elapsed=41.732s
+[33methereum-node |[0m INFO [08-04|19:15:28.366] Generating DAG in progress               epoch=0 percentage=37 elapsed=43.324s
+[33methereum-node |[0m INFO [08-04|19:15:29.702] Generating DAG in progress               epoch=0 percentage=38 elapsed=44.659s
+[33methereum-node |[0m INFO [08-04|19:15:30.756] Generating DAG in progress               epoch=0 percentage=39 elapsed=45.714s
+[33methereum-node |[0m INFO [08-04|19:15:31.996] Generating DAG in progress               epoch=0 percentage=40 elapsed=46.953s
+[33methereum-node |[0m INFO [08-04|19:15:33.151] Generating DAG in progress               epoch=0 percentage=41 elapsed=48.108s
+[33methereum-node |[0m INFO [08-04|19:15:34.292] Generating DAG in progress               epoch=0 percentage=42 elapsed=49.249s
+[33methereum-node |[0m INFO [08-04|19:15:35.698] Generating DAG in progress               epoch=0 percentage=43 elapsed=50.655s
+[33methereum-node |[0m INFO [08-04|19:15:36.955] Generating DAG in progress               epoch=0 percentage=44 elapsed=51.913s
+[33methereum-node |[0m INFO [08-04|19:15:38.263] Generating DAG in progress               epoch=0 percentage=45 elapsed=53.221s
+[36mipfs-node |[0m Gateway (readonly) server listening on /ip4/0.0.0.0/tcp/8080
+[36mipfs-node |[0m Daemon is ready
+[36mipfs-node |[0m 
+[36mipfs-node |[0m Received interrupt signal, shutting down...
+[36mipfs-node |[0m (Hit ctrl-c again to force-shutdown the daemon.)
+[36mipfs-node |[0m Changing user to ipfs
+[36mipfs-node |[0m ipfs version 0.4.15
+[36mipfs-node |[0m Found IPFS fs-repo at /data/ipfs
+[36mipfs-node |[0m Initializing daemon...
+[36mipfs-node |[0m Swarm listening on /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm listening on /ip4/172.18.0.3/tcp/4001
+[36mipfs-node |[0m Swarm listening on /p2p-circuit/ipfs/QmS9ugQ1F5PZ3vUqsS8CtrLQS2wHxrnWAjSnzbrWCpM9pt
+[36mipfs-node |[0m Swarm announcing /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm announcing /ip4/172.18.0.3/tcp/4001
+[36mipfs-node |[0m API server listening on /ip4/0.0.0.0/tcp/5001
+[36mipfs-node |[0m Gateway (readonly) server listening on /ip4/0.0.0.0/tcp/8080
+[36mipfs-node |[0m Daemon is ready
+[36mipfs-node |[0m 
+[36mipfs-node |[0m Received interrupt signal, shutting down...
+[36mipfs-node |[0m (Hit ctrl-c again to force-shutdown the daemon.)
+[36mipfs-node |[0m [0;37m20:34:58.818 [31mERROR [0;34mipns-repub: [0mRepublisher failed to republish: process closing [0;37mrepub.go:78[0m
+[36mipfs-node |[0m [0;37m20:34:58.879 [31mERROR [0;34m   connmgr: [0mreceived disconnected notification for peer we are not tracking: <peer.ID dyQJnt> [0;37mconnmgr.go:235[0m
+[36mipfs-node |[0m [0;37m20:34:58.881 [31mERROR [0;34m    swarm2: [0mfailed to reset connection deadline after setup: set tcp 172.18.0.3:4001: use of closed network connection [0;37mswarm_dial.go:403[0m
+[36mipfs-node |[0m [0;37m20:34:58.936 [31mERROR [0;34m   connmgr: [0mreceived disconnected notification for peer we are not tracking: <peer.ID ZJBQBX> [0;37mconnmgr.go:235[0m
+[36mipfs-node |[0m [0;37m20:34:58.937 [31mERROR [0;34m    swarm2: [0mfailed to reset connection deadline after setup: set tcp 172.18.0.3:4001: use of closed network connection [0;37mswarm_dial.go:403[0m
+[36mipfs-node |[0m Changing user to ipfs
+[36mipfs-node |[0m ipfs version 0.4.15
+[36mipfs-node |[0m Found IPFS fs-repo at /data/ipfs
+[36mipfs-node |[0m Initializing daemon...
+[36mipfs-node |[0m Swarm listening on /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm listening on /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m Swarm listening on /p2p-circuit/ipfs/QmS9ugQ1F5PZ3vUqsS8CtrLQS2wHxrnWAjSnzbrWCpM9pt
+[36mipfs-node |[0m Swarm announcing /ip4/127.0.0.1/tcp/4001
+[36mipfs-node |[0m Swarm announcing /ip4/172.18.0.2/tcp/4001
+[36mipfs-node |[0m API server listening on /ip4/0.0.0.0/tcp/5001
+[36mipfs-node |[0m Gateway (readonly) server listening on /ip4/0.0.0.0/tcp/8080
+[36mipfs-node |[0m Daemon is ready
+[33methereum-node |[0m INFO [08-04|19:15:39.433] Generating DAG in progress               epoch=0 percentage=46 elapsed=54.391s
+[33methereum-node |[0m INFO [08-04|19:15:40.539] Generating DAG in progress               epoch=0 percentage=47 elapsed=55.496s
+[33methereum-node |[0m INFO [08-04|19:15:41.636] Generating DAG in progress               epoch=0 percentage=48 elapsed=56.594s
+[33methereum-node |[0m INFO [08-04|19:15:42.881] Generating DAG in progress               epoch=0 percentage=49 elapsed=57.839s
+[33methereum-node |[0m INFO [08-04|19:15:44.039] Generating DAG in progress               epoch=0 percentage=50 elapsed=59.017s
+[33methereum-node |[0m INFO [08-04|19:15:45.363] Generating DAG in progress               epoch=0 percentage=51 elapsed=1m0.342s
+[33methereum-node |[0m INFO [08-04|19:15:46.634] Generating DAG in progress               epoch=0 percentage=52 elapsed=1m1.612s
+[33methereum-node |[0m INFO [08-04|19:15:47.826] Generating DAG in progress               epoch=0 percentage=53 elapsed=1m2.805s
+[33methereum-node |[0m INFO [08-04|19:15:48.984] Generating DAG in progress               epoch=0 percentage=54 elapsed=1m3.962s
+[33methereum-node |[0m INFO [08-04|19:15:50.593] Generating DAG in progress               epoch=0 percentage=55 elapsed=1m5.571s
+[33methereum-node |[0m INFO [08-04|19:15:51.726] Generating DAG in progress               epoch=0 percentage=56 elapsed=1m6.704s
+[33methereum-node |[0m INFO [08-04|19:15:52.932] Generating DAG in progress               epoch=0 percentage=57 elapsed=1m7.910s
+[33methereum-node |[0m INFO [08-04|19:15:54.079] Generating DAG in progress               epoch=0 percentage=58 elapsed=1m9.057s
+[33methereum-node |[0m INFO [08-04|19:15:55.200] Generating DAG in progress               epoch=0 percentage=59 elapsed=1m10.178s
+[33methereum-node |[0m INFO [08-04|19:15:56.314] Generating DAG in progress               epoch=0 percentage=60 elapsed=1m11.292s
+[33methereum-node |[0m INFO [08-04|19:15:57.537] Generating DAG in progress               epoch=0 percentage=61 elapsed=1m12.516s
+[33methereum-node |[0m INFO [08-04|19:15:58.626] Generating DAG in progress               epoch=0 percentage=62 elapsed=1m13.604s
+[33methereum-node |[0m INFO [08-04|19:15:59.712] Generating DAG in progress               epoch=0 percentage=63 elapsed=1m14.690s
+[33methereum-node |[0m INFO [08-04|19:16:00.887] Generating DAG in progress               epoch=0 percentage=64 elapsed=1m15.865s
+[33methereum-node |[0m INFO [08-04|19:16:01.982] Generating DAG in progress               epoch=0 percentage=65 elapsed=1m16.960s
+[33methereum-node |[0m INFO [08-04|19:16:03.064] Generating DAG in progress               epoch=0 percentage=66 elapsed=1m18.042s
+[33methereum-node |[0m INFO [08-04|19:16:04.156] Generating DAG in progress               epoch=0 percentage=67 elapsed=1m19.134s
+[33methereum-node |[0m INFO [08-04|19:16:05.256] Generating DAG in progress               epoch=0 percentage=68 elapsed=1m20.234s
+[33methereum-node |[0m INFO [08-04|19:16:06.507] Generating DAG in progress               epoch=0 percentage=69 elapsed=1m21.486s
+[33methereum-node |[0m INFO [08-04|19:16:07.609] Generating DAG in progress               epoch=0 percentage=70 elapsed=1m22.588s
+[33methereum-node |[0m INFO [08-04|19:16:08.691] Generating DAG in progress               epoch=0 percentage=71 elapsed=1m23.669s
+[33methereum-node |[0m INFO [08-04|19:16:09.789] Generating DAG in progress               epoch=0 percentage=72 elapsed=1m24.768s
+[33methereum-node |[0m INFO [08-04|19:16:11.282] Generating DAG in progress               epoch=0 percentage=73 elapsed=1m26.260s
+[33methereum-node |[0m INFO [08-04|19:16:12.402] Generating DAG in progress               epoch=0 percentage=74 elapsed=1m27.380s
+[33methereum-node |[0m INFO [08-04|19:16:13.524] Generating DAG in progress               epoch=0 percentage=75 elapsed=1m28.502s
+[33methereum-node |[0m INFO [08-04|19:16:14.637] Generating DAG in progress               epoch=0 percentage=76 elapsed=1m29.637s
+[33methereum-node |[0m INFO [08-04|19:16:15.764] Generating DAG in progress               epoch=0 percentage=77 elapsed=1m30.763s
+[33methereum-node |[0m INFO [08-04|19:16:16.872] Generating DAG in progress               epoch=0 percentage=78 elapsed=1m31.871s
+[33methereum-node |[0m INFO [08-04|19:16:18.168] Generating DAG in progress               epoch=0 percentage=79 elapsed=1m33.168s
+[33methereum-node |[0m INFO [08-04|19:16:19.250] Generating DAG in progress               epoch=0 percentage=80 elapsed=1m34.249s
+[33methereum-node |[0m INFO [08-04|19:16:20.320] Generating DAG in progress               epoch=0 percentage=81 elapsed=1m35.319s
+[33methereum-node |[0m INFO [08-04|19:16:21.413] Generating DAG in progress               epoch=0 percentage=82 elapsed=1m36.412s
+[33methereum-node |[0m INFO [08-04|19:16:22.499] Generating DAG in progress               epoch=0 percentage=83 elapsed=1m37.499s
+[33methereum-node |[0m INFO [08-04|19:16:23.568] Generating DAG in progress               epoch=0 percentage=84 elapsed=1m38.567s
+[33methereum-node |[0m INFO [08-04|19:16:24.724] Generating DAG in progress               epoch=0 percentage=85 elapsed=1m39.724s
+[33methereum-node |[0m INFO [08-04|19:16:25.904] Generating DAG in progress               epoch=0 percentage=86 elapsed=1m40.903s
+[33methereum-node |[0m INFO [08-04|19:16:27.220] Generating DAG in progress               epoch=0 percentage=87 elapsed=1m42.219s
+[33methereum-node |[0m WARN [08-04|19:25:10.726] Sanitizing cache to Go's GC limits       provided=1024 updated=666
+[33methereum-node |[0m INFO [08-04|19:25:10.726] Maximum peer count                       ETH=25 LES=0 total=25
+[33methereum-node |[0m INFO [08-04|19:25:10.732] Starting peer-to-peer node               instance=Geth/v1.8.14-unstable-35fcd2f4/linux-amd64/go1.10.3
+[33methereum-node |[0m INFO [08-04|19:25:10.733] Allocated cache and file handles         database=/root/.ethereum/local/geth/chaindata cache=499 handles=1024
+[33methereum-node |[0m INFO [08-04|19:25:10.766] Initialised chain configuration          config="{ChainID: 1 Homestead: 1150000 DAO: 1920000 DAOSupport: true EIP150: 2463000 EIP155: 2675000 EIP158: 2675000 Byzantium: 4370000 Constantinople: <nil> Engine: ethash}"
+[33methereum-node |[0m INFO [08-04|19:25:10.766] Disk storage enabled for ethash caches   dir=/root/.ethereum/local/geth/ethash count=3
+[33methereum-node |[0m INFO [08-04|19:25:10.766] Disk storage enabled for ethash DAGs     dir=/root/.ethash                     count=2
+[33methereum-node |[0m INFO [08-04|19:25:10.767] Initialising Ethereum protocol           versions="[63 62]" network=1234
+[33methereum-node |[0m INFO [08-04|19:25:10.769] Loaded most recent local header          number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:25:10.769] Loaded most recent local full block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:25:10.769] Loaded most recent local fast block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-04|19:25:10.771] Loaded local transaction journal         transactions=0 dropped=0
+[33methereum-node |[0m INFO [08-04|19:25:10.772] Regenerated local transaction journal    transactions=0 accounts=0
+[33methereum-node |[0m INFO [08-04|19:25:10.775] Starting P2P networking 
+[33methereum-node |[0m INFO [08-04|19:25:12.908] UDP listener up                          self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-04|19:25:12.912] RLPx listener up                         self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-04|19:25:12.916] IPC endpoint opened                      url=/root/.ethereum/local/geth.ipc
+[33methereum-node |[0m INFO [08-04|19:25:12.917] HTTP endpoint opened                     url=http://0.0.0.0:8545            cors=* vhosts=localhost
+[33methereum-node |[0m INFO [08-04|19:25:12.917] WebSocket endpoint opened                url=ws://[::]:8446
+[33methereum-node |[0m INFO [08-04|19:25:12.918] Transaction pool price threshold updated price=18000000000
+[33methereum-node |[0m INFO [08-04|19:25:12.919] Commit new empty mining work             number=1 uncles=0
+[33methereum-node |[0m INFO [08-04|19:25:12.932] Commit new full mining work              number=1 txs=0 uncles=0 elapsed=13.933ms
+[33methereum-node |[0m INFO [08-04|19:25:14.892] Generating DAG in progress               epoch=0 percentage=0 elapsed=1.134s
+[33methereum-node |[0m INFO [08-04|19:25:16.083] Generating DAG in progress               epoch=0 percentage=1 elapsed=2.326s
+[33methereum-node |[0m INFO [08-04|19:25:17.298] Generating DAG in progress               epoch=0 percentage=2 elapsed=3.540s
+[33methereum-node |[0m INFO [08-04|19:25:18.448] Generating DAG in progress               epoch=0 percentage=3 elapsed=4.691s
+[33methereum-node |[0m INFO [08-04|19:25:19.598] Generating DAG in progress               epoch=0 percentage=4 elapsed=5.840s
+[33methereum-node |[0m INFO [08-04|19:25:21.061] Generating DAG in progress               epoch=0 percentage=5 elapsed=7.303s
+[33methereum-node |[0m INFO [08-04|19:25:22.259] Generating DAG in progress               epoch=0 percentage=6 elapsed=8.502s
+[33methereum-node |[0m INFO [08-04|19:25:23.404] Generating DAG in progress               epoch=0 percentage=7 elapsed=9.646s
+[33methereum-node |[0m INFO [08-04|19:25:24.656] Generating DAG in progress               epoch=0 percentage=8 elapsed=10.899s
+[33methereum-node |[0m INFO [08-04|19:25:25.928] Generating DAG in progress               epoch=0 percentage=9 elapsed=12.170s
+[33methereum-node |[0m INFO [08-04|19:25:26.914] Generating DAG in progress               epoch=0 percentage=10 elapsed=13.156s
+[33methereum-node |[0m INFO [08-04|19:25:27.944] Generating DAG in progress               epoch=0 percentage=11 elapsed=14.187s
+[33methereum-node |[0m INFO [08-04|19:25:28.932] Generating DAG in progress               epoch=0 percentage=12 elapsed=15.174s
+[33methereum-node |[0m INFO [08-04|19:25:29.921] Generating DAG in progress               epoch=0 percentage=13 elapsed=16.163s
+[33methereum-node |[0m INFO [08-04|19:25:31.066] Generating DAG in progress               epoch=0 percentage=14 elapsed=17.308s
+[33methereum-node |[0m INFO [08-04|19:25:32.200] Generating DAG in progress               epoch=0 percentage=15 elapsed=18.443s
+[33methereum-node |[0m INFO [08-04|19:25:33.321] Generating DAG in progress               epoch=0 percentage=16 elapsed=19.563s
+[33methereum-node |[0m INFO [08-04|19:25:34.462] Generating DAG in progress               epoch=0 percentage=17 elapsed=20.704s
+[33methereum-node |[0m INFO [08-04|19:25:35.702] Generating DAG in progress               epoch=0 percentage=18 elapsed=21.945s
+[33methereum-node |[0m INFO [08-04|19:25:36.890] Generating DAG in progress               epoch=0 percentage=19 elapsed=23.133s
+[33methereum-node |[0m INFO [08-04|19:25:38.060] Generating DAG in progress               epoch=0 percentage=20 elapsed=24.302s
+[33methereum-node |[0m INFO [08-04|19:25:39.322] Generating DAG in progress               epoch=0 percentage=21 elapsed=25.565s
+[33methereum-node |[0m INFO [08-04|19:25:40.708] Generating DAG in progress               epoch=0 percentage=22 elapsed=26.951s
+[33methereum-node |[0m INFO [08-04|19:25:42.116] Generating DAG in progress               epoch=0 percentage=23 elapsed=28.359s
+[33methereum-node |[0m INFO [08-04|19:25:43.477] Generating DAG in progress               epoch=0 percentage=24 elapsed=29.740s
+[33methereum-node |[0m INFO [08-04|19:25:44.740] Generating DAG in progress               epoch=0 percentage=25 elapsed=31.004s
+[33methereum-node |[0m INFO [08-04|19:25:45.895] Generating DAG in progress               epoch=0 percentage=26 elapsed=32.159s
+[33methereum-node |[0m INFO [08-04|19:25:47.108] Generating DAG in progress               epoch=0 percentage=27 elapsed=33.371s
+[33methereum-node |[0m INFO [08-04|19:25:48.845] Generating DAG in progress               epoch=0 percentage=28 elapsed=35.108s
+[33methereum-node |[0m INFO [08-04|19:25:49.974] Generating DAG in progress               epoch=0 percentage=29 elapsed=36.237s
+[33methereum-node |[0m INFO [08-04|19:25:51.126] Generating DAG in progress               epoch=0 percentage=30 elapsed=37.390s
+[33methereum-node |[0m INFO [08-04|19:25:52.286] Generating DAG in progress               epoch=0 percentage=31 elapsed=38.549s
+[33methereum-node |[0m INFO [08-04|19:25:53.426] Generating DAG in progress               epoch=0 percentage=32 elapsed=39.690s
+[33methereum-node |[0m INFO [08-04|19:25:54.614] Generating DAG in progress               epoch=0 percentage=33 elapsed=40.878s
+[33methereum-node |[0m INFO [08-04|19:25:55.811] Generating DAG in progress               epoch=0 percentage=34 elapsed=42.075s
+[33methereum-node |[0m INFO [08-04|19:25:57.057] Generating DAG in progress               epoch=0 percentage=35 elapsed=43.321s
+[33methereum-node |[0m WARN [08-05|20:14:19.602] Sanitizing cache to Go's GC limits       provided=1024 updated=666
+[33methereum-node |[0m INFO [08-05|20:14:19.603] Maximum peer count                       ETH=25 LES=0 total=25
+[33methereum-node |[0m INFO [08-05|20:14:19.609] Starting peer-to-peer node               instance=Geth/v1.8.14-unstable-35fcd2f4/linux-amd64/go1.10.3
+[33methereum-node |[0m INFO [08-05|20:14:19.609] Allocated cache and file handles         database=/root/.ethereum/local/geth/chaindata cache=499 handles=1024
+[33methereum-node |[0m INFO [08-05|20:14:19.645] Initialised chain configuration          config="{ChainID: 1 Homestead: 1150000 DAO: 1920000 DAOSupport: true EIP150: 2463000 EIP155: 2675000 EIP158: 2675000 Byzantium: 4370000 Constantinople: <nil> Engine: ethash}"
+[33methereum-node |[0m INFO [08-05|20:14:19.645] Disk storage enabled for ethash caches   dir=/root/.ethereum/local/geth/ethash count=3
+[33methereum-node |[0m INFO [08-05|20:14:19.645] Disk storage enabled for ethash DAGs     dir=/root/.ethash                     count=2
+[33methereum-node |[0m INFO [08-05|20:14:19.645] Initialising Ethereum protocol           versions="[63 62]" network=1234
+[33methereum-node |[0m INFO [08-05|20:14:19.647] Loaded most recent local header          number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:14:19.648] Loaded most recent local full block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:14:19.648] Loaded most recent local fast block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:14:19.649] Loaded local transaction journal         transactions=0 dropped=0
+[33methereum-node |[0m INFO [08-05|20:14:19.650] Regenerated local transaction journal    transactions=0 accounts=0
+[33methereum-node |[0m INFO [08-05|20:14:19.653] Starting P2P networking 
+[33methereum-node |[0m INFO [08-05|20:14:21.789] UDP listener up                          self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-05|20:14:21.792] RLPx listener up                         self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-05|20:14:21.795] IPC endpoint opened                      url=/root/.ethereum/local/geth.ipc
+[33methereum-node |[0m INFO [08-05|20:14:21.795] HTTP endpoint opened                     url=http://0.0.0.0:8545            cors=* vhosts=localhost
+[33methereum-node |[0m INFO [08-05|20:14:21.796] WebSocket endpoint opened                url=ws://[::]:8446
+[33methereum-node |[0m INFO [08-05|20:14:21.796] Transaction pool price threshold updated price=18000000000
+[33methereum-node |[0m INFO [08-05|20:14:21.798] Commit new empty mining work             number=1 uncles=0
+[33methereum-node |[0m INFO [08-05|20:14:21.799] Commit new full mining work              number=1 txs=0 uncles=0 elapsed=2.983ms
+[33methereum-node |[0m INFO [08-05|20:14:23.660] Generating DAG in progress               epoch=0 percentage=0 elapsed=1.179s
+[33methereum-node |[0m INFO [08-05|20:14:24.923] Generating DAG in progress               epoch=0 percentage=1 elapsed=2.442s
+[33methereum-node |[0m INFO [08-05|20:14:26.038] Generating DAG in progress               epoch=0 percentage=2 elapsed=3.557s
+[33methereum-node |[0m INFO [08-05|20:14:27.282] Generating DAG in progress               epoch=0 percentage=3 elapsed=4.801s
+[33methereum-node |[0m INFO [08-05|20:14:28.458] Generating DAG in progress               epoch=0 percentage=4 elapsed=5.977s
+[33methereum-node |[0m INFO [08-05|20:14:29.626] Generating DAG in progress               epoch=0 percentage=5 elapsed=7.145s
+[33methereum-node |[0m INFO [08-05|20:14:31.019] Generating DAG in progress               epoch=0 percentage=6 elapsed=8.538s
+[33methereum-node |[0m INFO [08-05|20:14:32.410] Generating DAG in progress               epoch=0 percentage=7 elapsed=9.929s
+[33methereum-node |[0m INFO [08-05|20:14:33.686] Generating DAG in progress               epoch=0 percentage=8 elapsed=11.205s
+[33methereum-node |[0m INFO [08-05|20:14:34.839] Generating DAG in progress               epoch=0 percentage=9 elapsed=12.359s
+[33methereum-node |[0m INFO [08-05|20:14:35.961] Generating DAG in progress               epoch=0 percentage=10 elapsed=13.480s
+[33methereum-node |[0m INFO [08-05|20:14:37.202] Generating DAG in progress               epoch=0 percentage=11 elapsed=14.721s
+[33methereum-node |[0m INFO [08-05|20:14:38.568] Generating DAG in progress               epoch=0 percentage=12 elapsed=16.088s
+[33methereum-node |[0m INFO [08-05|20:14:39.953] Generating DAG in progress               epoch=0 percentage=13 elapsed=17.472s
+[33methereum-node |[0m INFO [08-05|20:14:41.108] Generating DAG in progress               epoch=0 percentage=14 elapsed=18.627s
+[33methereum-node |[0m INFO [08-05|20:14:42.228] Generating DAG in progress               epoch=0 percentage=15 elapsed=19.747s
+[33methereum-node |[0m INFO [08-05|20:14:43.309] Generating DAG in progress               epoch=0 percentage=16 elapsed=20.862s
+[33methereum-node |[0m INFO [08-05|20:14:44.403] Generating DAG in progress               epoch=0 percentage=17 elapsed=21.957s
+[33methereum-node |[0m INFO [08-05|20:14:45.954] Generating DAG in progress               epoch=0 percentage=18 elapsed=23.507s
+[33methereum-node |[0m INFO [08-05|20:14:47.107] Generating DAG in progress               epoch=0 percentage=19 elapsed=24.660s
+[33methereum-node |[0m INFO [08-05|20:14:48.318] Generating DAG in progress               epoch=0 percentage=20 elapsed=25.872s
+[33methereum-node |[0m INFO [08-05|20:14:49.400] Generating DAG in progress               epoch=0 percentage=21 elapsed=26.953s
+[33methereum-node |[0m INFO [08-05|20:14:50.538] Generating DAG in progress               epoch=0 percentage=22 elapsed=28.092s
+[33methereum-node |[0m INFO [08-05|20:14:51.662] Generating DAG in progress               epoch=0 percentage=23 elapsed=29.216s
+[33methereum-node |[0m INFO [08-05|20:14:52.861] Generating DAG in progress               epoch=0 percentage=24 elapsed=30.414s
+[33methereum-node |[0m INFO [08-05|20:14:54.278] Generating DAG in progress               epoch=0 percentage=25 elapsed=31.831s
+[33methereum-node |[0m INFO [08-05|20:14:55.505] Generating DAG in progress               epoch=0 percentage=26 elapsed=33.058s
+[33methereum-node |[0m INFO [08-05|20:14:56.805] Generating DAG in progress               epoch=0 percentage=27 elapsed=34.359s
+[33methereum-node |[0m INFO [08-05|20:14:58.089] Generating DAG in progress               epoch=0 percentage=28 elapsed=35.642s
+[33methereum-node |[0m INFO [08-05|20:14:59.265] Generating DAG in progress               epoch=0 percentage=29 elapsed=36.819s
+[33methereum-node |[0m INFO [08-05|20:15:00.386] Generating DAG in progress               epoch=0 percentage=30 elapsed=37.940s
+[33methereum-node |[0m INFO [08-05|20:15:01.554] Generating DAG in progress               epoch=0 percentage=31 elapsed=39.107s
+[33methereum-node |[0m INFO [08-05|20:15:02.963] Generating DAG in progress               epoch=0 percentage=32 elapsed=40.516s
+[33methereum-node |[0m INFO [08-05|20:15:04.059] Generating DAG in progress               epoch=0 percentage=33 elapsed=41.612s
+[33methereum-node |[0m INFO [08-05|20:15:05.261] Generating DAG in progress               epoch=0 percentage=34 elapsed=42.815s
+[33methereum-node |[0m INFO [08-05|20:15:06.405] Generating DAG in progress               epoch=0 percentage=35 elapsed=43.958s
+[33methereum-node |[0m INFO [08-05|20:15:07.763] Generating DAG in progress               epoch=0 percentage=36 elapsed=45.317s
+[33methereum-node |[0m INFO [08-05|20:15:09.236] Generating DAG in progress               epoch=0 percentage=37 elapsed=46.790s
+[33methereum-node |[0m INFO [08-05|20:15:10.406] Generating DAG in progress               epoch=0 percentage=38 elapsed=47.960s
+[33methereum-node |[0m INFO [08-05|20:15:11.491] Generating DAG in progress               epoch=0 percentage=39 elapsed=49.045s
+[33methereum-node |[0m INFO [08-05|20:15:12.556] Generating DAG in progress               epoch=0 percentage=40 elapsed=50.109s
+[33methereum-node |[0m INFO [08-05|20:15:13.622] Generating DAG in progress               epoch=0 percentage=41 elapsed=51.209s
+[33methereum-node |[0m INFO [08-05|20:15:14.736] Generating DAG in progress               epoch=0 percentage=42 elapsed=52.324s
+[33methereum-node |[0m INFO [08-05|20:15:15.834] Generating DAG in progress               epoch=0 percentage=43 elapsed=53.422s
+[33methereum-node |[0m INFO [08-05|20:15:16.934] Generating DAG in progress               epoch=0 percentage=44 elapsed=54.522s
+[33methereum-node |[0m INFO [08-05|20:15:18.056] Generating DAG in progress               epoch=0 percentage=45 elapsed=55.644s
+[33methereum-node |[0m INFO [08-05|20:15:19.253] Generating DAG in progress               epoch=0 percentage=46 elapsed=56.841s
+[33methereum-node |[0m INFO [08-05|20:15:20.536] Generating DAG in progress               epoch=0 percentage=47 elapsed=58.124s
+[33methereum-node |[0m INFO [08-05|20:15:21.859] Generating DAG in progress               epoch=0 percentage=48 elapsed=59.447s
+[33methereum-node |[0m INFO [08-05|20:15:23.270] Generating DAG in progress               epoch=0 percentage=49 elapsed=1m0.858s
+[33methereum-node |[0m INFO [08-05|20:15:24.868] Generating DAG in progress               epoch=0 percentage=50 elapsed=1m2.456s
+[33methereum-node |[0m INFO [08-05|20:15:26.377] Generating DAG in progress               epoch=0 percentage=51 elapsed=1m3.965s
+[33methereum-node |[0m INFO [08-05|20:15:27.590] Generating DAG in progress               epoch=0 percentage=52 elapsed=1m5.177s
+[33methereum-node |[0m INFO [08-05|20:15:28.803] Generating DAG in progress               epoch=0 percentage=53 elapsed=1m6.391s
+[33methereum-node |[0m INFO [08-05|20:15:30.385] Generating DAG in progress               epoch=0 percentage=54 elapsed=1m7.973s
+[33methereum-node |[0m INFO [08-05|20:15:31.537] Generating DAG in progress               epoch=0 percentage=55 elapsed=1m9.125s
+[33methereum-node |[0m INFO [08-05|20:15:32.663] Generating DAG in progress               epoch=0 percentage=56 elapsed=1m10.251s
+[33methereum-node |[0m INFO [08-05|20:15:33.807] Generating DAG in progress               epoch=0 percentage=57 elapsed=1m11.395s
+[33methereum-node |[0m INFO [08-05|20:15:34.979] Generating DAG in progress               epoch=0 percentage=58 elapsed=1m12.567s
+[33methereum-node |[0m INFO [08-05|20:15:36.138] Generating DAG in progress               epoch=0 percentage=59 elapsed=1m13.726s
+[33methereum-node |[0m INFO [08-05|20:15:37.258] Generating DAG in progress               epoch=0 percentage=60 elapsed=1m14.846s
+[33methereum-node |[0m INFO [08-05|20:15:38.383] Generating DAG in progress               epoch=0 percentage=61 elapsed=1m15.971s
+[33methereum-node |[0m INFO [08-05|20:15:39.475] Generating DAG in progress               epoch=0 percentage=62 elapsed=1m17.063s
+[33methereum-node |[0m INFO [08-05|20:15:40.601] Generating DAG in progress               epoch=0 percentage=63 elapsed=1m18.189s
+[33methereum-node |[0m INFO [08-05|20:15:41.692] Generating DAG in progress               epoch=0 percentage=64 elapsed=1m19.279s
+[33methereum-node |[0m INFO [08-05|20:15:42.784] Generating DAG in progress               epoch=0 percentage=65 elapsed=1m20.372s
+[33methereum-node |[0m INFO [08-05|20:15:43.901] Generating DAG in progress               epoch=0 percentage=66 elapsed=1m21.523s
+[33methereum-node |[0m INFO [08-05|20:15:45.238] Generating DAG in progress               epoch=0 percentage=67 elapsed=1m22.860s
+[33methereum-node |[0m INFO [08-05|20:15:46.372] Generating DAG in progress               epoch=0 percentage=68 elapsed=1m23.993s
+[33methereum-node |[0m INFO [08-05|20:15:47.579] Generating DAG in progress               epoch=0 percentage=69 elapsed=1m25.201s
+[33methereum-node |[0m INFO [08-05|20:15:48.696] Generating DAG in progress               epoch=0 percentage=70 elapsed=1m26.318s
+[33methereum-node |[0m INFO [08-05|20:15:49.926] Generating DAG in progress               epoch=0 percentage=71 elapsed=1m27.547s
+[33methereum-node |[0m INFO [08-05|20:15:51.488] Generating DAG in progress               epoch=0 percentage=72 elapsed=1m29.110s
+[33methereum-node |[0m INFO [08-05|20:15:52.849] Generating DAG in progress               epoch=0 percentage=73 elapsed=1m30.471s
+[33methereum-node |[0m INFO [08-05|20:15:54.239] Generating DAG in progress               epoch=0 percentage=74 elapsed=1m31.860s
+[33methereum-node |[0m INFO [08-05|20:15:55.563] Generating DAG in progress               epoch=0 percentage=75 elapsed=1m33.185s
+[33methereum-node |[0m INFO [08-05|20:15:56.844] Generating DAG in progress               epoch=0 percentage=76 elapsed=1m34.465s
+[33methereum-node |[0m INFO [08-05|20:15:58.033] Generating DAG in progress               epoch=0 percentage=77 elapsed=1m35.654s
+[33methereum-node |[0m INFO [08-05|20:15:59.242] Generating DAG in progress               epoch=0 percentage=78 elapsed=1m36.864s
+[33methereum-node |[0m INFO [08-05|20:16:00.640] Generating DAG in progress               epoch=0 percentage=79 elapsed=1m38.262s
+[33methereum-node |[0m INFO [08-05|20:16:01.838] Generating DAG in progress               epoch=0 percentage=80 elapsed=1m39.460s
+[33methereum-node |[0m INFO [08-05|20:16:03.091] Generating DAG in progress               epoch=0 percentage=81 elapsed=1m40.712s
+[33methereum-node |[0m INFO [08-05|20:16:04.344] Generating DAG in progress               epoch=0 percentage=82 elapsed=1m41.966s
+[33methereum-node |[0m INFO [08-05|20:16:05.491] Generating DAG in progress               epoch=0 percentage=83 elapsed=1m43.112s
+[33methereum-node |[0m INFO [08-05|20:16:06.659] Generating DAG in progress               epoch=0 percentage=84 elapsed=1m44.281s
+[33methereum-node |[0m INFO [08-05|20:16:08.037] Generating DAG in progress               epoch=0 percentage=85 elapsed=1m45.658s
+[33methereum-node |[0m INFO [08-05|20:16:09.217] Generating DAG in progress               epoch=0 percentage=86 elapsed=1m46.839s
+[33methereum-node |[0m INFO [08-05|20:16:10.427] Generating DAG in progress               epoch=0 percentage=87 elapsed=1m48.049s
+[33methereum-node |[0m INFO [08-05|20:16:11.628] Generating DAG in progress               epoch=0 percentage=88 elapsed=1m49.250s
+[33methereum-node |[0m INFO [08-05|20:16:13.303] Generating DAG in progress               epoch=0 percentage=89 elapsed=1m50.959s
+[33methereum-node |[0m INFO [08-05|20:16:14.505] Generating DAG in progress               epoch=0 percentage=90 elapsed=1m52.161s
+[33methereum-node |[0m INFO [08-05|20:16:15.817] Generating DAG in progress               epoch=0 percentage=91 elapsed=1m53.473s
+[33methereum-node |[0m INFO [08-05|20:16:16.908] Generating DAG in progress               epoch=0 percentage=92 elapsed=1m54.564s
+[33methereum-node |[0m INFO [08-05|20:16:17.987] Generating DAG in progress               epoch=0 percentage=93 elapsed=1m55.643s
+[33methereum-node |[0m INFO [08-05|20:16:19.048] Generating DAG in progress               epoch=0 percentage=94 elapsed=1m56.704s
+[33methereum-node |[0m INFO [08-05|20:16:20.141] Generating DAG in progress               epoch=0 percentage=95 elapsed=1m57.797s
+[33methereum-node |[0m INFO [08-05|20:16:21.211] Generating DAG in progress               epoch=0 percentage=96 elapsed=1m58.867s
+[33methereum-node |[0m INFO [08-05|20:16:22.288] Generating DAG in progress               epoch=0 percentage=97 elapsed=1m59.944s
+[33methereum-node |[0m INFO [08-05|20:16:23.351] Generating DAG in progress               epoch=0 percentage=98 elapsed=2m1.007s
+[33methereum-node |[0m INFO [08-05|20:16:24.602] Generating DAG in progress               epoch=0 percentage=99 elapsed=2m2.258s
+[33methereum-node |[0m INFO [08-05|20:16:24.604] Generated ethash verification cache      epoch=0 elapsed=2m2.260s
+[33methereum-node |[0m WARN [08-05|20:32:29.145] Sanitizing cache to Go's GC limits       provided=1024 updated=666
+[33methereum-node |[0m INFO [08-05|20:32:29.145] Maximum peer count                       ETH=25 LES=0 total=25
+[33methereum-node |[0m INFO [08-05|20:32:29.152] Starting peer-to-peer node               instance=Geth/v1.8.14-unstable-35fcd2f4/linux-amd64/go1.10.3
+[33methereum-node |[0m INFO [08-05|20:32:29.152] Allocated cache and file handles         database=/root/.ethereum/local/geth/chaindata cache=499 handles=1024
+[33methereum-node |[0m INFO [08-05|20:32:29.192] Initialised chain configuration          config="{ChainID: 1 Homestead: 1150000 DAO: 1920000 DAOSupport: true EIP150: 2463000 EIP155: 2675000 EIP158: 2675000 Byzantium: 4370000 Constantinople: <nil> Engine: ethash}"
+[33methereum-node |[0m INFO [08-05|20:32:29.192] Disk storage enabled for ethash caches   dir=/root/.ethereum/local/geth/ethash count=3
+[33methereum-node |[0m INFO [08-05|20:32:29.192] Disk storage enabled for ethash DAGs     dir=/root/.ethash                     count=2
+[33methereum-node |[0m INFO [08-05|20:32:29.192] Initialising Ethereum protocol           versions="[63 62]" network=1234
+[33methereum-node |[0m INFO [08-05|20:32:29.196] Loaded most recent local header          number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:32:29.196] Loaded most recent local full block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:32:29.196] Loaded most recent local fast block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:32:29.197] Loaded local transaction journal         transactions=0 dropped=0
+[33methereum-node |[0m INFO [08-05|20:32:29.199] Regenerated local transaction journal    transactions=0 accounts=0
+[33methereum-node |[0m INFO [08-05|20:32:29.202] Starting P2P networking 
+[33methereum-node |[0m INFO [08-05|20:32:31.338] UDP listener up                          self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-05|20:32:31.342] RLPx listener up                         self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-05|20:32:31.347] IPC endpoint opened                      url=/root/.ethereum/local/geth.ipc
+[33methereum-node |[0m INFO [08-05|20:32:31.347] HTTP endpoint opened                     url=http://0.0.0.0:8545            cors=* vhosts=localhost
+[33methereum-node |[0m INFO [08-05|20:32:31.348] WebSocket endpoint opened                url=ws://[::]:8446
+[33methereum-node |[0m INFO [08-05|20:32:31.348] Transaction pool price threshold updated price=18000000000
+[33methereum-node |[0m INFO [08-05|20:32:31.350] Commit new empty mining work             number=1 uncles=0
+[33methereum-node |[0m INFO [08-05|20:32:31.362] Commit new full mining work              number=1 txs=0 uncles=0 elapsed=14.462ms
+[33methereum-node |[0m INFO [08-05|20:32:34.987] Generating DAG in progress               epoch=1 percentage=0 elapsed=2.829s
+[33methereum-node |[0m INFO [08-05|20:32:37.834] Generating DAG in progress               epoch=1 percentage=1 elapsed=5.677s
+[33methereum-node |[0m INFO [08-05|20:32:40.678] Generating DAG in progress               epoch=1 percentage=2 elapsed=8.520s
+[33methereum-node |[0m INFO [08-05|20:32:43.439] Generating DAG in progress               epoch=1 percentage=3 elapsed=11.316s
+[33methereum-node |[0m INFO [08-05|20:32:46.245] Generating DAG in progress               epoch=1 percentage=4 elapsed=14.122s
+[33methereum-node |[0m WARN [08-05|20:33:52.342] Sanitizing cache to Go's GC limits       provided=1024 updated=666
+[33methereum-node |[0m INFO [08-05|20:33:52.343] Maximum peer count                       ETH=25 LES=0 total=25
+[33methereum-node |[0m INFO [08-05|20:33:52.350] Starting peer-to-peer node               instance=Geth/v1.8.14-unstable-35fcd2f4/linux-amd64/go1.10.3
+[33methereum-node |[0m INFO [08-05|20:33:52.351] Allocated cache and file handles         database=/root/.ethereum/local/geth/chaindata cache=499 handles=1024
+[33methereum-node |[0m INFO [08-05|20:33:52.396] Initialised chain configuration          config="{ChainID: 1 Homestead: 1150000 DAO: 1920000 DAOSupport: true EIP150: 2463000 EIP155: 2675000 EIP158: 2675000 Byzantium: 4370000 Constantinople: <nil> Engine: ethash}"
+[33methereum-node |[0m INFO [08-05|20:33:52.396] Disk storage enabled for ethash caches   dir=/root/.ethereum/local/geth/ethash count=3
+[33methereum-node |[0m INFO [08-05|20:33:52.396] Disk storage enabled for ethash DAGs     dir=/root/.ethash                     count=2
+[33methereum-node |[0m INFO [08-05|20:33:52.396] Initialising Ethereum protocol           versions="[63 62]" network=1234
+[33methereum-node |[0m INFO [08-05|20:33:52.399] Loaded most recent local header          number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:33:52.399] Loaded most recent local full block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:33:52.399] Loaded most recent local fast block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:33:52.402] Loaded local transaction journal         transactions=0 dropped=0
+[33methereum-node |[0m INFO [08-05|20:33:52.404] Regenerated local transaction journal    transactions=0 accounts=0
+[33methereum-node |[0m INFO [08-05|20:33:52.406] Starting P2P networking 
+[33methereum-node |[0m INFO [08-05|20:33:54.541] UDP listener up                          self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-05|20:33:54.545] RLPx listener up                         self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-05|20:33:54.550] IPC endpoint opened                      url=/root/.ethereum/local/geth.ipc
+[33methereum-node |[0m INFO [08-05|20:33:54.550] HTTP endpoint opened                     url=http://0.0.0.0:8545            cors=* vhosts=localhost
+[33methereum-node |[0m INFO [08-05|20:33:54.551] WebSocket endpoint opened                url=ws://[::]:8446
+[33methereum-node |[0m INFO [08-05|20:33:54.551] Transaction pool price threshold updated price=18000000000
+[33methereum-node |[0m INFO [08-05|20:33:54.556] Commit new empty mining work             number=1 uncles=0
+[33methereum-node |[0m INFO [08-05|20:33:54.556] Commit new full mining work              number=1 txs=0 uncles=0 elapsed=4.694ms
+[33methereum-node |[0m INFO [08-05|20:33:58.296] Generating DAG in progress               epoch=1 percentage=0 elapsed=2.679s
+[33methereum-node |[0m INFO [08-05|20:34:01.310] Generating DAG in progress               epoch=1 percentage=1 elapsed=5.693s
+[33methereum-node |[0m INFO [08-05|20:34:04.423] Generating DAG in progress               epoch=1 percentage=2 elapsed=8.805s
+[33methereum-node |[0m INFO [08-05|20:34:07.336] Generating DAG in progress               epoch=1 percentage=3 elapsed=11.718s
+[33methereum-node |[0m INFO [08-05|20:34:09.437] Generating DAG in progress               epoch=1 percentage=4 elapsed=13.820s
+[33methereum-node |[0m INFO [08-05|20:34:11.886] Generating DAG in progress               epoch=1 percentage=5 elapsed=16.269s
+[33methereum-node |[0m INFO [08-05|20:34:14.574] Generating DAG in progress               epoch=1 percentage=6 elapsed=18.990s
+[33methereum-node |[0m INFO [08-05|20:34:17.238] Generating DAG in progress               epoch=1 percentage=7 elapsed=21.654s
+[33methereum-node |[0m INFO [08-05|20:34:19.999] Generating DAG in progress               epoch=1 percentage=8 elapsed=24.415s
+[33methereum-node |[0m INFO [08-05|20:34:22.588] Generating DAG in progress               epoch=1 percentage=9 elapsed=27.005s
+[33methereum-node |[0m INFO [08-05|20:34:25.260] Generating DAG in progress               epoch=1 percentage=10 elapsed=29.677s
+[33methereum-node |[0m INFO [08-05|20:34:27.957] Generating DAG in progress               epoch=1 percentage=11 elapsed=32.373s
+[33methereum-node |[0m INFO [08-05|20:34:31.108] Generating DAG in progress               epoch=1 percentage=12 elapsed=35.524s
+[33methereum-node |[0m INFO [08-05|20:34:33.824] Generating DAG in progress               epoch=1 percentage=13 elapsed=38.240s
+[33methereum-node |[0m INFO [08-05|20:34:36.552] Generating DAG in progress               epoch=1 percentage=14 elapsed=40.969s
+[33methereum-node |[0m INFO [08-05|20:34:39.247] Generating DAG in progress               epoch=1 percentage=15 elapsed=43.663s
+[33methereum-node |[0m INFO [08-05|20:34:41.961] Generating DAG in progress               epoch=1 percentage=16 elapsed=46.412s
+[33methereum-node |[0m INFO [08-05|20:34:44.641] Generating DAG in progress               epoch=1 percentage=17 elapsed=49.091s
+[33methereum-node |[0m INFO [08-05|20:34:47.376] Generating DAG in progress               epoch=1 percentage=18 elapsed=51.827s
+[33methereum-node |[0m INFO [08-05|20:34:49.980] Generating DAG in progress               epoch=1 percentage=19 elapsed=54.431s
+[33methereum-node |[0m INFO [08-05|20:34:52.529] Generating DAG in progress               epoch=1 percentage=20 elapsed=56.980s
+[33methereum-node |[0m INFO [08-05|20:34:55.614] Generating DAG in progress               epoch=1 percentage=21 elapsed=1m0.064s
+[33methereum-node |[0m INFO [08-05|20:34:58.602] Generating DAG in progress               epoch=1 percentage=22 elapsed=1m3.052s
+[33methereum-node |[0m INFO [08-05|20:35:01.802] Generating DAG in progress               epoch=1 percentage=23 elapsed=1m6.252s
+[33methereum-node |[0m INFO [08-05|20:35:04.857] Generating DAG in progress               epoch=1 percentage=24 elapsed=1m9.308s
+[33methereum-node |[0m INFO [08-05|20:35:07.039] Generating DAG in progress               epoch=1 percentage=25 elapsed=1m11.490s
+[33methereum-node |[0m WARN [08-05|20:58:01.599] Sanitizing cache to Go's GC limits       provided=1024 updated=666
+[33methereum-node |[0m INFO [08-05|20:58:01.600] Maximum peer count                       ETH=25 LES=0 total=25
+[33methereum-node |[0m INFO [08-05|20:58:01.605] Starting peer-to-peer node               instance=Geth/v1.8.14-unstable-35fcd2f4/linux-amd64/go1.10.3
+[33methereum-node |[0m INFO [08-05|20:58:01.605] Allocated cache and file handles         database=/root/.ethereum/local/geth/chaindata cache=499 handles=1024
+[33methereum-node |[0m INFO [08-05|20:58:01.639] Initialised chain configuration          config="{ChainID: 1 Homestead: 1150000 DAO: 1920000 DAOSupport: true EIP150: 2463000 EIP155: 2675000 EIP158: 2675000 Byzantium: 4370000 Constantinople: <nil> Engine: ethash}"
+[33methereum-node |[0m INFO [08-05|20:58:01.639] Disk storage enabled for ethash caches   dir=/root/.ethereum/local/geth/ethash count=3
+[33methereum-node |[0m INFO [08-05|20:58:01.639] Disk storage enabled for ethash DAGs     dir=/root/.ethash                     count=2
+[33methereum-node |[0m INFO [08-05|20:58:01.639] Initialising Ethereum protocol           versions="[63 62]" network=1234
+[33methereum-node |[0m INFO [08-05|20:58:01.642] Loaded most recent local header          number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:58:01.642] Loaded most recent local full block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:58:01.642] Loaded most recent local fast block      number=0 hash=d4e567…cb8fa3 td=17179869184
+[33methereum-node |[0m INFO [08-05|20:58:01.644] Loaded local transaction journal         transactions=0 dropped=0
+[33methereum-node |[0m INFO [08-05|20:58:01.646] Regenerated local transaction journal    transactions=0 accounts=0
+[33methereum-node |[0m INFO [08-05|20:58:01.648] Starting P2P networking 
+[33methereum-node |[0m INFO [08-05|20:58:03.785] UDP listener up                          self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-05|20:58:03.787] RLPx listener up                         self=enode://e2f567abdfc02987da6037ffe7e7fa02b72ef48c7f7c040cd0f2226b13098492746c51b95c0a0da3d3a2a74685f413636b2bc0314c03a6be4c87782e395c0aab@[::]:30303
+[33methereum-node |[0m INFO [08-05|20:58:03.790] IPC endpoint opened                      url=/root/.ethereum/local/geth.ipc
+[33methereum-node |[0m INFO [08-05|20:58:03.791] HTTP endpoint opened                     url=http://0.0.0.0:8545            cors=* vhosts=localhost
+[33methereum-node |[0m INFO [08-05|20:58:03.791] WebSocket endpoint opened                url=ws://[::]:8446
+[33methereum-node |[0m INFO [08-05|20:58:03.792] Transaction pool price threshold updated price=18000000000
+[33methereum-node |[0m INFO [08-05|20:58:03.793] Commit new empty mining work             number=1 uncles=0
+[33methereum-node |[0m INFO [08-05|20:58:03.794] Commit new full mining work              number=1 txs=0 uncles=0 elapsed=1.910ms
+[33methereum-node |[0m INFO [08-05|20:58:07.554] Generating DAG in progress               epoch=1 percentage=0 elapsed=2.833s
+[33methereum-node |[0m INFO [08-05|20:58:10.391] Generating DAG in progress               epoch=1 percentage=1 elapsed=5.670s
+[33methereum-node |[0m INFO [08-05|20:58:13.287] Generating DAG in progress               epoch=1 percentage=2 elapsed=8.599s
+[33methereum-node |[0m INFO [08-05|20:58:16.201] Generating DAG in progress               epoch=1 percentage=3 elapsed=11.514s
+[33methereum-node |[0m INFO [08-05|20:58:19.043] Generating DAG in progress               epoch=1 percentage=4 elapsed=14.355s
+[33methereum-node |[0m INFO [08-05|20:58:21.629] Generating DAG in progress               epoch=1 percentage=5 elapsed=16.942s
+[33methereum-node |[0m INFO [08-05|20:58:24.401] Generating DAG in progress               epoch=1 percentage=6 elapsed=19.713s
+[33methereum-node |[0m INFO [08-05|20:58:27.091] Generating DAG in progress               epoch=1 percentage=7 elapsed=22.404s
+[33methereum-node |[0m INFO [08-05|20:58:29.803] Generating DAG in progress               epoch=1 percentage=8 elapsed=25.116s
+[33methereum-node |[0m INFO [08-05|20:58:32.578] Generating DAG in progress               epoch=1 percentage=9 elapsed=27.891s
+[33methereum-node |[0m INFO [08-05|20:58:35.385] Generating DAG in progress               epoch=1 percentage=10 elapsed=30.697s
+[33methereum-node |[0m INFO [08-05|20:58:38.379] Generating DAG in progress               epoch=1 percentage=11 elapsed=33.692s
+[33methereum-node |[0m INFO [08-05|20:58:41.221] Generating DAG in progress               epoch=1 percentage=12 elapsed=36.568s
+[33methereum-node |[0m INFO [08-05|20:58:44.256] Generating DAG in progress               epoch=1 percentage=13 elapsed=39.602s
+[33methereum-node |[0m INFO [08-05|20:58:47.115] Generating DAG in progress               epoch=1 percentage=14 elapsed=42.462s
+[33methereum-node |[0m INFO [08-05|20:58:50.028] Generating DAG in progress               epoch=1 percentage=15 elapsed=45.375s
+[33methereum-node |[0m INFO [08-05|20:58:52.823] Generating DAG in progress               epoch=1 percentage=16 elapsed=48.170s
