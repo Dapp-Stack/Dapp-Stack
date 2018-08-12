@@ -1,7 +1,10 @@
 #!/usr/bin/env sh
 
 geth --datadir "/root/.ethereum/private" \
-     --networkid "1234" \
+     init "/root/.ethereum/private/genesis.json"
+
+geth --datadir "/root/.ethereum/private" \
+     --networkid "9999" \
      --ws \
      --wsaddr "0.0.0.0" \
      --wsorigins "*" \
@@ -11,15 +14,7 @@ geth --datadir "/root/.ethereum/private" \
      --rpcaddr "0.0.0.0" \
      --rpcport "8545" \
      --rpccorsdomain '*' \
-     --unlock 0,1,2,3 \
      --mine \
-     --password /root/.ethereum/private/passwords \
-     --dev \
-     init "/root/.ethereum/private/genesis.json"
-
-#--nodiscover \
-#     --maxpeers 1 \
-#     --verbosity 5 \
-#     --mine \
-#     --dev \
-
+     --nodiscover \
+     --unlock 0,1,2,3 \
+     --password /root/.ethereum/private/passwords
