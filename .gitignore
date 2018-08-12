@@ -26,4 +26,5 @@ infra/logs
 
 # data
 /infra/data/geth/*/geth
+/infra/data/geth/geth.ipc
 /infra/data/ipfs
