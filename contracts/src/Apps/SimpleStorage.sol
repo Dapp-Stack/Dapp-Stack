@@ -3,6 +3,8 @@ contract SimpleStorage {
 
   uint public storedData;
 
+  
+
   event Change(string message, uint newVal);
 
   function SimpleStorage(uint initVal) {

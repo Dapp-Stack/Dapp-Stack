@@ -34,7 +34,7 @@ const compile = function(contract) {
 
 const compileSingle = function(name) {
   let contract = contracts.find(c => c.name === name);
-  compile(contract);
+  return compile(contract);
 };
 
 const compileAll = function() {
@@ -46,6 +46,5 @@ const compileAll = function() {
 compileAll();
 
 module.exports = {
-  compileAll,
   compileSingle
 };

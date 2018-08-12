@@ -6,6 +6,6 @@ module.exports = [
   // { name: 'ENS/ENS.sol', deploy_on: ['local'] },
   // { name: 'ENS/ENSSubdomainRegistrar.sol', deploy_on: ['local'] },
   // { name: 'ENS/PublicResolver.sol', deploy_on: ['local'] },
-  { name: 'Wallet/MultiSigWallet.sol', deploy_on: ['local'] },
-  { name: 'Apps/SimpleStorage.sol', deploy_on: ['local'] },
+  { name: 'Wallet/MultiSigWallet.sol', deploy_on: ['local'], arguments: [[], 0] },
+  { name: 'Apps/SimpleStorage.sol', deploy_on: ['local'], arguments: [10] },
 ];
