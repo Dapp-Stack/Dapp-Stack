@@ -25,4 +25,5 @@ yarn-error.log*
 infra/logs
 
 # data
-/infra/data
+/infra/data/geth/*/geth
+/infra/data/ipfs

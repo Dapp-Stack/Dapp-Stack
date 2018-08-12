@@ -7,11 +7,8 @@ services:
     entrypoint: /bin/sh
     command: /root/files/${SOLON_ENV}/geth.sh
     volumes:
-      - ./environments/geth/${SOLON_ENV}/geth.sh:/root/files/${SOLON_ENV}/geth.sh:ro
-      - ./environments/geth/${SOLON_ENV}/password:/root/files/${SOLON_ENV}/password:ro
-      - ./environments/geth/${SOLON_ENV}/genesis.json:/root/files/${SOLON_ENV}/genesis.json:ro
-      - ./environments/geth/${SOLON_ENV}/keystore:/root/.ethereum/${SOLON_ENV}/keystore:rw
       - ./data/geth/${SOLON_ENV}:/root/.ethereum/${SOLON_ENV}:rw
+      - ./environments/geth/${SOLON_ENV}/geth.sh:/root/files/${SOLON_ENV}/geth.sh:ro
     ports:
       - "30303:30303"
       - "30303:30303/udp"
