@@ -1,9 +1,0 @@
-version: '2'
-services:
-  solidity:
-    entrypoint: sleep infinity
-    container_name: solidity
-    image: ethereum/solc:0.4.24
-    volumes:
-    - ./src/:/solidity/src
-    - ./build/:/solidity/build
