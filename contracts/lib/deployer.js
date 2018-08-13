@@ -22,6 +22,8 @@ const deploy = async function(contractName, options = {}) {
     from
   }).on('error', function(error){
     console.log(`[Contracts] error while deploying ${contractName}: ${error}`);
+  }).on('receipt', function(){
+    console.log(`[Contracts] Finished to deploy ${contractName}`);
   });
 };
 

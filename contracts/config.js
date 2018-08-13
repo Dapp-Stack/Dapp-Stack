@@ -22,7 +22,6 @@ const frontier = async function() {
 
 };
 
-
 module.exports = {
   contracts,
   private,

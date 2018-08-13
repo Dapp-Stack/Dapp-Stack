@@ -21,7 +21,7 @@ const dockerSolc = function(contractName) {
 
 const compile = function(contractName) {
   console.log(`[Contracts] Starting to compile ${contractName}`);
-  dockerSolc(contractName).then(function() {
+  return dockerSolc(contractName).then(function() {
     console.log(`[Contracts] Finished to compile ${contractName}`);
   }).catch(function(err) {
     console.log(`[Contracts] Error while compiling ${contractName}`);
