@@ -2,27 +2,30 @@ import React from "react";
 import {
   Dropdown,
   Menu,
-  Button,
+  Button, Icon,
 } from 'semantic-ui-react'
 
-const Header = (props) => (
-  <Menu inverted size='massive'>
-    <Menu.Item name='home' />
-    <Menu.Item
-      name='messages'
-    />
+const Header = ({toggleSidebar}) => (
+  <Menu attached='top' icon='labeled'>
+    <Menu.Item header name='gamepad'>
+      <Icon name='gamepad' />
+      Solon
+    </Menu.Item>
+
+    <Menu.Item name='video camera'>
+      <Icon name='video camera' />
+      View
+    </Menu.Item>
+
+    <Menu.Item name='video play'>
+      <Icon name='video play' />
+      Register a Structure
+    </Menu.Item>
 
     <Menu.Menu position='right'>
-      <Dropdown item text='Language'>
-        <Dropdown.Menu>
-          <Dropdown.Item>English</Dropdown.Item>
-          <Dropdown.Item>Russian</Dropdown.Item>
-          <Dropdown.Item>Spanish</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-
-      <Menu.Item>
-        <Button primary>Sign Up</Button>
+      <Menu.Item onClick={toggleSidebar} link>
+        <Icon name='dot circle' />
+        Hello
       </Menu.Item>
     </Menu.Menu>
   </Menu>
