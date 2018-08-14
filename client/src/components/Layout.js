@@ -24,6 +24,7 @@ export default class Layout extends React.Component {
       <Sidebar.Pushable as={Segment}>
         <Sidebar
           as={Menu}
+          direction='right'
           animation='overlay'
           icon='labeled'
           inverted
@@ -46,7 +47,7 @@ export default class Layout extends React.Component {
           </Menu.Item>
         </Sidebar>
 
-        <Sidebar.Pusher>
+        <Sidebar.Pusher dimmed={visible}>
           <MHeader toggleSidebar={this.toggleSidebar}/>
           <Container text style={{marginTop: '7em'}}>
             <Header as='h1'>Semantic UI React Fixed Template</Header>

@@ -1,4 +1,3 @@
-
 const ACCOUNTS = "accounts";
 const ITEMS = "items";
 

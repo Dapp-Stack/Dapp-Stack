@@ -6,13 +6,17 @@ import {Route, Switch} from "react-router-dom";
 import history from '../history';
 import Layout from '../components/Layout';
 import NoMatch from "../components/NoMatch";
+import actions  from "../units/accounts/actions";
 
 class AppContainer extends Component {
+  componentDidMount() {
+    this.props.getAccountsRequest();
+  }
+
   render() {
     return (
       <ConnectedRouter history={history}>
         <Layout>
-          <p>hello{this.props.isLoading} {this.props.accounts}</p>
           <Switch>
             <Route exact path="/" component={NoMatch} />
             <Route component={NoMatch} />
@@ -23,4 +27,9 @@ class AppContainer extends Component {
   }
 }
 
-export default connect(({ accounts }) => ({}))(AppContainer);
+export default connect(
+  null,
+  {
+    getAccountsRequest: actions.getAccountsRequest
+  },
+)(AppContainer);

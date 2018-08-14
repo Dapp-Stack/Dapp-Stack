@@ -8,12 +8,12 @@ export const getAccounts = function*() {
 
   try {
     const payload = yield call(web3.eth.getAccounts);
-    yield put(actions.getSuccess(payload));
+    yield put(actions.getAccountsSuccess(payload));
   } catch (error) {
-    yield put(actions.getFailure(error));
+    yield put(actions.getAccountsFailure(error));
   }
 };
 
-export default function* saga() {
+export function* accountsSaga() {
   yield takeEvery(ACCOUNTS.GET_REQUEST, getAccounts);
 }
