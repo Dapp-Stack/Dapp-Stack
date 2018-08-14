@@ -7,6 +7,8 @@ import history from '../history';
 import Layout from '../components/Layout';
 import NoMatch from "../components/NoMatch";
 import actions  from "../units/accounts/actions";
+import { isConnected, networkId } from "../units/web3/selectors";
+import { accounts } from "../units/accounts/selectors";
 
 class AppContainer extends Component {
   componentDidMount() {
@@ -16,7 +18,7 @@ class AppContainer extends Component {
   render() {
     return (
       <ConnectedRouter history={history}>
-        <Layout>
+        <Layout {...this.props}>
           <Switch>
             <Route exact path="/" component={NoMatch} />
             <Route component={NoMatch} />
@@ -27,8 +29,17 @@ class AppContainer extends Component {
   }
 }
 
+
+const mapStateToProps = (state) => {
+  return {
+    isConnected: isConnected(state),
+    networkId: networkId(state),
+    accounts: accounts(state)
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     getAccountsRequest: actions.getAccountsRequest
   },
