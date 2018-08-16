@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {Route, Switch} from "react-router-dom";
 
 import history from '../history';
-import Layout from '../components/Layout';
+import AppLayout from '../layouts/AppLayout';
 import NoMatch from "../components/NoMatch";
 import actions  from "../units/accounts/actions";
 import { isConnected, networkId } from "../units/web3/selectors";
@@ -18,12 +18,13 @@ class AppContainer extends Component {
   render() {
     return (
       <ConnectedRouter history={history}>
-        <Layout {...this.props}>
+        <AppLayout {...this.props}>
           <Switch>
             <Route exact path="/" component={NoMatch} />
+            <Route exact path="/explorer" component={ExplorerLayout} />
             <Route component={NoMatch} />
           </Switch>
-        </Layout>
+        </AppLayout>
       </ConnectedRouter>
     );
   }

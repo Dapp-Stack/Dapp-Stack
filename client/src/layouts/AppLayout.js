@@ -7,10 +7,10 @@ import {
   Menu,
   Icon
 } from 'semantic-ui-react'
-import MHeader from "./Header";
-import MFooter from "./Footer";
+import MHeader from "../components/Header";
+import MFooter from "../components/Footer";
 
-export default class Layout extends React.Component {
+export default class AppLayout extends React.Component {
   state = {visible: false};
 
   toggleSidebar = () => this.setState({visible: !this.state.visible});

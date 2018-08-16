@@ -28,3 +28,10 @@ infra/logs
 /infra/data/geth/*/geth
 /infra/data/geth/geth.ipc
 /infra/data/ipfs
+
+
+# doc
+/contracts/doc
+
+# security
+/contracts/health
