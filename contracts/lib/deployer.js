@@ -13,7 +13,7 @@ const deploy = async function(contractName, options = {}) {
   let abi = JSON.parse(contractInfo.abi);
   let data = '0x' + contractInfo.bin;
 
-  let contractClass = new web3.eth.Contract(abi, null, {data});
+  let contractClass = new web3.eth.Contract(abi, null, { data });
   let gas = await contractClass.deploy(args).estimateGas();
 
   return contractClass.deploy(args).send({
