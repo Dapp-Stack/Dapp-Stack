@@ -14,7 +14,11 @@
     "reselect": "^3.0.1",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.82.2",
+    "solium": "^1.1.8",
+    "solon-deployer": "0.1.0",
     "solon-scripts": "0.1.0",
+    "solon-test": "0.1.0",
+    "solon-web3": "0.1.0",
     "web3": "^1.0.0-beta.35"
   },
   "scripts": {
@@ -28,6 +32,7 @@
     "contracts:doc": "solon-scripts docContracts",
     "contracts:security": "solon-scripts securityContracts",
     "contracts:watch": "solon-scripts watchContracts",
+    "contracts:lint": "node ./node_modules/.bin/solium -d contracts/",
     "geth:start": "solon-scripts startGeth",
     "geth:stop": "solon-scripts stopGeth",
     "geth:console": "solon-scripts consoleGeth",
