@@ -42,4 +42,4 @@ function createMockProvider(ganacheOptions = {}) {
 
 module.exports = {
   createMockProvider
-}
+};
