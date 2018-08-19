@@ -1,5 +1,8 @@
 {
   "name": "solon-cli",
   "version": "0.1.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
 }
