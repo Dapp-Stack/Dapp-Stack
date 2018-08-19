@@ -1,0 +1,10 @@
+{
+  "name": "solon-doc",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "fs-extra": "^7.0.0",
+    "sha1-file": "^1.0.1",
+    "solidity-parser-antlr": "^0.3.1"
+  }
+}

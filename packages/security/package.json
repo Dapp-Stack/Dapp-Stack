@@ -1,0 +1,9 @@
+{
+  "name": "solon-security",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "fs-extra": "^7.0.0",
+    "dockerode": "^2.5.5"
+  }
+}

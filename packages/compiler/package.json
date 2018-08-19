@@ -1,0 +1,8 @@
+{
+  "name": "solon-compiler",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "dockerode": "^2.5.5"
+  }
+}
