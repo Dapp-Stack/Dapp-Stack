@@ -43,7 +43,7 @@ const hyperquest = require('hyperquest');
 const envinfo = require('envinfo');
 const os = require('os');
 const findMonorepo = require('react-dev-utils/workspaceUtils').findMonorepo;
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 
 // These files should be allowed to remain on a failed install,
 // but then silently removed during the next create.
@@ -66,7 +66,7 @@ const program = new commander.Command(packageJson.name)
   .option('--info', 'print environment debug info')
   .option(
     '--scripts-version <alternative-package>',
-    'use a non-standard version of react-scripts'
+    'use a non-standard version of solon-scripts'
   )
   .option('--use-npm')
   .allowUnknownOption()
@@ -76,26 +76,26 @@ const program = new commander.Command(packageJson.name)
     console.log(
       `    A custom ${chalk.cyan('--scripts-version')} can be one of:`
     );
-    console.log(`      - a specific npm version: ${chalk.green('0.8.2')}`);
+    console.log(`      - a specific npm version: ${chalk.green('0.1.0')}`);
     console.log(`      - a specific npm tag: ${chalk.green('@next')}`);
     console.log(
       `      - a custom fork published on npm: ${chalk.green(
-        'my-react-scripts'
+        'my-solon-scripts'
       )}`
     );
     console.log(
       `      - a local path relative to the current working directory: ${chalk.green(
-        'file:../my-react-scripts'
+        'file:../my-solon-scripts'
       )}`
     );
     console.log(
       `      - a .tgz archive: ${chalk.green(
-        'https://mysite.com/my-react-scripts-0.8.2.tgz'
+        'https://mysite.com/my-solon-scripts-0.1.0.tgz'
       )}`
     );
     console.log(
       `      - a .tar.gz archive: ${chalk.green(
-        'https://mysite.com/my-react-scripts-0.8.2.tar.gz'
+        'https://mysite.com/my-solon-scripts-0.1.0.tar.gz'
       )}`
     );
     console.log(
@@ -107,7 +107,7 @@ const program = new commander.Command(packageJson.name)
     );
     console.log(
       `      ${chalk.cyan(
-        'https://github.com/facebook/create-react-app/issues/new'
+        'https://github.com/SolonProject/solon/issues/new'
       )}`
     );
     console.log();
@@ -122,8 +122,8 @@ if (program.info) {
         System: ['OS', 'CPU'],
         Binaries: ['Node', 'npm', 'Yarn'],
         Browsers: ['Chrome', 'Edge', 'Internet Explorer', 'Firefox', 'Safari'],
-        npmPackages: ['react', 'react-dom', 'react-scripts'],
-        npmGlobalPackages: ['create-react-app'],
+        npmPackages: ['solon-scripts'],
+        npmGlobalPackages: ['solon-cli'],
       },
       {
         clipboard: true,
@@ -142,7 +142,7 @@ if (typeof projectName === 'undefined') {
   );
   console.log();
   console.log('For example:');
-  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-react-app')}`);
+  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-solon-app')}`);
   console.log();
   console.log(
     `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`
@@ -158,23 +158,14 @@ function printValidationResults(results) {
   }
 }
 
-const hiddenProgram = new commander.Command()
-  .option(
-    '--internal-testing-template <path-to-template>',
-    '(internal usage only, DO NOT RELY ON THIS) ' +
-    'use a non-standard application template'
-  )
-  .parse(process.argv);
-
 createApp(
   projectName,
   program.verbose,
   program.scriptsVersion,
-  program.useNpm,
-  hiddenProgram.internalTestingTemplate
+  program.useNpm
 );
 
-function createApp(name, verbose, version, useNpm, template) {
+function createApp(name, verbose, version, useNpm) {
   const root = path.resolve(name);
   const appName = path.basename(root);
 
@@ -204,17 +195,16 @@ function createApp(name, verbose, version, useNpm, template) {
     process.exit(1);
   }
 
-  if (!semver.satisfies(process.version, '>=6.0.0')) {
+  if (!semver.satisfies(process.version, '>=8.0.0')) {
     console.log(
       chalk.yellow(
         `You are using Node ${
           process.version
           } so the project will be bootstrapped with an old unsupported version of tools.\n\n` +
-        `Please update to Node 6 or higher for a better, fully supported experience.\n`
+        `Please update to Node 8 or higher.\n`
       )
     );
-    // Fall back to latest supported react-scripts on Node 4
-    version = 'react-scripts@0.9.x';
+    process.exit(1);
   }
 
   if (!useYarn) {
@@ -229,9 +219,8 @@ function createApp(name, verbose, version, useNpm, template) {
             `Please update to npm 3 or higher for a better, fully supported experience.\n`
           )
         );
+        process.exit(1);
       }
-      // Fall back to latest supported react-scripts for npm 3
-      version = 'react-scripts@0.9.x';
     }
   }
   run(root, appName, version, verbose, originalDirectory, template, useYarn);
@@ -263,11 +252,6 @@ function install(root, useYarn, dependencies, verbose, isOnline) {
       }
       [].push.apply(args, dependencies);
 
-      // Explicitly set cwd() to work around issues like
-      // https://github.com/facebook/create-react-app/issues/3326.
-      // Unfortunately we can only do this for Yarn because npm support for
-      // equivalent --prefix flag doesn't help with this issue.
-      // This is why for npm, we run checkThatNpmCanReadCwd() early instead.
       args.push('--cwd');
       args.push(root);
 
