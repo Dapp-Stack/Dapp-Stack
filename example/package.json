@@ -32,7 +32,7 @@
     "contracts:doc": "solon-scripts docContracts",
     "contracts:security": "solon-scripts securityContracts",
     "contracts:watch": "solon-scripts watchContracts",
-    "contracts:lint": "node ./node_modules/.bin/solium -d contracts/",
+    "contracts:lint": "solium -d contracts/",
     "geth:start": "solon-scripts startGeth",
     "geth:stop": "solon-scripts stopGeth",
     "geth:console": "solon-scripts consoleGeth",
