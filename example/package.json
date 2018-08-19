@@ -30,6 +30,7 @@
     "contracts:watch": "solon-scripts watchContracts",
     "geth:start": "solon-scripts startGeth",
     "geth:stop": "solon-scripts stopGeth",
+    "geth:console": "solon-scripts consoleGeth",
     "ipfs:start": "solon-scripts startIpfs",
     "ipfs:stop": "solon-scripts stopIpfs"
   }

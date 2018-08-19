@@ -4,25 +4,6 @@
     "packages/*"
   ],
   "version": "0.1.0",
-  "scripts": {
-    "infra:console": "cd infra; yarn console",
-    "infra:start": "cd infra; yarn start",
-    "infra:stop": "cd infra; yarn stop",
-    "infra:reset": "cd infra; yarn reset",
-    "client:start": "cd client; yarn start",
-    "client:build": "cd client; react-scripts build",
-    "client:test": "cd client; react-scripts test --env=jsdom",
-    "client:reset": "cd client; yarn reset",
-    "contracts:compile": "cd contracts; yarn compile",
-    "contracts:deploy": "cd contracts; yarn deploy",
-    "contracts:reset": "cd contracts; yarn reset",
-    "server:reset": "cd server; yarn reset",
-    "server:start": "cd server; yarn start",
-    "console": "npm-run-all infra:start infra:console",
-    "start": "run-p infra:start server:start client:start",
-    "stop": "npm-run-all infra:stop",
-    "reset": "npm-run-all infra:reset server:reset client:reset contracts:reset"
-  },
   "devDependencies": {
     "lerna": "^3.1.1",
     "npm-run-all": "^4.1.3",
