@@ -6,7 +6,7 @@ const { getAccounts, getGasPrice, web3 } = require("./utils");
 const deploy = async function(contractName, options = {}) {
   let gasPrice = await getGasPrice();
   let from = options.from || (await getAccounts())[0];
-  let args = {arguments: (options.args || [])};
+  let args = { arguments: (options.args || []) };
   let source = fs.readFileSync(`${__dirname}/../build/${contractName}/combined.json`);
   let contracts = JSON.parse(source)["contracts"];
   let keys = Object.keys(contracts);
