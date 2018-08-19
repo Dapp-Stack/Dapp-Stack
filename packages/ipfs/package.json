@@ -1,5 +1,8 @@
 {
   "name": "solon-ipfs",
   "version": "0.1.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "docker-compose": "^0.8.1"
+  }
 }
