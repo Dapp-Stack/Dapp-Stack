@@ -21,6 +21,7 @@
     "doc": "node ./scripts/doc.js",
     "pretest": "node ./scripts/compile.js",
     "test": "./node_modules/mocha/bin/mocha tests/**/*Test.js --reporter spec",
+    "lint": "./node_modules/.bin/solium  -d src",
     "securityCheck": "node ./scripts/securityCheck.js",
     "reset": "rm -rf build/*"
   }
