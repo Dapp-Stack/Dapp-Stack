@@ -1,9 +1,15 @@
 {
+  "version": "0.1.0",
   "packages": [
     "packages/*",
     "example"
   ],
+  "version": "independent",
+  "command": {
+    "publish": {
+      "ignoreChanges": ["test/**/*", "*.md", "scripts", "lib", "tslint.json", "tsconfig.json"]
+    }
+  },
   "useWorkspaces": true,
-  "npmClient": "yarn",
-  "version": "0.1.0"
+  "npmClient": "yarn"
 }
