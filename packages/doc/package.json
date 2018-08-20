@@ -1,10 +1,39 @@
 {
-  "name": "solon-doc",
-  "version": "0.1.0",
+  "name": "@solon/doc",
   "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Solon doc generator for contracts",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/doc/README.md",
+  "devDependencies": {
+    "@solon/monorepo-scripts": "^0.1.0",
+    "typescript": "3.0.1"
+  },
   "dependencies": {
-    "fs-extra": "^7.0.0",
-    "sha1-file": "^1.0.1",
-    "solidity-parser-antlr": "^0.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

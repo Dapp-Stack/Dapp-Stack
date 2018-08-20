@@ -1,8 +1,39 @@
 {
-  "name": "solon-compiler",
-  "version": "0.1.0",
+  "name": "@solon/compiler",
   "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Solon compiler for contracts",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/compiler/README.md",
+  "devDependencies": {
+    "@solon/monorepo-scripts": "^0.1.0",
+    "typescript": "3.0.1"
+  },
   "dependencies": {
-    "dockerode": "^2.5.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
