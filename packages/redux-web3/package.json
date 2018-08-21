@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Solon wrapper for redux and web3",
+  "description": "Solon redux reducers using saga",
   "scripts": {
   },
   "repository": {

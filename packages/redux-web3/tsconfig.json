@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "sourceMap": false,
+    "outDir": "./",
+    "allowJs": true
+  },
+  "exclude": [
+    "node_modules",
+    "test"
+  ],
+  "include": [
+    "./typings.d.ts",
+
+    "./_sources/index.ts",
+
+    "./_sources/sources/vortex.ts",
+    "./_sources/sources/forge.ts",
+    "./_sources/sources/stateInterface.ts",
+    "./_sources/sources/dummyReducer.ts",
+    "./_sources/sources/sagas.ts",
+    "./_sources/sources/reducers.ts",
+    "./_sources/sources/propMappers.ts",
+
+    "./_sources/sources/web3/web3.sagas.ts",
+    "./_sources/sources/web3/web3.reducers.ts",
+    "./_sources/sources/web3/web3.actions.ts",
+
+    "./_sources/sources/tx/tx.sagas.ts",
+    "./_sources/sources/tx/tx.reducers.ts",
+    "./_sources/sources/tx/tx.actions.ts",
+
+    "./_sources/sources/feed/feed.reducers.ts",
+    "./_sources/sources/feed/feed.actions.ts",
+    "./_sources/sources/feed/feed.utils.ts",
+    "./_sources/sources/feed/feed.selectors.ts",
+
+    "./_sources/sources/contracts/VortexContract.ts",
+    "./_sources/sources/contracts/contracts.saga.ts",
+    "./_sources/sources/contracts/contracts.reducers.ts",
+    "./_sources/sources/contracts/contracts.actions.ts",
+
+    "./_sources/sources/accounts/accounts.actions.ts",
+    "./_sources/sources/accounts/accounts.reducers.ts",
+    "./_sources/sources/accounts/accounts.saga.ts",
+
+    "./_sources/sources/ipfs/ipfs.actions.ts",
+    "./_sources/sources/ipfs/ipfs.reducers.ts",
+    "./_sources/sources/ipfs/ipfs.saga.ts",
+
+    "./_sources/sources/event/event.actions.ts",
+    "./_sources/sources/event/event.reducers.ts",
+    "./_sources/sources/event/event.sagas.ts",
+    "./_sources/sources/event/event.selectors.ts",
+
+    "./_sources/sources/backlink/backlink.actions.ts",
+    "./_sources/sources/backlink/backlink.reducers.ts",
+    "./_sources/sources/backlink/backlink.sagas.ts"
+  ]
+}
