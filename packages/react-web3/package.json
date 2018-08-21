@@ -36,8 +36,7 @@
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "publishConfig": {
     "access": "public"
   }

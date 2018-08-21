@@ -72,8 +72,7 @@
     "semver-diff": "^2.1.0",
     "semver-sort": "0.0.4"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "publishConfig": {
     "access": "public"
   }

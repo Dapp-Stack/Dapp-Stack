@@ -41,10 +41,7 @@ export const postpublishUtils = {
       version: packageJSON.version,
       assets: _.get(postpublishConfig, 'assets', []),
       docPublishConfigs: {
-        fileIncludes: [
-          ...tsConfigJSON.include,
-          ..._.get(postpublishConfig, 'docPublishConfigs.extraFileIncludes', []),
-        ],
+        fileIncludes: [...tsConfigJSON.include, ..._.get(postpublishConfig, 'docPublishConfigs.extraFileIncludes', [])],
         s3BucketPath: _.get(postpublishConfig, 'docPublishConfigs.s3BucketPath'),
         s3StagingBucketPath: _.get(postpublishConfig, 'docPublishConfigs.s3StagingBucketPath'),
       },
@@ -155,9 +152,7 @@ export const postpublishUtils = {
   },
   adjustFileIncludePaths(fileIncludes: string[], cwd: string): string[] {
     const fileIncludesAdjusted = _.map(fileIncludes, fileInclude => {
-      let includePath = _.startsWith(fileInclude, './')
-        ? `${cwd}/${fileInclude.substr(2)}`
-        : `${cwd}/${fileInclude}`;
+      let includePath = _.startsWith(fileInclude, './') ? `${cwd}/${fileInclude.substr(2)}` : `${cwd}/${fileInclude}`;
 
       // HACK: tsconfig.json needs wildcard directory endings as `/**/*`
       // but TypeDoc needs it as `/**` in order to pick up files at the root
@@ -178,12 +173,9 @@ export const postpublishUtils = {
     const fileIncludesAdjusted = postpublishUtils.adjustFileIncludePaths(fileIncludes, cwd);
     const projectFiles = fileIncludesAdjusted.join(' ');
     const jsonFilePath = `${cwd}/${generatedDocsDirectoryName}/index.json`;
-    const result = await execAsync(
-      `JSON_FILE_PATH=${jsonFilePath} PROJECT_FILES="${projectFiles}" yarn docs:json`,
-      {
-        cwd,
-      },
-    );
+    const result = await execAsync(`JSON_FILE_PATH=${jsonFilePath} PROJECT_FILES="${projectFiles}" yarn docs:json`, {
+      cwd,
+    });
     if (!_.isEmpty(result.stderr)) {
       throw new Error(result.stderr);
     }

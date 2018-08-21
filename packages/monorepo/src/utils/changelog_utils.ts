@@ -57,7 +57,7 @@ export const changelogUtils = {
       throw new Error(
         `Found CHANGELOG version lower then current package version. ${packageName} current: ${currentVersion}, Changelog: ${
           lastEntry.version
-          }`,
+        }`,
       );
     }
     const isLastEntryCurrentVersion = lastEntry.version === currentVersion;
