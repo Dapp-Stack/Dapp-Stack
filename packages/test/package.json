@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/test/README.md",
   "devDependencies": {
-    "@solon/monorepo-scripts": "^0.1.0",
+    "@solon/monorepo": "^0.1.0",
     "typescript": "3.0.1"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 {
-  "name": "solon-example",
+  "name": "@solon/simple-example",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,10 +15,10 @@
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.82.2",
     "solium": "^1.1.8",
-    "solon-deployer": "0.1.0",
-    "solon-scripts": "0.1.0",
-    "solon-test": "0.1.0",
-    "solon-web3": "0.1.0",
+    "@solon/deployer": "0.1.0",
+    "@solon/scripts": "0.1.0",
+    "@solon/test": "0.1.0",
+    "@solon/web3-wrapper": "0.1.0",
     "web3": "^1.0.0-beta.35"
   },
   "scripts": {

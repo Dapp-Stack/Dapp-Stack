@@ -1,6 +1,5 @@
 {
-  "name": "@solon/monorep",
-  "private": true,
+  "name": "@solon/monorepo",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"

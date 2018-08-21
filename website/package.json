@@ -32,10 +32,6 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/monorepo/README.md",
   "devDependencies": {
-    "@solon/monorepo-scripts": "^0.1.0",
-    "typescript": "3.0.1"
-  },
-  "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
     "autoprefixer": "^8.6.3",
