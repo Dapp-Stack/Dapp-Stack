@@ -11,8 +11,8 @@
   "scripts": {
     "watch_without_deps": "tsc -w",
     "build": "tsc",
-    "lint": "tslint --project .",
     "clean": "shx rm -rf lib",
+    "lint": "tslint --project .",
     "test:publish": "run-s build script:publish",
     "find_unused_deps": "run-s build script:find_unused_deps",
     "script:deps_versions": "node ./lib/deps_versions.js",
