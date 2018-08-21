@@ -2,7 +2,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "example"
+    "examples/*",
+    "website"
   ],
   "scripts": {
     "prettier": "prettier --write '**/*.{ts,tsx,json,md}' --config .prettierrc",

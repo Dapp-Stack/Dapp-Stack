@@ -1,5 +1,5 @@
 {
-  "name": "@solon/web3",
+  "name": "@solon/web3-wrapper",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
