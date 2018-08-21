@@ -6,7 +6,7 @@ import semverSort = require('semver-sort');
 import { constants } from './constants';
 import { Package } from './types';
 import { changelogUtils } from './utils/changelog_utils';
-import { npmUtils } from './utils/npm_utils';
+import { npmUtils } from './utils/npmUtils';
 import { utils } from './utils/utils';
 
 async function prepublishChecksAsync(): Promise<void> {

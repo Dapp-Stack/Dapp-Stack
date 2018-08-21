@@ -11,7 +11,7 @@ import semverSort = require('semver-sort');
 
 import { constants } from './constants';
 import { Package, PackageToNextVersion, VersionChangelog } from './types';
-import { changelogUtils } from './utils/changelog_utils';
+import { changelogUtils } from './utils/changelogUtils';
 import { configs } from './utils/configs';
 import { utils } from './utils/utils';
 

@@ -1,1 +1,1 @@
-export { postpublishUtils } from './postpublish_utils';
+export { postpublishUtils } from './postpublishUtils';
