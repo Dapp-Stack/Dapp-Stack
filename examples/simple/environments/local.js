@@ -2,36 +2,14 @@ module.exports = {
   services: {
     geth: {
       genesis: true,
-      commandOptions: [
-        '--datadir ".ethereum/local"',
-        '--networkid "9999"',
-        '--ws',
-        '--wsaddr "0.0.0.0"',
-        '--wsorigins "*"',
-        '--wsport "8546"',
-        '--rpc',
-        '--rpcapi "db,personal,eth,net,web3"',
-        '--rpcaddr "0.0.0.0"',
-        '--rpcport "8545"',
-        '--rpccorsdomain "*"',
-        '--mine',
-        '--nodiscover',
-        '--unlock 0,1,2,3',
-        '--password .ethereum/private/passwords'
-      ]
+      type: 'dev'
     },
 
     ipfs: true,
 
     compile: {
       solc: {
-        version: '0.24.0',
-        commandOptions: [
-          '--optimize',
-          '--combined-json',
-          'abi,asm,ast,bin,bin-runtime,clone-bin,devdoc,interface,opcodes,srcmap,srcmap-runtime,userdoc',
-          '--overwrite'
-        ]
+        version: '0.24.0'
       },
     }
   },
