@@ -124,5 +124,5 @@
       "check-preblock"
     ]
   },
-  "rulesDirectory": "lib/rules"
+  "rulesDirectory": "lib/"
 }

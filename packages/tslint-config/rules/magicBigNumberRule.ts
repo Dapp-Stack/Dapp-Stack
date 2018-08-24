@@ -3,13 +3,6 @@ import { isPrefixUnaryExpression } from 'tsutils';
 import * as ts from 'typescript';
 
 // tslint:disable:no-unnecessary-type-assertion
-/**
- * A modified version of the no-magic-numbers rule that allows for magic numbers
- * when instantiating a BigNumber instance.
- * E.g We want to be able to write:
- *     const amount = new BigNumber(5);
- * Original source: https://github.com/palantir/tslint/blob/42b058a6baa688f8be8558b277eb056c3ff79818/src/rules/noMagicNumbersRule.ts
- */
 export class Rule extends Lint.Rules.AbstractRule {
   public static ALLOWED_NODES = new Set<ts.SyntaxKind>([
     ts.SyntaxKind.ExportAssignment,
@@ -38,6 +31,7 @@ export class Rule extends Lint.Rules.AbstractRule {
 // tslint:disable-next-line:max-classes-per-file
 class CustomNoMagicNumbersWalker extends Lint.AbstractWalker<Set<string>> {
   public static FAILURE_STRING = "'magic numbers' are not allowed";
+
   private static _isNegativeNumberLiteral(
     node: ts.Node,
   ): node is ts.PrefixUnaryExpression & { operand: ts.NumericLiteral } {
@@ -47,13 +41,14 @@ class CustomNoMagicNumbersWalker extends Lint.AbstractWalker<Set<string>> {
       node.operand.kind === ts.SyntaxKind.NumericLiteral
     );
   }
+  
   public walk(sourceFile: ts.SourceFile): void {
     const cb = (node: ts.Node): void => {
       if (node.kind === ts.SyntaxKind.NumericLiteral) {
-        return this.checkNumericLiteral(node, (node as ts.NumericLiteral).text);
+        return this._checkNumericLiteral(node, (node as ts.NumericLiteral).text);
       }
       if (CustomNoMagicNumbersWalker._isNegativeNumberLiteral(node)) {
-        return this.checkNumericLiteral(node, `-${(node.operand as ts.NumericLiteral).text}`);
+        return this._checkNumericLiteral(node, `-${(node.operand as ts.NumericLiteral).text}`);
       }
       return ts.forEachChild(node, cb);
     };
@@ -61,14 +56,13 @@ class CustomNoMagicNumbersWalker extends Lint.AbstractWalker<Set<string>> {
   }
 
   // tslint:disable:no-non-null-assertion
-  // tslint:disable-next-line:underscore-private-and-protected
-  private checkNumericLiteral(node: ts.Node, num: string): void {
+  private _checkNumericLiteral(node: ts.Node, num: string): void {
     if (!Rule.ALLOWED_NODES.has(node.parent!.kind) && !this.options.has(num)) {
       if (node.parent!.kind === ts.SyntaxKind.NewExpression) {
         const className = (node.parent! as any).expression.escapedText;
         const BIG_NUMBER_NEW_EXPRESSION = 'BigNumber';
         if (className === BIG_NUMBER_NEW_EXPRESSION) {
-          return; // noop
+          return;
         }
       }
       this.addFailureAtNode(node, CustomNoMagicNumbersWalker.FAILURE_STRING);
