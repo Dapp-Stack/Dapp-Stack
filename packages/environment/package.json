@@ -1,0 +1,45 @@
+{
+  "name": "@solon/environment",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Solon environment",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "watch_without_deps": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint --project ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/environment/README.md",
+  "devDependencies": {
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
