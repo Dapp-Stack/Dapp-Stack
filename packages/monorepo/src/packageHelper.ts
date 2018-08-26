@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import * as _ from 'lodash';
+import * as path from 'path';
 
 export interface Dependencies {
   [depName: string]: string;
@@ -15,8 +15,8 @@ export interface PackageJSON {
   config?: {
     additionalTsTypings?: string[];
   };
-  dependencies: Dependencies,
-  devDependencies: Dependencies
+  dependencies: Dependencies;
+  devDependencies: Dependencies;
 }
 
 export interface Package {
@@ -24,7 +24,7 @@ export interface Package {
   packageJson: PackageJSON;
 }
 
-const ROOT_DIR = path.join(__dirname, '../../..')
+const ROOT_DIR = path.join(__dirname, '../../..');
 
 export function findPackages(): Package[] {
   const rootPackageJsonString = fs.readFileSync(`${ROOT_DIR}/package.json`, 'utf8');
@@ -41,7 +41,7 @@ export function findPackages(): Package[] {
 
       packages.push({
         location: pathToPackageJson,
-        packageJson: JSON.parse(packageJsonString)
+        packageJson: JSON.parse(packageJsonString),
       });
     }
   }

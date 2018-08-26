@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-
 import * as _ from 'lodash';
+
 import { logger } from './logger';
-import { findPackages, PackageJSON, Package, Dependencies } from './packageHelper';
+import { Dependencies, findPackages, Package, PackageJSON } from './packageHelper';
 
 interface Versions {
   [packageName: string]: string;
@@ -21,7 +21,7 @@ function flatDependencies(packageJson: PackageJSON): Dependencies {
 function loadVersionsByDependency(): VersionsByDependency {
   const versionsByDependency: VersionsByDependency = {};
 
-  findPackages().map((pkg: Package)=> {
+  findPackages().map((pkg: Package) => {
     const dependencies = flatDependencies(pkg.packageJson);
 
     _.map(dependencies, (version: string, depName: string) => {
@@ -32,7 +32,7 @@ function loadVersionsByDependency(): VersionsByDependency {
     });
   });
 
-  return versionsByDependency
+  return versionsByDependency;
 }
 
 function print(versions: Versions, name: string): void {
