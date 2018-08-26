@@ -1,1 +1,2 @@
-export { postpublishUtils } from './postpublishUtils';
+export { checkDependenciesVersions } from './checkDependenciesVersions';
+export { findUnusedDependencies } from './findUnusedDependencies';

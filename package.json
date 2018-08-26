@@ -3,7 +3,7 @@
   "workspaces": [
     "packages/*",
     "examples/*",
-    "website"
+    "websites/*"
   ],
   "scripts": {
     "prettier": "prettier --write '**/*.{ts,tsx,json,md}' --config .prettierrc",

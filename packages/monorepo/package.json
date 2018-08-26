@@ -12,12 +12,10 @@
     "build": "tsc",
     "clean": "shx rm -rf lib",
     "lint": "tslint --project .",
-    "test:publish": "run-s build script:publish",
     "find_unused_deps": "run-s build script:find_unused_deps",
-    "script:deps_versions": "node ./lib/depsVersions.js",
-    "script:prepublish_checks": "node ./lib/prepublishChecks.js",
-    "script:publish": "IS_DRY_RUN=true node ./lib/publish.js",
-    "script:find_unused_deps": "node ./lib/findUnusedDependencies.js"
+    "check_deps_versions": "run-s build script:check_deps_versions",
+    "script:find_unused_deps": "node ./lib/findUnusedDependencies.js",
+    "script:check_deps_versions": "node ./lib/checkDependenciesVersions.js"
   },
   "repository": {
     "type": "git",
