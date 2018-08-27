@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//   /!\ DO NOT MODIFY THIS FILE /!\
+//   /!\ DO NOT MODIFY THIS PROJECT /!\
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 // solon-cli is installed globally on people's computers. This means
@@ -14,7 +14,7 @@
 //
 // If you need to add a new command, please add it to the scripts/ folder.
 //
-// The only reason to modify this file is to add more warnings and
+// The only reason to modify this project is to add more warnings and
 // troubleshooting information for the `solon-cli` command.
 //
 // Do not make breaking changes! We absolutely don't want to have to
@@ -24,28 +24,20 @@
 // This file must work on Node 8+.
 //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//   /!\ DO NOT MODIFY THIS FILE /!\
+//   /!\ DO NOT MODIFY THIS PROJECT /!\
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-'use strict';
+import logger from './logger';
 
-const chalk = require('chalk');
-
-const currentNodeVersion = process.versions.node;
-const semver = currentNodeVersion.split('.');
-const major = semver[0];
+const currentNodeVersion: string = process.versions.node;
+const semver: string[] = currentNodeVersion.split('.');
+const major: number = parseInt(semver[0]);
 
 if (major < 8) {
-  console.error(
-    chalk.red(
-      'You are running Node ' +
-      currentNodeVersion +
-      '.\n' +
-      'Solon CLI requires Node 8 or higher. \n' +
-      'Please update your version of Node.'
-    )
+  logger.error(
+    `You are running Node ${currentNodeVersion}.\nSolon requires Node 8 or higher.\nPlease update your version of Node.`
   );
   process.exit(1);
 }
 
-require('../lib');
+require('./program');

@@ -6,6 +6,9 @@
     "node": ">=8.11"
   },
   "description": "Solon command line",
+  "bin": {
+    "solon": "./lib/index.js"
+  },
   "scripts": {
     "watch_without_deps": "tsc -w",
     "build": "tsc",
@@ -32,12 +35,16 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/cli/README.md",
   "devDependencies": {
-    "@solon/monorepo": "^0.1.0",
+    "@types/commander": "^2.12.2",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.17.1",
+    "envinfo": "^5.10.0"
+  },
   "publishConfig": {
     "access": "public"
   }
