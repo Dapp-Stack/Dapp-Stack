@@ -1,4 +1,9 @@
 import semver from 'semver';
+import hyperquest from 'hyperquest';
+import fs from 'fs-extra';
+import path from 'path';
+import unpack from 'tar-pack';
+import tmp from 'tmp';
 
 export function getSolonScriptsToInstall(version: string, originalDirectory: string): string {
   let packageToInstall = '@solon/scripts';
