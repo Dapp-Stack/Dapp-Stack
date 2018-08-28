@@ -1,9 +1,8 @@
-const fs = require('fs-extra');
-const path = require('path');
-const semver = require('semver');
-const os = require('os');
-const chalk = require('chalk');
-
+import fs from 'fs-extra';
+import path from 'path';
+import semver from 'semver';
+import os from 'os';
+import chalk from 'chalk';
 
 import guardAppName from '../guards/guardAppName';
 import guardDir from '../guards/guardDir';
@@ -26,7 +25,7 @@ function createPackageJson(root: string, appName: string): void {
   );
 }
 
-function makeCaretRange(dependencies, name) {
+function makeCaretRange(dependencies: any, name: string) {
   const version = dependencies[name];
 
   if (typeof version === 'undefined') {
@@ -48,7 +47,7 @@ function makeCaretRange(dependencies, name) {
   dependencies[name] = patchedVersion;
 }
 
-function setCaretRangeForRuntimeDeps(packageName) {
+function setCaretRangeForRuntimeDeps(packageName: string) {
   const packagePath = path.join(process.cwd(), 'package.json');
   const packageJson = require(packagePath);
 
@@ -130,37 +129,32 @@ export default function createApp(name: string, verbose: boolean, version: strin
   const allDependencies = ['react', 'react-dom', solonScriptsToInstall];
 
   console.log('Installing packages. This might take a couple of minutes.');
-  getSolonScriptsPackageName(solonScriptsToInstall)
-    .then(packageName =>
-      checkIfOnline(useYarn).then(isOnline => {isOnline: isOnline, packageName: packageName})
-    )
-    .then(info => {
-      const { isOnline, packageName } = info.isOnline;
-      console.log(
-        `Installing ${chalk.cyan('react')}, ${chalk.cyan(
-          'react-dom'
-        )}, and ${chalk.cyan(packageName)}...`
-      );
-      console.log();
+  getSolonScriptsPackageName(solonScriptsToInstall).then(packageName =>
+    checkIfOnline(useYarn).then(isOnline => ({isOnline, packageName}))
+  ).then(info => {
+    const { isOnline, packageName } = info.isOnline;
+    console.log(
+      `Installing ${chalk.cyan('react')}, ${chalk.cyan(
+        'react-dom'
+      )}, and ${chalk.cyan(packageName)}...`
+    );
+    console.log();
 
-      return installDependencies(root, useYarn, allDependencies, verbose, isOnline).then(() => packageName);
-    })
-    .then(packageName => {
-      guardNodeVersion(packageName);
-      setCaretRangeForRuntimeDeps(packageName);
+    return installDependencies(root, useYarn, allDependencies, verbose, isOnline).then(() => packageName);
+  }).then(packageName => {
+    guardNodeVersion(packageName);
+    setCaretRangeForRuntimeDeps(packageName);
 
-      const scriptsPath = path.resolve(
-        process.cwd(),
-        'node_modules',
-        packageName,
-        'scripts',
-        'init.js'
-      );
-      const init = require(scriptsPath);
-      init(root, appName, verbose, originalDirectory);
-    })
-    .catch(reason => {
-      abort(reason);
-    });
-  
+    const scriptsPath = path.resolve(
+      process.cwd(),
+      'node_modules',
+      packageName,
+      'scripts',
+      'init.js'
+    );
+    const init = require(scriptsPath);
+    init(root, appName, verbose, originalDirectory);
+  }).catch(reason => {
+    abort(reason);
+  });
 }
