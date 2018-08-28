@@ -1,30 +1,31 @@
-function getProxy() {
+import { execSync } from 'child_process';
+import { lookup } from 'dns';
+
+function getProxy(): string {
   if (process.env.https_proxy) {
     return process.env.https_proxy;
   } else {
     try {
-      // Trying to read https-proxy from .npmrc
       let httpsProxy = execSync('npm config get https-proxy')
         .toString()
         .trim();
       return httpsProxy !== 'null' ? httpsProxy : undefined;
     } catch (e) {
-      return;
+      return '';
     }
   }
 }
 
-
-function checkIfOnline(useYarn) {
+export function checkIfOnline(useYarn: boolean): Promise<boolean> {
   if (!useYarn) {
     return Promise.resolve(true);
   }
 
   return new Promise(resolve => {
-    dns.lookup('registry.yarnpkg.com', err => {
+    lookup('registry.yarnpkg.com', err => {
       let proxy;
       if (err != null && (proxy = getProxy())) {
-        dns.lookup(url.parse(proxy).hostname, proxyErr => {
+        lookup(url.parse(proxy).hostname, proxyErr => {
           resolve(proxyErr == null);
         });
       } else {
@@ -34,7 +35,7 @@ function checkIfOnline(useYarn) {
   });
 }
 
-function isYarnAvailable(): boolean {
+export function isYarnAvailable(): boolean {
   try {
     execSync('yarnpkg --version', { stdio: 'ignore' });
     return true;

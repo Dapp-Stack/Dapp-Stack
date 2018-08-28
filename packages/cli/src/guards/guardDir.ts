@@ -1,38 +1,40 @@
+const fs = require('fs-extra');
+const chalk = require('chalk');
+const path = require('path');
+
 const errorLogFilePatterns: string[] = [
   'npm-debug.log',
   'yarn-error.log',
   'yarn-debug.log',
 ];
 
-export default function guardDir(root, name) {
-  const validFiles = [
-    '.DS_Store',
-    'Thumbs.db',
-    '.git',
-    '.gitignore',
-    '.idea',
-    'README.md',
-    'LICENSE',
-    'web.iml',
-    '.hg',
-    '.hgignore',
-    '.hgcheck',
-    '.npmignore',
-    'mkdocs.yml',
-    'docs',
-    '.travis.yml',
-    '.gitlab-ci.yml',
-    '.gitattributes',
-  ];
+const validFiles: string[] = [
+  '.DS_Store',
+  'Thumbs.db',
+  '.git',
+  '.gitignore',
+  '.idea',
+  'README.md',
+  'LICENSE',
+  'web.iml',
+  '.hg',
+  '.hgignore',
+  '.hgcheck',
+  '.npmignore',
+  'mkdocs.yml',
+  'docs',
+  '.travis.yml',
+  '.gitlab-ci.yml',
+  '.gitattributes',
+];
+
+export default function guardDir(root: string, name: string) {
   console.log();
 
-  const conflicts = fs
+  const conflicts: string[] = fs
     .readdirSync(root)
-    .filter(file => !validFiles.includes(file))
-    // Don't treat log files from previous installation as conflicts
-    .filter(
-      file => !errorLogFilePatterns.some(pattern => file.indexOf(pattern) === 0)
-    );
+    .filter((file: string) => !validFiles.includes(file))
+    .filter((file: string) => !errorLogFilePatterns.some(pattern => file.indexOf(pattern) === 0));
 
   if (conflicts.length > 0) {
     console.log(
@@ -50,11 +52,9 @@ export default function guardDir(root, name) {
     process.exit(1);
   }
 
-  // Remove any remnant files from a previous installation
   const currentFiles = fs.readdirSync(path.join(root));
-  currentFiles.forEach(file => {
+  currentFiles.forEach((file: string) => {
     errorLogFilePatterns.forEach(errorLogFilePattern => {
-      // This will catch `(npm-debug|yarn-error|yarn-debug).log*` files
       if (file.indexOf(errorLogFilePattern) === 0) {
         fs.removeSync(path.join(root, file));
       }

@@ -1,20 +1,18 @@
 const fs = require('fs-extra');
 const path = require('path');
-const execSync = require('child_process').execSync;
-const spawn = require('cross-spawn');
 const semver = require('semver');
-const dns = require('dns');
-const tmp = require('tmp');
-const unpack = require('tar-pack').unpack;
-const url = require('url');
-const hyperquest = require('hyperquest');
 const os = require('os');
+const chalk = require('chalk');
+
 
 import guardAppName from '../guards/guardAppName';
 import guardDir from '../guards/guardDir';
 import guardNpm from '../guards/guardNpm';
 import guardNpmVersion from '../guards/guardNpmVersion';
 import guardNodeVersion from '../guards/guardNodeVersion';
+import { checkIfOnline, isYarnAvailable } from '../utils';
+import { getSolonScriptsToInstall, getSolonScriptsPackageName } from '../scriptsHelper'
+import installDependencies from '../installDependencies';
 
 function createPackageJson(root: string, appName: string): void {
   const packageJson = {
@@ -71,6 +69,44 @@ function setCaretRangeForRuntimeDeps(packageName) {
   fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2) + os.EOL);
 }
 
+function abort(reason) {
+  console.log();
+  console.log('Aborting installation.');
+  if (reason.command) {
+    console.log(`  ${chalk.cyan(reason.command)} has failed.`);
+  } else {
+    console.log(chalk.red('Unexpected error. Please report it as a bug:'));
+    console.log(reason);
+  }
+  console.log();
+
+  // On 'exit' we will delete these files from target directory.
+  const knownGeneratedFiles = ['package.json', 'node_modules'];
+  const currentFiles = fs.readdirSync(path.join(root));
+  currentFiles.forEach(file => {
+    knownGeneratedFiles.forEach(fileToMatch => {
+      // This remove all of knownGeneratedFiles.
+      if (file === fileToMatch) {
+        console.log(`Deleting generated file... ${chalk.cyan(file)}`);
+        fs.removeSync(path.join(root, file));
+      }
+    });
+  });
+  const remainingFiles = fs.readdirSync(path.join(root));
+  if (!remainingFiles.length) {
+    // Delete target folder if empty
+    console.log(
+      `Deleting ${chalk.cyan(`${appName}/`)} from ${chalk.cyan(
+        path.resolve(root, '..')
+      )}`
+    );
+    process.chdir(path.resolve(root, '..'));
+    fs.removeSync(path.join(root));
+  }
+  console.log('Done.');
+  process.exit(1);
+}
+
 export default function createApp(name: string, verbose: boolean, version: string, useNpm: boolean) {
   const root: string = path.resolve(name);
   const appName: string = path.basename(root);
@@ -84,7 +120,7 @@ export default function createApp(name: string, verbose: boolean, version: strin
 
   createPackageJson(root, appName);
 
-  const useYarn = useNpm ? false : isYarnAvailable();;
+  const useYarn = useNpm ? false : isYarnAvailable();
   const originalDirectory = process.cwd();
   process.chdir(root);
   guardNpm(useYarn);
@@ -94,16 +130,12 @@ export default function createApp(name: string, verbose: boolean, version: strin
   const allDependencies = ['react', 'react-dom', solonScriptsToInstall];
 
   console.log('Installing packages. This might take a couple of minutes.');
-  getPackageName(solonScriptsToInstall)
+  getSolonScriptsPackageName(solonScriptsToInstall)
     .then(packageName =>
-      checkIfOnline(useYarn).then(isOnline => ({
-        isOnline: isOnline,
-        packageName: packageName,
-      }))
+      checkIfOnline(useYarn).then(isOnline => {isOnline: isOnline, packageName: packageName})
     )
     .then(info => {
-      const isOnline = info.isOnline;
-      const packageName = info.packageName;
+      const { isOnline, packageName } = info.isOnline;
       console.log(
         `Installing ${chalk.cyan('react')}, ${chalk.cyan(
           'react-dom'
@@ -111,9 +143,7 @@ export default function createApp(name: string, verbose: boolean, version: strin
       );
       console.log();
 
-      return install(root, useYarn, allDependencies, verbose, isOnline).then(
-        () => packageName
-      );
+      return installDependencies(root, useYarn, allDependencies, verbose, isOnline).then(() => packageName);
     })
     .then(packageName => {
       guardNodeVersion(packageName);
@@ -127,44 +157,10 @@ export default function createApp(name: string, verbose: boolean, version: strin
         'init.js'
       );
       const init = require(scriptsPath);
-      init(root, appName, verbose, originalDirectory, template);
+      init(root, appName, verbose, originalDirectory);
     })
     .catch(reason => {
-      console.log();
-      console.log('Aborting installation.');
-      if (reason.command) {
-        console.log(`  ${chalk.cyan(reason.command)} has failed.`);
-      } else {
-        console.log(chalk.red('Unexpected error. Please report it as a bug:'));
-        console.log(reason);
-      }
-      console.log();
-
-      // On 'exit' we will delete these files from target directory.
-      const knownGeneratedFiles = ['package.json', 'node_modules'];
-      const currentFiles = fs.readdirSync(path.join(root));
-      currentFiles.forEach(file => {
-        knownGeneratedFiles.forEach(fileToMatch => {
-          // This remove all of knownGeneratedFiles.
-          if (file === fileToMatch) {
-            console.log(`Deleting generated file... ${chalk.cyan(file)}`);
-            fs.removeSync(path.join(root, file));
-          }
-        });
-      });
-      const remainingFiles = fs.readdirSync(path.join(root));
-      if (!remainingFiles.length) {
-        // Delete target folder if empty
-        console.log(
-          `Deleting ${chalk.cyan(`${appName}/`)} from ${chalk.cyan(
-            path.resolve(root, '..')
-          )}`
-        );
-        process.chdir(path.resolve(root, '..'));
-        fs.removeSync(path.join(root));
-      }
-      console.log('Done.');
-      process.exit(1);
+      abort(reason);
     });
   
 }

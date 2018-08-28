@@ -32,7 +32,7 @@ if (program.info) {
 }
 
 if (projectName === 'undefined') {
-  projectNameUndefined(program)
+  projectNameUndefined(program.name());
   process.exit(1);
 }
 

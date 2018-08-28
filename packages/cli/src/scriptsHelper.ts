@@ -1,4 +1,6 @@
-function getSolonScriptsToInstall(version, originalDirectory) {
+import semver from 'semver';
+
+export function getSolonScriptsToInstall(version: string, originalDirectory: string): string {
   let packageToInstall = '@solon/scripts';
   const validSemver = semver.valid(version);
   if (validSemver) {
@@ -18,8 +20,7 @@ function getSolonScriptsToInstall(version, originalDirectory) {
   return packageToInstall;
 }
 
-// Extract package name from tarball url or path.
-function getPackageName(installPackage) {
+export function getSolonScriptsPackageName(installPackage: string) {
   if (installPackage.match(/^.+\.(tgz|tar\.gz)$/)) {
     return getTemporaryDirectory()
       .then(obj => {

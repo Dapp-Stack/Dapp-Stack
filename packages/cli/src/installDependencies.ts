@@ -1,4 +1,7 @@
-function install(root, useYarn, dependencies, verbose, isOnline) {
+import chalk from 'chalk';
+import spawn from 'cross-spawn';
+
+export default function installDependencies(root, useYarn, dependencies, verbose, isOnline) {
   return new Promise((resolve, reject) => {
     let command;
     let args;

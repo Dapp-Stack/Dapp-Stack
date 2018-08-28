@@ -1,4 +1,8 @@
-function checkNodeVersion(packageName) {
+import path from 'path';
+import chalk from 'chalk';
+import semver from 'semver';
+
+export default function guardNodeVersion(packageName: string): void {
   const packageJsonPath = path.resolve(
     process.cwd(),
     'node_modules',
