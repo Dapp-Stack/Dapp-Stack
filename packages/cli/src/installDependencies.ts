@@ -1,11 +1,17 @@
 import chalk from 'chalk';
-import spawn from 'cross-spawn';
+import * as spawn from 'cross-spawn';
 
-export default function installDependencies(root, useYarn, dependencies, verbose, isOnline) {
+export default function installDependencies(
+  root: string,
+  isYarn: boolean,
+  dependencies: string[],
+  verbose: boolean,
+  isOnline: boolean,
+): Promise<boolean> {
   return new Promise((resolve, reject) => {
-    let command;
-    let args;
-    if (useYarn) {
+    let command: string;
+    let args: string[];
+    if (isYarn) {
       command = 'yarnpkg';
       args = ['add', '--exact'];
       if (!isOnline) {
@@ -23,13 +29,7 @@ export default function installDependencies(root, useYarn, dependencies, verbose
       }
     } else {
       command = 'npm';
-      args = [
-        'install',
-        '--save',
-        '--save-exact',
-        '--loglevel',
-        'error',
-      ].concat(dependencies);
+      args = ['install', '--save', '--save-exact', '--loglevel', 'error'].concat(dependencies);
     }
 
     if (verbose) {
@@ -37,14 +37,14 @@ export default function installDependencies(root, useYarn, dependencies, verbose
     }
 
     const child = spawn(command, args, { stdio: 'inherit' });
-    child.on('close', code => {
+    child.on('close', (code: number) => {
       if (code !== 0) {
         reject({
           command: `${command} ${args.join(' ')}`,
         });
         return;
       }
-      resolve();
+      resolve(true);
     });
   });
 }

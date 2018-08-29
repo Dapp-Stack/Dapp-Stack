@@ -1,36 +1,36 @@
 import { execSync } from 'child_process';
 import { lookup } from 'dns';
+import { parse } from 'url';
 
 function getProxy(): string {
   if (process.env.https_proxy) {
     return process.env.https_proxy;
-  } else {
-    try {
-      let httpsProxy = execSync('npm config get https-proxy')
-        .toString()
-        .trim();
-      return httpsProxy !== 'null' ? httpsProxy : undefined;
-    } catch (e) {
-      return '';
-    }
+  }
+  try {
+    return execSync('npm config get https-proxy')
+      .toString()
+      .trim();
+  } catch (e) {
+    return '';
   }
 }
 
-export function checkIfOnline(useYarn: boolean): Promise<boolean> {
-  if (!useYarn) {
+export function checkIfOnline(isYarn: boolean): Promise<boolean> {
+  if (!isYarn) {
     return Promise.resolve(true);
   }
 
   return new Promise(resolve => {
     lookup('registry.yarnpkg.com', err => {
-      let proxy;
+      let proxy: string;
       if (err != null && (proxy = getProxy())) {
-        lookup(url.parse(proxy).hostname, proxyErr => {
+        const hostname = parse(proxy).hostname || '';
+        return lookup(hostname, (proxyErr: NodeJS.ErrnoException) => {
           resolve(proxyErr == null);
         });
-      } else {
-        resolve(err == null);
       }
+
+      resolve(err == null);
     });
   });
 }

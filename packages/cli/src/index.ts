@@ -31,11 +31,12 @@ import logger from './logger';
 
 const currentNodeVersion: string = process.versions.node;
 const semver: string[] = currentNodeVersion.split('.');
-const major: number = parseInt(semver[0]);
+const major: number = parseInt(semver[0], 10);
 
 if (major < 8) {
   logger.error(
-    `You are running Node ${currentNodeVersion}.\nSolon requires Node 8 or higher.\nPlease update your version of Node.`
+    `You are running Node ${currentNodeVersion}.\nSolon requires Node 8 or higher.\n` +
+      'Please update your version of Node.',
   );
   process.exit(1);
 }

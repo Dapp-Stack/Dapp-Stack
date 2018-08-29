@@ -1,24 +1,22 @@
+import chalk from 'chalk';
 import { execSync } from 'child_process';
-import semver from 'semver';
+import { gte } from 'semver';
 
 interface NpmInfo {
   hasMinNpm: boolean;
-  npmVersion: string
+  npmVersion: string;
 }
 
 function checkNpmVersion(): NpmInfo {
-  let npmVersion: string = execSync('npm --version')
+  const npmVersion: string = execSync('npm --version')
     .toString()
     .trim();
-  let hasMinNpm: boolean = semver.gte(npmVersion, '3.0.0');
-  return {
-    hasMinNpm: hasMinNpm,
-    npmVersion: npmVersion,
-  };
+  const hasMinNpm: boolean = gte(npmVersion, '3.0.0');
+  return { hasMinNpm, npmVersion };
 }
 
-export default function guardNpmVersion(useYarn: boolean): void {
-  if (useYarn) {
+export default function guardNpmVersion(isYarn: boolean): void {
+  if (isYarn) {
     return;
   }
   const npmInfo = checkNpmVersion();
@@ -27,9 +25,9 @@ export default function guardNpmVersion(useYarn: boolean): void {
       chalk.yellow(
         `You are using npm ${
           npmInfo.npmVersion
-          } so the project will be boostrapped with an old unsupported version of tools.\n\n` +
-        `Please update to npm 3 or higher for a better, fully supported experience.\n`
-      )
+        } so the project will be boostrapped with an old unsupported version of tools.\n\n` +
+          `Please update to npm 3 or higher for a better, fully supported experience.\n`,
+      ),
     );
     process.exit(1);
   }

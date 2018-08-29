@@ -7,7 +7,9 @@ export default function help(): void {
   console.log(`      - a specific npm version: ${chalk.green('0.1.0')}`);
   console.log(`      - a specific npm tag: ${chalk.green('@next')}`);
   console.log(`      - a custom fork published on npm: ${chalk.green('my-solon-scripts')}`);
-  console.log(`      - a local path relative to the current working directory: ${chalk.green('file:../my-solon-scripts')}`);
+  console.log(
+    `      - a local path relative to the current working directory: ${chalk.green('file:../my-solon-scripts')}`,
+  );
   console.log(`      - a .tgz archive: ${chalk.green('https://mysite.com/my-solon-scripts-0.1.0.tgz')}`);
   console.log(`      - a .tar.gz archive: ${chalk.green('https://mysite.com/my-solon-scripts-0.1.0.tar.gz')}`);
   console.log(`    It is not needed unless you specifically want to use a fork.`);

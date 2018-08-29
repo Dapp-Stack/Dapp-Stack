@@ -22,7 +22,8 @@
       }
     ],
     "no-unused-variable": false,
-    "max-line-length": [true, { "limit": 120, "ignore-pattern": "^import |^export {(.*?)}" }]
+    "max-line-length": [true, { "limit": 120, "ignore-pattern": "^import |^export {(.*?)}" }],
+    "ter-arrow-parens": [true, "as-needed"]
   },
   "rulesDirectory": "lib/"
 }

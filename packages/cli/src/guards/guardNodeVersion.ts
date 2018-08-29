@@ -1,14 +1,9 @@
-import path from 'path';
 import chalk from 'chalk';
-import semver from 'semver';
+import * as path from 'path';
+import * as semver from 'semver';
 
 export default function guardNodeVersion(packageName: string): void {
-  const packageJsonPath = path.resolve(
-    process.cwd(),
-    'node_modules',
-    packageName,
-    'package.json'
-  );
+  const packageJsonPath = path.resolve(process.cwd(), 'node_modules', packageName, 'package.json');
   const packageJson = require(packageJsonPath);
   if (!packageJson.engines || !packageJson.engines.node) {
     return;
@@ -18,11 +13,11 @@ export default function guardNodeVersion(packageName: string): void {
     console.error(
       chalk.red(
         'You are running Node %s.\n' +
-        'Create React App requires Node %s or higher. \n' +
-        'Please update your version of Node.'
+          'Create React App requires Node %s or higher. \n' +
+          'Please update your version of Node.',
       ),
       process.version,
-      packageJson.engines.node
+      packageJson.engines.node,
     );
     process.exit(1);
   }
