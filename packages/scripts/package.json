@@ -5,6 +5,9 @@
     "node": ">=8.11"
   },
   "description": "Solon scripts",
+  "bin": {
+    "solon-scripts": "./lib/index.js"
+  },
   "scripts": {
     "watch_without_deps": "tsc -w",
     "build": "tsc",

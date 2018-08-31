@@ -1,30 +1,27 @@
 #!/usr/bin/env node
 
-'use strict';
-
 process.on('unhandledRejection', err => {
   throw err;
 });
 
-const spawn = require('cross-spawn');
+import * as spawn from 'cross-spawn';
 const args = process.argv.slice(2);
 
-const scriptIndex = args.findIndex(
-  x => x === 'build' || x === 'eject' || x === 'start' || x === 'test'
+const commandIndex = args.findIndex(
+  x => x === 'build' || x === 'start' || x === 'test'
 );
-const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
-const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
+const command = commandIndex === -1 ? args[0] : args[commandIndex];
+const nodeArgs = commandIndex > 0 ? args.slice(0, commandIndex) : [];
 
-switch (script) {
+switch (command) {
   case 'build':
-  case 'eject':
   case 'start':
   case 'test': {
     const result = spawn.sync(
       'node',
       nodeArgs
-        .concat(require.resolve('../scripts/' + script))
-        .concat(args.slice(scriptIndex + 1)),
+        .concat(require.resolve('./commands/' + command))
+        .concat(args.slice(commandIndex + 1)),
       { stdio: 'inherit' }
     );
     if (result.signal) {

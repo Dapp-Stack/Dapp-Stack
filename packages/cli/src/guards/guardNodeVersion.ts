@@ -13,7 +13,7 @@ export default function guardNodeVersion(packageName: string): void {
     console.error(
       chalk.red(
         'You are running Node %s.\n' +
-          'Create React App requires Node %s or higher. \n' +
+          'Solon Scripts requires Node %s or higher. \n' +
           'Please update your version of Node.',
       ),
       process.version,

@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import validateNpmPackageName from 'validate-npm-package-name';
+import * as validateNpmPackageName from 'validate-npm-package-name';
 
 import logger from '../logger';
 
@@ -18,7 +18,7 @@ export default function guardAppName(appName: string): void {
     process.exit(1);
   }
 
-  const dependencies = ['react', 'react-dom', 'react-scripts'].sort();
+  const dependencies = ['react', 'react-dom', 'solon-scripts'].sort();
   if (dependencies.indexOf(appName) >= 0) {
     console.error(
       chalk.red(
