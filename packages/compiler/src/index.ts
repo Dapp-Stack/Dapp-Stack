@@ -1,10 +1,9 @@
-"use strict";
-
-const Docker = require('dockerode');
+import Docker from 'dockerode';
+import { Environment } from '@solon/environment';
 
 let docker = new Docker();
 
-const dockerSolc = function(contractName) {
+const dockerSolc = function(contractName: string) {
   const command = [
     '-o',
     `/solidity/build/${contractName}`,
@@ -21,9 +20,9 @@ const dockerSolc = function(contractName) {
   });
 };
 
-const compile = function(contractName) {
+export function compile (contractName: string, compileOption): void {
   console.log(`[Contracts] Starting to compile ${contractName}`);
-  return dockerSolc(contractName).then(function() {
+  return dockerSolc(contractName, compileOption).then(function() {
     console.log(`[Contracts] Finished to compile ${contractName}`);
   }).catch(function(err) {
     console.log(`[Contracts] Error while compiling ${contractName}`);
@@ -31,6 +30,8 @@ const compile = function(contractName) {
   });
 };
 
-module.exports = {
-  compile
-};
+export function compileAll(environment: Environment): void {
+  environment.deploy.contracts.forEach((contractName: string) => {
+    compile(contractName, environment.services.compile);
+  });
+}

@@ -5,7 +5,7 @@
     "node": ">=8.11"
   },
   "description": "Solon environment",
-  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
   "scripts": {
     "watch_without_deps": "tsc -w",
     "build": "tsc",
@@ -32,11 +32,14 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/environment/README.md",
   "devDependencies": {
+    "@types/lodash": "4.14.104",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.5"
+  },
   "publishConfig": {
     "access": "public"
   }

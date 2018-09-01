@@ -40,7 +40,7 @@ export const connect = (provider: Provider = defaultUrl): Web3 | BadProtocolErro
         break;
       }
       default: {
-        throw new Error(url.protocol);
+        throw new BadProtocolError(url.protocol);
       }
     }
 

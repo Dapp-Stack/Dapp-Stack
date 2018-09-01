@@ -1,4 +1,6 @@
-module.exports = {
+import { buildEnvironment } from '@solon/environment'
+
+module.exports = buildEnvironment({
   services: {
     geth: {
       genesis: true,
@@ -22,4 +24,4 @@ module.exports = {
       console.log(contract.address)
     }
   }
-}
+});
