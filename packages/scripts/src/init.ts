@@ -15,7 +15,7 @@ function unmute() {
   console.log = log;
 }
 
-function installDependencies(useYarn: boolean, verbose: boolean) {
+function installDependencies(useYarn: boolean) {
   let command;
   let args: string[];
 
@@ -25,9 +25,6 @@ function installDependencies(useYarn: boolean, verbose: boolean) {
   } else {
     command = 'npm';
     args = ['install', '--save'];
-    if(verbose) {
-      args.push('--verbose')
-    }
   }
   
   args.push('web3', 'solium');
@@ -73,12 +70,12 @@ function initReactScripts(appPath: string, appName: string, verbose: boolean, or
   unmute();
 }
 
-function initSolonScripts(appPath: string, verbose: boolean) {
+function initSolonScripts(appPath: string) {
   const solonScripts = new Signale({interactive: true, scope: 'Solon Scripts'});
   solonScripts.await('[%d/2] - Installing...', 1);
 
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
-  installDependencies(useYarn, verbose);
+  installDependencies(useYarn);
   updatePackage(appPath);
   installTemplate(appPath);
   solonScripts.success('[%d/2] - Success', 2);
@@ -86,7 +83,7 @@ function initSolonScripts(appPath: string, verbose: boolean) {
 
 function init(appPath: string, appName: string, verbose: boolean, originalDirectory: string, template: string) {
   initReactScripts(appPath, appName, verbose, originalDirectory, template);
-  initSolonScripts(appPath, verbose);  
+  initSolonScripts(appPath);  
 };
 
 module.exports = init;
