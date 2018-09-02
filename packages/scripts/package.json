@@ -40,7 +40,11 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "cross-spawn": "^6.0.5"
+    "@types/cross-spawn": "^6.0.0",
+    "@types/node": "^10.9.4",
+    "@types/opn": "^5.1.0",
+    "cross-spawn": "^6.0.5",
+    "opn": "^5.3.0"
   },
   "publishConfig": {
     "access": "public"
