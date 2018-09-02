@@ -34,11 +34,7 @@ const jest = require('jest');
 let argv = process.argv.slice(2);
 
 // Watch unless on CI, in coverage mode, or explicitly running all tests
-if (
-  !process.env.CI &&
-  argv.indexOf('--coverage') === -1 &&
-  argv.indexOf('--watchAll') === -1
-) {
+if (!process.env.CI && argv.indexOf('--coverage') === -1 && argv.indexOf('--watchAll') === -1) {
   argv.push('--watch');
 }
 
@@ -53,9 +49,9 @@ argv.push(
     createJestConfig(
       relativePath => path.resolve(__dirname, '..', relativePath),
       path.resolve(paths.appSrc, '..'),
-      paths.srcPaths
-    )
-  )
+      paths.srcPaths,
+    ),
+  ),
 );
 
 // This is a very dirty workaround for https://github.com/facebook/jest/issues/5913.
@@ -66,17 +62,17 @@ function resolveJestDefaultEnvironment(name) {
   const jestDir = path.dirname(
     resolve.sync('jest', {
       basedir: __dirname,
-    })
+    }),
   );
   const jestCLIDir = path.dirname(
     resolve.sync('jest-cli', {
       basedir: jestDir,
-    })
+    }),
   );
   const jestConfigDir = path.dirname(
     resolve.sync('jest-config', {
       basedir: jestCLIDir,
-    })
+    }),
   );
   return resolve.sync(name, {
     basedir: jestConfigDir,

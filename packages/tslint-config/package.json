@@ -33,12 +33,13 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/tslint-config/README.md",
   "devDependencies": {
+    "@types/lodash": "^4.14.116",
     "shx": "^0.2.2",
     "tslint-config-airbnb": "^5.10.0",
     "tslint-react": "^3.2.0"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.10",
     "typescript": "3.0.1",
     "tslint": "5.11.0"
   },

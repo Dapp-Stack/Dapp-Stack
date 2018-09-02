@@ -31,10 +31,7 @@ function isInMercurialRepository() {
 function isReactInstalled(appPackage) {
   const dependencies = appPackage.dependencies || {};
 
-  return (
-    typeof dependencies.react !== 'undefined' &&
-    typeof dependencies['react-dom'] !== 'undefined'
-  );
+  return typeof dependencies.react !== 'undefined' && typeof dependencies['react-dom'] !== 'undefined';
 }
 
 function tryGitInit(appPath: string) {
@@ -57,21 +54,14 @@ function tryGitInit(appPath: string) {
     if (didInit) {
       try {
         fs.removeSync(path.join(appPath, '.git'));
-      } catch (removeErr) {
-      }
+      } catch (removeErr) {}
     }
     return false;
   }
 }
 
-module.exports = function(
-  appPath: string,
-  appName: string,
-  verbose: boolean,
-  originalDirectory: string
-) {
-  const ownPackageName = require(path.join(__dirname, '..', 'package.json'))
-    .name;
+module.exports = function(appPath: string, appName: string, verbose: boolean, originalDirectory: string) {
+  const ownPackageName = require(path.join(__dirname, '..', 'package.json')).name;
   const ownPath = path.join(appPath, 'node_modules', ownPackageName);
   const appPackage = require(path.join(appPath, 'package.json'));
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
@@ -86,25 +76,15 @@ module.exports = function(
 
   appPackage.browserslist = defaultBrowsers;
 
-  fs.writeFileSync(
-    path.join(appPath, 'package.json'),
-    JSON.stringify(appPackage, null, 2) + os.EOL
-  );
+  fs.writeFileSync(path.join(appPath, 'package.json'), JSON.stringify(appPackage, null, 2) + os.EOL);
 
   const readmeExists = fs.existsSync(path.join(appPath, 'README.md'));
   if (readmeExists) {
-    fs.renameSync(
-      path.join(appPath, 'README.md'),
-      path.join(appPath, 'README.old.md')
-    );
+    fs.renameSync(path.join(appPath, 'README.md'), path.join(appPath, 'README.old.md'));
   }
 
   try {
-    fs.moveSync(
-      path.join(appPath, 'gitignore'),
-      path.join(appPath, '.gitignore'),
-      []
-    );
+    fs.moveSync(path.join(appPath, 'gitignore'), path.join(appPath, '.gitignore'), []);
   } catch (err) {
     if (err.code === 'EEXIST') {
       const data = fs.readFileSync(path.join(appPath, 'gitignore'));
@@ -127,16 +107,13 @@ module.exports = function(
   }
   args.push('react', 'react-dom');
 
-  const templateDependenciesPath = path.join(
-    appPath,
-    '.template.dependencies.json'
-  );
+  const templateDependenciesPath = path.join(appPath, '.template.dependencies.json');
   if (fs.existsSync(templateDependenciesPath)) {
     const templateDependencies = require(templateDependenciesPath).dependencies;
     args = args.concat(
       Object.keys(templateDependencies).map(key => {
         return `${key}@${templateDependencies[key]}`;
-      })
+      }),
     );
     fs.unlinkSync(templateDependenciesPath);
   }
@@ -173,9 +150,7 @@ module.exports = function(
   console.log(chalk.cyan(`  ${displayedCommand} start`));
   console.log('    Starts the development server.');
   console.log();
-  console.log(
-    chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`)
-  );
+  console.log(chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`));
   console.log('    Bundles the app into static files for production.');
   console.log();
   console.log(chalk.cyan(`  ${displayedCommand} test`));
@@ -187,11 +162,7 @@ module.exports = function(
   console.log(`  ${chalk.cyan(`${displayedCommand} start`)}`);
   if (readmeExists) {
     console.log();
-    console.log(
-      chalk.yellow(
-        'You had a `README.md` file, we renamed it to `README.old.md`'
-      )
-    );
+    console.log(chalk.yellow('You had a `README.md` file, we renamed it to `README.old.md`'));
   }
   console.log();
   console.log('Happy hacking!');

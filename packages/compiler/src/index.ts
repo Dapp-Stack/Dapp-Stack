@@ -13,7 +13,8 @@ const dockerSolc = function(contractName: string) {
     '--combined-json',
     'abi,asm,ast,bin,bin-runtime,clone-bin,devdoc,interface,opcodes,srcmap,srcmap-runtime,userdoc',
     '--overwrite',
-    `/solidity/src/${contractName}`];
+    `/solidity/src/${contractName}`,
+  ];
   const options = { Binds: [`${__dirname}/../src:/solidity/src`, `${__dirname}/../build:/solidity/build`] };
   return docker.run('ethereum/solc:0.4.24', command, process.stdout, options).then(function(container) {
     return container.remove();
@@ -23,13 +24,15 @@ const dockerSolc = function(contractName: string) {
 export function compile(contractName: string, compileOption): void {
   console.log(`[Contracts] Starting to compile ${contractName}`);
 
-  return dockerSolc(contractName, compileOption).then(function() {
-    console.log(`[Contracts] Finished to compile ${contractName}`);
-  }).catch(function(err) {
-    console.log(`[Contracts] Error while compiling ${contractName}`);
-    console.log(err);
-  });
-};
+  return dockerSolc(contractName, compileOption)
+    .then(function() {
+      console.log(`[Contracts] Finished to compile ${contractName}`);
+    })
+    .catch(function(err) {
+      console.log(`[Contracts] Error while compiling ${contractName}`);
+      console.log(err);
+    });
+}
 
 export function compileAll(environment: Environment): void {
   environment.deploy.contracts.forEach((contractName: string) => {

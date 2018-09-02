@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const config = require("../config");
+const config = require('../config');
 
 config[process.env.SOLON_ENV]();

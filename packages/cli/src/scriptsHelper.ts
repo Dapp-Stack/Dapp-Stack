@@ -12,14 +12,14 @@ interface TemporaryDirectory {
 }
 
 export function getSolonScriptsToInstall(version: string, originalDirectory: string): string {
-  console.log(version)
+  console.log(version);
   let packageToInstall = '@solon/scripts';
   const validSemver = valid(version);
   if (validSemver) {
     packageToInstall += `@${validSemver}`;
   } else if (version) {
     const matcher = version.match(/^file:(.*)?$/);
-    console.log(matcher)
+    console.log(matcher);
     if (version[0] === '@' && version.indexOf('/') === -1) {
       packageToInstall += version;
     } else if (matcher && matcher[1]) {

@@ -1,7 +1,6 @@
 {
   "version": "0.1.0",
   "packages": ["packages/*", "examples/*", "websites/*"],
-  "version": "independent",
   "command": {
     "publish": {
       "ignoreChanges": ["test/**/*", "*.md", "scripts", "lib", "tslint.json", "tsconfig.json"]

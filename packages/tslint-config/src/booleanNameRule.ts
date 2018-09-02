@@ -57,7 +57,7 @@ function handleBooleanNaming(
   const typeName = (typeNode as any).intrinsicName;
   if (typeName === 'boolean') {
     const hasProperName = !_.isUndefined(
-      _.find(VALID_BOOLEAN_PREFIXES, prefix => _.startsWith(lowercasedName, prefix)),
+      _.find(VALID_BOOLEAN_PREFIXES, (prefix: string) => _.startsWith(lowercasedName, prefix)),
     );
     if (!hasProperName) {
       ctx.addFailureAtNode(node, Rule.FAILURE_STRING);
