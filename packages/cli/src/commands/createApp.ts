@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import * as os from 'os';
 import * as path from 'path';
-import * as semver from 'semver';
 
 import guardAppName from '../guards/guardAppName';
 import guardDir from '../guards/guardDir';
@@ -91,7 +90,7 @@ export default function createApp(name: string, verbose: boolean, version: strin
 
       const scriptsPath = path.resolve(process.cwd(), 'node_modules', packageName, 'lib', 'commands', 'init.js');
       const init = require(scriptsPath);
-      // init(root, appName, verbose, originalDirectory);
+      init(root, appName, verbose, originalDirectory);
     })
     .catch(reason => abort(reason, root, appName, name));
 }
