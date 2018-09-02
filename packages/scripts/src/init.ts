@@ -1,8 +1,9 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as spawn from 'cross-spawn'
+import { EOL } from 'os';
 
-export function installDependencies(useYarn: boolean, verbose: boolean) {
+function installDependencies(useYarn: boolean, verbose: boolean) {
   let command;
   let args: string[];
 
@@ -54,7 +55,7 @@ function installTemplate(appPath: string){
   fs.copySync(templatePath, appPath);
 }
 
-export function init(appPath: string, appName: string, verbose: boolean, originalDirectory: string, template: string) {
+function init(appPath: string, appName: string, verbose: boolean, originalDirectory: string, template: string) {
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
   const scriptsPath = path.resolve(process.cwd(), 'node_modules', 'react-scripts', 'scripts', 'init.js');
   const init = require(scriptsPath);
@@ -64,3 +65,5 @@ export function init(appPath: string, appName: string, verbose: boolean, origina
   updatePackage(appPath);
   installTemplate(appPath);
 };
+
+module.exports = init;
