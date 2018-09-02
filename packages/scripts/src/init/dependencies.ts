@@ -15,7 +15,7 @@ export function installDependencies(useYarn: boolean, verbose: boolean) {
     }
   }
   
-  args.push('react', 'react-dom');
+  args.push('react', 'react-dom', 'web3', 'solium');
 
   console.log(`Installing react and react-dom using ${command}...`);
   console.log();
