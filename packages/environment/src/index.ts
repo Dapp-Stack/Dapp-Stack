@@ -1,30 +1,48 @@
 import { merge } from 'lodash';
 
-type GethType = 'dev';
+export type GethType = 'dev';
 
-interface Services {
-  geth?: {
-    type?: GethType;
+export interface Structure {
+  contracts: {
+    src: string;
+    build: string;
   };
-  ipfs?: boolean;
-  compile?: {
-    solc?: {
-      version?: string;
+  src: string;
+  public: string;
+}
+
+export interface Services {
+  geth: {
+    type: GethType;
+  };
+  ipfs: boolean;
+  compile: {
+    solc: {
+      version: string;
     };
   };
 }
 
-interface Deploy {
+export interface Deploy {
   contracts: string[];
   migrate: () => void;
 }
 
 export interface Environment {
-  services?: Services;
+  structure: Structure;
+  services: Services;
   deploy: Deploy;
 }
 
 const defaultEnvironment: Environment = {
+  structure: {
+    contracts: {
+      src: 'contracts/src',
+      build: 'contracts/build',
+    },
+    src: 'src',
+    public: 'public',
+  },
   services: {
     geth: {
       type: 'dev',
@@ -42,6 +60,6 @@ const defaultEnvironment: Environment = {
   },
 };
 
-export function buildEnvironment(environment: Environment): Environment {
+export function buildEnvironment(environment: any): Environment {
   return merge({}, defaultEnvironment, environment);
 }

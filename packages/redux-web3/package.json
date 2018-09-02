@@ -9,8 +9,7 @@
     "watch_without_deps": "tsc -w",
     "build": "tsc && copyfiles -u 2 './lib/monorepo_scripts/**/*' ./scripts",
     "clean": "shx rm -rf lib scripts",
-    "lint": "tslint --project .",
-    "manual:postpublish": "yarn build; node ./scripts/postpublish.js"
+    "lint": "tslint --project ."
   },
   "repository": {
     "type": "git",

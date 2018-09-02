@@ -1,7 +1,10 @@
-import Docker from 'dockerode';
+import * as Docker from 'dockerode';
 import { Environment } from '@solon/environment';
 
 let docker = new Docker();
+const mapping = {
+  sol: 'solc',
+};
 
 const dockerSolc = function(contractName: string) {
   const command = [

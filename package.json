@@ -11,11 +11,10 @@
     "install:all": "yarn install",
     "wsrun": "wsrun",
     "lerna": "lerna",
-    "build": "wsrun build $PKG --fast-exit -r --stages",
-    "clean": "wsrun clean $PKG --fast-exit -r --parallel",
-    "remove_node_modules": "lerna clean --yes; rm -rf node_modules",
+    "build": "wsrun build $PKG -r --stages --exclude-missing",
+    "clean": "wsrun clean $PKG -r --parallel --exclude-missing",
     "rebuild": "run-s clean build",
-    "lint": "wsrun lint $PKG --fast-exit --parallel --exclude-missing"
+    "lint": "wsrun lint $PKG --parallel --exclude-missing"
   },
   "devDependencies": {
     "lerna": "^3.1.1",
