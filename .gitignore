@@ -31,3 +31,4 @@ node_modules/
 
 # built library using in commonjs module syntax
 lib/
+scripts/
