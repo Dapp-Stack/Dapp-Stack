@@ -20,8 +20,9 @@ const dockerSolc = function(contractName: string) {
   });
 };
 
-export function compile (contractName: string, compileOption): void {
+export function compile(contractName: string, compileOption): void {
   console.log(`[Contracts] Starting to compile ${contractName}`);
+
   return dockerSolc(contractName, compileOption).then(function() {
     console.log(`[Contracts] Finished to compile ${contractName}`);
   }).catch(function(err) {
