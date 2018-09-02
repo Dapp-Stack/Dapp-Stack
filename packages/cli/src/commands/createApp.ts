@@ -89,8 +89,8 @@ export default function createApp(name: string, verbose: boolean, version: strin
       guardNodeVersion(packageName);
 
       const scriptsPath = path.resolve(process.cwd(), 'node_modules', packageName, 'lib', 'commands', 'init.js');
-      const init = require(scriptsPath);
-      init(root, appName, verbose, originalDirectory);
+      const script = require(scriptsPath);
+      script.init(root, appName, verbose, originalDirectory);
     })
     .catch(reason => abort(reason, root, appName, name));
 }

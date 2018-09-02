@@ -15,9 +15,9 @@ export function installDependencies(useYarn: boolean, verbose: boolean) {
     }
   }
   
-  args.push('react', 'react-dom', 'web3', 'solium');
+  args.push('web3', 'solium');
 
-  console.log(`Installing react and react-dom using ${command}...`);
+  console.log(`Installing web3 and solium using ${command}...`);
   console.log();
 
   const proc = spawn.sync(command, args, { stdio: 'inherit' });

@@ -40,7 +40,7 @@ switch (command) {
     break;
   }
   default:
-    console.log('Unknown script "' + script + '".');
+    console.log('Unknown command "' + command + '".');
     console.log('Perhaps you need to update solon-scripts?');
     break;
 }
