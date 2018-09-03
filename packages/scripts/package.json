@@ -36,24 +36,22 @@
   "devDependencies": {
     "@types/cross-spawn": "^6.0.0",
     "@types/node": "^10.9.4",
-    "@types/opn": "^5.1.0",
     "@types/signale": "^1.2.0",
-    "@types/webpack": "^4.4.11",
-    "@types/webpack-dev-server": "^3.1.0",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/environment": "0.1.0",
     "@solon/compiler": "0.1.0",
     "@solon/deployer": "0.1.0",
+    "@solon/environment": "0.1.0",
+    "@solon/geth": "0.1.0",
+    "@solon/ipfs": "0.1.0",
+    "@solon/web3-wrapper": "0.1.0",
     "cross-spawn": "^6.0.5",
-    "opn": "^5.3.0",
+    "fs-extra": "^7.0.0",
     "react-scripts": "^1.1.5",
-    "signale": "^1.2.1",
-    "webpack": "^4.17.1",
-    "webpack-dev-server": "^3.1.7"
+    "signale": "^1.2.1"
   },
   "publishConfig": {
     "access": "public"
