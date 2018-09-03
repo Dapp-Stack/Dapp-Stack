@@ -1,6 +1,6 @@
-import { buildEnvironment } from '@solon/environment'
+const environment = require('@solon/environment');
 
-module.exports = buildEnvironment({
+module.exports = environment.buildEnvironment({
   services: {
     geth: {
       genesis: true,

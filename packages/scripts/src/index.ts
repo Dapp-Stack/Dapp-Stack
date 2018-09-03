@@ -7,7 +7,9 @@ process.on('unhandledRejection', err => {
 import * as spawn from 'cross-spawn';
 const args = process.argv.slice(2);
 
-const commandIndex = args.findIndex(x => x === 'build' || x === 'start' || x === 'test');
+const commandIndex = args.findIndex(x => 
+  x === 'build' || x === 'start' || x === 'test' || x === 'deploy' || x === 'eject'
+);
 const command = commandIndex === -1 ? args[0] : args[commandIndex];
 const nodeArgs = commandIndex > 0 ? args.slice(0, commandIndex) : [];
 
@@ -17,7 +19,7 @@ switch (command) {
   case 'test': {
     const result = spawn.sync(
       'node',
-      nodeArgs.concat(require.resolve('./commands/' + command)).concat(args.slice(commandIndex + 1)),
+      nodeArgs.concat(require.resolve('./' + command)).concat(args.slice(commandIndex + 1)),
       { stdio: 'inherit' },
     );
     if (result.signal) {
