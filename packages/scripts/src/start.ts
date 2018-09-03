@@ -7,9 +7,10 @@ process.on('unhandledRejection', err => {
 import * as path from 'path';
 import { buildEnvironment } from '@solon/environment';
 
-import { compileAll } from '@solon/scripts/src/shared/compile';
-import { watch } from 'fs';
-import { startWeb } from '@solon/scripts/src/shared/web';
+import { compileAll } from './shared/compile';
+import { deployAll } from './shared/deploy';
+import { watch } from './shared/watch';
+import { startWeb } from './shared/web';
 
 const solonEnv = process.env.SOLON_ENV || 'local';
 const environmentFile = require(path.resolve(process.cwd(), 'environments', solonEnv)) || {};

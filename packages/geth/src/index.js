@@ -2,7 +2,7 @@
 
 const compose = require('docker-compose');
 
-const startGeth = function(options = {}) {
+const startGeth = function(environment) {
   compose.up({ cwd: path.join(__dirname, '../') });
 };
 
