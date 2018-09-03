@@ -1,6 +1,4 @@
-const environment = require('@solon/environment');
-
-module.exports = environment.buildEnvironment({
+module.exports = {
   services: {
     geth: {
       genesis: true,
@@ -13,8 +11,9 @@ module.exports = environment.buildEnvironment({
       solc: {
         version: '0.24.0'
       },
-    }
+    },
   },
+  web: true,
   deploy: {
     contracts: [
       "SimpleStorage.sol"
@@ -24,4 +23,4 @@ module.exports = environment.buildEnvironment({
       console.log(contract.address)
     }
   }
-});
+};

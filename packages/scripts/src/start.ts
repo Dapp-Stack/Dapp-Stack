@@ -5,11 +5,19 @@ process.on('unhandledRejection', err => {
 });
 
 import * as path from 'path';
-import * as spawn from 'cross-spawn';
+import { buildEnvironment } from '@solon/environment';
+
+import { compileAll } from '@solon/scripts/src/shared/compile';
+import { watch } from 'fs';
+import { startWeb } from '@solon/scripts/src/shared/web';
 
 const solonEnv = process.env.SOLON_ENV || 'local';
+const environmentFile = require(path.resolve(process.cwd(), 'environments', solonEnv)) || {};
+const environment = buildEnvironment(environmentFile);
 
-const environment = require(path.resolve(process.cwd(), 'environments', solonEnv));
-console.log(JSON.stringify(environment))
-const reactScriptsPath = path.resolve(process.cwd(), 'node_modules', 'react-scripts', 'scripts', 'start.js');
-spawn('node', [reactScriptsPath], { stdio: 'ignore' });
+startGeth(environment);
+startIpfs(environment);
+compileAll(environment);
+deployAll(environment);
+watch(environment);
+startWeb();

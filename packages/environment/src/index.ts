@@ -1,6 +1,12 @@
 import { merge } from 'lodash';
 
 export type GethType = 'dev';
+export type Geth = false | {
+  type: GethType;
+}
+export type Solc = false | {
+  version: string;
+}
 
 export interface Structure {
   contracts: {
@@ -12,14 +18,10 @@ export interface Structure {
 }
 
 export interface Services {
-  geth: {
-    type: GethType;
-  };
+  geth: Geth;
   ipfs: boolean;
   compile: {
-    solc: {
-      version: string;
-    };
+    solc: Solc;
   };
 }
 
@@ -31,6 +33,7 @@ export interface Deploy {
 export interface Environment {
   structure: Structure;
   services: Services;
+  web: boolean;
   deploy: Deploy;
 }
 
@@ -54,12 +57,13 @@ const defaultEnvironment: Environment = {
       },
     },
   },
+  web: true,
   deploy: {
     contracts: [],
     migrate() {},
   },
 };
 
-export function buildEnvironment(environment: any): Environment {
+export function buildEnvironment(environment: object): Environment {
   return merge({}, defaultEnvironment, environment);
 }

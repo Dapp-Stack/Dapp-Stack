@@ -18,7 +18,12 @@
     "web3": "^1.0.0-beta.35"
   },
   "scripts": {
-    "solon": "solon-scripts",
-    "clean": "rm -rf build"
+    "start": "solon-scripts start",
+    "build": "solon-scripts build",
+    "deploy": "solon-scripts deploy",
+    "clean": "solon-scripts clean",
+    "lint": "solon-scripts lint",
+    "eject": "solon-script eject",
+    "test": "solon-scripts test --env=jsdom"
   }
 }

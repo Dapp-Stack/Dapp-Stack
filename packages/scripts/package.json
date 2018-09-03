@@ -45,6 +45,9 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
+    "@solon/environment": "0.1.0",
+    "@solon/compiler": "0.1.0",
+    "@solon/deployer": "0.1.0",
     "cross-spawn": "^6.0.5",
     "opn": "^5.3.0",
     "react-scripts": "^1.1.5",

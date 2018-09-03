@@ -34,17 +34,4 @@ export function compile(contractName: string, environment: Environment): Promise
   const type: string = Object.keys(compilersMapping).find((t: string) => contractName.endsWith(t)) || 'notFound';
 
   return compilersMapping[type](contractName, environment)
-    .then(function() {
-      console.log(`[Contracts] Finished to compile ${contractName}`);
-    })
-    .catch(function(err) {
-      console.log(`[Contracts] Error while compiling ${contractName}`);
-      console.log(err);
-    });
-}
-
-export function compileAll(environment: Environment): void {
-  environment.deploy.contracts.forEach((contractName: string) => {
-    compile(contractName, environment);
-  });
 }
