@@ -2,11 +2,11 @@
 
 const compose = require('docker-compose');
 
-const startIpfs = function(options = {}) {
+export function startIpf(options = {}) {
   compose.up({ cwd: path.join(__dirname, '../') });
 };
 
-const stopIpfs = function(options = {}) {
+export function stopIpfs(options = {}) {
   compose.down({ cwd: path.join(__dirname, '../') })
 };
 

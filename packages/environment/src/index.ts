@@ -1,9 +1,26 @@
 import { merge } from 'lodash';
 
-export type GethType = 'dev';
+export type GethType = 'dev' | 'ropsten' | 'mainnet';
+
+export type Accounts = {
+  unlock?: {
+    [publicKey: string]: string[];
+  }
+  create?: string[];
+}
+
 export type Geth = false | {
   type: GethType;
+  accounts?: Accounts;
 }
+
+export type Ganache = boolean;
+
+export type Infura = false | {
+  url: string;
+  accounts?: Accounts;
+}
+
 export type Solc = false | {
   version: string;
 }
@@ -20,6 +37,8 @@ export interface Structure {
 export interface Services {
   geth: Geth;
   ipfs: boolean;
+  ganache: Ganache;
+  infura: Infura;
   compile: {
     solc: Solc;
   };
@@ -50,6 +69,8 @@ const defaultEnvironment: Environment = {
     geth: {
       type: 'dev',
     },
+    ganache: false,
+    infura: false,
     ipfs: true,
     compile: {
       solc: {
