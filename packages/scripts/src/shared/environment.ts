@@ -1,14 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { Environment, Services } from '@solon/environment';
+import { Environment, Services, servicesEnabledLength } from '@solon/environment';
 import { Signale } from 'signale';
 
-function guardUniqBlockchainNode(services: Services, signale: Signale): void {
-  const servicesEnabled: number = [!!services.ganache, !!services.infura, !!services.geth]
-    .filter((enable: boolean) => enable)
-    .length;
-  
-  if (servicesEnabled > 1) {
+function guardUniqBlockchainNode(environment: Environment, signale: Signale): void {
+  if (servicesEnabledLength(environment) > 1) {
     signale.error("Environment error: too many blockchain node enabled")
     process.exit(1)
   }
@@ -27,7 +23,7 @@ export function validateEnvironment(environment: Environment): void {
   const signale = new Signale({interactive: true, scope: 'Environment'});
   signale.await('Validating environment...');
 
-  guardUniqBlockchainNode(environment.services, signale);
+  guardUniqBlockchainNode(environment, signale);
   guardContractsFileExists(environment.deploy.contracts, environment.structure.contracts.src, signale)
   signale.success('Environment OK');
 }

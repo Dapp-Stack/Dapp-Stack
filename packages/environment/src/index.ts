@@ -85,6 +85,11 @@ const defaultEnvironment: Environment = {
   },
 };
 
+export function servicesEnabledLength(environment: Environment): number {
+  const { ganache, infura, geth } = environment.services;
+  return [!!ganache, !!infura, !!geth].filter((enable: boolean) => enable).length;
+}
+
 export function buildEnvironment(environment: object): Environment {
   return merge({}, defaultEnvironment, environment);
 }
