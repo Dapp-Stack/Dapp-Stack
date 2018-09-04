@@ -6,6 +6,8 @@
     "node": ">=8.11"
   },
   "description": "Solon launcher of geth",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "watch_without_deps": "tsc -w",
     "build": "tsc",
