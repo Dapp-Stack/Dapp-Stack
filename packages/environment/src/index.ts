@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-
+import * as http from 'http';
 export type GethType = 'dev' | 'ropsten' | 'mainnet';
 
 export type Accounts = {
@@ -84,6 +84,61 @@ const defaultEnvironment: Environment = {
     migrate() {},
   },
 };
+
+async function pingAsync(url: string): Promise<boolean> {
+  return new Promise<boolean>(resolve => {
+    try {
+      http.get(url);
+      return resolve(true);
+    } catch {
+      return resolve(false);
+    }
+  });
+}
+
+export function ganacheOk(environment: Environment): Promise<boolean> {
+  return new Promise<boolean>(async resolve => {
+    if (!environment.services.geth) {
+      return resolve(true);
+    }
+
+    const httpOk = await pingAsync("http://localhost:8545");
+    resolve(!httpOk);
+  });
+}
+
+export function gethOk(environment: Environment): Promise<boolean> {
+  return new Promise<boolean>(async resolve => {
+    if (!environment.services.ganache) {
+      return resolve(true);
+    }
+
+    const httpOk = await pingAsync("http://localhost:8545");
+    resolve(!httpOk);
+  });
+}
+
+export function infuraOk(environment: Environment): Promise<boolean> {
+  return new Promise<boolean>(async resolve => {
+    if (!environment.services.infura) {
+      return resolve(true);
+    }
+
+    const httpOk = await pingAsync(environment.services.infura.url);
+    resolve(httpOk);
+  });
+}
+
+export function ipfsOk(environment: Environment): Promise<boolean> {
+  return new Promise<boolean>(async resolve => {
+    if (!environment.services.ipfs) {
+      return resolve(true);
+    }
+
+    const httpOk = await pingAsync("http://localhost:5001");
+    resolve(!httpOk);
+  });
+}
 
 export function servicesEnabledLength(environment: Environment): number {
   const { ganache, infura, geth } = environment.services;

@@ -11,6 +11,7 @@ import { compileAll } from './shared/compile';
 import { deployAll } from './shared/deploy';
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
+import { startGeth, startIpfs } from './shared/services';
 import { validateEnvironment } from './shared/environment';
 
 const solonEnv = process.env.SOLON_ENV || 'local';
