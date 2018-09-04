@@ -11,10 +11,13 @@ import { compileAll } from './shared/compile';
 import { deployAll } from './shared/deploy';
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
+import { validateEnvironment } from './shared/environment';
 
 const solonEnv = process.env.SOLON_ENV || 'local';
 const environmentFile = require(path.resolve(process.cwd(), 'environments', solonEnv)) || {};
 const environment = buildEnvironment(environmentFile);
+
+validateEnvironment(environment);
 
 startGeth(environment);
 startIpfs(environment);
