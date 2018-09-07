@@ -12,7 +12,7 @@ import { compileAll } from './shared/compile';
 import { deployAll } from './shared/deploy';
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
-import { startGethAsync, stopGethAsync, startIpfs } from './shared/services';
+import * as services from './shared/services';
 import { validateEnvironment } from './shared/environment';
 
 if (!process.env.SOLON_ENV) {
@@ -28,21 +28,17 @@ fs.ensureDirSync(path.join(process.cwd(), 'logs', solonEnv));
 
 async function startAsync() {
   await validateEnvironment(environment);
-  await startGethAsync(environment);
-  // startIpfs(environment);
-  // await compileAll(environment);
+  await services.startGethAsync(environment);
+  await services.startIpfsAsync(environment);
+  await compileAll(environment);
   // deployAll(environment);
   // watch(environment);
   // await startWeb();
 }
 
 async function stopAsync({ exit }: { exit: boolean } = { exit: false }) {
-  await stopGethAsync();
-  // startIpfs(environment);
-  // await compileAll(environment);
-  // deployAll(environment);
-  // watch(environment);
-  // await startWeb();
+  await services.stopGethAsync();
+  await services.stopIpfsAsync();
   
   if (exit) {
     process.exit();

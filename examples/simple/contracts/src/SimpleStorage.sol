@@ -6,7 +6,7 @@ contract SimpleStorage {
 
     event Change(string message, uint newVal);
 
-    function SimpleStorage(uint initVal) public {
+    constructor(uint initVal) public {
         emit Change("initialized", initVal);
         storedData = initVal;
     }
@@ -16,7 +16,7 @@ contract SimpleStorage {
         storedData = x;
     }
 
-    function get() public constants returns (uint retVal) {
+    function get() public view returns (uint retVal) {
         return storedData;
     }
 

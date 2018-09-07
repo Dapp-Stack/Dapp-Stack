@@ -35,7 +35,6 @@
   "homepage": "https://github.com/solonproject/solon/packages/geth/README.md",
   "devDependencies": {
     "@types/dockerode": "^2.5.5",
-    "@types/signale": "^1.2.0",
     "@types/node": "^10.9.4",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
