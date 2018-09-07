@@ -49,12 +49,12 @@ async function guardServicesPingAsync(environment: Environment, signale: Signale
   }
 }
 
-export function validateEnvironment(environment: Environment): void {
-  const signale = new Signale({interactive: true, scope: 'Environment'});
+export async function validateEnvironment(environment: Environment): Promise<void> {
+  const signale = new Signale({scope: 'Environment'});
   signale.await('Validating environment...');
 
   guardUniqBlockchainNode(environment, signale);
   guardContractsFileExists(environment.deploy.contracts, environment.structure.contracts.src, signale);
-  guardServicesPingAsync(environment, signale);
+  await guardServicesPingAsync(environment, signale);
   signale.success('Environment OK');
 }

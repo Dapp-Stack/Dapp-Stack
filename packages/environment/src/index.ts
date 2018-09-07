@@ -87,12 +87,12 @@ const defaultEnvironment: Environment = {
 
 async function pingAsync(url: string): Promise<boolean> {
   return new Promise<boolean>(resolve => {
-    try {
-      http.get(url);
-      return resolve(true);
-    } catch {
+    http.get(url, (res) => {
+      const { statusCode } = res;
+      return resolve(statusCode === 200);
+    }).on('error', () => {
       return resolve(false);
-    }
+    });
   });
 }
 
