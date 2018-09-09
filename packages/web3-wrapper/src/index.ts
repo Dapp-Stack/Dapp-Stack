@@ -1,53 +1,41 @@
 import * as _ from 'lodash';
-import Web3 from 'web3';
-import { HttpProvider, IProvider, WebsocketProvider } from 'web3/types';
+import Web3 = require('web3')
+import { Provider } from 'web3/providers';
 
-const defaultUrl: string = 'http://localhost:8545';
+const defaultHttp: string = 'http://localhost:8545';
+const defaultWs: string = 'ws://localhost:8546';
 
-declare interface MetamaskInpageProvider extends IProvider {
-  isMetaMask: Boolean;
-  isConnected: () => Boolean;
-  responseCallbacks: undefined;
-  notificationCallbacks: undefined;
-  connection: undefined;
-  addDefaultEvents: undefined;
-  on: undefined;
-}
-
-type Provider = MetamaskInpageProvider | WebsocketProvider | HttpProvider | string;
-
-class BadProtocolError extends Error {
-  constructor(protocol: string) {
-    super(`the url provided has a protocol: ${protocol} that solon does not support.`);
+class NotConnectedError extends Error {
+  constructor() {
+    super('Could not connect to a node.');
     Object.setPrototypeOf(this, new.target.prototype);
   }
 }
 
-export const connect = (provider: Provider = defaultUrl): Web3 | BadProtocolError => {
-  const web3: Web3 = new Web3();
-
-  if (typeof provider === 'string') {
-    const url: URL = new URL(provider);
-    let newProvider;
-    switch (url.protocol) {
-      case 'https':
-      case 'http': {
-        newProvider = new Web3.providers.HttpProvider(url.toString());
-        break;
-      }
-      case 'ws': {
-        newProvider = new Web3.providers.WebsocketProvider(url.toString());
-        break;
-      }
-      default: {
-        throw new BadProtocolError(url.protocol);
-      }
+export const connect = (provider?: string | Provider): Promise<Web3> => {
+  return new Promise<Web3>(async (resolve, reject) => {
+    const web3 = await _.compact([provider, defaultWs, defaultHttp]).reduce(reducer, Promise.resolve(undefined));
+    if (web3) {
+      return resolve(web3);
     }
 
-    web3.setProvider(newProvider);
-    return web3;
-  }
-
-  web3.setProvider(provider);
-  return web3;
+    reject(new NotConnectedError());
+  });
 };
+
+const reducer = (web3Promised: Promise<Web3 | undefined>, provider: string | Provider): Promise<Web3 | undefined> => {
+  return new Promise<Web3 | undefined>(async (resolve, reject) => {
+    const web3 = await web3Promised;
+    if(web3) {
+      return resolve(web3);
+    }
+    
+    const instance = new Web3(provider);
+    const connected = await instance.eth.net.isListening();
+    if (connected) {
+      return resolve(instance);
+    }
+
+    return resolve();
+  });
+}

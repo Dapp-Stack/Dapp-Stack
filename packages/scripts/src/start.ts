@@ -12,6 +12,7 @@ import { compileAll } from './shared/compile';
 import { deployAll } from './shared/deploy';
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
+import { generateWalletAsync } from './shared/wallet';
 import * as services from './shared/services';
 import { validateEnvironment } from './shared/environment';
 
@@ -30,10 +31,12 @@ async function startAsync() {
   await validateEnvironment(environment);
   await services.startGethAsync(environment);
   await services.startIpfsAsync(environment);
-  await compileAll(environment);
+  await services.startIpfsAsync(environment);
+  await generateWalletAsync(environment);
+  compileAll(environment);
   // deployAll(environment);
   // watch(environment);
-  // await startWeb();
+  // startWeb();
 }
 
 async function stopAsync({ exit }: { exit: boolean } = { exit: false }) {

@@ -1,13 +1,12 @@
 {
-  "name": "@solon/scripts",
+  "name": "@solon/wallet",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Solon scripts",
-  "bin": {
-    "solon-scripts": "./scripts/index.js"
-  },
+  "description": "Solon wallet",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "watch_without_deps": "tsc -w",
     "build": "tsc",
@@ -32,28 +31,18 @@
   "bugs": {
     "url": "https://github.com/solonproject/solon/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/security/README.md",
+  "homepage": "https://github.com/solonproject/solon/packages/wallet/README.md",
   "devDependencies": {
-    "@types/cross-spawn": "^6.0.0",
-    "@types/node": "^10.9.4",
-    "@types/signale": "^1.2.0",
-    "@types/fs-extra": "^5.0.4",
+    "@types/bip39": "^2.4.0",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/compiler": "0.1.0",
-    "@solon/deployer": "0.1.0",
-    "@solon/environment": "0.1.0",
-    "@solon/geth": "0.1.0",
-    "@solon/ipfs": "0.1.0",
     "@solon/web3-wrapper": "0.1.0",
-    "@solon/wallet": "0.1.0",
-    "cross-spawn": "^6.0.5",
-    "fs-extra": "^7.0.0",
-    "react-scripts": "^1.1.5",
-    "signale": "^1.2.1"
+    "@solon/environment": "0.1.0",
+    "bip39": "^2.5.0",
+    "web3": "^1.0.0-beta.36"
   },
   "publishConfig": {
     "access": "public"

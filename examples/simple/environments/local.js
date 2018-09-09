@@ -1,7 +1,6 @@
 module.exports = {
   services: {
     geth: {
-      genesis: true,
       type: 'dev'
     },
 
@@ -12,6 +11,11 @@ module.exports = {
         version: '0.24.0'
       },
     },
+  },
+  wallet: {
+    mnemonic: 'seed sock milk update focus rotate barely fade car face mechanic mercy',
+    numAccount: 5,
+    wei: 10000000
   },
   web: true,
   deploy: {

@@ -2,23 +2,20 @@ import { merge } from 'lodash';
 import * as http from 'http';
 export type GethType = 'dev' | 'ropsten' | 'mainnet';
 
-export type Accounts = {
-  unlock?: {
-    [publicKey: string]: string[];
-  }
-  create?: string[];
+export type Wallet = {
+  mnemonic: string;
+  numAccount: number;
+  wei?: number;
 }
 
 export type Geth = false | {
   type: GethType;
-  accounts?: Accounts;
 }
 
 export type Ganache = boolean;
 
 export type Infura = false | {
   url: string;
-  accounts?: Accounts;
 }
 
 export type Solc = false | {
@@ -52,6 +49,7 @@ export interface Deploy {
 export interface Environment {
   structure: Structure;
   services: Services;
+  wallet?: Wallet,
   web: boolean;
   deploy: Deploy;
 }

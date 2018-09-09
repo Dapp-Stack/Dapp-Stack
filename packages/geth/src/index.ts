@@ -31,7 +31,17 @@ export function start(environment: Environment): Promise<void> {
         name: containerName(),
         Image: IMAGE_NAME,
         Cmd: command,
-        HostConfig: {Binds: [`${datadir}:${remoteDataDir}:rw`]}
+        HostConfig: { 
+          Binds: [`${datadir}:${remoteDataDir}:rw`], 
+          PortBindings: {
+            "8545/tcp": [{
+              "HostPort": "8545"
+            }],
+            "8546/tcp": [{
+              "HostPort": "8546"
+            }],
+          }
+        }
       });
       
       container.attach({stream: true, sdtin: true, sdterr: true, sdtout: true}, function (_err, stream) {
