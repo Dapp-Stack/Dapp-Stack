@@ -1,16 +1,16 @@
-import { deploy } from '@solon/deployer';
+import { Deployer } from '@solon/deployer';
 import { Environment } from '@solon/environment';
 import { Signale } from 'signale';
 
-export function deployAll(environment: Environment): void {
-  const compiler = new Signale({interactive: true, scope: 'Deployer'});
+export function deploy(environment: Environment): void {
+  const signale = new Signale({scope: 'Deployer'});
 
-  environment.deploy.contracts.forEach((contractName: string) => {
-    compiler.await(`Starting to compile: ${contractName}`)
-    deploy(contractName, environment).then(() =>(
-      compiler.success(`Successfully compile: ${contractName}`)
-    )).catch(() => (
-      compiler.error(`Error while compiling: ${contractName}`)
-    ));
-  });
+  signale.await(`Starting to deploy...`)
+  try {
+    const deployer = new Deployer(environment);
+    deployer.runAsync();
+    signale.success('Deployment finished with success')
+  } catch(error) {
+    signale.error(`Error while deploying: ${error.message}`)
+  };
 }

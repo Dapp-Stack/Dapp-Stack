@@ -1,4 +1,5 @@
 import { merge } from 'lodash';
+import { Deployer } from '@solon/deployer';
 import * as http from 'http';
 export type GethType = 'dev' | 'ropsten' | 'mainnet';
 
@@ -43,7 +44,7 @@ export interface Services {
 
 export interface Deploy {
   contracts: string[];
-  migrate: () => void;
+  migrate: (deployer: Deployer) => void;
 }
 
 export interface Environment {

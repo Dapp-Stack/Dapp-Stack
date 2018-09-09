@@ -9,7 +9,7 @@ import * as fs from 'fs-extra';
 import { buildEnvironment } from '@solon/environment';
 
 import { compileAll } from './shared/compile';
-import { deployAll } from './shared/deploy';
+import { deploy } from './shared/deploy';
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
 import { generateWalletAsync } from './shared/wallet';
@@ -34,7 +34,7 @@ async function startAsync() {
   await services.startIpfsAsync(environment);
   await generateWalletAsync(environment);
   compileAll(environment);
-  // deployAll(environment);
+  deploy(environment);
   // watch(environment);
   // startWeb();
 }

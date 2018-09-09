@@ -22,8 +22,8 @@ module.exports = {
     contracts: [
       "SimpleStorage.sol"
     ],
-    migrate: async () => {
-      let contract = await deploy(this.contracts[0], { args: [10] });
+    migrate: async (deployer) => {
+      let contract = await deployer.deploy(deployer.contracts[0], { args: [10] });
       console.log(contract.address)
     }
   }
