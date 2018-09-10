@@ -18,7 +18,7 @@ const compilersMapping: CompilerMapping = {
       '--combined-json',
       'abi,asm,ast,bin,bin-runtime,clone-bin,devdoc,interface,opcodes,srcmap,srcmap-runtime,userdoc',
       '--overwrite',
-      `/solidity/src/${contractName}`,
+      `/solidity/src/${contractName}`
     ];
     const options = {
       Binds: [`${path.join(process.cwd(), src)}:/solidity/src`, `${path.join(process.cwd(), build)}:/solidity/build`],

@@ -55,4 +55,7 @@ process.stdin.resume();
 process.on('SIGINT', stopAsync.bind(null, { exit: true }));
 process.on('SIGUSR1', stopAsync.bind(null, { exit: true }));
 process.on('SIGUSR2', stopAsync.bind(null));
-process.on('uncaughtException', stopAsync.bind(null));
+process.on('uncaughtException', (error) => {
+  console.log(error.stack);
+  stopAsync.bind(null, { exit: true })();
+});

@@ -24,7 +24,6 @@ module.exports = {
     ],
     migrate: async (deployer) => {
       let contract = await deployer.deploy(deployer.contracts[0], { args: [10] });
-      console.log(contract.address)
     }
   }
 };

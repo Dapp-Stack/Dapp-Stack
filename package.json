@@ -14,8 +14,8 @@
     "build": "wsrun build $PKG -r --stages --exclude-missing",
     "clean": "wsrun clean $PKG -r --parallel --exclude-missing",
     "rebuild": "run-s clean build",
-    "lint": "wsrun lint $PKG --stage --exclude-missing",
-    "watch": "wsrun watch -r --stages"
+    "lint": "wsrun lint $PKG --stages --exclude-missing",
+    "watch": "wsrun watch --stages --done-criteria='Finished'"
   },
   "devDependencies": {
     "lerna": "^3.1.1",

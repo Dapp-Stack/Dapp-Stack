@@ -9,10 +9,12 @@ export class Deployer {
   private accounts!: string[];
   private gasPrice!: number;
 
-  private environment: Environment;
+  public contracts: string[];
+  public environment: Environment;
 
   constructor(environment: Environment) {
     this.environment = environment;
+    this.contracts = environment.deploy.contracts;
   }
 
   async runAsync() {
@@ -26,13 +28,8 @@ export class Deployer {
     }
   }
 
-  contracts() {
-    return this.environment.deploy.contracts;
-  }
-
   async deploy(contractName: string, options: { from?: string; args?: any[] } = {}) {
     let from = options.from || this.accounts[0];
-    console.log(from);
     let args = { data: '', arguments: options.args || [] };
     let gasPrice = this.gasPrice;
 
