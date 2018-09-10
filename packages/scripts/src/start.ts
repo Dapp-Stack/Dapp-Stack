@@ -35,7 +35,7 @@ async function startAsync() {
   await generateWalletAsync(environment);
   compileAll(environment);
   deploy(environment);
-  // watch(environment);
+  watch(environment);
   // startWeb();
 }
 
