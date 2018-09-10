@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import * as spawn from 'cross-spawn'
+import * as spawn from 'cross-spawn';
 import { Signale } from 'signale';
 
 import { EOL } from 'os';
@@ -26,7 +26,7 @@ function installDependencies(useYarn: boolean) {
     command = 'npm';
     args = ['install', '--save'];
   }
-  
+
   args.push('web3', 'solium');
 
   const proc = spawn.sync(command, args, { stdio: 'ignore' });
@@ -52,17 +52,22 @@ function updatePackage(appPath: string) {
 
   fs.writeFileSync(path.join(appPath, 'package.json'), JSON.stringify(appPackage, null, 2) + EOL);
 }
-  
 
-function installTemplate(appPath: string){
+function installTemplate(appPath: string) {
   const ownPackageName = require(path.join(__dirname, '..', 'package.json')).name;
   const ownPath = path.join(appPath, 'node_modules', ownPackageName);
   const templatePath = path.join(ownPath, 'template');
   fs.copySync(templatePath, appPath);
 }
 
-function initReactScripts(appPath: string, appName: string, verbose: boolean, originalDirectory: string, template: string) {
-  const reactScripts = new Signale({interactive: true, scope: 'React Scripts'});
+function initReactScripts(
+  appPath: string,
+  appName: string,
+  verbose: boolean,
+  originalDirectory: string,
+  template: string,
+) {
+  const reactScripts = new Signale({ interactive: true, scope: 'React Scripts' });
   const scriptsPath = path.resolve(process.cwd(), 'node_modules', 'react-scripts', 'scripts', 'init.js');
   const init = require(scriptsPath);
   mute();
@@ -71,7 +76,7 @@ function initReactScripts(appPath: string, appName: string, verbose: boolean, or
 }
 
 function initSolonScripts(appPath: string) {
-  const solonScripts = new Signale({interactive: true, scope: 'Solon Scripts'});
+  const solonScripts = new Signale({ interactive: true, scope: 'Solon Scripts' });
   solonScripts.await('[%d/2] - Installing...', 1);
 
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
@@ -83,7 +88,7 @@ function initSolonScripts(appPath: string) {
 
 function init(appPath: string, appName: string, verbose: boolean, originalDirectory: string, template: string) {
   initReactScripts(appPath, appName, verbose, originalDirectory, template);
-  initSolonScripts(appPath);  
-};
+  initSolonScripts(appPath);
+}
 
 module.exports = init;

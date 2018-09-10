@@ -4,16 +4,15 @@ import { Signale } from 'signale';
 
 export function compileAll(environment: Environment): void {
   environment.deploy.contracts.forEach(async (contractName: string) => {
-    compile(contractName, environment)
+    compile(contractName, environment);
   });
 }
 
 export function compile(contractName: string, environment: Environment): void {
-  const signale = new Signale({scope: 'Compiler'});
+  const signale = new Signale({ scope: 'Compiler' });
 
-  compiler.compile(contractName, environment).then(() =>(
-    signale.success(`Successfully compiled: ${contractName}`)
-  )).catch((error) => (
-    signale.error(`Error while compiling: ${contractName}: ${error}`)
-  ));
+  compiler
+    .compile(contractName, environment)
+    .then(() => signale.success(`Successfully compiled: ${contractName}`))
+    .catch(error => signale.error(`Error while compiling: ${contractName}: ${error}`));
 }

@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { connect } from '@solon/web3-wrapper';
 import { Environment } from '@solon/environment';
-import Web3 = require('web3')
+import Web3 = require('web3');
 
 export class Deployer {
   private web3!: Web3;
@@ -17,12 +17,12 @@ export class Deployer {
 
   async runAsync() {
     try {
-      this.web3 = await connect()
+      this.web3 = await connect();
       this.accounts = await this.web3.eth.getAccounts();
       this.gasPrice = await this.web3.eth.getGasPrice();
       this.environment.deploy.migrate(this);
-    } catch(e) {
-      console.log(e.message)
+    } catch (e) {
+      console.log(e.message);
     }
   }
 
@@ -30,13 +30,15 @@ export class Deployer {
     return this.environment.deploy.contracts;
   }
 
-  async deploy(contractName: string, options: {from?: string, args?: any[]} = {}) {
+  async deploy(contractName: string, options: { from?: string; args?: any[] } = {}) {
     let from = options.from || this.accounts[0];
-    console.log(from)
+    console.log(from);
     let args = { data: '', arguments: options.args || [] };
     let gasPrice = this.gasPrice;
 
-    let source = fs.readFileSync(path.join(process.cwd(), this.environment.structure.contracts.build, contractName, 'combined.json'));
+    let source = fs.readFileSync(
+      path.join(process.cwd(), this.environment.structure.contracts.build, contractName, 'combined.json'),
+    );
 
     let contracts = JSON.parse(source.toString('utf8'))['contracts'];
     let keys = Object.keys(contracts);
@@ -48,12 +50,10 @@ export class Deployer {
     let contractClass = new this.web3.eth.Contract(abi, undefined, { data });
     let gas = await contractClass.deploy(args).estimateGas();
 
-    return contractClass
-      .deploy(args)
-      .send({
-        gas,
-        gasPrice,
-        from,
-      });
+    return contractClass.deploy(args).send({
+      gas,
+      gasPrice,
+      from,
+    });
   }
 }

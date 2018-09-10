@@ -1,5 +1,3 @@
-"use strict";
-
 const fs = require('fs-extra');
 const parser = require('solidity-parser-antlr');
 const sha1File = require('sha1-file');
@@ -12,86 +10,86 @@ const generateDoc = async function(contractName) {
   let filesTable = `
 |  File Name  |  SHA-1 Hash  |
 |-------------|--------------|
-`
+`;
 
   let contractsTable = `
 |  Contract  |         Type        |       Bases      |                  |                 |
 |:----------:|:-------------------:|:----------------:|:----------------:|:---------------:|
 |     └      |  **Function Name**  |  **Visibility**  |  **Mutability**  |  **Modifiers**  |
-`
+`;
 
   filesTable += `| ${file} | ${sha1File(file)} |
-`
+`;
 
-  const content = fs.readFileSync(file).toString('utf-8')
-  const ast = parser.parse(content)
+  const content = fs.readFileSync(file).toString('utf-8');
+  const ast = parser.parse(content);
 
   parser.visit(ast, {
     ContractDefinition(node) {
+      const name = node.name;
+      let bases = node.baseContracts
+        .map(spec => {
+          return spec.baseName.namePath;
+        })
+        .join(', ');
 
-      const name = node.name
-      let bases = node.baseContracts.map(spec => {
-        return spec.baseName.namePath
-      }).join(', ')
-
-      let specs = ''
+      let specs = '';
       if (node.kind === 'library') {
-        specs += 'Library'
+        specs += 'Library';
       } else if (node.kind === 'interface') {
-        specs += 'Interface'
+        specs += 'Interface';
       } else {
-        specs += 'Implementation'
+        specs += 'Implementation';
       }
 
       contractsTable += `||||||
 | **${name}** | ${specs} | ${bases} |||
-`
+`;
     },
 
     FunctionDefinition(node) {
-      let name
+      let name;
 
       if (node.isConstructor) {
-        name = '\\<Constructor\\>'
+        name = '\\<Constructor\\>';
       } else if (!node.name) {
-        name = '\\<Fallback\\>'
+        name = '\\<Fallback\\>';
       } else {
-        name = node.name
+        name = node.name;
       }
 
-
-      let spec = ''
+      let spec = '';
       if (node.visibility === 'public' || node.visibility === 'default') {
-        spec += 'Public ❗️'
+        spec += 'Public ❗️';
       } else if (node.visibility === 'external') {
-        spec += 'External ❗️'
+        spec += 'External ❗️';
       } else if (node.visibility === 'private') {
-        spec += 'Private 🔐'
+        spec += 'Private 🔐';
       } else if (node.visibility === 'internal') {
-        spec += 'Internal 🔒'
+        spec += 'Internal 🔒';
       }
 
-      let payable = ''
+      let payable = '';
       if (node.stateMutability === 'payable') {
-        payable = '💵'
+        payable = '💵';
       }
 
-      let mutating = ''
+      let mutating = '';
       if (!node.stateMutability) {
-        mutating = '🛑'
+        mutating = '🛑';
       }
 
-      contractsTable += `| └ | ${name} | ${spec} | ${mutating} ${payable} |`
+      contractsTable += `| └ | ${name} | ${spec} | ${mutating} ${payable} |`;
     },
 
     'FunctionDefinition:exit': function(node) {
       contractsTable += ` |
-`
+`;
     },
 
     ModifierInvocation(node) {
-      contractsTable += ` ${node.name}`
-    }
+      contractsTable += ` ${node.name}`;
+    },
   });
 
   const reportContents = `## Sūrya's Description Report
@@ -107,13 +105,13 @@ ${contractsTable}
 `;
 
   try {
-    fs.writeFileSync(outfile, reportContents, {flag: 'w'})
+    fs.writeFileSync(outfile, reportContents, { flag: 'w' });
     console.log(`[Contracts] Finished to generate documentation of ${contractName}`);
   } catch {
     console.log(`[Contracts] Error while generating documentation of ${contractName}`);
   }
-}
+};
 
 module.exports = {
-  generateDoc
+  generateDoc,
 };

@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import Web3 = require('web3')
+import Web3 = require('web3');
 import { Provider } from 'web3/providers';
 
 const defaultHttp: string = 'http://localhost:8545';
@@ -26,10 +26,10 @@ export const connect = (provider?: string | Provider): Promise<Web3> => {
 const reducer = (web3Promised: Promise<Web3 | undefined>, provider: string | Provider): Promise<Web3 | undefined> => {
   return new Promise<Web3 | undefined>(async (resolve, reject) => {
     const web3 = await web3Promised;
-    if(web3) {
+    if (web3) {
       return resolve(web3);
     }
-    
+
     const instance = new Web3(provider);
     const connected = await instance.eth.net.isListening();
     if (connected) {
@@ -38,4 +38,4 @@ const reducer = (web3Promised: Promise<Web3 | undefined>, provider: string | Pro
 
     return resolve();
   });
-}
+};

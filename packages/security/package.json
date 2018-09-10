@@ -6,7 +6,7 @@
   },
   "description": "Solon security check for contracts",
   "scripts": {
-    "watch_without_deps": "tsc -w",
+    "watch": "tsc -w",
     "build": "tsc",
     "clean": "shx rm -rf lib",
     "lint": "tslint --project ."

@@ -7,21 +7,27 @@ export type Wallet = {
   mnemonic: string;
   numAccount: number;
   wei?: number;
-}
+};
 
-export type Geth = false | {
-  type: GethType;
-}
+export type Geth =
+  | false
+  | {
+      type: GethType;
+    };
 
 export type Ganache = boolean;
 
-export type Infura = false | {
-  url: string;
-}
+export type Infura =
+  | false
+  | {
+      url: string;
+    };
 
-export type Solc = false | {
-  version: string;
-}
+export type Solc =
+  | false
+  | {
+      version: string;
+    };
 
 export interface Structure {
   contracts: {
@@ -50,7 +56,7 @@ export interface Deploy {
 export interface Environment {
   structure: Structure;
   services: Services;
-  wallet?: Wallet,
+  wallet?: Wallet;
   web: boolean;
   deploy: Deploy;
 }
@@ -86,12 +92,14 @@ const defaultEnvironment: Environment = {
 
 async function pingAsync(url: string): Promise<boolean> {
   return new Promise<boolean>(resolve => {
-    http.get(url, (res) => {
-      const { statusCode } = res;
-      return resolve(statusCode === 200);
-    }).on('error', () => {
-      return resolve(false);
-    });
+    http
+      .get(url, res => {
+        const { statusCode } = res;
+        return resolve(statusCode === 200);
+      })
+      .on('error', () => {
+        return resolve(false);
+      });
   });
 }
 
@@ -101,7 +109,7 @@ export function ganacheOk(environment: Environment): Promise<boolean> {
       return resolve(true);
     }
 
-    const httpOk = await pingAsync("http://localhost:8545");
+    const httpOk = await pingAsync('http://localhost:8545');
     resolve(!httpOk);
   });
 }
@@ -112,7 +120,7 @@ export function gethOk(environment: Environment): Promise<boolean> {
       return resolve(true);
     }
 
-    const httpOk = await pingAsync("http://localhost:8545");
+    const httpOk = await pingAsync('http://localhost:8545');
     resolve(!httpOk);
   });
 }
@@ -134,7 +142,7 @@ export function ipfsOk(environment: Environment): Promise<boolean> {
       return resolve(true);
     }
 
-    const httpOk = await pingAsync("http://localhost:5001");
+    const httpOk = await pingAsync('http://localhost:5001');
     resolve(!httpOk);
   });
 }

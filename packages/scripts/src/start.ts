@@ -42,7 +42,7 @@ async function startAsync() {
 async function stopAsync({ exit }: { exit: boolean } = { exit: false }) {
   await services.stopGethAsync();
   await services.stopIpfsAsync();
-  
+
   if (exit) {
     process.exit();
   }
@@ -52,7 +52,7 @@ startAsync();
 
 process.stdin.resume();
 
-process.on('SIGINT', stopAsync.bind(null, {exit: true}));
-process.on('SIGUSR1', stopAsync.bind(null, {exit: true}));
+process.on('SIGINT', stopAsync.bind(null, { exit: true }));
+process.on('SIGUSR1', stopAsync.bind(null, { exit: true }));
 process.on('SIGUSR2', stopAsync.bind(null));
 process.on('uncaughtException', stopAsync.bind(null));

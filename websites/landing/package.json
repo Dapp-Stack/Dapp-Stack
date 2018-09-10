@@ -7,11 +7,12 @@
   },
   "description": "Solon public website",
   "scripts": {
+    "watch": "yarn dev",
     "dev": "webpack-dev-server --progress --hide-modules --mode development",
     "build": "webpack --progress --hide-modules --mode production",
     "clean": "rm -rf build",
     "deploy": "gh-pages -d dist",
-    "publish": "npm run build && npm run deploy"
+    "publish": "yarn build && yarn deploy"
   },
   "repository": {
     "type": "git",

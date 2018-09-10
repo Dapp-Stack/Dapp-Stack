@@ -6,7 +6,7 @@
   },
   "description": "Solon react components to work with web3 and redux",
   "scripts": {
-    "watch_without_deps": "tsc -w",
+    "watch": "tsc -w",
     "build": "tsc",
     "clean": "shx rm -rf lib",
     "lint": "tslint --project ."

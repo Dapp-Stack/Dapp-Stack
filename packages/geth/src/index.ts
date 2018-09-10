@@ -5,7 +5,7 @@ import { Environment } from '@solon/environment';
 
 let docker = new Docker();
 
-const IMAGE_NAME = 'ethereum/client-go:latest'
+const IMAGE_NAME = 'ethereum/client-go:latest';
 
 export function start(environment: Environment): Promise<void> {
   const env = getSolonEnv();
@@ -31,20 +31,24 @@ export function start(environment: Environment): Promise<void> {
         name: containerName(),
         Image: IMAGE_NAME,
         Cmd: command,
-        HostConfig: { 
-          Binds: [`${datadir}:${remoteDataDir}:rw`], 
+        HostConfig: {
+          Binds: [`${datadir}:${remoteDataDir}:rw`],
           PortBindings: {
-            "8545/tcp": [{
-              "HostPort": "8545"
-            }],
-            "8546/tcp": [{
-              "HostPort": "8546"
-            }],
-          }
-        }
+            '8545/tcp': [
+              {
+                HostPort: '8545',
+              },
+            ],
+            '8546/tcp': [
+              {
+                HostPort: '8546',
+              },
+            ],
+          },
+        },
       });
-      
-      container.attach({stream: true, sdtin: true, sdterr: true, sdtout: true}, function (_err, stream) {
+
+      container.attach({ stream: true, sdtin: true, sdterr: true, sdtout: true }, function(_err, stream) {
         if (stream) {
           stream.pipe(logStream);
         }
@@ -56,10 +60,9 @@ export function start(environment: Environment): Promise<void> {
       reject(error);
     }
   });
-};
+}
 
-export function startConsole(options = {}) {
-};
+export function startConsole(options = {}) {}
 
 export function stop(options = {}): Promise<void> {
   getSolonEnv();
@@ -73,23 +76,23 @@ export function stop(options = {}): Promise<void> {
         await container.remove();
       }
       resolve();
-    } catch(error) {
+    } catch (error) {
       reject(error);
     }
   });
-};
+}
 
 function findContainerInfo(): Promise<Docker.ContainerInfo | undefined> {
-  return new Promise<Docker.ContainerInfo | undefined> (async (resolve, reject) => {
+  return new Promise<Docker.ContainerInfo | undefined>(async (resolve, reject) => {
     try {
       let containers = await docker.listContainers();
-      let containerInfo = containers.find((c) => c.Names[0] === `/${containerName()}`)
+      let containerInfo = containers.find(c => c.Names[0] === `/${containerName()}`);
       resolve(containerInfo);
     } catch (error) {
       reject(error);
     }
   });
-};
+}
 
 function containerName(): string {
   return `geth-${getSolonEnv()}`;
@@ -108,18 +111,26 @@ function getCommand(type: string, remoteDataDir: string): string[] {
     case 'dev':
       return [
         '--dev',
-        '--datadir', remoteDataDir,
+        '--datadir',
+        remoteDataDir,
         '--ws',
-        '--wsaddr', "0.0.0.0",
-        '--wsorigins', "*",
-        '--wsport', "8546",
+        '--wsaddr',
+        '0.0.0.0',
+        '--wsorigins',
+        '*',
+        '--wsport',
+        '8546',
         '--rpc',
-        '--rpcapi', "db,personal,eth,net,web3",
-        '--rpcaddr', "0.0.0.0",
-        '--rpcport', '8545',
-        '--rpccorsdomain', '*',
-        '--nodiscover'
-      ]
+        '--rpcapi',
+        'db,personal,eth,net,web3',
+        '--rpcaddr',
+        '0.0.0.0',
+        '--rpcport',
+        '8545',
+        '--rpccorsdomain',
+        '*',
+        '--nodiscover',
+      ];
     case 'ropsten':
       return [''];
     case 'mainnet':
@@ -132,7 +143,7 @@ function getCommand(type: string, remoteDataDir: string): string[] {
 function downloadImage(): Promise<boolean> {
   return new Promise<boolean>(async (resolve, reject) => {
     docker.pull(IMAGE_NAME, {}, (err, stream) => {
-      if(err) {
+      if (err) {
         return reject(err);
       }
       docker.modem.followProgress(stream, onFinished);

@@ -6,7 +6,7 @@
   },
   "description": "Solon redux reducers using saga",
   "scripts": {
-    "watch_without_deps": "tsc -w",
+    "watch": "tsc -w",
     "build": "tsc && copyfiles -u 2 './lib/monorepo_scripts/**/*' ./scripts",
     "clean": "shx rm -rf lib scripts",
     "lint": "tslint --project ."

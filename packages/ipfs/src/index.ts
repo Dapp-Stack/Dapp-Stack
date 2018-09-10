@@ -6,7 +6,7 @@ import { rejects } from 'assert';
 
 let docker = new Docker();
 
-const IMAGE_NAME = 'ipfs/go-ipfs:latest'
+const IMAGE_NAME = 'ipfs/go-ipfs:latest';
 
 export function start(environment: Environment): Promise<void> {
   const env = getSolonEnv();
@@ -28,13 +28,15 @@ export function start(environment: Environment): Promise<void> {
       let container = await docker.createContainer({
         name: containerName(),
         Image: IMAGE_NAME,
-        HostConfig: {Binds: [
-          `${path.join(process.cwd(), '.solon', 'ipfs', 'staging')}:/export:rw`,
-          `${path.join(process.cwd(), '.solon', 'ipfs', 'data')}:/data/ipfs:rw`
-        ]}
+        HostConfig: {
+          Binds: [
+            `${path.join(process.cwd(), '.solon', 'ipfs', 'staging')}:/export:rw`,
+            `${path.join(process.cwd(), '.solon', 'ipfs', 'data')}:/data/ipfs:rw`,
+          ],
+        },
       });
 
-      container.attach({stream: true, sdtin: true, sdterr: true, sdtout: true}, function (_err, stream) {
+      container.attach({ stream: true, sdtin: true, sdterr: true, sdtout: true }, function(_err, stream) {
         if (stream) {
           stream.pipe(logStream);
         }
@@ -46,7 +48,7 @@ export function start(environment: Environment): Promise<void> {
       reject(error);
     }
   });
-};
+}
 
 export function stop(options = {}): Promise<void> {
   getSolonEnv();
@@ -60,23 +62,23 @@ export function stop(options = {}): Promise<void> {
         await container.remove();
       }
       resolve();
-    } catch(error) {
+    } catch (error) {
       reject(error);
     }
   });
-};
+}
 
 function findContainerInfo(): Promise<Docker.ContainerInfo | undefined> {
-  return new Promise<Docker.ContainerInfo | undefined> (async (resolve, reject) => {
+  return new Promise<Docker.ContainerInfo | undefined>(async (resolve, reject) => {
     try {
       let containers = await docker.listContainers();
-      let containerInfo = containers.find((c) => c.Names[0] === `/${containerName()}`)
+      let containerInfo = containers.find(c => c.Names[0] === `/${containerName()}`);
       resolve(containerInfo);
     } catch (error) {
       reject(error);
     }
   });
-};
+}
 
 function containerName(): string {
   return `ipfs-${getSolonEnv()}`;
@@ -93,7 +95,7 @@ function getSolonEnv(): string {
 function downloadImage(): Promise<boolean> {
   return new Promise<boolean>(async (resolve, reject) => {
     docker.pull(IMAGE_NAME, {}, (err, stream) => {
-      if(err) {
+      if (err) {
         return reject(err);
       }
 
