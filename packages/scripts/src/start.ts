@@ -36,7 +36,7 @@ async function startAsync() {
   compileAll(environment);
   deploy(environment);
   watch(environment);
-  // startWeb();
+  startWeb();
 }
 
 async function stopAsync({ exit }: { exit: boolean } = { exit: false }) {

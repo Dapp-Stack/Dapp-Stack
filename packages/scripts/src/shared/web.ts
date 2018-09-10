@@ -1,24 +1,14 @@
 import * as spawn from 'cross-spawn';
 import * as path from 'path';
+import { Signale } from 'signale';
 
 export function startWeb() {
+  const signale = new Signale({ scope: 'Web' });
+  signale.await('Starting web...');
   const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
-  let reactScriptsProcess = spawn('node', [reactScriptsPath, 'start']);
+  let child = spawn('node', [reactScriptsPath, 'start']);
 
-  reactScriptsProcess.on('message', (message: string) => {
-    console.log(message);
-  });
-
-  reactScriptsProcess.on('exit', (code: number, signal: string) => {});
-
-  reactScriptsProcess.on('error', (err: Error) => {
-    console.log(err);
-  });
-
-  reactScriptsProcess.on('disconnect', () => {});
-
-  reactScriptsProcess.on('close', (code: number, signal: string) => {
-    console.log(code);
-    console.log(signal);
+  child.stdout.on('data', (data: Buffer) => {
+    signale.info(data.toString('utf-8'));
   });
 }
