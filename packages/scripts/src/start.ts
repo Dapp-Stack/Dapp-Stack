@@ -31,7 +31,6 @@ async function startAsync() {
   await validateEnvironment(environment);
   await services.startGethAsync(environment);
   await services.startIpfsAsync(environment);
-  await services.startIpfsAsync(environment);
   await generateWalletAsync(environment);
   compileAll(environment);
   deploy(environment);
