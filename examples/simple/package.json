@@ -20,6 +20,7 @@
   "scripts": {
     "start": "solon-scripts start",
     "build": "solon-scripts build",
+    "console": "solon-scripts console",
     "deploy": "solon-scripts deploy",
     "clean": "solon-scripts clean",
     "lint": "solon-scripts lint",

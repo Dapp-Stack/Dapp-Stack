@@ -15,6 +15,9 @@ const nodeArgs = commandIndex > 0 ? args.slice(0, commandIndex) : [];
 
 switch (command) {
   case 'build':
+  case 'console':
+  case 'clean':
+  case 'stop':
   case 'start':
   case 'test': {
     const result = spawn.sync(

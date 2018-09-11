@@ -62,7 +62,19 @@ export function start(environment: Environment): Promise<void> {
   });
 }
 
-export function startConsole(options = {}) {}
+export function console(environment: Environment): Promise<void> {
+  const env = getSolonEnv();
+  const datadir = path.join(process.cwd(), '.solon', env);
+  const remoteDataDir = `/root/.ethereum/${env}`;
+  const command = getCommand(environment.services.geth.type, remoteDataDir).concat('console');
+  const options = {
+    name: containerName(),
+    Binds: [`${datadir}:${remoteDataDir}:rw`]
+  };
+  return docker.run(IMAGE_NAME, command, process.stdout, options).then(function(container) {
+    return container.remove();
+  });
+}
 
 export function stop(options = {}): Promise<void> {
   getSolonEnv();
