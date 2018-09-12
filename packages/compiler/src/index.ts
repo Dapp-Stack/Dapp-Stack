@@ -1,13 +1,13 @@
-import * as Docker from 'dockerode';
 import { Environment } from '@solon/environment';
+import * as Docker from 'dockerode';
 import * as path from 'path';
 
-let docker = new Docker();
+const docker = new Docker();
 interface CompilerMapping {
   [key: string]: (contractName: string, environment: Environment) => Promise<any>;
 }
 const compilersMapping: CompilerMapping = {
-  sol: function(contractName: string, environment: Environment) {
+  sol(contractName: string, environment: Environment) {
     const { src, build } = environment.structure.contracts;
     const command = [
       '-o',
@@ -18,16 +18,14 @@ const compilersMapping: CompilerMapping = {
       '--combined-json',
       'abi,asm,ast,bin,bin-runtime,clone-bin,devdoc,interface,opcodes,srcmap,srcmap-runtime,userdoc',
       '--overwrite',
-      `/solidity/src/${contractName}`
+      `/solidity/src/${contractName}`,
     ];
     const options = {
       Binds: [`${path.join(process.cwd(), src)}:/solidity/src`, `${path.join(process.cwd(), build)}:/solidity/build`],
     };
-    return docker.run('ethereum/solc:0.4.24', command, process.stdout, options).then(function(container) {
-      return container.remove();
-    });
+    return docker.run('ethereum/solc:0.4.24', command, process.stdout, options).then(container => container.remove());
   },
-  notFound: function() {
+  notFound() {
     return new Promise(resolve => resolve());
   },
 };

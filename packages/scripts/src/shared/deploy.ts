@@ -5,7 +5,7 @@ import { Signale } from 'signale';
 export function deploy(environment: Environment): void {
   const signale = new Signale({ scope: 'Deployer' });
 
-  signale.await(`Starting to deploy...`);
+  signale.await('Starting to deploy...');
   try {
     const deployer = new Deployer(environment);
     deployer.runAsync();

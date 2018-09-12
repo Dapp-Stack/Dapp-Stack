@@ -1,25 +1,24 @@
-import * as fs from 'fs-extra';
-import * as path from 'path';
 import * as spawn from 'cross-spawn';
+import * as fs from 'fs-extra';
+import { EOL } from 'os';
+import * as path from 'path';
 import { Signale } from 'signale';
 
-import { EOL } from 'os';
-
-let log = console.log;
+const log = console.log;
 
 function mute() {
-  console.log = function() {};
+  console.log = function () {};
 }
 
 function unmute() {
   console.log = log;
 }
 
-function installDependencies(useYarn: boolean) {
+function installDependencies(isYarn: boolean) {
   let command;
   let args: string[];
 
-  if (useYarn) {
+  if (isYarn) {
     command = 'yarnpkg';
     args = ['add'];
   } else {
@@ -79,8 +78,8 @@ function initSolonScripts(appPath: string) {
   const solonScripts = new Signale({ interactive: true, scope: 'Solon Scripts' });
   solonScripts.await('[%d/2] - Installing...', 1);
 
-  const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
-  installDependencies(useYarn);
+  const isYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
+  installDependencies(isYarn);
   updatePackage(appPath);
   installTemplate(appPath);
   solonScripts.success('[%d/2] - Success', 2);

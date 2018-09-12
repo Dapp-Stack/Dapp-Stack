@@ -1,10 +1,10 @@
-import * as Docker from 'dockerode';
-import * as path from 'path';
-import * as fs from 'fs';
 import { Environment } from '@solon/environment';
 import { rejects } from 'assert';
+import * as Docker from 'dockerode';
+import * as fs from 'fs';
+import * as path from 'path';
 
-let docker = new Docker();
+const docker = new Docker();
 
 const IMAGE_NAME = 'ipfs/go-ipfs:latest';
 
@@ -25,7 +25,7 @@ export function start(environment: Environment): Promise<void> {
       }
       await downloadImage();
 
-      let container = await docker.createContainer({
+      const container = await docker.createContainer({
         name: containerName(),
         Image: IMAGE_NAME,
         HostConfig: {
@@ -36,8 +36,8 @@ export function start(environment: Environment): Promise<void> {
         },
       });
 
-      container.attach({ stream: true, sdtin: true, sdterr: true, sdtout: true }, function(_err, stream) {
-        if (stream) {
+      container.attach({ stream: true, sdtin: true, sdterr: true, sdtout: true }, (err, stream) => {
+        if (!err && stream) {
           stream.pipe(logStream);
         }
       });
@@ -54,10 +54,10 @@ export function stop(options = {}): Promise<void> {
   getSolonEnv();
   return new Promise<void>(async (resolve, reject) => {
     try {
-      let containerInfo = await findContainerInfo();
+      const containerInfo = await findContainerInfo();
 
       if (containerInfo) {
-        let container = docker.getContainer(containerInfo.Id);
+        const container = docker.getContainer(containerInfo.Id);
         await container.stop();
         await container.remove();
       }
@@ -71,8 +71,8 @@ export function stop(options = {}): Promise<void> {
 function findContainerInfo(): Promise<Docker.ContainerInfo | undefined> {
   return new Promise<Docker.ContainerInfo | undefined>(async (resolve, reject) => {
     try {
-      let containers = await docker.listContainers();
-      let containerInfo = containers.find(c => c.Names[0] === `/${containerName()}`);
+      const containers = await docker.listContainers();
+      const containerInfo = containers.find(c => c.Names[0] === `/${containerName()}`);
       resolve(containerInfo);
     } catch (error) {
       reject(error);

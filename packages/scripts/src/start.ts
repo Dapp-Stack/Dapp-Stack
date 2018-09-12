@@ -4,15 +4,15 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
+import * as blockchain from './shared/blockchain';
 import { compileAll } from './shared/compile';
 import { deploy } from './shared/deploy';
+import { validateEnvironment } from './shared/environment';
+import * as lifecycle from './shared/lifecycle';
+import * as storage from './shared/storage';
+import { generateWalletAsync } from './shared/wallet';
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
-import { generateWalletAsync } from './shared/wallet';
-import * as blockchain from './shared/blockchain';
-import * as storage from './shared/storage';
-import * as lifecycle from './shared/lifecycle';
-import { validateEnvironment } from './shared/environment';
 
 const environment = lifecycle.before();
 

@@ -5,8 +5,8 @@ process.on('unhandledRejection', err => {
 });
 
 import * as blockchain from './shared/blockchain';
-import * as lifecycle from './shared/lifecycle';
 import { validateEnvironment } from './shared/environment';
+import * as lifecycle from './shared/lifecycle';
 
 const environment = lifecycle.before();
 

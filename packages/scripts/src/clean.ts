@@ -7,6 +7,7 @@ process.on('unhandledRejection', err => {
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { Signale } from 'signale';
+
 import * as lifecycle from './shared/lifecycle';
 
 const environment = lifecycle.before();

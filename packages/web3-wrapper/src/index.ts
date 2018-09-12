@@ -1,13 +1,13 @@
 import * as _ from 'lodash';
-import Web3 = require('web3');
+import web3 = require('web3');
 import { Provider } from 'web3/providers';
 
 const localhostProviders: string[] = [
   'ws://localhost:8546',
   'ws://localhost:8545',
   'http://localhost:8545',
-  'http://localhost:8546'
-]
+  'http://localhost:8546',
+];
 
 class NotConnectedError extends Error {
   constructor() {
@@ -36,7 +36,7 @@ const reducer = (web3Promised: Promise<Web3 | undefined>, provider: string | Pro
     const instance = new Web3(provider);
     let connected;
     try {
-      connected = (<any>instance.currentProvider).connected || await instance.eth.net.isListening();
+      connected = (<any>instance.currentProvider).connected || (await instance.eth.net.isListening());
     } catch {
       return resolve();
     }

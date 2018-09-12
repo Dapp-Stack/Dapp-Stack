@@ -23,7 +23,7 @@ switch (command) {
   case 'test': {
     const result = spawn.sync(
       'node',
-      nodeArgs.concat(require.resolve('./' + command)).concat(args.slice(commandIndex + 1)),
+      nodeArgs.concat(require.resolve(`./${command}`)).concat(args.slice(commandIndex + 1)),
       { stdio: 'inherit' },
     );
     if (result.signal) {
@@ -46,7 +46,7 @@ switch (command) {
     break;
   }
   default:
-    console.log('Unknown command "' + command + '".');
+    console.log(`Unknown command ${command}.`);
     console.log('Perhaps you need to update solon-scripts?');
     break;
 }

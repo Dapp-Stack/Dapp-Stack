@@ -1,10 +1,10 @@
-import { Signale } from 'signale';
 import { Environment } from '@solon/environment';
-import * as geth from '@solon/geth';
 import * as ganache from '@solon/ganache';
+import * as geth from '@solon/geth';
+import { Signale } from 'signale';
 
 export function startConsole(environment: Environment): Promise<void> | undefined {
-  const { ganache, geth, infura } = environment.services
+  const { ganache, geth, infura } = environment.services;
   if (geth) {
     return startGethConsoleAsync(environment);
   }
@@ -13,7 +13,7 @@ export function startConsole(environment: Environment): Promise<void> | undefine
 }
 
 export function start(environment: Environment): Promise<void> | undefined {
-  const { ganache, geth, infura } = environment.services
+  const { ganache, geth, infura } = environment.services;
   if (geth) {
     return startGethAsync(environment);
   }
@@ -25,7 +25,7 @@ export function start(environment: Environment): Promise<void> | undefined {
 }
 
 export function stop(environment: Environment): Promise<void> | undefined {
-  const { ganache, geth, infura } = environment.services
+  const { ganache, geth, infura } = environment.services;
   if (geth) {
     return stopGethAsync();
   }

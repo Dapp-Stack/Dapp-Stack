@@ -1,6 +1,6 @@
-import { merge } from 'lodash';
 import { Deployer } from '@solon/deployer';
 import * as http from 'http';
+import { merge } from 'lodash';
 export type GethType = 'dev' | 'ropsten' | 'mainnet';
 
 export type Wallet = {
@@ -12,22 +12,22 @@ export type Wallet = {
 export type Geth =
   | false
   | {
-      type: GethType;
-    };
+    type: GethType;
+  };
 
 export type Ganache = boolean;
 
 export type Infura =
   | false
   | {
-      url: string;
-    };
+    url: string;
+  };
 
 export type Solc =
   | false
   | {
-      version: string;
-    };
+    version: string;
+  };
 
 export interface Structure {
   contracts: {
@@ -107,8 +107,8 @@ export function ganacheOk(environment: Environment): Promise<boolean> {
       return resolve(true);
     }
 
-    const httpOk = await pingAsync('http://localhost:8545');
-    resolve(!httpOk);
+    const isHttpOk = await pingAsync('http://localhost:8545');
+    resolve(!isHttpOk);
   });
 }
 
@@ -118,8 +118,8 @@ export function gethOk(environment: Environment): Promise<boolean> {
       return resolve(true);
     }
 
-    const httpOk = await pingAsync('http://localhost:8545');
-    resolve(!httpOk);
+    const isHttpOk = await pingAsync('http://localhost:8545');
+    resolve(!isHttpOk);
   });
 }
 
@@ -129,8 +129,8 @@ export function infuraOk(environment: Environment): Promise<boolean> {
       return resolve(true);
     }
 
-    const httpOk = await pingAsync(environment.services.infura.url);
-    resolve(httpOk);
+    const isHttpOk = await pingAsync(environment.services.infura.url);
+    resolve(isHttpOk);
   });
 }
 
@@ -140,8 +140,8 @@ export function ipfsOk(environment: Environment): Promise<boolean> {
       return resolve(true);
     }
 
-    const httpOk = await pingAsync('http://localhost:5001');
-    resolve(!httpOk);
+    const isHttpOk = await pingAsync('http://localhost:5001');
+    resolve(!isHttpOk);
   });
 }
 

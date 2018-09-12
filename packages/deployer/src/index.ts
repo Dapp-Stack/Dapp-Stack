@@ -1,16 +1,16 @@
+import { Environment } from '@solon/environment';
+import { connect } from '@solon/web3-wrapper';
 import * as fs from 'fs';
 import * as path from 'path';
-import { connect } from '@solon/web3-wrapper';
-import { Environment } from '@solon/environment';
-import Web3 = require('web3');
+import web3 = require('web3');
 
 export class Deployer {
-  private web3!: Web3;
-  private accounts!: string[];
-  private gasPrice!: number;
 
   public contracts: string[];
   public environment: Environment;
+  private web3!: Web3;
+  private accounts!: string[];
+  private gasPrice!: number;
 
   constructor(environment: Environment) {
     this.environment = environment;
@@ -29,23 +29,23 @@ export class Deployer {
   }
 
   async deploy(contractName: string, options: { from?: string; args?: any[] } = {}) {
-    let from = options.from || this.accounts[0];
-    let args = { data: '', arguments: options.args || [] };
-    let gasPrice = this.gasPrice;
+    const from = options.from || this.accounts[0];
+    const args = { data: '', arguments: options.args || [] };
+    const gasPrice = this.gasPrice;
 
-    let source = fs.readFileSync(
+    const source = fs.readFileSync(
       path.join(process.cwd(), this.environment.structure.contracts.build, contractName, 'combined.json'),
     );
 
-    let contracts = JSON.parse(source.toString('utf8'))['contracts'];
-    let keys = Object.keys(contracts);
-    let contractInfo = contracts[keys[0]];
+    const contracts = JSON.parse(source.toString('utf8'))['contracts'];
+    const keys = Object.keys(contracts);
+    const contractInfo = contracts[keys[0]];
 
-    let abi = JSON.parse(contractInfo.abi);
-    let data = '0x' + contractInfo.bin;
+    const abi = JSON.parse(contractInfo.abi);
+    const data = `0x${contractInfo.bin}`;
 
-    let contractClass = new this.web3.eth.Contract(abi, undefined, { data });
-    let gas = await contractClass.deploy(args).estimateGas();
+    const contractClass = new this.web3.eth.Contract(abi, undefined, { data });
+    const gas = await contractClass.deploy(args).estimateGas();
 
     return contractClass.deploy(args).send({
       gas,

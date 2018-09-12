@@ -1,6 +1,6 @@
+import { Environment, ganacheOk, gethOk, infuraOk, ipfsOk, servicesEnabledLength } from '@solon/environment';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Environment, servicesEnabledLength, gethOk, infuraOk, ipfsOk, ganacheOk } from '@solon/environment';
 import { Signale } from 'signale';
 
 function guardUniqBlockchainNode(environment: Environment, signale: Signale): void {

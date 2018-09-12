@@ -1,6 +1,6 @@
-import { Signale } from 'signale';
 import { Environment } from '@solon/environment';
 import * as ipfs from '@solon/ipfs';
+import { Signale } from 'signale';
 
 export async function startIpfsAsync(environment: Environment): Promise<void> {
   const signale = new Signale({ scope: 'Storage' });

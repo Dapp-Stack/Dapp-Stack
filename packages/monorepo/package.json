@@ -11,7 +11,7 @@
     "watch": "tsc -w",
     "build": "tsc",
     "clean": "shx rm -rf lib",
-    "lint": "tslint --project .",
+    "lint": "tslint --fix --project .",
     "find_unused_deps": "run-s build script:find_unused_deps",
     "check_deps_versions": "run-s build script:check_deps_versions",
     "script:find_unused_deps": "node ./lib/findUnusedDependencies.js",

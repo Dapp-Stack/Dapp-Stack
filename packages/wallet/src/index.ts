@@ -1,7 +1,7 @@
-import { connect } from '@solon/web3-wrapper';
 import { Environment } from '@solon/environment';
-import { Account } from 'web3/eth/accounts';
+import { connect } from '@solon/web3-wrapper';
 import * as bip39 from 'bip39';
+import { Account } from 'web3/eth/accounts';
 
 export const generateWallet = (environment: Environment): Promise<Account[]> => {
   return new Promise<Account[]>(async (resolve, reject) => {

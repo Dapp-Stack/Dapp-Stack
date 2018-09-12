@@ -17,7 +17,7 @@ export function compile(contractName: string, environment: Environment): Promise
     signale.success(`Successfully compiled: ${contractName}`);
     return promise;
   } catch (error) {
-    signale.error(`Error while compiling: ${contractName}: ${error}`)
+    signale.error(`Error while compiling: ${contractName}: ${error}`);
   }
 
   return undefined;

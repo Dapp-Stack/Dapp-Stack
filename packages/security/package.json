@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "build": "tsc",
     "clean": "shx rm -rf lib",
-    "lint": "tslint --project ."
+    "lint": "tslint --fix --project ."
   },
   "repository": {
     "type": "git",
