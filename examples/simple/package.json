@@ -24,7 +24,7 @@
     "console": "solon-scripts console",
     "deploy": "solon-scripts deploy",
     "clean": "solon-scripts clean",
-    "lint": "solon-scripts lint",
+    "lint": "solium --dir contracts/src",
     "eject": "solon-script eject",
     "test": "solon-scripts test --env=jsdom"
   }

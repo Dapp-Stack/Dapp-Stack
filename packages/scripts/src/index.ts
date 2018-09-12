@@ -19,6 +19,7 @@ switch (command) {
   case 'clean':
   case 'stop':
   case 'start':
+  case 'eject':
   case 'test': {
     const result = spawn.sync(
       'node',
