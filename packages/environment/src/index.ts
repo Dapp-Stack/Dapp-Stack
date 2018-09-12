@@ -71,9 +71,7 @@ const defaultEnvironment: Environment = {
     public: 'public',
   },
   services: {
-    geth: {
-      type: 'dev',
-    },
+    geth: false,
     ganache: false,
     infura: false,
     ipfs: true,

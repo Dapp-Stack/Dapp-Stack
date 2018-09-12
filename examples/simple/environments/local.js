@@ -1,8 +1,6 @@
 module.exports = {
   services: {
-    geth: {
-      type: 'dev'
-    },
+    ganache: true,
 
     ipfs: true,
 

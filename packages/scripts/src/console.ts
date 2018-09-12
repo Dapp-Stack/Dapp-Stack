@@ -5,7 +5,7 @@ process.on('unhandledRejection', err => {
 });
 
 import { generateWalletAsync } from './shared/wallet';
-import * as services from './shared/services';
+import * as blockchain from './shared/blockchain';
 import * as lifecycle from './shared/lifecycle';
 import { validateEnvironment } from './shared/environment';
 
@@ -13,9 +13,9 @@ const environment = lifecycle.before();
 
 async function consoleAsync() {
   await validateEnvironment(environment);
-  await services.startConsoleAsync(environment);
+  await blockchain.startConsole(environment);
 }
 
 consoleAsync();
 
-lifecycle.after();
+lifecycle.after(environment);
