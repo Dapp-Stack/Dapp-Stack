@@ -4,7 +4,6 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import { generateWalletAsync } from './shared/wallet';
 import * as blockchain from './shared/blockchain';
 import * as lifecycle from './shared/lifecycle';
 import { validateEnvironment } from './shared/environment';

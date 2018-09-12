@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "solon-scripts start",
+    "stop": "solon-scripts stop",
     "build": "solon-scripts build",
     "console": "solon-scripts console",
     "deploy": "solon-scripts deploy",

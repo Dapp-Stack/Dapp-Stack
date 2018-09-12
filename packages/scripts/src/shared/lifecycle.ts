@@ -19,7 +19,7 @@ export function before(): Environment {
   return environment;
 }
 
-async function stopAsync(environment: Environment, { exit }: { exit: boolean } = { exit: false }) {
+export async function stopAsync(environment: Environment, { exit }: { exit: boolean } = { exit: false }) {
   await blockchain.stop(environment);
   await storage.stopIpfsAsync(environment);
 
