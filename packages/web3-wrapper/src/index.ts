@@ -29,9 +29,13 @@ const reducer = (web3Promised: Promise<Web3 | undefined>, provider: string | Pro
     if (web3) {
       return resolve(web3);
     }
-
     const instance = new Web3(provider);
-    const connected = await instance.eth.net.isListening();
+    let connected;
+    try {
+      connected = await instance.eth.net.isListening();
+    } catch {
+      return resolve();
+    }
     if (connected) {
       return resolve(instance);
     }

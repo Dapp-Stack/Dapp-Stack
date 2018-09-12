@@ -13,4 +13,4 @@ export interface GanacheOpts {
     mnemonic?: string;
     gasLimit?: number;
 }
-export function server(opts: GanacheOpts): Http2Server;
+export function server(opts?: GanacheOpts): Http2Server;
