@@ -28,9 +28,5 @@ export function eject() {
   const signale = new Signale({ scope: 'Web' });
   signale.await('Starting to eject...');
   const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
-  const child = spawn('node', [reactScriptsPath, 'eject']);
-
-  child.stdout.on('data', (data: Buffer) => {
-    signale.info(data.toString('utf-8'));
-  });
+  const child = spawn('node', [reactScriptsPath, 'eject'], { stdio: [process.stdin, process.stdout, process.stderr] });
 }
