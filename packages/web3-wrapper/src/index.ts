@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import web3 = require('web3');
+import Web3 = require('web3');
 import { Provider } from 'web3/providers';
 
 const localhostProviders: string[] = [
