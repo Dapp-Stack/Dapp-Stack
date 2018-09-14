@@ -34,14 +34,13 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/compiler/README.md",
   "devDependencies": {
-    "@types/dockerode": "^2.5.5",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
   "dependencies": {
     "@solon/environment": "0.1.0",
-    "dockerode": "^2.5.6"
+    "solc": "^0.4.25"
   },
   "publishConfig": {
     "access": "public"
