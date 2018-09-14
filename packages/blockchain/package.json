@@ -1,5 +1,5 @@
 {
-  "name": "@solon/geth",
+  "name": "@solon/blockchain",
   "private": true,
   "version": "0.1.0",
   "engines": {

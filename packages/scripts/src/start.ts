@@ -10,7 +10,6 @@ import { deploy } from './shared/deploy';
 import { validateEnvironment } from './shared/environment';
 import * as lifecycle from './shared/lifecycle';
 import * as storage from './shared/storage';
-import { generateWalletAsync } from './shared/wallet';
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
 
@@ -20,7 +19,6 @@ async function startAsync() {
   await validateEnvironment(environment);
   await blockchain.start(environment);
   await storage.startIpfsAsync(environment);
-  await generateWalletAsync(environment);
   compileAll(environment);
   deploy(environment);
   watch(environment);

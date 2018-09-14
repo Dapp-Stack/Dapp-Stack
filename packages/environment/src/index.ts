@@ -1,33 +1,33 @@
 import { Deployer } from '@solon/deployer';
 import * as http from 'http';
 import { merge } from 'lodash';
-export type GethType = 'dev' | 'ropsten' | 'mainnet';
 
 export type Wallet = {
   mnemonic: string;
   numAccount: number;
-  wei?: number;
 };
 
-export type Geth =
-  | false
-  | {
-    type: GethType;
-  };
+export type GethType = 'dev' | 'ropsten' | 'mainnet';
+export type BlockchainProvider = 'ganache' | 'geth' | 'infura';
 
-export type Ganache = boolean;
-
-export type Infura =
-  | false
-  | {
+export interface Blockchain {
+  provider: BlockchainProvider;
+  infura?: {
     url: string;
   };
+  ganache?: {
+    mnemonic: string;
+  }
+  geth?: {
+    type: GethType;
+  }
+}
 
-export type Solc =
-  | false
-  | {
-    version: string;
-  };
+export interface Services {
+  blockchain: false | Blockchain;
+  storage: false | 'ipfs';
+  web: boolean;
+}
 
 export interface Structure {
   contracts: {
@@ -38,26 +38,20 @@ export interface Structure {
   public: string;
 }
 
-export interface Services {
-  geth: Geth;
-  ipfs: boolean;
-  ganache: Ganache;
-  infura: Infura;
-  compile: {
-    solc: Solc;
-  };
+export interface Compile {
+  contracts: string[];
+  solc: 'js' | 'binary'
 }
 
 export interface Deploy {
-  contracts: string[];
+  walelt?: Wallet;
   migrate: (deployer: Deployer) => void;
 }
 
 export interface Environment {
   structure: Structure;
   services: Services;
-  wallet?: Wallet;
-  web: boolean;
+  compile: Compile;
   deploy: Deploy;
 }
 
@@ -71,19 +65,17 @@ const defaultEnvironment: Environment = {
     public: 'public',
   },
   services: {
-    geth: false,
-    ganache: false,
-    infura: false,
-    ipfs: true,
-    compile: {
-      solc: {
-        version: 'latest',
-      },
+    blockchain: {
+      provider: 'ganache'
     },
+    storage: false,
+    web: true,
   },
-  web: true,
+  compile: {
+    solc: 'js',
+    contracts: []
+  },
   deploy: {
-    contracts: [],
     migrate() {},
   },
 };
