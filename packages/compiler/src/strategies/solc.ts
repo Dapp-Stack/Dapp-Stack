@@ -8,8 +8,8 @@ export class Solc implements ICompileStrategy {
   private config: Compile;
   private signale: Signale;
 
-  constructor(constractName: string, config: Compile, signale: Signale) {
-    this.contractName: this.contractName;
+  constructor(contractName: string, config: Compile, signale: Signale) {
+    this.contractName= contractName;
     this.config = config;
     this.signale = signale;
   }
