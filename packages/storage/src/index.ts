@@ -1,109 +1,26 @@
-import { Environment } from '@solon/environment';
-import { rejects } from 'assert';
-import * as Docker from 'dockerode';
-import * as fs from 'fs';
-import * as path from 'path';
+import { Storage } from '@solon/environment';
+import { Signale } from 'signale';
 
-const docker = new Docker();
+import { IStorageStrategy } from './types';
+import { Ipfs } from './strategies/ipfs';
 
-const IMAGE_NAME = 'ipfs/go-ipfs:latest';
+const signale = new Signale({ scope: 'Storage' });
 
-export function start(environment: Environment): Promise<void> {
-  const env = getSolonEnv();
-
-  return new Promise<void>(async (resolve, reject) => {
-    if (!environment.services.ipfs) {
-      return resolve();
-    }
-
-    const logStream = fs.createWriteStream(path.join(process.cwd(), 'logs', env, 'ipfs.log'));
-
-    try {
-      const containerInfo = await findContainerInfo();
-      if (containerInfo) {
-        resolve();
-      }
-      await downloadImage();
-
-      const container = await docker.createContainer({
-        name: containerName(),
-        Image: IMAGE_NAME,
-        HostConfig: {
-          Binds: [
-            `${path.join(process.cwd(), '.solon', 'ipfs', 'staging')}:/export:rw`,
-            `${path.join(process.cwd(), '.solon', 'ipfs', 'data')}:/data/ipfs:rw`,
-          ],
-        },
-      });
-
-      container.attach({ stream: true, sdtin: true, sdterr: true, sdtout: true }, (err, stream) => {
-        if (!err && stream) {
-          stream.pipe(logStream);
-        }
-      });
-
-      await container.start();
-      resolve();
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
-
-export function stop(options = {}): Promise<void> {
-  getSolonEnv();
-  return new Promise<void>(async (resolve, reject) => {
-    try {
-      const containerInfo = await findContainerInfo();
-
-      if (containerInfo) {
-        const container = docker.getContainer(containerInfo.Id);
-        await container.stop();
-        await container.remove();
-      }
-      resolve();
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
-
-function findContainerInfo(): Promise<Docker.ContainerInfo | undefined> {
-  return new Promise<Docker.ContainerInfo | undefined>(async (resolve, reject) => {
-    try {
-      const containers = await docker.listContainers();
-      const containerInfo = containers.find(c => c.Names[0] === `/${containerName()}`);
-      resolve(containerInfo);
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
-
-function containerName(): string {
-  return `ipfs-${getSolonEnv()}`;
-}
-
-function getSolonEnv(): string {
-  if (!process.env.SOLON_ENV) {
-    process.env.SOLON_ENV = 'local';
+const strategy = (storage: Storage): IStorageStrategy => {
+  switch(storage) {
+    case 'ipfs':
+      return new Ipfs(storage, signale);
   }
-
-  return process.env.SOLON_ENV;
 }
 
-function downloadImage(): Promise<boolean> {
-  return new Promise<boolean>(async (resolve, reject) => {
-    docker.pull(IMAGE_NAME, {}, (err, stream) => {
-      if (err) {
-        return reject(err);
-      }
+const available = (storage: Storage): boolean => !!storage;
 
-      docker.modem.followProgress(stream, onFinished);
+export const start = (storage: Storage): Promise<boolean> | undefined => {
+  if(!available) return;
+  return strategy(storage).start();
+}
 
-      function onFinished() {
-        return resolve(true);
-      }
-    });
-  });
+export const stop = (storage: Storage): Promise<boolean> | undefined=> {
+  if(!available) return;
+  return strategy(storage).stop();
 }

@@ -3,8 +3,8 @@ import * as chokidar from 'chokidar';
 import * as path from 'path';
 import { Signale } from 'signale';
 
-import { compile } from './compile';
-import { deploy } from './deploy';
+import * as compiler from '@solon/compiler';
+import * as deployer from '@solon/deployer';
 
 export function watch(environment: Environment): void {
   const signale = new Signale({ scope: 'Watcher' });
@@ -20,6 +20,6 @@ async function complileAndDeployAsync(environment: Environment, path: string): P
   const signale = new Signale({ scope: 'Watcher' });
   signale.await(`File Changed: ${path}`);
   const contractName = path.replace(environment.structure.contracts.src, '');
-  await compile(contractName, environment);
-  deploy(environment);
+  await compiler.run(contractName, environment.compile);
+  deployer.run(environment.deploy);
 }

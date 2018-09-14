@@ -4,25 +4,26 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import * as blockchain from './shared/blockchain';
-import { compileAll } from './shared/compile';
-import { deploy } from './shared/deploy';
-import { validateEnvironment } from './shared/environment';
+import * as blockchain from '@solon/blockchain';
+import * as compiler from '@solon/compiler';
+import * as deployer from '@solon/deployer';
+import * as storage from '@solon/storage';
+
 import * as lifecycle from './shared/lifecycle';
-import * as storage from './shared/storage';
+
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
+
 
 const environment = lifecycle.before();
 
 async function startAsync() {
-  await validateEnvironment(environment);
-  await blockchain.start(environment);
-  await storage.startIpfsAsync(environment);
-  compileAll(environment);
-  deploy(environment);
-  watch(environment);
-  startWeb();
+  await blockchain.start(environment.services.blockchain);
+  await storage.start(environment.services.storage);
+  // await compiler.runAll(environment.compile)
+  // await deployer.run(environment.deploy)
+  // watch(environment);
+  // startWeb();
 }
 
 startAsync();
