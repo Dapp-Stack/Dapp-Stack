@@ -14,7 +14,6 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "packages/*/lib"
   },
   "references": [
     { "path": "./packages/blockchain" },

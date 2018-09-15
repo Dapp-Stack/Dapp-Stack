@@ -3,7 +3,6 @@ import * as GanacheCore from 'ganache-core';
 import { Signale } from 'signale';
 import { IBlockchainStrategy } from '../types';
 
-
 export class Ganache implements IBlockchainStrategy {
   private config: Blockchain;
   private signale: Signale;

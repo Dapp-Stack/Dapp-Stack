@@ -23,10 +23,11 @@ export class Geth implements IBlockchainStrategy {
 	    .use(process.platform === 'win32' ? 'geth.exe' : 'geth')
 
     await bin.run(['--version']);
+    return new Promise<boolean>(resolve => resolve(true));
   } 
  
   stop = () => {
-
+    return new Promise<boolean>(resolve => resolve(true));
   }
 }
 

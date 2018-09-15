@@ -2,7 +2,6 @@ import { Storage } from '@solon/environment';
 import { Signale } from 'signale';
 import { IStorageStrategy } from '../types';
 
-
 export class Ipfs implements IStorageStrategy {
   private config: Storage;
   private signale: Signale;

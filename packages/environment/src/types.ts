@@ -1,5 +1,7 @@
 import { Deployer } from '@solon/deployer';
 
+export type Maybe<T> = false | T;
+
 export type Wallet = {
   mnemonic: string;
   numAccount: number;
@@ -9,7 +11,7 @@ export type GethType = 'dev' | 'ropsten' | 'mainnet';
 
 export type BlockchainProvider = 'ganache' | 'geth' | 'infura';
 
-export type Blockchain = false | {
+export type Blockchain = {
   provider: BlockchainProvider;
   infura?: {
     url: string;
@@ -22,11 +24,11 @@ export type Blockchain = false | {
   }
 }
 
-export type Storage = false | 'ipfs'
+export type Storage = 'ipfs'
 
 export interface Services {
-  blockchain: Blockchain;
-  storage: Storage;
+  blockchain: Maybe<Blockchain>;
+  storage: Maybe<Storage>;
   web: boolean;
 }
 
