@@ -50,7 +50,6 @@ export interface Deploy {
 }
 
 export interface Environment {
-  structure: Structure;
   services: Services;
   compile: Compile;
   deploy: Deploy;

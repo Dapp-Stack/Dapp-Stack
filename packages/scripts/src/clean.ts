@@ -7,6 +7,7 @@ process.on('unhandledRejection', err => {
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { Signale } from 'signale';
+import { Structure } from '@solon/environment';
 
 import * as lifecycle from './shared/lifecycle';
 
@@ -14,7 +15,7 @@ const environment = lifecycle.before();
 
 const solonDir = path.join(process.cwd(), '.solon');
 const webDir = path.join(process.cwd(), '.build');
-const contractDir = path.join(process.cwd(), environment.structure.contracts.build);
+const contractDir = path.join(process.cwd(), Structure.contracts.build);
 
 const signale = new Signale({ scope: 'Cleaner' });
 signale.await('cleaner started');
@@ -31,5 +32,5 @@ if (fs.existsSync(webDir)) {
 
 if (fs.existsSync(contractDir)) {
   fs.removeSync(contractDir);
-  signale.success(`${environment.structure.contracts.build} directory removed`);
+  signale.success(`${Structure.contracts.build} directory removed`);
 }

@@ -34,12 +34,16 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/compiler/README.md",
   "devDependencies": {
+    "@types/lodash": "4.14.116",
+    "@types/signale": "^1.2.0",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
   "dependencies": {
     "@solon/environment": "0.1.0",
+    "lodash": "^4.17.10",
+    "signale": "^1.2.1",
     "solc": "^0.4.25"
   },
   "publishConfig": {

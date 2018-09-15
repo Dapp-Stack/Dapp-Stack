@@ -1,4 +1,4 @@
-import { Environment } from '@solon/environment';
+import { Environment, Structure } from '@solon/environment';
 import { connect } from '@solon/web3-wrapper';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -34,7 +34,7 @@ export class Deployer {
     const gasPrice = this.gasPrice;
 
     const source = fs.readFileSync(
-      path.join(process.cwd(), this.environment.structure.contracts.build, contractName, 'combined.json'),
+      path.join(process.cwd(), Structure.contracts.build, contractName, 'combined.json'),
     );
 
     const contracts = JSON.parse(source.toString('utf8'))['contracts'];

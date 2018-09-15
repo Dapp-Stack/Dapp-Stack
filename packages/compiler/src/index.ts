@@ -6,16 +6,7 @@ import { Solc } from './strategies/solc';
 
 const signale = new Signale({ scope: 'Compiler' });
 
-const strategy = (contractName: string, compile: Compile): ICompileStrategy => {  
-  if (contractName.endsWith('.sol')) {
-    return new Solc(contractName, compile, signale);
-  }
-}
-
-export const runAll = (compile: Compile): Promise<boolean>[] => {
-  return compile.contracts.map(async (contractName: string) => run(contractName, compile));
-}
-
-export const run = (contractName: string, compile: Compile): Promise<boolean> => {
-  return strategy(contractName, compile).compile();
+export const run = (compile: Compile): Promise<boolean> => {
+  const solcContracts = compile.contracts.filter(contractName => contractName.endsWith('.sol'));
+  return new Solc(solcContracts, compile, signale);
 }
