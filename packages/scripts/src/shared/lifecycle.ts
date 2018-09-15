@@ -1,5 +1,4 @@
-import { Environment, build, validate } from '@solon/environment';
-import * as path from 'path';
+import { Environment, build } from '@solon/environment';
 
 import * as blockchain from '@solon/blockchain';
 import * as storage from '@solon/storage';

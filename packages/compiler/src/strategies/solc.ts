@@ -3,12 +3,26 @@ import { Signale } from 'signale';
 import { ICompileStrategy } from '../types';
 import * as fs from 'fs';
 import * as path from 'path';
-import { forIn } from 'lodash';
+import { forEach } from 'lodash';
 import solc from 'solc';
 
 type Input = {
   [contractName: string]: {
     content: string;
+  }
+}
+
+type CompilationOutput = {
+  errors?: [
+    {
+      severity: string;
+    }
+  ],
+  contracts: {
+    [contractName: string]: {
+      bytecode: string;
+      interface: string;
+    }
   }
 }
 
@@ -37,22 +51,22 @@ export class Solc implements ICompileStrategy {
 
   input = (): Input => {
     return this.contracts.reduce((acc: Input, contractName) => (
-      acc[contractName] = { content: fs.readFileSync(path.join(Structure.contract.src, contractName), 'utf-8') }
+      acc[contractName] = { content: fs.readFileSync(path.join(Structure.contracts.src, contractName), 'utf-8') }
     ) , {})
   }
 
   compile = () => {
     this.signale.await(`Starting to compile the contracts`);
     return new Promise<boolean>((resolve, reject) => {
-      const output = solc.compileStandardWrapper({ sources: this.input(), settings: INPUT_SETTINGS });
+      const output: CompilationOutput = solc.compileStandardWrapper({ sources: this.input(), settings: INPUT_SETTINGS });
       if (output.errors && output.errors.find(error => error.severity === 'error')) {
         this.signale.error(`Compilation failed`);
         reject(output.errors);
       }
 
-      forIn(output.contract, (contractName, compilationResult) => {
-        fs.writeFileSync(path.join(Structure.contract.src, contractName, 'bytecode'), compilationResult.bytecode, 'utf-8');
-        fs.writeFileSync(path.join(Structure.contract.src, contractName, 'inteface'), compilationResult.interface, 'utf-8');
+      forEach(output.contracts, (compilationResult, contractName) => {
+        fs.writeFileSync(path.join(Structure.contracts.src, contractName, 'bytecode'), compilationResult.bytecode, 'utf-8');
+        fs.writeFileSync(path.join(Structure.contracts.src, contractName, 'inteface'), compilationResult.interface, 'utf-8');
       });
       this.signale.success(`Contracts compiled`);
       resolve(true)

@@ -1,7 +1,7 @@
 import { Blockchain } from '@solon/environment';
 import { IBlockchainStrategy } from '../types';
 import { Signale } from 'signale';
-import BinWrapper from 'bin-wrapper';
+import { BinWrapper } from 'bin-wrapper';
 import * as path from 'path';
 
 export class Geth implements IBlockchainStrategy {

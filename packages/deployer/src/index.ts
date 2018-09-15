@@ -2,7 +2,7 @@ import { Environment, Structure } from '@solon/environment';
 import { connect } from '@solon/web3-wrapper';
 import * as fs from 'fs';
 import * as path from 'path';
-import web3 = require('web3');
+import Web3 = require('web3');
 
 export class Deployer {
 
@@ -14,7 +14,7 @@ export class Deployer {
 
   constructor(environment: Environment) {
     this.environment = environment;
-    this.contracts = environment.deploy.contracts;
+    this.contracts = environment.compile.contracts;
   }
 
   async runAsync() {
@@ -54,20 +54,3 @@ export class Deployer {
     });
   }
 }
-
-// import { Deployer } from '@solon/deployer';
-// import { Environment } from '@solon/environment';
-// import { Signale } from 'signale';
-
-// export function deploy(environment: Environment): void {
-//   const signale = new Signale({ scope: 'Deployer' });
-
-//   signale.await('Starting to deploy...');
-//   try {
-//     const deployer = new Deployer(environment);
-//     deployer.runAsync();
-//     signale.success('Deployment finished with success');
-//   } catch (error) {
-//     signale.error(`Error while deploying: ${error.message}`);
-//   }
-// }
