@@ -3,14 +3,33 @@
     "module": "commonjs",
     "target": "es5",
     "lib": ["es2017", "dom"],
-    "sourceMap": true,
-    "declaration": true,
     "experimentalDecorators": true,
     "downlevelIteration": true,
     "noImplicitReturns": true,
     "pretty": true,
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types"],
-    "strict": true
-  }
+    "strict": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "references": [
+    { "path": "./packages/blockchain" },
+    { "path": "./packages/compiler" },
+    { "path": "./packages/deployer" },
+    { "path": "./packages/doc" },
+    { "path": "./packages/environment" },
+    { "path": "./packages/monorepo" },
+    { "path": "./packages/react-web3" },
+    { "path": "./packages/redux-web3" },
+    { "path": "./packages/scripts" },
+    { "path": "./packages/security" },
+    { "path": "./packages/storage" },
+    { "path": "./packages/test" },
+    { "path": "./packages/tslint-config" },
+    { "path": "./packages/wallet" },
+    { "path": "./packages/web3-wrapper" }
+  ]
 }
