@@ -7,7 +7,7 @@
   },
   "description": "Solon public website",
   "scripts": {
-    "watch": "echo 'Finished'",
+    "watch": "echo 'ok'",
     "dev": "webpack-dev-server --progress --hide-modules --mode development",
     "build": "webpack --progress --hide-modules --mode production",
     "clean": "rm -rf build",

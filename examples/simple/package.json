@@ -26,6 +26,7 @@
     "clean": "solon-scripts clean",
     "lint": "solium --dir contracts/src",
     "eject": "solon-script eject",
-    "test": "solon-scripts test --env=jsdom"
+    "test": "solon-scripts test --env=jsdom",
+    "watch": "echo 'ok'"
   }
 }

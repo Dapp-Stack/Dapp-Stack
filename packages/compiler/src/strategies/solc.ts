@@ -3,7 +3,7 @@ import { Signale } from 'signale';
 import { ICompileStrategy } from '../types';
 import * as fs from 'fs';
 import * as path from 'path';
-import { forIn } 'lodash';
+import { forIn } from 'lodash';
 import solc from 'solc';
 
 type Input = {
