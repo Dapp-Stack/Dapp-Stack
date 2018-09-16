@@ -17,7 +17,7 @@ export class Deployer {
     this.contracts = environment.compile.contracts;
   }
 
-  async runAsync() {
+  async run() {
     try {
       this.web3 = await connect();
       this.accounts = await this.web3.eth.getAccounts();
@@ -33,16 +33,12 @@ export class Deployer {
     const args = { data: '', arguments: options.args || [] };
     const gasPrice = this.gasPrice;
 
-    const source = fs.readFileSync(
-      path.join(process.cwd(), Structure.contracts.build, contractName, 'combined.json'),
-    );
+    const source = JSON.parse(fs.readFileSync(
+      path.join(Structure.contracts.build, contractName, 'SimpleStorage.json'),
+    ).toString());
 
-    const contracts = JSON.parse(source.toString('utf8'))['contracts'];
-    const keys = Object.keys(contracts);
-    const contractInfo = contracts[keys[0]];
-
-    const abi = JSON.parse(contractInfo.abi);
-    const data = `0x${contractInfo.bin}`;
+    const abi = source.abi;
+    const data = `0x${source.evm.bytecode.object}`;
 
     const contractClass = new this.web3.eth.Contract(abi, undefined, { data });
     const gas = await contractClass.deploy(args).estimateGas();
