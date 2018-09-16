@@ -3,6 +3,8 @@
     "module": "commonjs",
     "target": "es5",
     "lib": ["es2017", "dom"],
+    "sourceMap": true,
+    "declaration": true,
     "experimentalDecorators": true,
     "downlevelIteration": true,
     "noImplicitReturns": true,
@@ -11,9 +13,7 @@
     "typeRoots": ["node_modules/@types"],
     "strict": true,
     "composite": true,
-    "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
   },
   "references": [
     { "path": "./packages/blockchain" },

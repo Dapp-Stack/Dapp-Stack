@@ -5,6 +5,8 @@
     "node": ">=8.11"
   },
   "description": "Solon security check for contracts",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",

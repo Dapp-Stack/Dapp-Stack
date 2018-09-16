@@ -5,6 +5,8 @@
     "node": ">=8.11"
   },
   "description": "Solon react components to work with web3 and redux",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",
