@@ -1,16 +1,10 @@
 import { Compile, Structure } from '@solon/environment';
 import { Signale } from 'signale';
 import { ICompileStrategy } from '../types';
-import * as fs from 'fs';
+import * as fs from 'fs-extra';
 import * as path from 'path';
 import { forEach } from 'lodash';
-import solc from 'solc';
-
-type Input = {
-  [contractName: string]: {
-    content: string;
-  }
-}
+import * as solc from 'solc';
 
 type CompilationOutput = {
   errors?: [
@@ -20,23 +14,15 @@ type CompilationOutput = {
   ],
   contracts: {
     [contractName: string]: {
-      bytecode: string;
-      interface: string;
+      [contract: string]: {
+        evm: {
+          bytecode: string;
+        }
+        abi: string;
+      }
     }
   }
 }
-
-const INPUT_SETTINGS = {
-  outputSelection: {
-    optimizer: {
-      enabled: true,
-      runs: 200
-    },
-    "*": {
-      "*": ['abi', 'ast', 'devdoc', 'userdoc', 'metadata', 'evm.gasEstimates', 'evm.assembly', 'evm.bytecode.object', 'evm.bytecode.sourceMap']
-    }
-  }
-};
 
 export class Solc implements ICompileStrategy {
   private contracts: string[];
@@ -49,24 +35,44 @@ export class Solc implements ICompileStrategy {
     this.signale = signale;
   }
 
-  input = (): Input => {
-    return this.contracts.reduce((acc: Input, contractName) => (
-      acc[contractName] = { content: fs.readFileSync(path.join(Structure.contracts.src, contractName), 'utf-8') }
-    ) , {})
+  input = (): string => {
+    const sources = this.contracts.reduce((acc: {[contractName: string]: {content: string}}, contractName) => {
+      acc[contractName] = { content: fs.readFileSync(path.join(Structure.contracts.src, contractName), 'utf-8').toString() }
+      return acc;
+     } , {})
+
+     return JSON.stringify({
+       language: "Solidity",
+       sources: sources,
+       settings: {
+        outputSelection: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          },
+          "*": {
+            "*": ['abi', 'ast', 'devdoc', 'userdoc', 'metadata', 'evm.gasEstimates', 'evm.assembly', 'evm.bytecode.object', 'evm.bytecode.sourceMap']
+          }
+        }
+      }
+     });
   }
 
   compile = () => {
     this.signale.await(`Starting to compile the contracts`);
     return new Promise<boolean>((resolve, reject) => {
-      const output: CompilationOutput = solc.compileStandardWrapper({ sources: this.input(), settings: INPUT_SETTINGS });
-      if (output.errors && output.errors.find(error => error.severity === 'error')) {
+      const output: CompilationOutput = JSON.parse(solc.compileStandardWrapper(this.input()));
+
+      if (output.errors) {
         this.signale.error(`Compilation failed`);
-        reject(output.errors);
+        return reject(`Compilation failed`);
       }
 
-      forEach(output.contracts, (compilationResult, contractName) => {
-        fs.writeFileSync(path.join(Structure.contracts.src, contractName, 'bytecode'), compilationResult.bytecode, 'utf-8');
-        fs.writeFileSync(path.join(Structure.contracts.src, contractName, 'inteface'), compilationResult.interface, 'utf-8');
+      forEach(output.contracts, (compilationResult, contractFile) => {
+        fs.ensureDirSync(path.join(Structure.contracts.build, contractFile));
+        forEach(compilationResult, (result, contract) => {
+          fs.writeFileSync(path.join(Structure.contracts.build, contractFile, `${contract}.json`), JSON.stringify(result), 'utf-8');  
+        });
       });
       this.signale.success(`Contracts compiled`);
       resolve(true)
