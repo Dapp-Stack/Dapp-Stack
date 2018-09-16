@@ -12,7 +12,7 @@ import { Deployer } from '@solon/deployer';
 import * as lifecycle from './shared/lifecycle';
 
 import { watch } from './shared/watch';
-// import { startWeb } from './shared/web';
+import { startWeb } from './shared/web';
 
 
 const environment = lifecycle.before();
@@ -23,7 +23,7 @@ async function startAsync() {
   await compiler.run(environment.compile);
   await new Deployer(environment).run();
   watch(environment);
-  // startWeb();
+  startWeb();
 }
 
 startAsync();
