@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@solon/environment": "0.1.0",
-    "bin-wrapper": "^4.0.0"
+    "go-ipfs": "^0.4.17"
   },
   "publishConfig": {
     "access": "public"
