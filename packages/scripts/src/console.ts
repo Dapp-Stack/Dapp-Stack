@@ -10,7 +10,7 @@ import * as lifecycle from './shared/lifecycle';
 const environment = lifecycle.before();
 
 async function consoleAsync() {
-  await blockchain.console(environment);
+  await blockchain.console(environment.services.blockchain);
 }
 
 consoleAsync();
