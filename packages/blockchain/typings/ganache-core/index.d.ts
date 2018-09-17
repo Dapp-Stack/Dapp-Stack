@@ -2,7 +2,7 @@ import { Http2Server } from 'http2';
 
 declare module 'ganache-core';
 
-export interface GanacheOpts {
+export type GanacheOpts = {
   verbose?: boolean;
   logger?: {
     log(message: string): void;
@@ -13,4 +13,5 @@ export interface GanacheOpts {
   mnemonic?: string;
   gasLimit?: number;
 }
+
 export function server(opts?: GanacheOpts): Http2Server;
