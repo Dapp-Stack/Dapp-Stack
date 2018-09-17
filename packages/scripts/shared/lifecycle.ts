@@ -7,7 +7,10 @@ export function before(): Environment {
   return build();
 }
 
-export async function stopAsync(environment: Environment, { shouldExit }: { shouldExit: boolean } = { shouldExit: false }) {
+export async function stopAsync(
+  environment: Environment,
+  { shouldExit }: { shouldExit: boolean } = { shouldExit: false },
+) {
   await blockchain.stop(environment.services.blockchain);
   await storage.stop(environment.services.storage);
 

@@ -16,14 +16,14 @@ export const Structure = {
 const defaultEnvironment: Environment = {
   services: {
     blockchain: {
-      provider: 'ganache'
+      provider: 'ganache',
     },
     storage: false,
     web: true,
   },
   compile: {
     solc: 'js',
-    contracts: []
+    contracts: [],
   },
   deploy: {
     migrate() {},
@@ -33,7 +33,7 @@ const defaultEnvironment: Environment = {
 export function build(): Environment {
   const solonEnv = process.env.SOLON_ENV || 'local';
   const environmentFile = require(path.resolve(process.cwd(), 'environments', solonEnv)) || {};
-  const environment =  merge({}, defaultEnvironment, environmentFile);
+  const environment = merge({}, defaultEnvironment, environmentFile);
 
   return environment;
 }

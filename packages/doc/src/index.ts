@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const parser = require('solidity-parser-antlr');
 const sha1File = require('sha1-file');
 
-const generateDoc = async function (contractName) {
+const generateDoc = async function(contractName) {
   const outfile = `${__dirname}/../doc/${contractName}`.replace('.sol', '.md');
   const file = `${__dirname}/../src/${contractName}`;
   console.log(`[Contracts] Starting to generate documentation of ${contractName}`);

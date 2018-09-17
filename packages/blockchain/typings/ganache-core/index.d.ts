@@ -12,6 +12,6 @@ export type GanacheOpts = {
   networkId?: number;
   mnemonic?: string;
   gasLimit?: number;
-}
+};
 
 export function server(opts?: GanacheOpts): Http2Server;

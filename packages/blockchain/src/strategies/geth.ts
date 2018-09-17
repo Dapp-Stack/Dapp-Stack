@@ -16,23 +16,20 @@ export class Geth implements IBlockchainStrategy {
   start = async () => {
     const base = 'https://gethstore.blob.core.windows.net/builds';
     const bin = new BinWrapper()
-	    .src(`${base}/geth-darwin-amd64-1.8.15-89451f7c.tar.gz`, 'darwin')
-	    .src(`${base}/geth-linux-amd64-1.8.15-89451f7c.tar.gz`, 'linux', 'x64')
-	    .src(`${base}/geth-windows-amd64-1.8.15-89451f7c.exe`, 'win32', 'x64')
-	    .dest(path.join('vendor'))
-	    .use(process.platform === 'win32' ? 'geth.exe' : 'geth')
+      .src(`${base}/geth-darwin-amd64-1.8.15-89451f7c.tar.gz`, 'darwin')
+      .src(`${base}/geth-linux-amd64-1.8.15-89451f7c.tar.gz`, 'linux', 'x64')
+      .src(`${base}/geth-windows-amd64-1.8.15-89451f7c.exe`, 'win32', 'x64')
+      .dest(path.join('vendor'))
+      .use(process.platform === 'win32' ? 'geth.exe' : 'geth');
 
     await bin.run(['--version']);
     return new Promise<boolean>(resolve => resolve(true));
-  } 
- 
+  };
+
   stop = () => {
     return new Promise<boolean>(resolve => resolve(true));
-  }
+  };
 }
-
-
-
 
 // export function start(environment: Environment): Promise<void> {
 //   const env = getSolonEnv();

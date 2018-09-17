@@ -24,28 +24,28 @@ export class Ipfs implements IStorageStrategy {
 
   private init = () => {
     spawn.sync(this.binaryPath, ['init']);
-  }
+  };
 
   private daemon = () => {
     this.childProcess = spawn(this.binaryPath, ['daemon'], { stdio: 'pipe' });
     this.childProcess.stdout.pipe(this.logStream);
     this.childProcess.stderr.pipe(this.logStream);
-  }
+  };
 
   start = () => {
-    this.signale.await('Starting ipfs...')
+    this.signale.await('Starting ipfs...');
     return new Promise<boolean>(resolve => {
       this.init();
       this.daemon();
-      this.signale.success('Ipfs is running')
+      this.signale.success('Ipfs is running');
       resolve(true);
     });
-  }
+  };
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       this.childProcess && this.childProcess.kill();
       resolve(true);
     });
-  }
+  };
 }

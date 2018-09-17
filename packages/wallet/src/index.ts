@@ -11,7 +11,7 @@ export const generateWallet = (deploy: Deploy): Promise<Web3> => {
       if (!deploy.wallet) {
         return resolve(web3);
       }
-    
+
       const entropy = bip39.mnemonicToEntropy(deploy.wallet.mnemonic);
       web3.eth.accounts.wallet.create(deploy.wallet.numAccount, entropy);
       resolve(web3);

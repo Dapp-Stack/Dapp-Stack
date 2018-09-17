@@ -15,11 +15,11 @@ export class Infura implements IBlockchainStrategy {
     return new Promise<boolean>(resolve => {
       resolve(true);
     });
-  }
+  };
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       resolve(true);
     });
-  }
+  };
 }

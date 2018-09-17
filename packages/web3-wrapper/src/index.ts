@@ -33,13 +33,13 @@ const reducer = (web3Promised: Promise<Web3 | undefined>, provider: string | Pro
     if (web3) {
       return resolve(web3);
     }
-    let connected
+    let connected;
     const instance = new Web3(provider);
     try {
       if (instance.currentProvider instanceof Web3.providers.HttpProvider) {
         connected = await instance.eth.net.isListening();
       } else if (instance.currentProvider instanceof Web3.providers.WebsocketProvider) {
-        connected = (<any>instance.currentProvider).connected
+        connected = (<any>instance.currentProvider).connected;
       }
     } catch {
       return resolve();

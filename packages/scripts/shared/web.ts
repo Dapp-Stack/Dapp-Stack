@@ -9,7 +9,11 @@ export function startWeb() {
   const child = spawn('node', [reactScriptsPath, 'start'], { stdio: 'pipe' });
 
   child.stdout.on('data', (data: Buffer) => {
-    data.toString('utf-8').trim().split("\n").forEach(line => signale.info(line))
+    data
+      .toString('utf-8')
+      .trim()
+      .split('\n')
+      .forEach(line => signale.info(line));
   });
 }
 
@@ -20,7 +24,11 @@ export function buildWeb() {
   const child = spawn('node', [reactScriptsPath, 'build'], { stdio: 'pipe' });
 
   child.stdout.on('data', (data: Buffer) => {
-    data.toString('utf-8').trim().split("\n").forEach(line => signale.info(line))
+    data
+      .toString('utf-8')
+      .trim()
+      .split('\n')
+      .forEach(line => signale.info(line));
   });
 }
 

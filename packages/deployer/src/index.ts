@@ -21,11 +21,11 @@ export class Deployer {
 
     glob(`${Structure.contracts.build}/**/*.json`, {}, (_, files: string[]) => {
       this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
-        acc[path.basename(file, '.json')] = file
-        return acc
-      }, {})
+        acc[path.basename(file, '.json')] = file;
+        return acc;
+      }, {});
       this.contracts = Object.keys(this.contractFiles);
-    })
+    });
   }
 
   async run() {
@@ -51,7 +51,7 @@ export class Deployer {
     const gasPrice = this.gasPrice;
     const contractFile = this.contractFiles[contract];
 
-    if(!contractFile) {
+    if (!contractFile) {
       return;
     }
 

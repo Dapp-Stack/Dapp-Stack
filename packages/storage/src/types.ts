@@ -1,4 +1,4 @@
 export interface IStorageStrategy {
-  start(): Promise<boolean>
-  stop(): Promise<boolean>
+  start(): Promise<boolean>;
+  stop(): Promise<boolean>;
 }

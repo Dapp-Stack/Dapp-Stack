@@ -9,9 +9,7 @@ import { Deployer } from '@solon/deployer';
 export function watch(environment: Environment): void {
   const signale = new Signale({ scope: 'Watcher' });
   signale.success('Watcher started.');
-  const contracts = environment.compile.contracts.map(contract =>
-    path.join(Structure.contracts.src, contract),
-  );
+  const contracts = environment.compile.contracts.map(contract => path.join(Structure.contracts.src, contract));
   const watcher = chokidar.watch(contracts, { persistent: true });
   watcher.on('change', complileAndDeployAsync.bind(null, environment));
 }

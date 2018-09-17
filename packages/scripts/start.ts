@@ -14,7 +14,6 @@ import * as lifecycle from './shared/lifecycle';
 import { watch } from './shared/watch';
 import { startWeb } from './shared/web';
 
-
 const environment = lifecycle.before();
 
 async function startAsync() {

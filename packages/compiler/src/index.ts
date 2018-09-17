@@ -8,4 +8,4 @@ const signale = new Signale({ scope: 'Compiler' });
 export const run = (compile: Compile): Promise<boolean> => {
   const solcContracts = compile.contracts.filter(contractName => contractName.endsWith('.sol'));
   return new Solc(solcContracts, compile, signale).compile();
-}
+};

@@ -18,13 +18,13 @@ export type Blockchain = {
   };
   ganache?: {
     mnemonic: string;
-  }
+  };
   geth?: {
     type: GethType;
-  }
-}
+  };
+};
 
-export type Storage = 'ipfs'
+export type Storage = 'ipfs';
 
 export interface Services {
   blockchain: Maybe<Blockchain>;
@@ -43,7 +43,7 @@ export interface Structure {
 
 export interface Compile {
   contracts: string[];
-  solc: 'js' | 'binary'
+  solc: 'js' | 'binary';
 }
 
 export interface Deploy {
