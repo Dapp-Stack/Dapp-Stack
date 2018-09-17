@@ -5,7 +5,7 @@ declare module 'ganache-core';
 export interface GanacheOpts {
   verbose?: boolean;
   logger?: {
-    log(msg: string): void;
+    log(message: string): void;
   };
   port?: number;
   network_id?: number;

@@ -3,6 +3,8 @@ import * as GanacheCore from 'ganache-core';
 import { Signale } from 'signale';
 import { IBlockchainStrategy } from '../types';
 
+import { GanacheFileLogger } from '../utils/ganacheFileLogger'
+
 export class Ganache implements IBlockchainStrategy {
   private config: Blockchain;
   private signale: Signale;
@@ -13,7 +15,11 @@ export class Ganache implements IBlockchainStrategy {
   }
 
   start = () => {
-    const options = { mnemonic: this.config.ganache && this.config.ganache.mnemonic };
+    const options = { 
+      mnemonic: this.config.ganache && this.config.ganache.mnemonic,
+      logger: new GanacheFileLogger()
+    };
+    
     const server = GanacheCore.server(options);
     this.signale.await('Starting ganache...')
     return new Promise<boolean>((resolve, reject) => {
