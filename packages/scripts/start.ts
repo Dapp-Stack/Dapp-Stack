@@ -21,9 +21,9 @@ async function startAsync() {
   await blockchain.start(environment.services.blockchain);
   await storage.start(environment.services.storage);
   await compiler.run(environment.compile);
-  await new Deployer(environment).run();
+  await new Deployer(environment.deploy).run();
   watch(environment);
-  startWeb();
+  // startWeb();
 }
 
 startAsync();
