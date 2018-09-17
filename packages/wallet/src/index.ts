@@ -1,20 +1,21 @@
-import { Environment } from '@solon/environment';
+import { Deploy } from '@solon/environment';
 import { connect } from '@solon/web3-wrapper';
 import * as bip39 from 'bip39';
 import { Account } from 'web3/eth/accounts';
+import Web3 = require('web3');
 
-export const generateWallet = (environment: Environment): Promise<Account[]> => {
-  return new Promise<Account[]>(async (resolve, reject) => {
-    if (!environment.wallet) {
-      return resolve();
-    }
+export const generateWallet = (deploy: Deploy): Promise<Web3> => {
+  return new Promise<Web3>(async (resolve, reject) => {
     try {
-      const entropy = bip39.mnemonicToEntropy(environment.wallet.mnemonic);
       const web3 = await connect();
-      const wallet = web3.eth.accounts.wallet.create(environment.wallet.numAccount, entropy);
-      resolve(wallet);
+      if (!deploy.wallet) {
+        return resolve(web3);
+      }
+    
+      const entropy = bip39.mnemonicToEntropy(deploy.wallet.mnemonic);
+      web3.eth.accounts.wallet.create(deploy.wallet.numAccount, entropy);
+      resolve(web3);
     } catch (error) {
-      console.log(error);
       reject(error);
     }
   });

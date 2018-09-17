@@ -1,5 +1,5 @@
 import { Deploy, Structure } from '@solon/environment';
-import { connect } from '@solon/web3-wrapper';
+import { generateWallet } from '@solon/wallet';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Signale } from 'signale';
@@ -31,7 +31,7 @@ export class Deployer {
   async run() {
     try {
       this.signale.await('Starting to deploy contracts by running migrage...');
-      this.web3 = await connect();
+      this.web3 = await generateWallet(this.config);
       this.accounts = await this.web3.eth.getAccounts();
       this.gasPrice = await this.web3.eth.getGasPrice();
       await this.config.migrate(this);

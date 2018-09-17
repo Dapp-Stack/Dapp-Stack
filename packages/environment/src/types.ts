@@ -47,7 +47,7 @@ export interface Compile {
 }
 
 export interface Deploy {
-  walelt?: Wallet;
+  wallet?: Wallet;
   migrate: (deployer: Deployer) => void;
 }
 

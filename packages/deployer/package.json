@@ -42,7 +42,7 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/web3-wrapper": "0.1.0",
+    "@solon/wallet": "0.1.0",
     "glob": "^7.1.3",
     "signale": "^1.2.1",
     "web3": "^1.0.0-beta.35"
