@@ -5,6 +5,7 @@ import { Signale } from 'signale';
 
 import * as compiler from '@solon/compiler';
 import { Deployer } from '@solon/deployer';
+import { generateDoc } from '@solon/doc';
 
 export function watch(environment: Environment): void {
   const signale = new Signale({ scope: 'Watcher' });
@@ -17,6 +18,7 @@ export function watch(environment: Environment): void {
 async function complileAndDeployAsync(environment: Environment, path: string) {
   const signale = new Signale({ scope: 'Watcher' });
   signale.await(`File Changed: ${path}`);
+  generateDoc(path);
   await compiler.run(environment.compile);
-  new Deployer(environment).run();
+  new Deployer(environment.deploy).run();
 }

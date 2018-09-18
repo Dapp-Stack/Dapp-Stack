@@ -48,6 +48,7 @@
     "@solon/environment": "0.1.0",
     "@solon/blockchain": "0.1.0",
     "@solon/storage": "0.1.0",
+    "@solon/doc": "0.1.0",
     "chokidar": "^2.0.4",
     "cross-spawn": "^6.0.5",
     "fs-extra": "^7.0.0",

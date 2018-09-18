@@ -2,3 +2,4 @@ node_modules
 logs
 .solon
 contracts/build
+contracts/doc

@@ -1,12 +1,23 @@
-const fs = require('fs-extra');
-const parser = require('solidity-parser-antlr');
-const sha1File = require('sha1-file');
+import { Structure, Compile } from '@solon/environment';
+import * as fs from 'fs-extra';
+import * as path from 'path';
+import * as parser from 'solidity-parser-antlr';
+import * as sha1File from 'sha1-file';
+import { Signale } from 'signale';
 
-const generateDoc = async function(contractName) {
-  const outfile = `${__dirname}/../doc/${contractName}`.replace('.sol', '.md');
-  const file = `${__dirname}/../src/${contractName}`;
-  console.log(`[Contracts] Starting to generate documentation of ${contractName}`);
-  await fs.ensureFile(outfile);
+const signale = new Signale({ scope: 'Doc' });
+
+export const generateDocs = (compile: Compile) => {
+  const contracts = compile.contracts.map(contract => path.join(Structure.contracts.src, contract));
+
+  contracts.forEach(contractFile => generateDoc(contractFile));
+}
+
+export const generateDoc = async (contractFile: string) => {
+  const outFile = path.join(Structure.contracts.doc, `${path.basename(contractFile, '.sol')}.md`)
+  console.log(outFile);
+  await fs.ensureFile(outFile);
+
   let filesTable = `
 |  File Name  |  SHA-1 Hash  |
 |-------------|--------------|
@@ -18,11 +29,11 @@ const generateDoc = async function(contractName) {
 |     └      |  **Function Name**  |  **Visibility**  |  **Mutability**  |  **Modifiers**  |
 `;
 
-  filesTable += `| ${file} | ${sha1File(file)} |
+  filesTable += `| ${contractFile} | ${sha1File(contractFile)} |
 `;
 
-  const content = fs.readFileSync(file).toString('utf-8');
-  const ast = parser.parse(content);
+  const content = fs.readFileSync(contractFile).toString('utf-8');
+  const ast = parser.parse(content, {});
 
   parser.visit(ast, {
     ContractDefinition(node) {
@@ -92,7 +103,7 @@ const generateDoc = async function(contractName) {
     },
   });
 
-  const reportContents = `## Sūrya's Description Report
+  const reportContents = `## Solon's Description Report
 ### Files Description Table
 ${filesTable}
 ### Contracts Description Table
@@ -105,13 +116,8 @@ ${contractsTable}
 `;
 
   try {
-    fs.writeFileSync(outfile, reportContents, { flag: 'w' });
-    console.log(`[Contracts] Finished to generate documentation of ${contractName}`);
-  } catch {
-    console.log(`[Contracts] Error while generating documentation of ${contractName}`);
+    fs.writeFileSync(outFile, reportContents, { flag: 'w' });
+  } catch(error) {
+    signale.error(error);
   }
-};
-
-module.exports = {
-  generateDoc,
 };
