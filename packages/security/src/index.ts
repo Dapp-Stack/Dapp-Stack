@@ -9,14 +9,14 @@ const IMAGE_NAME = 'mythril/myth';
 
 const run = async (compile: Compile) => {
   await downloadImage();
-  compile.contracts.forEach((contract) => runCheck(contract));
-}
+  compile.contracts.forEach(contract => runCheck(contract));
+};
 
 const runCheck = async function(contractName: string) {
   const securityFile = path.join(Structure.contracts.security, contractName.replace('.sol', '.md'));
   await fs.ensureFile(securityFile);
   let stream = fs.createWriteStream(securityFile);
-  const command = [ '-o', 'markdown', '-x', `/solidity/src/${contractName}`];
+  const command = ['-o', 'markdown', '-x', `/solidity/src/${contractName}`];
   const options = { Binds: [`${Structure.contracts.src}:/solidity/src`] };
   return docker.run('mythril/myth', command, stream, options).then(function(container) {
     return container.remove();
@@ -35,4 +35,4 @@ const downloadImage = (): Promise<boolean> => {
       }
     });
   });
-}
+};

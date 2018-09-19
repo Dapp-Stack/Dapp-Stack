@@ -20,7 +20,7 @@ const environment = lifecycle.before();
 async function startAsync() {
   await blockchain.start(environment.services.blockchain);
   await storage.start(environment.services.storage);
-  generateDocs(environment.compile)
+  generateDocs(environment.compile);
   await compiler.run(environment.compile);
   await new Deployer(environment.deploy).run();
   watch(environment);

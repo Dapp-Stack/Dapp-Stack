@@ -11,10 +11,10 @@ export const generateDocs = (compile: Compile) => {
   const contracts = compile.contracts.map(contract => path.join(Structure.contracts.src, contract));
 
   contracts.forEach(contractFile => generateDoc(contractFile));
-}
+};
 
 export const generateDoc = async (contractFile: string) => {
-  const outFile = path.join(Structure.contracts.doc, `${path.basename(contractFile, '.sol')}.md`)
+  const outFile = path.join(Structure.contracts.doc, `${path.basename(contractFile, '.sol')}.md`);
   console.log(outFile);
   await fs.ensureFile(outFile);
 
@@ -117,7 +117,7 @@ ${contractsTable}
 
   try {
     fs.writeFileSync(outFile, reportContents, { flag: 'w' });
-  } catch(error) {
+  } catch (error) {
     signale.error(error);
   }
 };
