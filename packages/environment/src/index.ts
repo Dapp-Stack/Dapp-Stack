@@ -7,6 +7,7 @@ export const Structure = {
     src: path.join(process.cwd(), 'contracts', 'src'),
     build: path.join(process.cwd(), 'contracts', 'build'),
     doc: path.join(process.cwd(), 'contracts', 'doc'),
+    security: path.join(process.cwd(), 'contracts', 'security'),
     test: path.join(process.cwd(), 'contracts', 'tests'),
   },
   src: path.join(process.cwd(), 'src'),

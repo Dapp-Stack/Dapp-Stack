@@ -29,8 +29,8 @@ node_modules/
 # dotenv environment variables file
 .env
 
-# built library using in commonjs module syntax
-lib/
+# build
+packages/*/lib/
 packages/*/scripts/
-
 packages/blockchain/bin/*
+websites/landing/dist

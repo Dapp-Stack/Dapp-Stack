@@ -18,15 +18,15 @@
     "web3": "^1.0.0-beta.35"
   },
   "scripts": {
-    "start": "solon-scripts start",
-    "stop": "solon-scripts stop",
-    "build": "solon-scripts build",
-    "console": "solon-scripts console",
-    "deploy": "solon-scripts deploy",
-    "clean": "solon-scripts clean",
-    "lint": "solium --dir contracts/src",
-    "eject": "solon-script eject",
-    "test": "solon-scripts test --env=jsdom",
-    "watch": "echo 'ok'"
+    "solon:start": "solon-scripts start",
+    "solon:stop": "solon-scripts stop",
+    "solon:build": "solon-scripts build",
+    "solon:console": "solon-scripts console",
+    "solon:deploy": "solon-scripts deploy",
+    "solon:clean": "solon-scripts clean",
+    "solon:lint": "solium --dir contracts/src",
+    "solon:eject": "solon-script eject",
+    "solon:security": "solon-script security",
+    "solon:test": "solon-scripts test --env=jsdom"
   }
 }
