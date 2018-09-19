@@ -30,11 +30,13 @@ export interface ImportDirective extends BaseASTNode {} // tslint:disable-line:n
 export interface ContractDefinition extends BaseASTNode {
   name: string;
   kind: string;
-  baseContracts: [{
-    baseName: {
-      namePath: string;
+  baseContracts: [
+    {
+      baseName: {
+        namePath: string;
+      };
     }
-  }];
+  ];
 }
 export interface InheritanceSpecifier extends BaseASTNode {} // tslint:disable-line:no-empty-interface
 export interface ContractPart extends BaseASTNode {} // tslint:disable-line:no-empty-interface
@@ -67,7 +69,7 @@ export interface EventParameter extends BaseASTNode {} // tslint:disable-line:no
 export interface FunctionTypeParameterList extends BaseASTNode {} // tslint:disable-line:no-empty-interface
 export interface FunctionTypeParameter extends BaseASTNode {} // tslint:disable-line:no-empty-interface
 export interface VariableDeclaration extends BaseASTNode {
-  visibility: "public" | "private";
+  visibility: 'public' | 'private';
   isStateVar: boolean;
 }
 export interface TypeName extends BaseASTNode {} // tslint:disable-line:no-empty-interface
@@ -126,36 +128,36 @@ export interface ElementaryTypeNameExpression extends BaseASTNode {} // tslint:d
 export interface NumberLiteral extends BaseASTNode {} // tslint:disable-line:no-empty-interface
 export interface Identifier extends BaseASTNode {} // tslint:disable-line:no-empty-interface
 export type BinOp =
-  | "+"
-  | "-"
-  | "*"
-  | "/"
-  | "**"
-  | "%"
-  | "<<"
-  | ">>"
-  | "&&"
-  | "||"
-  | "&"
-  | "|"
-  | "^"
-  | "<"
-  | ">"
-  | "<="
-  | ">="
-  | "=="
-  | "!="
-  | "="
-  | "|="
-  | "^="
-  | "&="
-  | "<<="
-  | ">>="
-  | "+="
-  | "-="
-  | "*="
-  | "/="
-  | "%=";
+  | '+'
+  | '-'
+  | '*'
+  | '/'
+  | '**'
+  | '%'
+  | '<<'
+  | '>>'
+  | '&&'
+  | '||'
+  | '&'
+  | '|'
+  | '^'
+  | '<'
+  | '>'
+  | '<='
+  | '>='
+  | '=='
+  | '!='
+  | '='
+  | '|='
+  | '^='
+  | '&='
+  | '<<='
+  | '>>='
+  | '+='
+  | '-='
+  | '*='
+  | '/='
+  | '%=';
 export interface BinaryOperation extends BaseASTNode {
   left: ASTNode;
   right: ASTNode;

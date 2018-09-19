@@ -1,5 +1,3 @@
-import { Deployer } from '@solon/deployer';
-
 export type Maybe<T> = false | T;
 
 export type Wallet = {
@@ -48,7 +46,7 @@ export interface Compile {
 
 export interface Deploy {
   wallet?: Wallet;
-  migrate: (deployer: Deployer) => void;
+  migrate: (deployer: any) => void;
 }
 
 export interface Environment {
