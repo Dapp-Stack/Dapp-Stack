@@ -1,5 +1,7 @@
 node_modules
+.geth
 logs
-.solon
+build
 contracts/build
 contracts/doc
+contracts/security

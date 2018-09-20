@@ -1,190 +1,84 @@
 import { Blockchain } from '@solon/environment';
-import { IBlockchainStrategy } from '../types';
 import { Signale } from 'signale';
-import { BinWrapper } from 'bin-wrapper';
+import { IBlockchainStrategy } from '../types';
 import * as path from 'path';
+import * as spawn from 'cross-spawn';
+import * as fs from 'fs-extra';
+import { ChildProcess } from 'child_process';
 
 export class Geth implements IBlockchainStrategy {
   private config: Blockchain;
   private signale: Signale;
+  private binaryPath: string;
+  private dataDir: string;
+  private childProcess?: ChildProcess;
+  private logStream: fs.WriteStream;
 
   constructor(config: Blockchain, signale: Signale) {
     this.config = config;
     this.signale = signale;
+    this.binaryPath = path.resolve(__dirname, '..', '..', '..', 'bin', 'geth');
+    this.dataDir = path.join(process.cwd(), '.geth')
+    fs.ensureDirSync(this.dataDir);
+    fs.ensureDirSync(path.join(process.cwd(), 'logs'));
+    this.logStream = fs.createWriteStream(path.join(process.cwd(), 'logs', 'geth.log'));
   }
 
-  start = async () => {
-    const base = 'https://gethstore.blob.core.windows.net/builds';
-    const bin = new BinWrapper()
-      .src(`${base}/geth-darwin-amd64-1.8.15-89451f7c.tar.gz`, 'darwin')
-      .src(`${base}/geth-linux-amd64-1.8.15-89451f7c.tar.gz`, 'linux', 'x64')
-      .src(`${base}/geth-windows-amd64-1.8.15-89451f7c.exe`, 'win32', 'x64')
-      .dest(path.join('vendor'))
-      .use(process.platform === 'win32' ? 'geth.exe' : 'geth');
+  private command = (): string[] => {
+    switch (this.config.geth.type) {
+      case 'dev':
+        return [
+          '--dev',
+          '--datadir', this.dataDir,
+          '--ws', '--wsaddr', '0.0.0.0', '--wsorigins', '*', '--wsport', '8546',
+          '--rpc', '--rpcapi', 'db,personal,eth,net,web3', '--rpcaddr', '0.0.0.0', '--rpcport', '8545', '--rpccorsdomain', '*',
+          '--nodiscover',
+        ];
+      case 'ropsten':
+        return [''];
+      case 'mainnet':
+        return [''];
+    }
+  }
 
-    await bin.run(['--version']);
-    return new Promise<boolean>(resolve => resolve(true));
+  private init = () => {
+    spawn.sync(this.binaryPath, this.command().concat('init'));
+  };
+
+  private daemon = () => {
+    this.childProcess = spawn(this.binaryPath, this.command(), { stdio: 'pipe' });
+    this.childProcess.stdout.pipe(this.logStream);
+    this.childProcess.stderr.pipe(this.logStream);
+  };
+
+  start = () => {
+    this.signale.await('Starting geth...');
+    return new Promise<boolean>(resolve => {
+      this.init();
+      this.daemon();
+      this.signale.success('Geth is running');
+      resolve(true);
+    });
   };
 
   stop = () => {
-    return new Promise<boolean>(resolve => resolve(true));
+    return new Promise<boolean>(resolve => {
+      this.childProcess && this.childProcess.kill();
+      resolve(true);
+    });
   };
+
+  console = () => {
+    let attachTo: string = '';
+    switch(this.config.provider) {
+      case 'geth':
+        attachTo = path.join(this.dataDir, 'geth.ipc')
+      case 'infura':
+        attachTo = this.config.infura.url;
+      case 'ganache':
+        attachTo = 'http://127.0.0.1:8545';
+    }
+
+    spawn.sync(this.binaryPath, ['attach', attachTo], { stdio: [process.stdin, process.stdout, process.stderr] });
+  }
 }
-
-// export function start(environment: Environment): Promise<void> {
-//   const env = getSolonEnv();
-
-//   return new Promise<void>(async (resolve, reject) => {
-//     if (!environment.services.geth) {
-//       return resolve();
-//     }
-//     const logStream = fs.createWriteStream(path.join(process.cwd(), 'logs', env, 'geth.log'));
-//     const datadir = path.join(process.cwd(), '.solon', env);
-//     const remoteDataDir = `/root/.ethereum/${env}`;
-//     const command = getCommand(environment.services.geth.type, remoteDataDir);
-
-//     try {
-//       const containerInfo = await findContainerInfo();
-//       if (containerInfo) {
-//         resolve();
-//       }
-
-//       await downloadImage();
-
-//       const container = await docker.createContainer({
-//         name: containerName(),
-//         Image: IMAGE_NAME,
-//         Cmd: command,
-//         HostConfig: {
-//           Binds: [`${datadir}:${remoteDataDir}:rw`],
-//           PortBindings: {
-//             '8545/tcp': [
-//               {
-//                 HostPort: '8545',
-//               },
-//             ],
-//             '8546/tcp': [
-//               {
-//                 HostPort: '8546',
-//               },
-//             ],
-//           },
-//         },
-//       });
-
-//       container.attach({ stream: true, sdtin: true, sdterr: true, sdtout: true }, (err, stream) => {
-//         if (!err && stream) {
-//           stream.pipe(logStream);
-//         }
-//       });
-
-//       await container.start();
-//       resolve();
-//     } catch (error) {
-//       reject(error);
-//     }
-//   });
-// }
-
-// export function console(environment: Environment): Promise<void> {
-//   const env = getSolonEnv();
-//   const datadir = path.join(process.cwd(), '.solon', env);
-//   const remoteDataDir = `/root/.ethereum/${env}`;
-//   const command = getCommand(environment.services.geth.type, remoteDataDir).concat('console');
-//   const options = {
-//     name: containerName(),
-//     Binds: [`${datadir}:${remoteDataDir}:rw`],
-//   };
-//   return docker.run(IMAGE_NAME, command, process.stdout, options).then(container => container.remove());
-// }
-
-// export function stop(options = {}): Promise<void> {
-//   getSolonEnv();
-//   return new Promise<void>(async (resolve, reject) => {
-//     try {
-//       const containerInfo = await findContainerInfo();
-
-//       if (containerInfo) {
-//         const container = docker.getContainer(containerInfo.Id);
-//         await container.stop();
-//         await container.remove();
-//       }
-//       resolve();
-//     } catch (error) {
-//       reject(error);
-//     }
-//   });
-// }
-
-// function findContainerInfo(): Promise<Docker.ContainerInfo | undefined> {
-//   return new Promise<Docker.ContainerInfo | undefined>(async (resolve, reject) => {
-//     try {
-//       const containers = await docker.listContainers();
-//       const containerInfo = containers.find(c => c.Names[0] === `/${containerName()}`);
-//       resolve(containerInfo);
-//     } catch (error) {
-//       reject(error);
-//     }
-//   });
-// }
-
-// function containerName(): string {
-//   return `geth-${getSolonEnv()}`;
-// }
-
-// function getSolonEnv(): string {
-//   if (!process.env.SOLON_ENV) {
-//     process.env.SOLON_ENV = 'local';
-//   }
-
-//   return process.env.SOLON_ENV;
-// }
-
-// function getCommand(type: string, remoteDataDir: string): string[] {
-//   switch (type) {
-//     case 'dev':
-//       return [
-//         '--dev',
-//         '--datadir',
-//         remoteDataDir,
-//         '--ws',
-//         '--wsaddr',
-//         '0.0.0.0',
-//         '--wsorigins',
-//         '*',
-//         '--wsport',
-//         '8546',
-//         '--rpc',
-//         '--rpcapi',
-//         'db,personal,eth,net,web3',
-//         '--rpcaddr',
-//         '0.0.0.0',
-//         '--rpcport',
-//         '8545',
-//         '--rpccorsdomain',
-//         '*',
-//         '--nodiscover',
-//       ];
-//     case 'ropsten':
-//       return [''];
-//     case 'mainnet':
-//       return [''];
-//     default:
-//       return [''];
-//   }
-// }
-
-// function downloadImage(): Promise<boolean> {
-//   return new Promise<boolean>(async (resolve, reject) => {
-//     docker.pull(IMAGE_NAME, {}, (err, stream) => {
-//       if (err) {
-//         return reject(err);
-//       }
-//       docker.modem.followProgress(stream, onFinished);
-
-//       function onFinished() {
-//         return resolve(true);
-//       }
-//     });
-//   });
-// }

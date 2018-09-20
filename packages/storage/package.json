@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/ipfs/README.md",
   "devDependencies": {
+    "@solon/environment": "0.1.0",
     "@types/cross-spawn": "^6.0.0",
     "@types/node": "^10.9.4",
     "shx": "^0.2.2",
@@ -41,7 +42,6 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/environment": "0.1.0",
     "cross-spawn": "^6.0.5",
     "go-ipfs": "^0.4.17"
   },

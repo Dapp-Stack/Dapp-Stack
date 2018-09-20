@@ -6,7 +6,11 @@ import { Signale } from 'signale';
 import Web3 = require('web3');
 import { glob } from 'glob';
 
-export class Deployer {
+export const run = (config: Deploy) => {
+  new Deployer(config).run();
+}
+
+class Deployer {
   private config: Deploy;
   private signale: Signale;
   private contractFiles?: { [basename: string]: string };

@@ -4,6 +4,6 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import { eject } from './shared/web';
+import { ejectWeb } from './shared/web';
 
-eject();
+ejectWeb();

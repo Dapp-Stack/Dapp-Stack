@@ -13,15 +13,13 @@ const strategy = (storage: Maybe<Storage>): IStorageStrategy => {
   switch (storage) {
     case 'ipfs':
       return new Ipfs(storage, signale);
-    default:
-      return new Null();
   }
 };
 
-export const start = (storage: Maybe<Storage>): Promise<boolean> | undefined => {
+export const start = (storage: Maybe<Storage>): Promise<boolean> => {
   return strategy(storage).start();
 };
 
-export const stop = (storage: Maybe<Storage>): Promise<boolean> | undefined => {
+export const stop = (storage: Maybe<Storage>): Promise<boolean> => {
   return strategy(storage).stop();
 };

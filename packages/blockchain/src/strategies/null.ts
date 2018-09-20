@@ -1,4 +1,3 @@
-import { Blockchain } from '@solon/environment';
 import { IBlockchainStrategy } from '../types';
 
 export class Null implements IBlockchainStrategy {

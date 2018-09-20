@@ -24,7 +24,7 @@ export interface Package {
   packageJson: PackageJSON;
 }
 
-const ROOT_DIR = path.join(__dirname, '../../..');
+const ROOT_DIR = path.join(__dirname, '../../../..');
 
 export function findPackages(): Package[] {
   const rootPackageJsonString = fs.readFileSync(`${ROOT_DIR}/package.json`, 'utf8');

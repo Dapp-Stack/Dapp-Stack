@@ -7,8 +7,8 @@ process.on('unhandledRejection', err => {
 import * as blockchain from '@solon/blockchain';
 import * as storage from '@solon/storage';
 import * as compiler from '@solon/compiler';
-import { Deployer } from '@solon/deployer';
-import { generateDocs } from '@solon/doc';
+import * as deployer from '@solon/deployer';
+import * as doc from '@solon/doc';
 
 import * as lifecycle from './shared/lifecycle';
 
@@ -20,9 +20,9 @@ const environment = lifecycle.before();
 async function startAsync() {
   await blockchain.start(environment.services.blockchain);
   await storage.start(environment.services.storage);
-  generateDocs(environment.compile);
   await compiler.run(environment.compile);
-  await new Deployer(environment.deploy).run();
+  doc.runAll(environment.compile);
+  await deployer.run(environment.deploy)
   watch(environment);
   // startWeb();
 }

@@ -4,8 +4,9 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
+import * as security from '@solon/security';
 import * as lifecycle from './shared/lifecycle';
 
 const environment = lifecycle.before();
 
-lifecycle.stopAsync(environment, { shouldExit: true});
+security.run(environment.compile);
