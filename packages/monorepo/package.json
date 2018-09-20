@@ -14,8 +14,8 @@
     "lint": "tslint --fix --project .",
     "find_unused_deps": "run-s build script:find_unused_deps",
     "check_deps_versions": "run-s build script:check_deps_versions",
-    "script:find_unused_deps": "node ./lib/findUnusedDependencies.js",
-    "script:check_deps_versions": "node ./lib/checkDependenciesVersions.js"
+    "script:find_unused_deps": "node ./lib/src/findUnusedDependencies.js",
+    "script:check_deps_versions": "node ./lib/src/checkDependenciesVersions.js"
   },
   "repository": {
     "type": "git",

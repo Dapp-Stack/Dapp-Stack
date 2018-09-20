@@ -1,12 +1,15 @@
+import * as child_process from 'child_process';
 import * as spawn from 'cross-spawn';
 import * as path from 'path';
 import { Signale } from 'signale';
 
-export function startWeb() {
+let child: child_process.ChildProcess;
+
+export const startWeb = () => {
   const signale = new Signale({ scope: 'Web' });
   signale.await('Starting web...');
   const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
-  const child = spawn('node', [reactScriptsPath, 'start'], { stdio: 'pipe' });
+  child = spawn('node', [reactScriptsPath, 'start'], { stdio: 'pipe' });
 
   child.stdout.on('data', (data: Buffer) => {
     data
@@ -17,11 +20,11 @@ export function startWeb() {
   });
 }
 
-export function buildWeb() {
+export const buildWeb = () => {
   const signale = new Signale({ scope: 'Web' });
   signale.await('Building web...');
   const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
-  const child = spawn('node', [reactScriptsPath, 'build'], { stdio: 'pipe' });
+  child = spawn('node', [reactScriptsPath, 'build'], { stdio: 'pipe' });
 
   child.stdout.on('data', (data: Buffer) => {
     data
@@ -30,11 +33,21 @@ export function buildWeb() {
       .split('\n')
       .forEach(line => signale.info(line));
   });
+
+  return new Promise<void>(resolve => {
+    child.on('exit', () => {
+      resolve();
+    })
+  })
 }
 
-export function eject() {
+export const ejectWeb = () => {
   const signale = new Signale({ scope: 'Web' });
   signale.await('Starting to eject...');
   const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
   spawn.sync('node', [reactScriptsPath, 'eject'], { stdio: [process.stdin, process.stdout, process.stderr] });
+}
+
+export const stopWeb = () => {
+  child && child.kill();
 }

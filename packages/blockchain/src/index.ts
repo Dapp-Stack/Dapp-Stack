@@ -19,19 +19,21 @@ const strategy = (blockchain: Maybe<Blockchain>): IBlockchainStrategy => {
       return new Infura(blockchain, signale);
     case 'ganache':
       return new Ganache(blockchain, signale);
-    default:
-      return new Null();
   }
 };
 
 export const console = (blockchain: Maybe<Blockchain>) => {
-  if (!blockchain) return;
+  if (!blockchain) {
+    return signale.error("This command is only available when using the blockchain");
+  }
+
+  new Geth(blockchain, signale).console();
 };
 
-export const start = (blockchain: Maybe<Blockchain>): Promise<boolean> | undefined => {
+export const start = (blockchain: Maybe<Blockchain>): Promise<boolean> => {
   return strategy(blockchain).start();
 };
 
-export const stop = (blockchain: Maybe<Blockchain>): Promise<boolean> | undefined => {
+export const stop = (blockchain: Maybe<Blockchain>): Promise<boolean> => {
   return strategy(blockchain).stop();
 };

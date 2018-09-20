@@ -11,13 +11,13 @@ export type BlockchainProvider = 'ganache' | 'geth' | 'infura';
 
 export type Blockchain = {
   provider: BlockchainProvider;
-  infura?: {
+  infura: {
     url: string;
   };
-  ganache?: {
+  ganache: {
     mnemonic: string;
   };
-  geth?: {
+  geth: {
     type: GethType;
   };
 };

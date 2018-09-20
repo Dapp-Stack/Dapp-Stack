@@ -18,6 +18,15 @@ const defaultEnvironment: Environment = {
   services: {
     blockchain: {
       provider: 'ganache',
+      infura: {
+        url: ""
+      },
+      ganache: {
+        mnemonic: ""
+      },
+      geth: {
+        type: "dev"
+      }
     },
     storage: false,
     web: true,

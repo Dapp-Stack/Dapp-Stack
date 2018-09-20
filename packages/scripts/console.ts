@@ -14,5 +14,3 @@ async function consoleAsync() {
 }
 
 consoleAsync();
-
-lifecycle.after(environment);

@@ -2,6 +2,7 @@ import { Environment, build } from '@solon/environment';
 
 import * as blockchain from '@solon/blockchain';
 import * as storage from '@solon/storage';
+import { stopWeb } from './web';
 
 export function before(): Environment {
   return build();
@@ -13,6 +14,7 @@ export async function stopAsync(
 ) {
   await blockchain.stop(environment.services.blockchain);
   await storage.stop(environment.services.storage);
+  stopWeb();
 
   if (shouldExit) {
     process.exit();
@@ -22,6 +24,7 @@ export async function stopAsync(
 export function after(environment: Environment) {
   process.stdin.resume();
 
+  process.on('SIGTERM', stopAsync.bind(null, environment, { shouldExit: true }));
   process.on('SIGINT', stopAsync.bind(null, environment, { shouldExit: true }));
   process.on('SIGUSR1', stopAsync.bind(null, environment, { shouldExit: true }));
   process.on('SIGUSR2', stopAsync.bind(null));

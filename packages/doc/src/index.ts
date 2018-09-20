@@ -7,15 +7,14 @@ import { Signale } from 'signale';
 
 const signale = new Signale({ scope: 'Doc' });
 
-export const generateDocs = (compile: Compile) => {
+export const runAll = (compile: Compile) => {
   const contracts = compile.contracts.map(contract => path.join(Structure.contracts.src, contract));
 
-  contracts.forEach(contractFile => generateDoc(contractFile));
+  contracts.forEach(contractFile => run(contractFile));
 };
 
-export const generateDoc = async (contractFile: string) => {
+export const run = async (contractFile: string) => {
   const outFile = path.join(Structure.contracts.doc, `${path.basename(contractFile, '.sol')}.md`);
-  console.log(outFile);
   await fs.ensureFile(outFile);
 
   let filesTable = `
