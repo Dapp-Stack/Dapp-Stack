@@ -1,14 +1,15 @@
-import {ConnectedRouter} from "connected-react-router";
+import { ConnectedRouter } from 'connected-react-router';
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import {Route, Switch} from "react-router-dom";
+import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
 import history from '../history';
 import AppLayout from '../layouts/AppLayout';
-import NoMatch from "../components/NoMatch";
-import actions  from "../units/accounts/actions";
-import { isConnected, networkId } from "../units/web3/selectors";
-import { accounts } from "../units/accounts/selectors";
+import ExplorerLayout from '../layouts/ExplorerLayout';
+import NoMatch from '../components/NoMatch';
+// import actions from '../units/accounts/actions';
+// import { isConnected, networkId } from '../units/web3/selectors';
+// import { accounts } from '../units/accounts/selectors';
 
 class AppContainer extends Component {
   componentDidMount() {
@@ -30,18 +31,17 @@ class AppContainer extends Component {
   }
 }
 
-
-const mapStateToProps = (state) => {
-  return {
-    isConnected: isConnected(state),
-    networkId: networkId(state),
-    accounts: accounts(state)
-  };
+const mapStateToProps = state => {
+  // return {
+  //   isConnected: isConnected(state),
+  //   networkId: networkId(state),
+  //   accounts: accounts(state),
+  // };
 };
 
 export default connect(
   mapStateToProps,
   {
-    getAccountsRequest: actions.getAccountsRequest
+    // getAccountsRequest: actions.getAccountsRequest,
   },
 )(AppContainer);
