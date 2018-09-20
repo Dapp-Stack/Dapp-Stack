@@ -1,8 +1,12 @@
 import { Http2Server } from 'http2';
-
+import { Provider } from 'web3/providers';
 declare module 'ganache-core';
 
 export type GanacheOpts = {
+  accounts?: {
+    balance: string;
+    secretKey: string;
+  }[]
   verbose?: boolean;
   logger?: {
     log(message: string): void;
@@ -15,3 +19,4 @@ export type GanacheOpts = {
 };
 
 export function server(opts?: GanacheOpts): Http2Server;
+export function provider(opts: GanacheOpts): Provider;

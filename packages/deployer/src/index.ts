@@ -6,23 +6,28 @@ import { Signale } from 'signale';
 import Web3 = require('web3');
 import { glob } from 'glob';
 
-export const run = (config: Deploy) => {
-  new Deployer(config).run();
+export const run = (config: Deploy, web3?: Web3) => {
+  new Deployer(config, web3).run();
 }
 
-class Deployer {
+export class Deployer {
   private config: Deploy;
   private signale: Signale;
-  private contractFiles?: { [basename: string]: string };
-  private contracts?: string[];
-  private web3!: Web3;
-  private accounts!: string[];
-  private gasPrice!: number;
+  private contractFiles!: { [basename: string]: string };
+  public contracts!: string[];
+  public web3?: Web3;
+  public accounts!: string[];
+  public gasPrice!: number;
 
-  constructor(config: Deploy) {
+  constructor(config: Deploy, web3?: Web3) {
     this.config = config;
+    this.web3 = web3
     this.signale = new Signale({ scope: 'Deployer' });
+    this.initializeWeb3()
+    this.initializeContracts
+  }
 
+  private initializeContracts = () => {
     glob(`${Structure.contracts.build}/**/*.json`, {}, (_, files: string[]) => {
       this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
         acc[path.basename(file, '.json')] = file;
@@ -32,12 +37,25 @@ class Deployer {
     });
   }
 
+  private initializeWeb3 = () => {
+    if (this.web3) {
+      this.setupExtra(this.web3);
+    } else {
+      generateWallet(this.config).then((web3: Web3) => {
+        this.web3 = web3
+        this.setupExtra(web3);
+      })
+    }
+  }
+
+  private setupExtra = async (web3: Web3) => {
+    this.accounts = await web3.eth.getAccounts();
+    this.gasPrice = await web3.eth.getGasPrice();
+  }
+
   async run() {
     try {
-      this.signale.await('Starting to deploy contracts by running migrage...');
-      this.web3 = await generateWallet(this.config);
-      this.accounts = await this.web3.eth.getAccounts();
-      this.gasPrice = await this.web3.eth.getGasPrice();
+      this.signale.await('Starting to deploy contracts by running migrate...');
       await this.config.migrate(this);
       this.signale.success('Contracts have been deployed');
     } catch (error) {
@@ -46,7 +64,7 @@ class Deployer {
   }
 
   async deploy(contract: string, options: { from?: string; args?: any[] } = {}) {
-    if (!this.contractFiles) {
+    if (!this.contractFiles || !this.web3) {
       return;
     }
 

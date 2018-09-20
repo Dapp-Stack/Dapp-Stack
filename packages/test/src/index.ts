@@ -1,7 +1,6 @@
-'use strict';
-
-const Ganache = require('ganache-core');
-const { web3 } = require('./utils');
+import * as GanacheCore from 'ganache-core';
+import Web3 = require('web3');
+import { Deployer } from "@solon/deployer";
 
 const balance = '10000000000000000000000000000000000';
 
@@ -48,11 +47,24 @@ const defaultAccounts = [
   },
 ];
 
-function createMockProvider(ganacheOptions = {}) {
-  const options = { ...{ accounts: defaultAccounts }, ganacheOptions };
-  return web3.setProvider(Ganache.provider(options));
+class Tester {
+
+  public web3: Web3;
+  public deployer: Deployer;
+
+  constructor(ganacheOptions = {}) {
+    const options = { ...{ accounts: defaultAccounts }, ...ganacheOptions };
+    this.web3 = new Web3();
+    this.web3.setProvider(GanacheCore.provider(options));
+    this.deployer = new Deployer({migrate: () => {}}, this.web3);
+  }
+
+  deploy(contract: string, options: { from?: string; args?: any[] } = {}) {
+    return this.deployer.deploy(contract, options);
+  }
+
 }
 
-module.exports = {
-  createMockProvider,
-};
+export const setup = (ganacheOptions = {}) => {
+  return new Tester(ganacheOptions);
+}

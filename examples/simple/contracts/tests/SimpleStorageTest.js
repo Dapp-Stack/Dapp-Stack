@@ -1,20 +1,15 @@
 const chai = require('chai');
-const {createMockProvider} = require('../../lib/tester');
-const { deploy } = require('../../lib/deployer');
-const { getAccounts } = require('../../lib/utils');
+const { setup } = require('@solon/test');
 
 const { expect } = chai;
+const tester = setup();
 
-describe('Apps/SimpleStorage', () => {
-  let provider;
+describe('SimpleStorage', () => {
   let simpleStorage;
-  let accounts;
   const initialValue = '10';
 
   beforeEach(async () => {
-    provider = createMockProvider();
-    simpleStorage = await deploy("Apps/SimpleStorage.sol", { args: [initialValue] });
-    accounts = await getAccounts();
+    simpleStorage = await tester.deploy("SimpleStorage.sol", { args: [initialValue] });
   });
 
   it('sets default value', async () => {
