@@ -2,23 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
+import createSagaMiddleware from 'redux-saga';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import 'semantic-ui-css/semantic.min.css';
 
 import AppContainer from './containers/AppContainer';
-import { rootEpic } from './epics';
+import { rootSaga } from './sagas';
 
 const history = createBrowserHistory();
 
 import reducers from './store';
 
-const epicMiddleware = createEpicMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
-epicMiddleware.run(rootEpic);
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 
-const store = createStore(reducers, applyMiddleware(epicMiddleware));
+sagaMiddleware.run(rootSaga);
 
 // index.js
 
