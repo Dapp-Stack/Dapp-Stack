@@ -7,13 +7,14 @@ import history from '../history';
 import AppLayout from '../layouts/AppLayout';
 import ExplorerLayout from '../layouts/ExplorerLayout';
 import NoMatch from '../components/NoMatch';
-// import actions from '../units/accounts/actions';
+
+import { getAccounts } from '../sagas/web3Actions'; //refactor to package
 // import { isConnected, networkId } from '../units/web3/selectors';
 // import { accounts } from '../units/accounts/selectors';
 
 class AppContainer extends Component {
   componentDidMount() {
-    this.props.getAccountsRequest();
+    this.props.getAccounts();
   }
 
   render() {
@@ -42,6 +43,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    // getAccountsRequest: actions.getAccountsRequest,
+    getAccounts,
   },
 )(AppContainer);

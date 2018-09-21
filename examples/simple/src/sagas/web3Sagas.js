@@ -8,6 +8,6 @@ function* testSaga() {
   yield put({ type: actionTypes.FOO });
 }
 
-export default function* rootSaga() {
+export function* rootSaga() {
   yield all([testSaga()]);
 }

@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import history from './history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import 'semantic-ui-css/semantic.min.css';
 
 import AppContainer from './containers/AppContainer';
 import { rootSaga } from './sagas';
-
-const history = createBrowserHistory();
-
 import reducers from './store';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+const store = createStore(connectRouter(history)(reducers), applyMiddleware(routerMiddleware(history), sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);
 

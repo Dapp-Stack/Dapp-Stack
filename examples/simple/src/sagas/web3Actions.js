@@ -1,3 +1,7 @@
 export const actionTypes = {
-  FOO: 'FOO',
+  GET_ACCOUNTS: 'GET_ACCOUNTS',
 };
+
+export const getAccounts = () => ({
+  type: actionTypes.GET_ACCOUNTS,
+});
