@@ -5,10 +5,11 @@ import { Signale } from 'signale';
 
 let child: child_process.ChildProcess;
 
-export const startWeb = () => {
-  const signale = new Signale({ scope: 'Web' });
+const signale = new Signale({ scope: 'Web' });
+const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
+
+export const startWeb = () => {;
   signale.await('Starting web...');
-  const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
   child = spawn('node', [reactScriptsPath, 'start'], { stdio: 'pipe' });
 
   child.stdout.on('data', (data: Buffer) => {
@@ -21,7 +22,6 @@ export const startWeb = () => {
 }
 
 export const buildWeb = () => {
-  const signale = new Signale({ scope: 'Web' });
   signale.await('Building web...');
   const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
   child = spawn('node', [reactScriptsPath, 'build'], { stdio: 'pipe' });
@@ -41,10 +41,11 @@ export const buildWeb = () => {
   })
 }
 
+export const testWeb = () => {
+  spawn.sync('node', [reactScriptsPath, 'test', '--env=jsdom'], { stdio: [process.stdin, process.stdout, process.stderr] });
+}
+
 export const ejectWeb = () => {
-  const signale = new Signale({ scope: 'Web' });
-  signale.await('Starting to eject...');
-  const reactScriptsPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'react-scripts');
   spawn.sync('node', [reactScriptsPath, 'eject'], { stdio: [process.stdin, process.stdout, process.stderr] });
 }
 

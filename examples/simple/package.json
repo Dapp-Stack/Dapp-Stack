@@ -28,6 +28,6 @@
     "solon:lint": "solium --dir contracts/src",
     "solon:eject": "solon-script eject",
     "solon:security": "solon-script security",
-    "solon:test": "solon-scripts test --env=jsdom"
+    "test:web": "solon-scripts test"
   }
 }
