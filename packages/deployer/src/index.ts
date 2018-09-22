@@ -6,8 +6,10 @@ import { Signale } from 'signale';
 import Web3 = require('web3');
 import { glob } from 'glob';
 
-export const run = (config: Deploy, web3?: Web3) => {
-  new Deployer(config, web3).run();
+export const run = async (config: Deploy, web3?: Web3) => {
+  const deployer = new Deployer(config, web3)
+  await deployer.initialize();
+  deployer.run();
 }
 
 export class Deployer {
@@ -21,30 +23,35 @@ export class Deployer {
 
   constructor(config: Deploy, web3?: Web3) {
     this.config = config;
-    this.web3 = web3
+    this.web3 = web3;
     this.signale = new Signale({ scope: 'Deployer' });
-    this.initializeWeb3()
-    this.initializeContracts
+    
+  }
+
+  initialize = async () => {
+    await this.initializeContracts();
+    await this.initializeWeb3();
   }
 
   private initializeContracts = () => {
-    glob(`${Structure.contracts.build}/**/*.json`, {}, (_, files: string[]) => {
-      this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
-        acc[path.basename(file, '.json')] = file;
-        return acc;
-      }, {});
-      this.contracts = Object.keys(this.contractFiles);
-    });
+    return new Promise<void>(resolve => {
+      glob(`${Structure.contracts.build}/**/*.json`, {}, (_, files: string[]) => {
+        this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
+          acc[path.basename(file, '.json')] = file;
+          return acc;
+        }, {});
+        this.contracts = Object.keys(this.contractFiles);
+        resolve();
+      });
+    })
   }
 
-  private initializeWeb3 = () => {
+  private initializeWeb3 = async () => {
     if (this.web3) {
-      this.setupExtra(this.web3);
+      await this.setupExtra(this.web3);
     } else {
-      generateWallet(this.config).then((web3: Web3) => {
-        this.web3 = web3
-        this.setupExtra(web3);
-      })
+      this.web3 = await generateWallet(this.config);
+      await this.setupExtra(this.web3);
     }
   }
 
@@ -70,9 +77,7 @@ export class Deployer {
 
     const from = options.from || this.accounts[0];
     const args = { data: '', arguments: options.args || [] };
-    const gasPrice = this.gasPrice;
     const contractFile = this.contractFiles[contract];
-
     if (!contractFile) {
       return;
     }
@@ -87,7 +92,7 @@ export class Deployer {
 
     return contractClass.deploy(args).send({
       gas,
-      gasPrice,
+      gasPrice: this.gasPrice,
       from,
     });
   }

@@ -2,14 +2,15 @@ const chai = require('chai');
 const { setup } = require('@solon/test');
 
 const { expect } = chai;
-const tester = setup();
 
 describe('SimpleStorage', () => {
-  let simpleStorage;
+  let simpleStorage, tester, accounts;
   const initialValue = '10';
 
   beforeEach(async () => {
-    simpleStorage = await tester.deploy("SimpleStorage.sol", { args: [initialValue] });
+    tester = await setup();
+    accounts = tester.accounts();
+    simpleStorage = await tester.deploy('SimpleStorage', { args: [initialValue] });
   });
 
   it('sets default value', async () => {
