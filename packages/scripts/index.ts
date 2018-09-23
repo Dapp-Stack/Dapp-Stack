@@ -8,7 +8,17 @@ import * as spawn from 'cross-spawn';
 const args = process.argv.slice(2);
 
 const commandIndex = args.findIndex(
-  x => x === 'build' || x === 'start' || x === 'test' || x === 'deploy' || x === 'eject' || x === 'security',
+  x => (
+    x === 'build' ||
+     x === 'start' || 
+     x === 'stop' || 
+     x === 'test' || 
+     x === 'deploy' || 
+     x === 'eject' || 
+     x === 'security' ||
+     x === 'clean' ||
+     x === 'console' 
+  )
 );
 const command = commandIndex === -1 ? args[0] : args[commandIndex];
 const nodeArgs = commandIndex > 0 ? args.slice(0, commandIndex) : [];
@@ -16,6 +26,7 @@ const nodeArgs = commandIndex > 0 ? args.slice(0, commandIndex) : [];
 switch (command) {
   case 'build':
   case 'console':
+  case 'deploy':
   case 'clean':
   case 'stop':
   case 'start':

@@ -6,11 +6,12 @@ import * as spawn from 'cross-spawn';
 import * as fs from 'fs-extra';
 import { ChildProcess } from 'child_process';
 
+let child: ChildProcess;
+
 export class Ipfs implements IStorageStrategy {
   private config: Storage;
   private signale: Signale;
   private binaryPath: string;
-  private childProcess?: ChildProcess;
   private logStream: fs.WriteStream;
 
   constructor(config: Storage, signale: Signale) {
@@ -27,9 +28,9 @@ export class Ipfs implements IStorageStrategy {
   };
 
   private daemon = () => {
-    this.childProcess = spawn(this.binaryPath, ['daemon'], { stdio: 'pipe' });
-    this.childProcess.stdout.pipe(this.logStream);
-    this.childProcess.stderr.pipe(this.logStream);
+    child = spawn(this.binaryPath, ['daemon'], { stdio: 'pipe' });
+    child.stdout.pipe(this.logStream);
+    child.stderr.pipe(this.logStream);
   };
 
   start = () => {
@@ -44,7 +45,7 @@ export class Ipfs implements IStorageStrategy {
 
   stop = () => {
     return new Promise<boolean>(resolve => {
-      this.childProcess && this.childProcess.kill();
+      child && child.kill();
       resolve(true);
     });
   };

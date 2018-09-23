@@ -9,7 +9,7 @@ import { glob } from 'glob';
 export const run = async (config: Deploy, web3?: Web3) => {
   const deployer = new Deployer(config, web3)
   await deployer.initialize();
-  deployer.run();
+  await deployer.run();
 }
 
 export class Deployer {
@@ -70,14 +70,14 @@ export class Deployer {
     }
   }
 
-  async deploy(contract: string, options: { from?: string; args?: any[] } = {}) {
+  async deploy(contractName: string, options: { from?: string; args?: any[] } = {}) {
     if (!this.contractFiles || !this.web3) {
       return;
     }
 
     const from = options.from || this.accounts[0];
     const args = { data: '', arguments: options.args || [] };
-    const contractFile = this.contractFiles[contract];
+    const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
       return;
     }
@@ -87,10 +87,10 @@ export class Deployer {
     const abi = source.abi;
     const data = `0x${source.evm.bytecode.object}`;
 
-    const contractClass = new this.web3.eth.Contract(abi, undefined, { data });
-    const gas = await contractClass.deploy(args).estimateGas();
-
-    return contractClass.deploy(args).send({
+    const contract = new this.web3.eth.Contract(abi, undefined, { data });
+    const gas = await contract.deploy(args).estimateGas();
+    
+    return contract.deploy(args).send({
       gas,
       gasPrice: this.gasPrice,
       from,

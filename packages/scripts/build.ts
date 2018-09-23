@@ -23,7 +23,7 @@ async function buildAsync() {
   doc.runAll(environment.compile);
   await deployer.run(environment.deploy)
   await buildWeb();
-  lifecycle.stopAsync(environment, {shouldExit: true});
+  await lifecycle.stopAsync(environment, {shouldExit: true});
 }
 
 buildAsync();

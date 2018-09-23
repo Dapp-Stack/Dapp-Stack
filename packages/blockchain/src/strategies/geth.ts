@@ -6,12 +6,13 @@ import * as spawn from 'cross-spawn';
 import * as fs from 'fs-extra';
 import { ChildProcess } from 'child_process';
 
+let child: ChildProcess;
+
 export class Geth implements IBlockchainStrategy {
   private config: Blockchain;
   private signale: Signale;
   private binaryPath: string;
   private dataDir: string;
-  private childProcess?: ChildProcess;
   private logStream: fs.WriteStream;
 
   constructor(config: Blockchain, signale: Signale) {
@@ -46,9 +47,9 @@ export class Geth implements IBlockchainStrategy {
   };
 
   private daemon = () => {
-    this.childProcess = spawn(this.binaryPath, this.command(), { stdio: 'pipe' });
-    this.childProcess.stdout.pipe(this.logStream);
-    this.childProcess.stderr.pipe(this.logStream);
+    child = spawn(this.binaryPath, this.command(), { stdio: 'pipe' });
+    child.stdout.pipe(this.logStream);
+    child.stderr.pipe(this.logStream);
   };
 
   start = () => {
@@ -63,7 +64,7 @@ export class Geth implements IBlockchainStrategy {
 
   stop = () => {
     return new Promise<boolean>(resolve => {
-      this.childProcess && this.childProcess.kill();
+      child && child.kill();
       resolve(true);
     });
   };
