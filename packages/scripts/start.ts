@@ -24,7 +24,7 @@ async function startAsync() {
   doc.runAll(environment.compile);
   await deployer.run(environment.deploy);
   watch(environment);
-  // startWeb();
+  startWeb();
 }
 
 startAsync();
