@@ -1,5 +1,5 @@
-import config from './config'
-import files from './files'
-import preview from './preview'
+import config from './config';
+import files from './files';
+import preview from './preview';
 
-export {config, files, preview}
+export { config, files, preview };

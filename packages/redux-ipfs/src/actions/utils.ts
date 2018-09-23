@@ -1,17 +1,19 @@
-const REQUEST = 'REQUEST'
-const SUCCESS = 'SUCCESS'
-const FAILURE = 'FAILURE'
+const REQUEST = 'REQUEST';
+const SUCCESS = 'SUCCESS';
+const FAILURE = 'FAILURE';
 
-export function createRequestTypes (base) {
-  const res = {}
-  const types = [REQUEST, SUCCESS, FAILURE]
-  types.forEach((type) => {
-    res[type] = `${base}_${type}`
-  })
+type CreateRequestType = {
+  [type: string]: string;
+};
 
-  return res
+export function createRequestTypes(base: string): CreateRequestType {
+  const types = [REQUEST, SUCCESS, FAILURE];
+  return types.reduce((acc: CreateRequestType, type) => {
+    acc[type] = `${base}_${type}`;
+    return acc;
+  }, {});
 }
 
-export function action (type, payload = {}) {
-  return {type, ...payload}
+export function action(type: string, payload = {}) {
+  return { type, ...payload };
 }

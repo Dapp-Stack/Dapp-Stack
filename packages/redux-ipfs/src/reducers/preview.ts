@@ -1,27 +1,26 @@
-import {includes, reject, union} from 'lodash-es'
-import {files as actions} from '../actions'
+import { includes, reject, union } from 'lodash';
+import { files as actions } from '../actions';
 
 const defaultState = {
   list: [],
   root: '/',
   tmpDir: null,
-  selected: []
-}
+  selected: [],
+};
 
-export default function files (state = defaultState, action) {
-  if (includes(actions.requests.FILES_LIST, action.type) &&
-      action.response) {
+export default function files(state = defaultState, action) {
+  if (includes(actions.requests.FILES_LIST, action.type) && action.response) {
     return {
       ...state,
-      list: action.response
-    }
+      list: action.response,
+    };
   }
 
   if (actions.FILES.SET_ROOT === action.type) {
     return {
       ...state,
-      root: action.root
-    }
+      root: action.root,
+    };
   }
 
   if (actions.FILES.CREATE_TMP_DIR === action.type) {
@@ -29,16 +28,16 @@ export default function files (state = defaultState, action) {
       ...state,
       tmpDir: {
         root: action.root,
-        name: ''
-      }
-    }
+        name: '',
+      },
+    };
   }
 
   if (actions.FILES.RM_TMP_DIR === action.type) {
     return {
       ...state,
-      tmpDir: null
-    }
+      tmpDir: null,
+    };
   }
 
   if (actions.FILES.SET_TMP_DIR_NAME === action.type) {
@@ -46,31 +45,31 @@ export default function files (state = defaultState, action) {
       ...state,
       tmpDir: {
         ...state.tmpDir,
-        name: action.name
-      }
-    }
+        name: action.name,
+      },
+    };
   }
 
   if (actions.FILES.SELECT_FILE === action.type) {
     return {
       ...state,
-      selected: union(state.selected, [action.file])
-    }
+      selected: union(state.selected, [action.file]),
+    };
   }
 
   if (actions.FILES.DESELECT_FILE === action.type) {
     return {
       ...state,
-      selected: reject(state.selected, (f) => f === action.file)
-    }
+      selected: reject(state.selected, f => f === action.file),
+    };
   }
 
   if (actions.FILES.DESELECT_ALL_FILE === action.type) {
     return {
       ...state,
-      selected: []
-    }
+      selected: [],
+    };
   }
 
-  return state
+  return state;
 }

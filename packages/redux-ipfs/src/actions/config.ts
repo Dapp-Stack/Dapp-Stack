@@ -1,10 +1,9 @@
-import {action, createRequestTypes} from './utils'
 
-export const requests = {
-  CONFIG_LOAD: createRequestTypes('CONFIG_LOAD'),
-  load: {
-    request: () => action(requests.CONFIG_LOAD.REQUEST),
-    success: (response) => action(requests.CONFIG_LOAD.SUCCESS, {response}),
-    failure: (error) => action(requests.CONFIG_LOAD.FAILURE, {error})
-  }
-}
+import { createAsyncAction } from 'typesafe-actions';
+import { Config } from '../types';
+
+export const load = createAsyncAction(
+  'CONFIG_LOAD/REQUEST',
+  'CONFIG_LOAD/SUCCESS',
+  'CONFIG_LOAD/FAILURE'
+)<void, Config, Error>();

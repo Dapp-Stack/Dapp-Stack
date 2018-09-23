@@ -33,18 +33,20 @@
   },
   "homepage": "https://github.com/solonproject/solon/packages/redux-ipfs/README.md",
   "devDependencies": {
-    "@types/bl": "^2.0.1",
+    "@types/bl": "^0.8.32",
     "@types/lodash": "4.14.116",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
   "dependencies": {
+    "@martin_hotell/rex-tils": "^0.13.2",
     "bl": "^2.0.1",
-    "lodash": "^4.17.10",
     "ipfs-api": "^24.0.2",
+    "lodash": "^4.17.10",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "typesafe-actions": "^2.0.4"
   },
   "publishConfig": {
     "access": "public"

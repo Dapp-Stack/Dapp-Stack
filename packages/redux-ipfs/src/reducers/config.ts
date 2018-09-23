@@ -1,17 +1,23 @@
-import {config as actions} from '../actions'
+import { ActionType, getType } from 'typesafe-actions';
+import { config } from '../actions';
+import { Config } from '../types';
 
-const configDefaultState = {
-  config: {}
+type ConfigAction = ActionType<typeof config>;
+
+const defaultConfig: Config = {
+  host: '',
+  port: '',
+  protocol: ''
 }
 
-export default function config (state = configDefaultState, action) {
+export default (state: Config = defaultConfig, action: ConfigAction) => {
   switch (action.type) {
-    case actions.requests.CONFIG_LOAD.SUCCESS:
+    case getType(config.load.success):
       return {
         ...state,
-        config: action.response
+        ...action.payload  
       }
     default:
-      return state
+      return state;
   }
 }

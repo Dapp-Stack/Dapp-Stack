@@ -1,16 +1,16 @@
-import {call, put} from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects';
 
-import api from '../services/api'
-import {config as actions} from '../actions'
+import * as api from '../services/api';
+import { config } from '../actions';
 
-export function * loadConfig () {
+export function* loadConfig() {
   try {
-    yield put(actions.requests.load.request())
+    yield put(config.load.request());
 
-    const ipfsConfig = yield call(api.getConfig)
+    const ipfsConfig = yield call(api.getConfig);
 
-    yield put(actions.requests.load.success(ipfsConfig))
-  } catch (err) {
-    yield put(actions.requests.load.failure(err.message))
+    yield put(config.load.success(ipfsConfig));
+  } catch (error) {
+    yield config.load.failure(error);
   }
 }
