@@ -2,8 +2,8 @@ import * as GanacheCore from 'ganache-core';
 import * as spawn from 'cross-spawn';
 import * as path from 'path';
 import Web3 = require('web3');
-import { Deployer } from "@solon/deployer";
-import { Structure } from "@solon/environment";
+import { Deployer } from '@solon/deployer';
+import { Structure } from '@solon/environment';
 
 const balance = '10000000000000000000000000000000000';
 const mochaPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'mocha');
@@ -52,7 +52,6 @@ const defaultAccounts = [
 ];
 
 class Tester {
-
   public web3: Web3;
   public deployer: Deployer;
 
@@ -60,29 +59,26 @@ class Tester {
     const options = { ...{ accounts: defaultAccounts }, ...ganacheOptions };
     this.web3 = new Web3();
     this.web3.setProvider(GanacheCore.provider(options));
-    this.deployer = new Deployer({migrate: () => {}}, this.web3);
+    this.deployer = new Deployer({ migrate: () => {} }, this.web3);
   }
 
   deploy = (contract: string, options: { from?: string; args?: any[] } = {}) => {
     return this.deployer.deploy(contract, options);
-  }
+  };
 
   accounts = () => {
     return this.deployer.accounts;
-  }
-
+  };
 }
 
 export const setup = async (ganacheOptions = {}) => {
   const tester = new Tester(ganacheOptions);
   await tester.deployer.initialize();
   return tester;
-}
+};
 
 export const run = () => {
-  spawn.sync(
-    'node', [
-    mochaPath, `${Structure.contracts.test}**/*Test.js`, '--reporter', 'spec'],
-    { stdio: [process.stdin, process.stdout, process.stderr] }
-  );
-}
+  spawn.sync('node', [mochaPath, `${Structure.contracts.test}**/*Test.js`, '--reporter', 'spec'], {
+    stdio: [process.stdin, process.stdout, process.stderr],
+  });
+};

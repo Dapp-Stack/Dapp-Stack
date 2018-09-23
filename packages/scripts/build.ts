@@ -21,9 +21,9 @@ async function buildAsync() {
   await storage.start(environment.services.storage);
   await compiler.run(environment.compile);
   doc.runAll(environment.compile);
-  await deployer.run(environment.deploy)
+  await deployer.run(environment.deploy);
   await buildWeb();
-  await lifecycle.stopAsync(environment, {shouldExit: true});
+  await lifecycle.stopAsync(environment, { shouldExit: true });
 }
 
 buildAsync();

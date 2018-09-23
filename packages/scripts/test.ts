@@ -17,10 +17,10 @@ async function testAsync(environment: Environment) {
   await storage.start(environment.services.storage);
   await compiler.run(environment.compile);
   await tester.run();
-  process.exit()
+  process.exit();
 }
 
-const command = process.argv[2]
+const command = process.argv[2];
 if (command === 'web') {
   testWeb();
 } else if (command === 'contract') {

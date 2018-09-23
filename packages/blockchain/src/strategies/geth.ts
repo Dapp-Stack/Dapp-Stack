@@ -19,7 +19,7 @@ export class Geth implements IBlockchainStrategy {
     this.config = config;
     this.signale = signale;
     this.binaryPath = path.resolve(__dirname, '..', '..', '..', 'bin', 'geth');
-    this.dataDir = path.join(process.cwd(), '.geth')
+    this.dataDir = path.join(process.cwd(), '.geth');
     fs.ensureDirSync(this.dataDir);
     fs.ensureDirSync(path.join(process.cwd(), 'logs'));
     this.logStream = fs.createWriteStream(path.join(process.cwd(), 'logs', 'geth.log'));
@@ -30,9 +30,24 @@ export class Geth implements IBlockchainStrategy {
       case 'dev':
         return [
           '--dev',
-          '--datadir', this.dataDir,
-          '--ws', '--wsaddr', '0.0.0.0', '--wsorigins', '*', '--wsport', '8546',
-          '--rpc', '--rpcapi', 'db,personal,eth,net,web3', '--rpcaddr', '0.0.0.0', '--rpcport', '8545', '--rpccorsdomain', '*',
+          '--datadir',
+          this.dataDir,
+          '--ws',
+          '--wsaddr',
+          '0.0.0.0',
+          '--wsorigins',
+          '*',
+          '--wsport',
+          '8546',
+          '--rpc',
+          '--rpcapi',
+          'db,personal,eth,net,web3',
+          '--rpcaddr',
+          '0.0.0.0',
+          '--rpcport',
+          '8545',
+          '--rpccorsdomain',
+          '*',
           '--nodiscover',
         ];
       case 'ropsten':
@@ -40,7 +55,7 @@ export class Geth implements IBlockchainStrategy {
       case 'mainnet':
         return [''];
     }
-  }
+  };
 
   private init = () => {
     spawn.sync(this.binaryPath, this.command().concat('init'));
@@ -71,9 +86,9 @@ export class Geth implements IBlockchainStrategy {
 
   console = () => {
     let attachTo: string = '';
-    switch(this.config.provider) {
+    switch (this.config.provider) {
       case 'geth':
-        attachTo = path.join(this.dataDir, 'geth.ipc')
+        attachTo = path.join(this.dataDir, 'geth.ipc');
       case 'infura':
         attachTo = this.config.infura.url;
       case 'ganache':
@@ -81,5 +96,5 @@ export class Geth implements IBlockchainStrategy {
     }
 
     spawn.sync(this.binaryPath, ['attach', attachTo], { stdio: [process.stdin, process.stdout, process.stderr] });
-  }
+  };
 }

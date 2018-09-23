@@ -8,17 +8,16 @@ import * as spawn from 'cross-spawn';
 const args = process.argv.slice(2);
 
 const commandIndex = args.findIndex(
-  x => (
+  x =>
     x === 'build' ||
-     x === 'start' || 
-     x === 'stop' || 
-     x === 'test' || 
-     x === 'deploy' || 
-     x === 'eject' || 
-     x === 'security' ||
-     x === 'clean' ||
-     x === 'console' 
-  )
+    x === 'start' ||
+    x === 'stop' ||
+    x === 'test' ||
+    x === 'deploy' ||
+    x === 'eject' ||
+    x === 'security' ||
+    x === 'clean' ||
+    x === 'console',
 );
 const command = commandIndex === -1 ? args[0] : args[commandIndex];
 const nodeArgs = commandIndex > 0 ? args.slice(0, commandIndex) : [];

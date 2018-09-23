@@ -8,4 +8,4 @@ import * as lifecycle from './shared/lifecycle';
 
 const environment = lifecycle.before();
 
-lifecycle.stopAsync(environment, { shouldExit: true});
+lifecycle.stopAsync(environment, { shouldExit: true });

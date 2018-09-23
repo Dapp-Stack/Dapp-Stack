@@ -6,7 +6,7 @@ export type GanacheOpts = {
   accounts?: {
     balance: string;
     secretKey: string;
-  }[]
+  }[];
   verbose?: boolean;
   logger?: {
     log(message: string): void;

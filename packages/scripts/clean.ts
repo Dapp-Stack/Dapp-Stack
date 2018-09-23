@@ -18,7 +18,7 @@ const docDir = Structure.contracts.doc;
 const signale = new Signale({ scope: 'Cleaner' });
 signale.await('Cleaner started');
 
-[gethDir, webDir, contractDir, securityDir, docDir].forEach((dir) => {
+[gethDir, webDir, contractDir, securityDir, docDir].forEach(dir => {
   if (fs.existsSync(gethDir)) {
     fs.removeSync(dir);
     signale.success(`${dir} directory removed`);

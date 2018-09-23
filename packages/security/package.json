@@ -43,7 +43,6 @@
     "@solon/environment": "0.1.0",
     "dockerode": "^2.5.7",
     "signale": "^1.2.1"
-
   },
   "publishConfig": {
     "access": "public"

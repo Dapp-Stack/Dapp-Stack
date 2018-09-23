@@ -22,7 +22,7 @@ async function startAsync() {
   await storage.start(environment.services.storage);
   await compiler.run(environment.compile);
   doc.runAll(environment.compile);
-  await deployer.run(environment.deploy)
+  await deployer.run(environment.deploy);
   watch(environment);
   // startWeb();
 }

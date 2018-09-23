@@ -24,7 +24,7 @@ const strategy = (blockchain: Maybe<Blockchain>): IBlockchainStrategy => {
 
 export const console = (blockchain: Maybe<Blockchain>) => {
   if (!blockchain) {
-    return signale.error("This command is only available when using the blockchain");
+    return signale.error('This command is only available when using the blockchain');
   }
 
   new Geth(blockchain, signale).console();

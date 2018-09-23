@@ -7,10 +7,10 @@ import Web3 = require('web3');
 import { glob } from 'glob';
 
 export const run = async (config: Deploy, web3?: Web3) => {
-  const deployer = new Deployer(config, web3)
+  const deployer = new Deployer(config, web3);
   await deployer.initialize();
   await deployer.run();
-}
+};
 
 export class Deployer {
   private config: Deploy;
@@ -25,13 +25,12 @@ export class Deployer {
     this.config = config;
     this.web3 = web3;
     this.signale = new Signale({ scope: 'Deployer' });
-    
   }
 
   initialize = async () => {
     await this.initializeContracts();
     await this.initializeWeb3();
-  }
+  };
 
   private initializeContracts = () => {
     return new Promise<void>(resolve => {
@@ -43,8 +42,8 @@ export class Deployer {
         this.contracts = Object.keys(this.contractFiles);
         resolve();
       });
-    })
-  }
+    });
+  };
 
   private initializeWeb3 = async () => {
     if (this.web3) {
@@ -53,12 +52,12 @@ export class Deployer {
       this.web3 = await generateWallet(this.config);
       await this.setupExtra(this.web3);
     }
-  }
+  };
 
   private setupExtra = async (web3: Web3) => {
     this.accounts = await web3.eth.getAccounts();
     this.gasPrice = await web3.eth.getGasPrice();
-  }
+  };
 
   async run() {
     try {
@@ -89,7 +88,7 @@ export class Deployer {
 
     const contract = new this.web3.eth.Contract(abi, undefined, { data });
     const gas = await contract.deploy(args).estimateGas();
-    
+
     return contract.deploy(args).send({
       gas,
       gasPrice: this.gasPrice,

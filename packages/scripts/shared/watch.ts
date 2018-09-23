@@ -18,7 +18,7 @@ export function watch(environment: Environment): void {
 async function complileAndDeployAsync(environment: Environment, path: string) {
   const signale = new Signale({ scope: 'Watcher' });
   signale.await(`File Changed: ${path}`);
-  doc.run(path)
+  doc.run(path);
   await compiler.run(environment.compile);
   deployer.run(environment.deploy);
 }

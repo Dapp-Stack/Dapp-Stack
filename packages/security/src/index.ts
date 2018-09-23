@@ -12,11 +12,11 @@ const signale = new Signale({ scope: 'Security' });
 export const run = async (compile: Compile) => {
   let isDockerRunning: boolean = await pingDocker();
   if (!isDockerRunning) {
-    signale.error(new Error("Docker is not running"))
+    signale.error(new Error('Docker is not running'));
     process.exit(1);
   }
   await downloadImage();
-  signale.await("Running security checks")
+  signale.await('Running security checks');
   compile.contracts.forEach(contract => runCheck(contract));
 };
 
@@ -27,10 +27,9 @@ const pingDocker = async () => {
   } catch {
     return false;
   }
-}
+};
 
 const runCheck = async function(contractName: string) {
-  
   const securityFile = path.join(Structure.contracts.security, contractName.replace('.sol', '.md'));
   await fs.ensureFile(securityFile);
   let stream = fs.createWriteStream(securityFile);
@@ -42,7 +41,7 @@ const runCheck = async function(contractName: string) {
 };
 
 const downloadImage = (): Promise<boolean> => {
-  signale.await("Downloading docker image (it may take a while)...");
+  signale.await('Downloading docker image (it may take a while)...');
 
   return new Promise<boolean>(async (resolve, reject) => {
     docker.pull(IMAGE_NAME, {}, (err, stream) => {
@@ -51,7 +50,7 @@ const downloadImage = (): Promise<boolean> => {
       }
       docker.modem.followProgress(stream, onFinished);
       function onFinished() {
-        signale.success("Docker image downloaded");
+        signale.success('Docker image downloaded');
         return resolve(true);
       }
     });
