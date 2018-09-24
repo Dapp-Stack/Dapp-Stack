@@ -1,31 +1,30 @@
-import { createRequestTypes, action } from './utils';
+import { createAsyncAction, createStandardAction } from 'typesafe-actions';
+import { FILES_LIST, FILES_MKDIR, FILES_RMDIR, FILES_CREATE_FILES } from '../types';
 
-export const requests = {
-  FILES_LIST: createRequestTypes('FILES_LIST'),
-  FILES_MKDIR: createRequestTypes('FILES_MKDIR'),
-  FILES_RMDIR: createRequestTypes('FILES_RMDIR'),
-  FILES_CREATE_FILES: createRequestTypes('FILES_CREATE_FILES'),
-  list: {
-    request: () => action(requests.FILES_LIST.REQUEST),
-    success: response => action(requests.FILES_LIST.SUCCESS, { response }),
-    failure: error => action(requests.FILES_LIST.FAILURE, { error }),
-  },
-  mkdir: {
-    request: () => action(requests.FILES_MKDIR.REQUEST),
-    success: () => action(requests.FILES_MKDIR.SUCCESS),
-    failure: error => action(requests.FILES_MKDIR.FAILURE, { error }),
-  },
-  rmDir: {
-    request: () => action(requests.FILES_RMDIR.REQUEST),
-    success: () => action(requests.FILES_RMDIR.SUCCESS),
-    failure: error => action(requests.FILES_RMDIR.FAILURE, { error }),
-  },
-  createFiles: {
-    request: () => action(requests.FILES_CREATE_FILES.REQUEST),
-    success: () => action(requests.FILES_CREATE_FILES.SUCCESS),
-    failure: error => action(requests.FILES_CREATE_FILES.FAILURE, { error }),
-  },
-};
+export const list = createAsyncAction(
+  'FILES_LIST/REQUEST',
+  'FILES_LIST/SUCCESS',
+  'FILES_LIST/FAILURE'
+)<void, FILES_LIST, Error>();
+
+export const mkdir = createAsyncAction(
+  'FILES_MKDIR/REQUEST',
+  'FILES_MKDIR/SUCCESS',
+  'FILES_MKDIR/FAILURE'
+)<void, FILES_MKDIR, Error>();
+
+export const rmDir = createAsyncAction(
+  'FILES_RMDIR/REQUEST',
+  'FILES_RMDIR/SUCCESS',
+  'FILES_RMDIR/FAILURE'
+)<void, FILES_RMDIR, Error>();
+
+export const createFiles = createAsyncAction(
+  'FILES_CREATE_FILES/REQUEST',
+  'FILES_CREATE_FILES/SUCCESS',
+  'FILES_CREATE_FILES/FAILURE'
+)<void, FILES_CREATE_FILES, Error>();
+
 
 export const FILES = {
   MOUNT: 'FILES.MOUNT',
@@ -43,9 +42,9 @@ export const FILES = {
   CREATE_FILES: 'FILES.CREATE_FILES',
 };
 
-export const mount = () => action(FILES.MOUNT);
-export const unmount = () => action(FILES.UNMOUNT);
-export const cancel = () => action(FILES.CANCEL);
+export const mount = createStandardAction('FILES_MOUNT')<void>();
+export const unmount = createStandardAction('FILES_UNMOUNT')<void>();
+export const cancel = createStandardAction('FILES_CANCEL')<void>();
 
 export const setRoot = (root: string) => action(FILES.SET_ROOT, { root });
 export const createTmpDir = (root: string) => action(FILES.CREATE_TMP_DIR, { root });

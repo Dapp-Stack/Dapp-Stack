@@ -14,14 +14,6 @@ export const read = createAsyncAction(
   'PREVIEW_READ/FAILURE'
 )<void, PREVIEW_READ, Error>();
 
-export const PREVIEW = {
-  MOUNT: 'PREVIEW.MOUNT',
-  UNMOUNT: 'PREVIEW.UNMOUNT',
-  STAT: 'PREVIEW.STAT',
-  READ: 'PREVIEW.READ',
-  CLEAR: 'PREVIEW.CLEAR',
-};
-
-const mount = createStandardAction('PREVIEW_MOUNT')<void>();
-const unmount = createStandardAction('PREVIEW_UNMOUNT')<void>();
-const clear = createStandardAction('PREVIEW_CLEAR')<void>();
+export const mount = createStandardAction('PREVIEW_MOUNT')<void>();
+export const unmount = createStandardAction('PREVIEW_UNMOUNT')<void>();
+export const clear = createStandardAction('PREVIEW_CLEAR')<void>();
