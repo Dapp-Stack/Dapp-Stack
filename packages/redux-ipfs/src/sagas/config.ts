@@ -1,4 +1,4 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put, fork } from 'redux-saga/effects';
 
 import * as api from '../services/api';
 import { config } from '../actions';
@@ -13,4 +13,8 @@ export function* loadConfig() {
   } catch (error) {
     yield config.load.failure(error);
   }
+}
+
+export function* load() {
+  yield fork(loadConfig);
 }

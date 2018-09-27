@@ -2,7 +2,6 @@ import { fork } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
 
 import * as actions from '../actions';
-
 export default function*() {
   yield Object.keys(actions).reduce((acc, name) => {
     const action = actions[name];

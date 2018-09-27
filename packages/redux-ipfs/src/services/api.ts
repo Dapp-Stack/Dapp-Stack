@@ -7,6 +7,7 @@ const bl = require('bl');
 import { Config } from '../types';
 import { Stream } from 'stream';
 
+
 type Stat = {
   hash: string;
   size: number;
@@ -63,7 +64,7 @@ export const files = {
     return api.files.rm(name, { recursive: true });
   },
 
-  createFiles: (root: string, files: File[], api = localApi): Promise<void[]> => {
+  createFiles: (root: string, files: window.File[], api = localApi): Promise<void[]> => {
     return Promise.all(
       files.map((file: File) => {
         const target = path.join(root, file.name);

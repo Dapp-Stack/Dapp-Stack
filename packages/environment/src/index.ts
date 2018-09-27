@@ -10,6 +10,8 @@ export const Structure = {
     security: path.join(process.cwd(), 'contracts', 'security'),
     test: path.join(process.cwd(), 'contracts', 'tests'),
   },
+  secrets: path.join(process.cwd(), 'secrets.json.enc'),
+  masterKey: path.join(process.cwd(), 'master.key'),
   src: path.join(process.cwd(), 'src'),
   public: path.join(process.cwd(), 'public'),
 };
