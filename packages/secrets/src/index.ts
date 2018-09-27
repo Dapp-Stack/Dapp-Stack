@@ -1,10 +1,26 @@
 import { Structure } from '@solon/environment';
+import * as spawn from 'cross-spawn';
 import * as crypto from 'crypto';
 import * as fs from 'fs-extra';
 
 const ALGORITHM = 'aes-256-ctr';
 
 export const edit = () => {
+  const filename = `${Structure.secrets}.${process.pid}`;
+  try {
+    const content = decrypt();
+    fs.writeFileSync(filename, decrypt);
+
+    const command = `${process.env.EDITOR} ${filename}`;
+    spawn.sync(command);
+
+    const updatedContent = fs.readFileSync(filename, 'utf-8')
+    if (updatedContent !== content) {
+      fs.writeFileSync(Structure.secrets, encrypt(updatedContent));
+    }
+  } finally {
+    fs.removeSync(filename);
+  }
 };
 
 export const show = () => {
