@@ -2,24 +2,41 @@ import { Structure } from '@solon/environment';
 import * as spawn from 'cross-spawn';
 import * as crypto from 'crypto';
 import * as fs from 'fs-extra';
+import * as generator from 'generate-password';
+import { Signale } from 'signale';
 
+const opn = require('opn');
 const ALGORITHM = 'aes-256-ctr';
 
-export const edit = () => {
-  const filename = `${Structure.secrets}.${process.pid}`;
+const signale = new Signale({ scope: 'Secrets' });
+
+export const setup = () => {
+  signale.await('Generate password');
+  const password = generatePassword();
+  fs.writeFileSync(Structure.masterKey, password);
+
+  signale.await('Encrypt secrets');
+  const text = encrypt(JSON.stringify({}));
+  fs.writeFileSync(Structure.secrets, text);
+  signale.success('Secrets setup successfully');
+};
+
+export const edit = async () => {
+  const filename = `${Structure.secrets}.${process.pid}.json`;
   try {
     const content = decrypt();
-    fs.writeFileSync(filename, decrypt);
+    fs.writeFileSync(filename, content);
 
-    const command = `${process.env.EDITOR} ${filename}`;
-    spawn.sync(command);
+    signale.await('Opening editor');
+    await opn(filename);
 
-    const updatedContent = fs.readFileSync(filename, 'utf-8')
+    const updatedContent = fs.readFileSync(filename, 'utf-8');
     if (updatedContent !== content) {
       fs.writeFileSync(Structure.secrets, encrypt(updatedContent));
     }
   } finally {
     fs.removeSync(filename);
+    signale.success('Secrets updated');
   }
 };
 
@@ -43,6 +60,13 @@ const encrypt = (text: string) => {
   let crypted = cipher.update(text, 'utf8', 'hex');
   crypted += cipher.final('hex');
   return crypted;
+};
+
+const generatePassword = () => {
+  return  generator.generate({
+    length: 20,
+    numbers: true,
+  });
 };
 
 const getPassword = () => {
