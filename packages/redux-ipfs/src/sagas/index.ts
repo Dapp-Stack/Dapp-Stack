@@ -1,27 +1,11 @@
 import { fork } from 'redux-saga/effects';
-import { takeLatest } from 'redux-saga';
 
-import * as actions from '../actions';
-export default function*() {
-  yield Object.keys(actions).reduce((acc, name) => {
-    const action = actions[name];
+import * as config from './config';
+import * as files from './files';
 
-    if (action.mount) {
-      acc.push(
-        fork(function*() {
-          yield* takeLatest(action[name.toUpperCase()].MOUNT, action.mount);
-        }),
-      );
-    }
-
-    if (action.unmount) {
-      acc.push(
-        fork(function*() {
-          yield* takeLatest(action[name.toUpperCase()].UNMOUNT, action.unmount);
-        }),
-      );
-    }
-
-    return acc;
-  }, []);
+export default function* ipfsSaga () {
+  yield [
+    fork(config.load),
+    fork(files.load),
+  ];
 }

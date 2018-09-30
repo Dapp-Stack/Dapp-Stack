@@ -4,24 +4,8 @@ import * as path from 'path';
 
 const bl = require('bl');
 
-import { Config } from '../types';
+import { Config, File } from '../types';
 import { Stream } from 'stream';
-
-type Stat = {
-  hash: string;
-  size: number;
-  cumulativeSize: number;
-  blocks: number;
-  type: string;
-};
-
-type File = {
-  name: string;
-  size: number;
-  hash: string;
-  type: 'file' | 'directory';
-};
-type FileWithStat = File & Stat;
 
 const host = process.env.NODE_ENV !== 'production' ? 'localhost' : window.location.hostname;
 const port = process.env.NODE_ENV !== 'production' ? '5001' : window.location.port || 80;
@@ -41,18 +25,8 @@ const collect = (stream: Stream) => {
 export const id = localApi.id;
 
 export const files = {
-  list: (root: string, api = localApi): Promise<Promise<FileWithStat[]>> => {
-    return api.files.ls(root).then((res: File[]) => {
-      const files = sortBy(res, 'name') || [];
-
-      return Promise.all(
-        files.map(file => {
-          return api.files.stat(path.join(root, file.name)).then((stat: Stat) => {
-            return { ...file, ...stat };
-          });
-        }),
-      );
-    });
+  ls: (root: string, api = localApi): Promise<File[]> => {
+    return api.files.ls(root);
   },
 
   mkdir: (name: string, api = localApi): Promise<void> => {
@@ -63,20 +37,12 @@ export const files = {
     return api.files.rm(name, { recursive: true });
   },
 
-  createFiles: (root: string, files: window.File[], api = localApi): Promise<void[]> => {
-    return Promise.all(
-      files.map((file: File) => {
-        const target = path.join(root, file.name);
-        return api.files.write(target, file, { create: true });
-      }),
-    );
+  touch: (root: string, name: string, blob: Blob, api = localApi): Promise<void> => {
+    const target = path.join(root, name);
+    return api.files.write(target, blob, { create: true });
   },
 
-  stat: (name: string, api = localApi): Promise<Stat> => {
-    return api.files.stat(name);
-  },
-
-  read: (name: string, api = localApi): Promise<string> => {
+  cat: (name: string, api = localApi): Promise<string> => {
     return api.files.read(name).then(collect);
   },
 };

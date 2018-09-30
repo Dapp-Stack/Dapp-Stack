@@ -12,7 +12,7 @@ const defaultConfig: Config = {
 
 export default (state: Config = defaultConfig, action: ConfigAction) => {
   switch (action.type) {
-    case getType(config.load.success):
+    case getType(config.request.load.success):
       return {
         ...state,
         ...action.payload,

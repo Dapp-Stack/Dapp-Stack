@@ -1,104 +1,29 @@
-import { put, call, select, fork, take, race } from 'redux-saga/effects';
-import { join } from 'path';
+import { put, call, select, fork, take, race, all } from 'redux-saga/effects';
 
 import { files as actions } from '../actions';
 import * as api from '../services/api';
+import { File } from '../types';
 
-export function* fetchFiles() {
-  yield put(actions.requests.list.request());
+export function* ls() {
+  yield put(actions.request.ls.request());
 
   try {
-    const { files } = yield select();
-    const res = yield call(api.files.list, files.root);
-    yield put(actions.requests.list.success(res));
+    const state = yield select();
+    const files: File[] = yield call(api.files.ls, state.files.root);
+    yield put(actions.request.ls.success(files));
   } catch (err) {
-    yield put(actions.requests.list.failure(err.message));
-  }
-}
-
-function delay(time: number) {
-  return new Promise(resolve => setTimeout(resolve, time));
-}
-
-export function* watchFiles() {
-  let cancel;
-  yield call(fetchFiles);
-
-  while (!cancel) {
-    ({ cancel } = yield race({
-      delay: call(delay, 10000),
-      cancel: take(actions.FILES.LEAVE),
-    }));
-
-    if (!cancel) {
-      yield call(fetchFiles);
-    }
-  }
-
-  yield put(actions.cancel());
-}
-
-export function* watchFilesRoot() {
-  while (yield take(actions.FILES.SET_ROOT)) {
-    yield fork(fetchFiles);
-  }
-}
-
-export function* watchCreateDir() {
-  while (yield take(actions.FILES.CREATE_DIR)) {
-    try {
-      yield put(actions.requests.mkdir.request());
-      const { files } = yield select();
-      const name = join(files.tmpDir.root, files.tmpDir.name);
-      yield call(api.files.mkdir, name);
-
-      yield fork(fetchFiles);
-      yield put(actions.requests.mkdir.success());
-      yield put(files.rmTmpDir());
-    } catch (err) {
-      yield put(actions.requests.mkdir.failure(err.message));
-    }
-  }
-}
-
-export function* watchCreateFiles() {
-  while (true) {
-    try {
-      const { root, files } = yield take(actions.FILES.CREATE_FILES);
-      yield put(actions.requests.createFiles.request());
-      yield call(api.files.createFiles, root, files);
-
-      yield fork(fetchFiles);
-      yield put(actions.requests.createFiles.success());
-    } catch (err) {
-      yield put(actions.requests.createFiles.failure(err.message));
-    }
-  }
-}
-
-export function* watchRmDir() {
-  while (yield take(actions.FILES.REMOVE_DIR)) {
-    try {
-      yield put(actions.requests.rmDir.request());
-      const { files } = yield select();
-
-      for (let file of files.selected) {
-        yield call(api.files.rmdir, file);
-      }
-
-      yield fork(fetchFiles);
-      yield put(actions.requests.rmDir.success());
-      yield put(actions.deselectAll());
-    } catch (err) {
-      yield put(actions.requests.rmDir.failure(err.message));
-    }
+    yield put(actions.request.ls.failure(err.message));
   }
 }
 
 export function* load() {
-  yield fork(watchFiles);
-  yield fork(watchFilesRoot);
-  yield fork(watchCreateDir);
-  yield fork(watchRmDir);
-  yield fork(watchCreateFiles);
+  yield all([
+    fork(actions.ls, ls),
+    // fork(files.cwd, cwd),
+    // fork(files.cat, cat),
+    // fork(files.mkdir, mkdir),
+    // fork(files.rmdir, rmdir),
+    // fork(files.rm, rm),
+    // fork(files.touch, touch),
+  ]);
 }
