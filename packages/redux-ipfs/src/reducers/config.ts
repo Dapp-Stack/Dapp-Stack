@@ -7,17 +7,17 @@ type ConfigAction = ActionType<typeof config>;
 const defaultConfig: Config = {
   host: '',
   port: '',
-  protocol: ''
-}
+  protocol: '',
+};
 
 export default (state: Config = defaultConfig, action: ConfigAction) => {
   switch (action.type) {
     case getType(config.load.success):
       return {
         ...state,
-        ...action.payload  
-      }
+        ...action.payload,
+      };
     default:
       return state;
   }
-}
+};

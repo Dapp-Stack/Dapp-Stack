@@ -1,5 +1,6 @@
-import * as path from 'path';
 import { merge } from 'lodash';
+import * as path from 'path';
+
 import { Environment } from './types';
 
 export const Structure = {
@@ -9,6 +10,7 @@ export const Structure = {
     doc: path.join(process.cwd(), 'contracts', 'doc'),
     security: path.join(process.cwd(), 'contracts', 'security'),
     test: path.join(process.cwd(), 'contracts', 'tests'),
+    tracker: path.join(process.cwd(), 'contracts', 'tracker.json'),
   },
   secrets: path.join(process.cwd(), 'secrets.json.enc'),
   masterKey: path.join(process.cwd(), 'master.key'),

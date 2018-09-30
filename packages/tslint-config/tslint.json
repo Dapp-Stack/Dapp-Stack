@@ -23,7 +23,8 @@
     ],
     "no-unused-variable": false,
     "max-line-length": [true, { "limit": 120, "ignore-pattern": "^import |^export {(.*?)}" }],
-    "ter-arrow-parens": [true, "as-needed"]
+    "ter-arrow-parens": [true, "as-needed"],
+    "import-name": [true, { "web3": "Web3" }]
   },
   "rulesDirectory": "lib/"
 }

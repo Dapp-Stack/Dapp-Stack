@@ -7,21 +7,20 @@ const bl = require('bl');
 import { Config } from '../types';
 import { Stream } from 'stream';
 
-
 type Stat = {
   hash: string;
   size: number;
   cumulativeSize: number;
   blocks: number;
   type: string;
-}
+};
 
 type File = {
   name: string;
   size: number;
   hash: string;
   type: 'file' | 'directory';
-}
+};
 type FileWithStat = File & Stat;
 
 const host = process.env.NODE_ENV !== 'production' ? 'localhost' : window.location.hostname;

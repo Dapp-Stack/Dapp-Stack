@@ -1,10 +1,12 @@
 import { Deploy, Structure } from '@solon/environment';
 import { generateWallet } from '@solon/wallet';
-import * as fs from 'fs';
+import * as fs from 'fs-extra';
+import { glob } from 'glob';
 import * as path from 'path';
 import { Signale } from 'signale';
 import Web3 = require('web3');
-import { glob } from 'glob';
+
+import { update } from './tracker';
 
 export const run = async (config: Deploy, web3?: Web3) => {
   const deployer = new Deployer(config, web3);
@@ -13,13 +15,13 @@ export const run = async (config: Deploy, web3?: Web3) => {
 };
 
 export class Deployer {
-  private config: Deploy;
-  private signale: Signale;
-  private contractFiles!: { [basename: string]: string };
   public contracts!: string[];
   public web3?: Web3;
   public accounts!: string[];
   public gasPrice!: number;
+  private config: Deploy;
+  private signale: Signale;
+  private contractFiles!: { [basename: string]: string };
 
   constructor(config: Deploy, web3?: Web3) {
     this.config = config;
@@ -28,36 +30,10 @@ export class Deployer {
   }
 
   initialize = async () => {
+    await fs.ensureFile(Structure.contracts.tracker);
     await this.initializeContracts();
     await this.initializeWeb3();
-  };
-
-  private initializeContracts = () => {
-    return new Promise<void>(resolve => {
-      glob(`${Structure.contracts.build}/**/*.json`, {}, (_, files: string[]) => {
-        this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
-          acc[path.basename(file, '.json')] = file;
-          return acc;
-        }, {});
-        this.contracts = Object.keys(this.contractFiles);
-        resolve();
-      });
-    });
-  };
-
-  private initializeWeb3 = async () => {
-    if (this.web3) {
-      await this.setupExtra(this.web3);
-    } else {
-      this.web3 = await generateWallet(this.config);
-      await this.setupExtra(this.web3);
-    }
-  };
-
-  private setupExtra = async (web3: Web3) => {
-    this.accounts = await web3.eth.getAccounts();
-    this.gasPrice = await web3.eth.getGasPrice();
-  };
+  }
 
   async run() {
     try {
@@ -91,8 +67,37 @@ export class Deployer {
 
     return contract.deploy(args).send({
       gas,
-      gasPrice: this.gasPrice,
       from,
+      gasPrice: this.gasPrice,
+    }).then(({ options }) => {
+      update(contractName, options.address);
     });
+  }
+
+  private initializeContracts = () => {
+    return new Promise<void>(resolve => {
+      glob(`${Structure.contracts.build}/**/*.json`, {}, (_, files: string[]) => {
+        this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
+          acc[path.basename(file, '.json')] = file;
+          return acc;
+        }, {});
+        this.contracts = Object.keys(this.contractFiles);
+        resolve();
+      });
+    });
+  }
+
+  private initializeWeb3 = async () => {
+    if (this.web3) {
+      await this.setupExtra(this.web3);
+    } else {
+      this.web3 = await generateWallet(this.config);
+      await this.setupExtra(this.web3);
+    }
+  }
+
+  private setupExtra = async (web3: Web3) => {
+    this.accounts = await web3.eth.getAccounts();
+    this.gasPrice = await web3.eth.getGasPrice();
   }
 }

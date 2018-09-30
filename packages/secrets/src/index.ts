@@ -63,7 +63,7 @@ const encrypt = (text: string) => {
 };
 
 const generatePassword = () => {
-  return  generator.generate({
+  return generator.generate({
     length: 20,
     numbers: true,
   });
