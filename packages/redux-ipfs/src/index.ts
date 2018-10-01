@@ -1,5 +1,5 @@
 import * as actions from './actions';
 import * as reducers from './reducers';
-import sagas from './sagas';
+import epics from './epics';
 
-export { reducers, sagas, actions };
+export { reducers, epics, actions };

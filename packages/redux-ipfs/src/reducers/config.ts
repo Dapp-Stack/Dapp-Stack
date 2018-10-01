@@ -1,8 +1,6 @@
-import { ActionType, getType } from 'typesafe-actions';
-import { config } from '../actions';
+import { getType } from 'typesafe-actions';
+import { config, ConfigAction } from '../actions';
 import { Config } from '../types';
-
-type ConfigAction = ActionType<typeof config>;
 
 const defaultConfig: Config = {
   host: '',

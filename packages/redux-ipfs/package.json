@@ -45,7 +45,9 @@
     "ipfs-api": "^24.0.2",
     "lodash": "^4.17.10",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.3.3",
+    "rxjs-compat": "^6.3.3",
     "typesafe-actions": "^2.0.4"
   },
   "publishConfig": {

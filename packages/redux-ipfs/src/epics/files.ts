@@ -1,4 +1,4 @@
-import { put, call, select, fork, take, race, all } from 'redux-saga/effects';
+import { put, call, select, fork, take, race, all, takeEvery } from 'redux-saga/effects';
 
 import { files as actions } from '../actions';
 import * as api from '../services/api';
@@ -16,11 +16,21 @@ export function* ls() {
   }
 }
 
+export function* cat(payload) {
+  yield put(actions.request.cat.request());
+
+  try {
+    const content: string = yield call(api.files.cat, path);
+    yield put(actions.request.cat.success(content));
+  } catch (err) {
+    yield put(actions.request.cat.failure(err.message));
+  }
+}
+
 export function* load() {
   yield all([
-    fork(actions.ls, ls),
-    // fork(files.cwd, cwd),
-    // fork(files.cat, cat),
+    yield takeEvery(actions.ls, ls),
+    yield takeEvery(actions.cat, cat),
     // fork(files.mkdir, mkdir),
     // fork(files.rmdir, rmdir),
     // fork(files.rm, rm),

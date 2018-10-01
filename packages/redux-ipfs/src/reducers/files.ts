@@ -1,9 +1,7 @@
-import { ActionType, getType } from 'typesafe-actions';
+import { getType } from 'typesafe-actions';
 import { includes, reject, union } from 'lodash';
-import { files } from '../actions';
+import { files, FilesAction } from '../actions';
 import { File } from '../types';
-
-type FilesAction = ActionType<typeof files>;
 
 type State = {
   root: string;

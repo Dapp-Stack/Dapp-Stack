@@ -24,13 +24,13 @@ export const request = {
 
   rm: createAsyncAction('IPFS/RM/REQUEST', 'IPFS/RM/SUCCESS', 'IPFS/RM/FAILURE')<void, boolean, Error>(),
 
-  cat: createAsyncAction('IPFS/CAT/REQUEST', 'IPFS/CAT/SUCCESS', 'IPFS/CAT/FAILURE')<void, boolean, Error>(),
+  cat: createAsyncAction('IPFS/CAT/REQUEST', 'IPFS/CAT/SUCCESS', 'IPFS/CAT/FAILURE')<void, string, Error>(),
 };
 
-export const cwd = (root: string) => createStandardAction('IPFS/CWD')<void>();
-export const ls = () => createStandardAction('IPFS/LS')<void>();
-export const touch = () => createStandardAction('IPFS/TOUCH')<void>();
-export const mkdir = (path: string) => createStandardAction('IPFS/MKDIR')<void>();
-export const rmdir = (path: string) => createStandardAction('IPFS/RMDIR')<void>();
-export const rm = (path: string) => createStandardAction('IPFS/RM')<void>();
-export const cat = (name: string) => createStandardAction('IPFS/CAT')<void>();
+export const cwd = createStandardAction('IPFS/CWD')<string>();
+export const ls = createStandardAction('IPFS/LS')<void>();
+export const touch = createStandardAction('IPFS/TOUCH')<string, Buffer | Blob>();
+export const mkdir = createStandardAction('IPFS/MKDIR')<string>();
+export const rmdir = createStandardAction('IPFS/RMDIR')<string>();
+export const rm = createStandardAction('IPFS/RM')<string>();
+export const cat = createStandardAction('IPFS/CAT')<string>();
