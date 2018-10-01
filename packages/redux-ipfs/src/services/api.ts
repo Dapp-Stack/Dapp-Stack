@@ -24,27 +24,25 @@ const collect = (stream: Stream) => {
 
 export const id = localApi.id;
 
-export const files = {
-  ls: (root: string, api = localApi): Promise<File[]> => {
-    return api.files.ls(root);
-  },
+export const ls = (root: string, api = localApi): Promise<File[]> => {
+  return api.files.ls(root);
+};
 
-  mkdir: (name: string, api = localApi): Promise<void> => {
-    return api.files.mkdir(name);
-  },
+export const mkdir = (name: string, api = localApi): Promise<void> => {
+  return api.files.mkdir(name);
+};
 
-  rmdir: (name: string, api = localApi): Promise<void> => {
-    return api.files.rm(name, { recursive: true });
-  },
+export const rm = (name: string, api = localApi): Promise<void> => {
+  return api.files.rm(name, { recursive: true });
+};
 
-  touch: (root: string, name: string, blob: Blob, api = localApi): Promise<void> => {
-    const target = path.join(root, name);
-    return api.files.write(target, blob, { create: true });
-  },
+export const touch = (root: string, name: string, blob: Blob | Buffer, api = localApi): Promise<void> => {
+  const target = path.join(root, name);
+  return api.files.write(target, blob, { create: true });
+};
 
-  cat: (name: string, api = localApi): Promise<string> => {
-    return api.files.read(name).then(collect);
-  },
+export const cat = (name: string, api = localApi): Promise<string> => {
+  return api.files.read(name).then(collect);
 };
 
 export const getConfig = async (api = localApi): Promise<Config> => {
