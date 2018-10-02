@@ -41,7 +41,7 @@ const rm: Epic<IpfsAction, IpfsAction, IpfsState> = (action$) => action$.pipe(
   filter(isActionOf(files.request.cat.request)),
   switchMap(action =>
     from(api.rm(action.payload)).pipe(
-      map(files.request.rm.success),
+      map(files.request.rm.success, files.ls),
       catchError(map(files.request.rm.failure))
     )
   )
@@ -56,7 +56,7 @@ const touch: Epic<IpfsAction, IpfsAction, IpfsState> = (action$, state$) => acti
   filter(isActionOf(files.request.touch.request)),
   switchMap(action =>
     from(api.touch(state$.value.files.root, action.payload.name, action.payload.content)).pipe(
-      map(files.request.rm.success),
+      map(files.request.rm.success, files.ls),
       catchError(map(files.request.rm.failure))
     )
   )
@@ -71,7 +71,7 @@ const mkdir: Epic<IpfsAction, IpfsAction, IpfsState> = (action$) => action$.pipe
   filter(isActionOf(files.request.cat.request)),
   switchMap(action =>
     from(api.mkdir(action.payload)).pipe(
-      map(files.request.mkdir.success),
+      map(files.request.mkdir.success, files.ls),
       catchError(map(files.request.mkdir.failure))
     )
   )
@@ -86,7 +86,7 @@ const rmdir: Epic<IpfsAction, IpfsAction, IpfsState> = (action$) => action$.pipe
   filter(isActionOf(files.request.cat.request)),
   switchMap(action =>
     from(api.rm(action.payload)).pipe(
-      map(files.request.rmdir.success),
+      map(files.request.rmdir.success, files.ls),
       catchError(map(files.request.rmdir.failure))
     )
   )
