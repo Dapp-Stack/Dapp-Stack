@@ -69,8 +69,9 @@ export class Deployer {
       gas,
       from,
       gasPrice: this.gasPrice,
-    }).then(({ options }) => {
-      update(contractName, options.address);
+    }).then((deployedContract) => {
+      update(contractName, deployedContract.options.address);
+      return deployedContract;
     });
   }
 
