@@ -1,5 +1,4 @@
-import API from 'ipfs-api';
-import { sortBy } from 'lodash';
+import * as API from 'ipfs-api';
 import * as path from 'path';
 
 const bl = require('bl');

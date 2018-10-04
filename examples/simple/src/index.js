@@ -1,24 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import { combineReducers, compose } from 'redux';
 import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import history from './history';
+import { epics as ipfsEpics, reducers as ipfsReducers } from '@solon/redux-ipfs';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+
+import history from './history';
+import AppContainer from './containers/AppContainer';
 
 import 'semantic-ui-css/semantic.min.css';
 
-import AppContainer from './containers/AppContainer';
-import { rootSaga } from './sagas';
-import reducers from './store';
+const rootEpic = combineEpics(
+  ...ipfsEpics
+);
 
-const sagaMiddleware = createSagaMiddleware();
+const rootReducer = combineReducers({
+  ipfs: ipfsReducers
+});
 
-const store = createStore(connectRouter(history)(reducers), applyMiddleware(routerMiddleware(history), sagaMiddleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const epicMiddleware = createEpicMiddleware();
+const store = createStore(
+  connectRouter(history)(rootReducer), 
+  composeEnhancers(
+    applyMiddleware(routerMiddleware(history), epicMiddleware)
+  )
+);
 
-sagaMiddleware.run(rootSaga);
-
-// index.js
+epicMiddleware.run(rootEpic);
 
 ReactDOM.render(
   <Provider store={store}>

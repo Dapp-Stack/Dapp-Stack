@@ -1,9 +1,5 @@
-// import { reducer } from './reducer';
-// import { epics } from './epics';
-// import { epics } from './actions';
+import * as actions from './actions';
+import * as reducers from './reducers';
+import epics from './epics';
 
-// export default (reduxWeb3 = {
-//   solonReducer: reducer,
-//   solonEpics: epics,
-//   solonActions: actions,
-// });
+export { reducers, epics, actions };

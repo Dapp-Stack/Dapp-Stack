@@ -70,10 +70,24 @@ export class Solc implements ICompileStrategy {
     });
   };
 
+  findImports(filename: string) {
+    if (fs.existsSync(filename)) {
+      return {contents: fs.readFileSync(filename).toString()};
+    }
+    
+    if (fs.existsSync(path.join('./node_modules/', filename))) {
+      return {contents: fs.readFileSync(path.join('./node_modules/', filename)).toString()};
+    }
+    if (fs.existsSync(path.join(Structure.contracts.src, filename))) {
+      return {contents: fs.readFileSync(path.join(Structure.contracts.src, filename)).toString()};
+    }
+    return {error: 'File not found'};
+  }
+
   compile = () => {
     this.signale.await(`Starting to compile the contracts`);
     return new Promise<boolean>((resolve, reject) => {
-      const output: CompilationOutput = JSON.parse(solc.compileStandardWrapper(this.input()));
+      const output: CompilationOutput = JSON.parse(solc.compileStandardWrapper(this.input(), this.findImports));
 
       if (output.errors) {
         this.signale.error(`Compilation failed`);

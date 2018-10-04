@@ -1,6 +1,8 @@
 pragma solidity ^0.4.24;
 
-contract SimpleStorage {
+import 'Ownable.sol';
+
+contract SimpleStorage is Ownable {
 
     uint public storedData;
 
