@@ -1,8 +1,10 @@
 pragma solidity ^0.4.24;
 
-import 'Ownable.sol';
+import "ownership/Ownable.sol";
+import "math/SafeMath.sol";
 
 contract SimpleStorage is Ownable {
+    using SafeMath for uint256;
 
     uint public storedData;
 
