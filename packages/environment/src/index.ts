@@ -20,10 +20,10 @@ export const Structure = {
 
 const defaultEnvironment: Environment = {
   services: {
-    blockchain: {
+    ethereum: {
       provider: 'ganache',
       infura: {
-        url: '',
+        network: 'homestead',
       },
       ganache: {
         mnemonic: '',

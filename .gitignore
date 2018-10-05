@@ -32,5 +32,5 @@ node_modules/
 # build
 packages/*/lib/
 packages/scripts/scripts/
-packages/blockchain/bin/*
+packages/eEtherereum/bin/*
 websites/landing/dist

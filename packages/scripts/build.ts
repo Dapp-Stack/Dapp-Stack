@@ -4,7 +4,7 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import * as blockchain from '@solon/blockchain';
+import * as ethereum from '@solon/ethereum';
 import * as storage from '@solon/storage';
 import * as compiler from '@solon/compiler';
 import * as deployer from '@solon/deployer';
@@ -17,7 +17,7 @@ import { buildWeb } from './shared/web';
 const environment = lifecycle.before();
 
 async function buildAsync() {
-  await blockchain.start(environment.services.blockchain);
+  await ethereum.start(environment.services.ethereum);
   await storage.start(environment.services.storage);
   await compiler.run(environment.compile);
   doc.runAll(environment.compile);

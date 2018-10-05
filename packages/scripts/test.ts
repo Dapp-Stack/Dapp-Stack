@@ -5,7 +5,7 @@ process.on('unhandledRejection', err => {
 });
 
 import { Environment } from '@solon/environment';
-import * as blockchain from '@solon/blockchain';
+import * as ethereum from '@solon/ethereum';
 import * as tester from '@solon/test';
 import * as storage from '@solon/storage';
 import * as compiler from '@solon/compiler';
@@ -13,7 +13,7 @@ import { testWeb } from './shared/web';
 import * as lifecycle from './shared/lifecycle';
 
 async function testAsync(environment: Environment) {
-  await blockchain.start(environment.services.blockchain);
+  await ethereum.start(environment.services.ethereum);
   await storage.start(environment.services.storage);
   await compiler.run(environment.compile);
   await tester.run();

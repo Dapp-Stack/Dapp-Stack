@@ -1,3 +1,0 @@
-### SOLON
-
-TODO

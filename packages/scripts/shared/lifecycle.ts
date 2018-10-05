@@ -1,6 +1,6 @@
 import { Environment, build } from '@solon/environment';
 
-import * as blockchain from '@solon/blockchain';
+import * as ethereum from '@solon/ethereum';
 import * as storage from '@solon/storage';
 import { stopWeb } from './web';
 
@@ -12,7 +12,7 @@ export async function stopAsync(
   environment: Environment,
   { shouldExit }: { shouldExit: boolean } = { shouldExit: false },
 ) {
-  await blockchain.stop(environment.services.blockchain);
+  await ethereum.stop(environment.services.ethereum);
   await storage.stop(environment.services.storage);
   stopWeb();
 

@@ -16,7 +16,7 @@
     "declarationMap": true
   },
   "references": [
-    { "path": "./packages/blockchain" },
+    { "path": "./packages/ethereum" },
     { "path": "./packages/compiler" },
     { "path": "./packages/deployer" },
     { "path": "./packages/doc" },

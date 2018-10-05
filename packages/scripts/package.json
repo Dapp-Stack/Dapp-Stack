@@ -46,7 +46,7 @@
     "@solon/compiler": "0.1.0",
     "@solon/deployer": "0.1.0",
     "@solon/environment": "0.1.0",
-    "@solon/blockchain": "0.1.0",
+    "@solon/ethereum": "0.1.0",
     "@solon/security": "0.1.0",
     "@solon/storage": "0.1.0",
     "@solon/doc": "0.1.0",

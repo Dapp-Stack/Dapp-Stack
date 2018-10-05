@@ -5,14 +5,15 @@ export type Wallet = {
   numAccount: number;
 };
 
+export type InfuraNetwork = 'homestead' | 'rinkeby' | 'ropsten' | 'kovan'
 export type GethType = 'dev' | 'ropsten' | 'mainnet';
 
-export type BlockchainProvider = 'ganache' | 'geth' | 'infura';
+export type EthereumProvider = 'ganache' | 'geth' | 'infura';
 
-export type Blockchain = {
-  provider: BlockchainProvider;
+export type Ethereum = {
+  provider: EthereumProvider;
   infura: {
-    url: string;
+    network: InfuraNetwork;
   };
   ganache: {
     mnemonic: string;
@@ -25,7 +26,7 @@ export type Blockchain = {
 export type Storage = 'ipfs';
 
 export interface Services {
-  blockchain: Maybe<Blockchain>;
+  ethereum: Maybe<Ethereum>;
   storage: Maybe<Storage>;
   web: boolean;
 }
