@@ -2,7 +2,7 @@ export type Maybe<T> = false | T;
 
 export type Wallet = {
   mnemonic: string;
-  numAccount: number;
+  indexAccount: number;
 };
 
 export type InfuraNetwork = 'homestead' | 'rinkeby' | 'ropsten' | 'kovan'
@@ -45,7 +45,7 @@ export interface Compile {
 }
 
 export interface Deploy {
-  wallet?: Wallet;
+  wallet: Wallet;
   migrate: (deployer: any) => void;
 }
 

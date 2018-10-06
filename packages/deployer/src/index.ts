@@ -4,35 +4,34 @@ import * as fs from 'fs-extra';
 import { glob } from 'glob';
 import * as path from 'path';
 import { Signale } from 'signale';
-import Web3 = require('web3');
+import * as ethers from 'ethers';
 
 import { update } from './tracker';
 
-export const run = async (web3?: Web3) => {
-  const deployer = new Deployer(web3);
+export const run = async () => {
+  const deployer = new Deployer();
   await deployer.initialize();
   await deployer.run();
 };
 
 export class Deployer {
   public contracts!: string[];
-  public web3?: Web3;
-  public accounts!: string[];
-  public gasPrice!: number;
+  public wallet: ethers.Wallet;
+  public gasPrice!: ethers.ethers.utils.BigNumber;
   private config: Deploy;
   private signale: Signale;
   private contractFiles!: { [basename: string]: string };
 
-  constructor(web3?: Web3) {
+  constructor() {
     this.config = build().deploy;
-    this.web3 = web3;
+    this.wallet = generateWallet();
     this.signale = new Signale({ scope: 'Deployer' });
   }
 
   initialize = async () => {
     await fs.ensureFile(Structure.contracts.tracker);
     await this.initializeContracts();
-    await this.initializeWeb3();
+    await this.initializeEthereum();
   }
 
   async run() {
@@ -45,13 +44,11 @@ export class Deployer {
     }
   }
 
-  async deploy(contractName: string, options: { from?: string; args?: any[] } = {}) {
-    if (!this.contractFiles || !this.web3) {
+  async deploy(contractName: string, ...args: any[]) {
+    if (!this.contractFiles) {
       return;
     }
 
-    const from = options.from || this.accounts[0];
-    const args = { data: '', arguments: options.args || [] };
     const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
       return;
@@ -60,19 +57,12 @@ export class Deployer {
     const source = JSON.parse(fs.readFileSync(contractFile).toString());
 
     const abi = source.abi;
-    const data = `0x${source.evm.bytecode.object}`;
-
-    const contract = new this.web3.eth.Contract(abi, undefined, { data });
-    const gas = await contract.deploy(args).estimateGas();
-
-    return contract.deploy(args).send({
-      gas,
-      from,
-      gasPrice: this.gasPrice,
-    }).then((deployedContract) => {
-      update(contractName, deployedContract.options.address);
-      return deployedContract;
-    });
+    const bytecode = `0x${source.evm.bytecode.object}`;
+    const factory = new ethers.ContractFactory(abi, bytecode, this.wallet);
+    const contract = await factory.deploy(...args);
+    await contract.deployed()
+    update(contractName, contract.address);
+    return contract;
   }
 
   private initializeContracts = () => {
@@ -88,17 +78,7 @@ export class Deployer {
     });
   }
 
-  private initializeWeb3 = async () => {
-    if (this.web3) {
-      await this.setupExtra(this.web3);
-    } else {
-      this.web3 = await generateWallet(this.config);
-      await this.setupExtra(this.web3);
-    }
-  }
-
-  private setupExtra = async (web3: Web3) => {
-    this.accounts = await web3.eth.getAccounts();
-    this.gasPrice = await web3.eth.getGasPrice();
+  private initializeEthereum = async () => {
+    this.gasPrice = await this.wallet.provider.getGasPrice();
   }
 }

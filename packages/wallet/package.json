@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@solon/environment": "0.1.0",
+    "@solon/connect": "0.1.0",
     "ethers": "^4.0.3"
   },
   "publishConfig": {
