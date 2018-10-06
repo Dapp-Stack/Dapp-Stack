@@ -14,6 +14,7 @@ export type Ethereum = {
   provider: EthereumProvider;
   infura: {
     network: InfuraNetwork;
+    apiKey?: string
   };
   ganache: {
     mnemonic: string;

@@ -1,4 +1,4 @@
-import { Environment, build } from '@solon/environment';
+import { build } from '@solon/environment';
 import * as ethers from 'ethers';
 
 export const connect = () => {

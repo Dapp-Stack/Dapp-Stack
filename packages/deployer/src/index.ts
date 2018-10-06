@@ -1,4 +1,4 @@
-import { build, Structure } from '@solon/environment';
+import { build, Deploy, Structure } from '@solon/environment';
 import { generateWallet } from '@solon/wallet';
 import * as fs from 'fs-extra';
 import { glob } from 'glob';
@@ -9,7 +9,7 @@ import Web3 = require('web3');
 import { update } from './tracker';
 
 export const run = async (web3?: Web3) => {
-  const deployer = new Deployer(config, web3);
+  const deployer = new Deployer(web3);
   await deployer.initialize();
   await deployer.run();
 };

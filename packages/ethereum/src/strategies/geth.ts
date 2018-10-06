@@ -90,7 +90,10 @@ export class Geth implements IEthereumStrategy {
       case 'geth':
         attachTo = path.join(this.dataDir, 'geth.ipc');
       case 'infura':
-        attachTo = this.config.infura.url;
+        const {network, apiKey} = this.config.infura;
+        const subdomain = (network === 'homestead') ? 'mainnet' : network;
+
+        attachTo = `https://${subdomain}.infura.io/${apiKey || ''}`;
       case 'ganache':
         attachTo = 'http://127.0.0.1:8545';
     }
