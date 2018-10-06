@@ -8,7 +8,6 @@ import Web3 = require('web3');
 
 import { update } from './tracker';
 
-import { build } from '@solon/environment/src';
 export const run = async (web3?: Web3) => {
   const deployer = new Deployer(config, web3);
   await deployer.initialize();
