@@ -1,5 +1,5 @@
 {
-  "name": "@solon/storage",
+  "name": "@solon/ipfs",
   "private": true,
   "version": "0.1.0",
   "engines": {

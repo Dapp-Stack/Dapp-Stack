@@ -1,19 +1,13 @@
 import { Environment, build } from '@solon/environment';
 
 import * as ethereum from '@solon/ethereum';
-import * as storage from '@solon/storage';
+import * as ipfs from '@solon/ipfs';
 import { stopWeb } from './web';
 
-export function before(): Environment {
-  return build();
-}
 
-export async function stopAsync(
-  environment: Environment,
-  { shouldExit }: { shouldExit: boolean } = { shouldExit: false },
-) {
-  await ethereum.stop(environment.services.ethereum);
-  await storage.stop(environment.services.storage);
+export async function stopAsync({ shouldExit }: { shouldExit: boolean } = { shouldExit: false }) {
+  await ethereum.stop();
+  await ipfs.stop();
   stopWeb();
 
   if (shouldExit) {
@@ -21,15 +15,15 @@ export async function stopAsync(
   }
 }
 
-export function after(environment: Environment) {
+export function after() {
   process.stdin.resume();
 
-  process.on('SIGTERM', stopAsync.bind(null, environment, { shouldExit: true }));
-  process.on('SIGINT', stopAsync.bind(null, environment, { shouldExit: true }));
-  process.on('SIGUSR1', stopAsync.bind(null, environment, { shouldExit: true }));
+  process.on('SIGTERM', stopAsync.bind(null, { shouldExit: true }));
+  process.on('SIGINT', stopAsync.bind(null, { shouldExit: true }));
+  process.on('SIGUSR1', stopAsync.bind(null, { shouldExit: true }));
   process.on('SIGUSR2', stopAsync.bind(null));
   process.on('uncaughtException', error => {
     console.log(error.stack);
-    stopAsync.bind(null, environment, { shouldExit: true })();
+    stopAsync.bind(null, { shouldExit: true })();
   });
 }

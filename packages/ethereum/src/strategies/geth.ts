@@ -1,6 +1,6 @@
-import { Etherereum } from '@solon/environment';
+import { Ethereum } from '@solon/environment';
 import { Signale } from 'signale';
-import { IEtherereumStrategy } from '../types';
+import { IEthereumStrategy } from '../types';
 import * as path from 'path';
 import * as spawn from 'cross-spawn';
 import * as fs from 'fs-extra';
@@ -8,14 +8,14 @@ import { ChildProcess } from 'child_process';
 
 let child: ChildProcess;
 
-export class Geth implements IEtherereumStrategy {
-  private config: Etherereum;
+export class Geth implements IEthereumStrategy {
+  private config: Ethereum;
   private signale: Signale;
   private binaryPath: string;
   private dataDir: string;
   private logStream: fs.WriteStream;
 
-  constructor(config: Etherereum, signale: Signale) {
+  constructor(config: Ethereum, signale: Signale) {
     this.config = config;
     this.signale = signale;
     this.binaryPath = path.resolve(__dirname, '..', '..', '..', 'bin', 'geth');

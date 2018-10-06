@@ -1,15 +1,15 @@
-import { Etherereum } from '@solon/environment';
+import { Ethereum } from '@solon/environment';
 import * as GanacheCore from 'ganache-core';
 import { Signale } from 'signale';
-import { IEtherereumStrategy, GanacheEtherereum } from '../types';
+import { IEthereumStrategy, GanacheEthereum } from '../types';
 
 import { GanacheFileLogger } from '../utils/ganacheFileLogger';
 
-export class Ganache implements IEtherereumStrategy {
-  private config: Etherereum;
+export class Ganache implements IEthereumStrategy {
+  private config: Ethereum;
   private signale: Signale;
 
-  constructor(config: Etherereum, signale: Signale) {
+  constructor(config: Ethereum, signale: Signale) {
     this.config = config;
     this.signale = signale;
   }
@@ -24,7 +24,7 @@ export class Ganache implements IEtherereumStrategy {
     const server = GanacheCore.server(options);
     this.signale.await('Starting ganache...');
     return new Promise<boolean>((resolve, reject) => {
-      server.listen(8545, (error: Error, ethereum: GanacheEtherereum) => {
+      server.listen(8545, (error: Error, ethereum: GanacheEthereum) => {
         if (error) {
           this.signale.error(error);
           reject(error);

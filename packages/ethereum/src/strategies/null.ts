@@ -1,6 +1,6 @@
-import { IEtherereumStrategy } from '../types';
+import { IEthereumStrategy } from '../types';
 
-export class Null implements IEtherereumStrategy {
+export class Null implements IEthereumStrategy {
   start = () => {
     return new Promise<boolean>(resolve => resolve(true));
   };

@@ -26,7 +26,7 @@
     { "path": "./packages/redux-web3" },
     { "path": "./packages/scripts" },
     { "path": "./packages/security" },
-    { "path": "./packages/storage" },
+    { "path": "./packages/ipfs" },
     { "path": "./packages/test" },
     { "path": "./packages/tslint-config" },
     { "path": "./packages/wallet" },

@@ -1,12 +1,12 @@
-import { Etherereum } from '@solon/environment';
-import { IEtherereumStrategy } from '../types';
+import { Ethereum } from '@solon/environment';
+import { IEthereumStrategy } from '../types';
 import { Signale } from 'signale';
 
-export class Infura implements IEtherereumStrategy {
-  private config: Etherereum;
+export class Infura implements IEthereumStrategy {
+  private config: Ethereum;
   private signale: Signale;
 
-  constructor(config: Etherereum, signale: Signale) {
+  constructor(config: Ethereum, signale: Signale) {
     this.config = config;
     this.signale = signale;
   }

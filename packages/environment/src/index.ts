@@ -32,7 +32,7 @@ const defaultEnvironment: Environment = {
         type: 'dev',
       },
     },
-    storage: false,
+    ipfs: false,
     web: true,
   },
   compile: {

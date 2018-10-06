@@ -1,9 +1,9 @@
-export interface IEtherereumStrategy {
+export interface IEthereumStrategy {
   start(): Promise<boolean>;
   stop(): Promise<boolean>;
 }
 
-export type GanacheEtherereum = {
+export type GanacheEthereum = {
   personal_accounts: {
     [publicKey: string]: number;
   };

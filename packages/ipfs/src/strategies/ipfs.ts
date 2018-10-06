@@ -1,6 +1,6 @@
-import { Storage } from '@solon/environment';
+import { Ipfs } from '@solon/environment';
 import { Signale } from 'signale';
-import { IStorageStrategy } from '../types';
+import { IIpfsStrategy } from '../types';
 import * as path from 'path';
 import * as spawn from 'cross-spawn';
 import * as fs from 'fs-extra';
@@ -8,13 +8,13 @@ import { ChildProcess } from 'child_process';
 
 let child: ChildProcess;
 
-export class Ipfs implements IStorageStrategy {
-  private config: Storage;
+export class Ipfs implements IIpfsStrategy {
+  private config: Ipfs;
   private signale: Signale;
   private binaryPath: string;
   private logStream: fs.WriteStream;
 
-  constructor(config: Storage, signale: Signale) {
+  constructor(config: Ipfs, signale: Signale) {
     this.config = config;
     this.signale = signale;
     this.binaryPath = path.resolve(__dirname, '..', '..', '..', 'node_modules', '.bin', 'ipfs');

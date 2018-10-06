@@ -5,7 +5,7 @@ process.on('unhandledRejection', err => {
 });
 
 import * as ethereum from '@solon/ethereum';
-import * as storage from '@solon/storage';
+import * as ipfs from '@solon/ipfs';
 import * as compiler from '@solon/compiler';
 import * as deployer from '@solon/deployer';
 import * as doc from '@solon/doc';
@@ -14,16 +14,14 @@ import * as lifecycle from './shared/lifecycle';
 
 import { buildWeb } from './shared/web';
 
-const environment = lifecycle.before();
-
 async function buildAsync() {
-  await ethereum.start(environment.services.ethereum);
-  await storage.start(environment.services.storage);
-  await compiler.run(environment.compile);
-  doc.runAll(environment.compile);
-  await deployer.run(environment.deploy);
+  await ethereum.start();
+  await ipfs.start();
+  await compiler.run();
+  doc.runAll();
+  await deployer.run();
   await buildWeb();
-  await lifecycle.stopAsync(environment, { shouldExit: true });
+  await lifecycle.stopAsync({ shouldExit: true });
 }
 
 buildAsync();

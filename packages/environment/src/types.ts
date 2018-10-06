@@ -23,11 +23,9 @@ export type Ethereum = {
   };
 };
 
-export type Storage = 'ipfs';
-
 export interface Services {
   ethereum: Maybe<Ethereum>;
-  storage: Maybe<Storage>;
+  ipfs: boolean;
   web: boolean;
 }
 

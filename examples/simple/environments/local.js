@@ -5,7 +5,7 @@ module.exports = {
     ]
   },
   services: {
-    storage: 'ipfs'
+    ipfs: 'ipfs'
   },
   deploy: {
     migrate: async (deployer) => {

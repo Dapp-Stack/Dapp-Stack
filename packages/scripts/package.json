@@ -48,7 +48,7 @@
     "@solon/environment": "0.1.0",
     "@solon/ethereum": "0.1.0",
     "@solon/security": "0.1.0",
-    "@solon/storage": "0.1.0",
+    "@solon/ipfs": "0.1.0",
     "@solon/doc": "0.1.0",
     "chokidar": "^2.0.4",
     "cross-spawn": "^6.0.5",

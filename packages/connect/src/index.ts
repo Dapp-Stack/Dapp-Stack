@@ -1,5 +1,5 @@
 import { Environment, build } from '@solon/environment';
-import ethers from 'ethers';
+import * as ethers from 'ethers';
 
 export const connect = () => {
   const ethereum = build().services.ethereum;

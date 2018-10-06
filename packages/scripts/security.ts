@@ -5,8 +5,5 @@ process.on('unhandledRejection', err => {
 });
 
 import * as security from '@solon/security';
-import * as lifecycle from './shared/lifecycle';
 
-const environment = lifecycle.before();
-
-security.run(environment.compile);
+security.run();
