@@ -59,7 +59,7 @@ class Tester {
     const options = { ...{ accounts: defaultAccounts }, ...ganacheOptions };
     this.web3 = new Web3();
     this.web3.setProvider(GanacheCore.provider(options));
-    this.deployer = new Deployer({ migrate: () => {} }, this.web3);
+    this.deployer = new Deployer(this.web3);
   }
 
   deploy = (contract: string, options: { from?: string; args?: any[] } = {}) => {

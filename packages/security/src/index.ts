@@ -1,15 +1,16 @@
-import { Compile, Structure } from '@solon/environment';
+import { build, Structure } from '@solon/environment';
 import { Signale } from 'signale';
 import * as dockerode from 'dockerode';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
-let docker = new dockerode();
+const docker = new dockerode();
 
 const IMAGE_NAME = 'mythril/myth:latest';
 const signale = new Signale({ scope: 'Security' });
 
-export const run = async (compile: Compile) => {
+export const run = async () => {
+  const compile = build().compile;
   let isDockerRunning: boolean = await pingDocker();
   if (!isDockerRunning) {
     signale.error(new Error('Docker is not running'));

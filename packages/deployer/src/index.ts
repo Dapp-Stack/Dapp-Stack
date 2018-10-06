@@ -1,4 +1,4 @@
-import { Deploy, Structure } from '@solon/environment';
+import { build, Structure } from '@solon/environment';
 import { generateWallet } from '@solon/wallet';
 import * as fs from 'fs-extra';
 import { glob } from 'glob';
@@ -8,7 +8,8 @@ import Web3 = require('web3');
 
 import { update } from './tracker';
 
-export const run = async (config: Deploy, web3?: Web3) => {
+import { build } from '@solon/environment/src';
+export const run = async (web3?: Web3) => {
   const deployer = new Deployer(config, web3);
   await deployer.initialize();
   await deployer.run();
@@ -23,8 +24,8 @@ export class Deployer {
   private signale: Signale;
   private contractFiles!: { [basename: string]: string };
 
-  constructor(config: Deploy, web3?: Web3) {
-    this.config = config;
+  constructor(web3?: Web3) {
+    this.config = build().deploy;
     this.web3 = web3;
     this.signale = new Signale({ scope: 'Deployer' });
   }

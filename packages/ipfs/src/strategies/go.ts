@@ -1,4 +1,3 @@
-import { Ipfs } from '@solon/environment';
 import { Signale } from 'signale';
 import { IIpfsStrategy } from '../types';
 import * as path from 'path';
@@ -8,14 +7,12 @@ import { ChildProcess } from 'child_process';
 
 let child: ChildProcess;
 
-export class Ipfs implements IIpfsStrategy {
-  private config: Ipfs;
+export class Go implements IIpfsStrategy {
   private signale: Signale;
   private binaryPath: string;
   private logStream: fs.WriteStream;
 
-  constructor(config: Ipfs, signale: Signale) {
-    this.config = config;
+  constructor(signale: Signale) {
     this.signale = signale;
     this.binaryPath = path.resolve(__dirname, '..', '..', '..', 'node_modules', '.bin', 'ipfs');
 

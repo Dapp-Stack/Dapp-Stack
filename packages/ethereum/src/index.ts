@@ -1,4 +1,4 @@
-import { Ethereum, Maybe } from '@solon/environment';
+import { build } from '@solon/environment';
 import { Signale } from 'signale';
 
 import { IEthereumStrategy } from './types';
@@ -9,7 +9,8 @@ import { Null } from './strategies/null';
 
 const signale = new Signale({ scope: 'Ethereum' });
 
-const strategy = (ethereum: Maybe<Ethereum>): IEthereumStrategy => {
+const strategy = (): IEthereumStrategy => {
+  const ethereum = build().services.ethereum;
   if (!ethereum) return new Null();
 
   switch (ethereum.provider) {
@@ -22,7 +23,8 @@ const strategy = (ethereum: Maybe<Ethereum>): IEthereumStrategy => {
   }
 };
 
-export const console = (ethereum: Maybe<Ethereum>) => {
+export const console = () => {
+  const ethereum = build().services.ethereum;
   if (!ethereum) {
     return signale.error('This command is only available when using the ethereum');
   }
@@ -30,10 +32,10 @@ export const console = (ethereum: Maybe<Ethereum>) => {
   new Geth(ethereum, signale).console();
 };
 
-export const start = (ethereum: Maybe<Ethereum>): Promise<boolean> => {
-  return strategy(ethereum).start();
+export const start = (): Promise<boolean> => {
+  return strategy().start();
 };
 
-export const stop = (ethereum: Maybe<Ethereum>): Promise<boolean> => {
-  return strategy(ethereum).stop();
+export const stop = (): Promise<boolean> => {
+  return strategy().stop();
 };

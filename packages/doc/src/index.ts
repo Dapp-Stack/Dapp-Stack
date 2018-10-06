@@ -1,4 +1,4 @@
-import { Structure, Compile } from '@solon/environment';
+import { build, Structure } from '@solon/environment';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as parser from 'solidity-parser-antlr';
@@ -7,7 +7,8 @@ import { Signale } from 'signale';
 
 const signale = new Signale({ scope: 'Doc' });
 
-export const runAll = (compile: Compile) => {
+export const runAll = () => {
+  const compile = build().compile;
   const contracts = compile.contracts.map(contract => path.join(Structure.contracts.src, contract));
 
   contracts.forEach(contractFile => run(contractFile));
