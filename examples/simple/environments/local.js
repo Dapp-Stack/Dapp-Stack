@@ -9,7 +9,7 @@ module.exports = {
   },
   deploy: {
     migrate: async (deployer) => {
-      let contract = await deployer.deploy('SimpleStorage', { args: [10] });
+      let contract = await deployer.deploy('SimpleStorage', null, 10);
     }
   }
 };
