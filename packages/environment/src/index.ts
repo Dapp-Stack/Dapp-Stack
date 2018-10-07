@@ -3,8 +3,8 @@ import * as path from 'path';
 
 import { Environment } from './types';
 
-const MNEMONIC = process.env.MNEMONIC 
-  || 'fault jeans unknown rain cherry cheese luggage number feature devote crack bottom';
+const MNEMONIC =
+  process.env.MNEMONIC || 'fault jeans unknown rain cherry cheese luggage number feature devote crack bottom';
 
 export const Structure = {
   contracts: {
@@ -45,8 +45,8 @@ const defaultEnvironment: Environment = {
   deploy: {
     wallet: {
       mnemonic: MNEMONIC,
-      indexAccount: 0
-    }
+      indexAccount: 0,
+    },
     migrate() {},
   },
 };

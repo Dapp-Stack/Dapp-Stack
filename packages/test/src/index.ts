@@ -3,7 +3,7 @@ import { Structure } from '@solon/environment';
 import * as spawn from 'cross-spawn';
 import * as GanacheCore from 'ganache-core';
 import * as path from 'path';
-import Web3 = require('web3');
+import web3 = require('web3');
 
 const balance = '10000000000000000000000000000000000';
 const mochaPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'mocha');

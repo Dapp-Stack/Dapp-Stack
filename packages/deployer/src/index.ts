@@ -1,10 +1,10 @@
 import { build, Deploy, Structure } from '@solon/environment';
 import { generateWallet } from '@solon/wallet';
+import * as ethers from 'ethers';
 import * as fs from 'fs-extra';
 import { glob } from 'glob';
 import * as path from 'path';
 import { Signale } from 'signale';
-import * as ethers from 'ethers';
 
 import { update } from './tracker';
 
@@ -60,7 +60,7 @@ export class Deployer {
     const bytecode = `0x${source.evm.bytecode.object}`;
     const factory = new ethers.ContractFactory(abi, bytecode, this.wallet);
     const contract = await factory.deploy(...args);
-    await contract.deployed()
+    await contract.deployed();
     update(contractName, contract.address);
     return contract;
   }
@@ -71,7 +71,7 @@ export class Deployer {
         this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
           acc[path.basename(file, '.json')] = file;
           return acc;
-        }, {});
+        },                                {});
         this.contracts = Object.keys(this.contractFiles);
         resolve();
       });

@@ -1,13 +1,12 @@
-import { StateType } from 'typesafe-actions';
 import { combineReducers } from 'redux';
+import { StateType } from 'typesafe-actions';
 
 import config from './config';
 import files from './files';
 
 export const ipfsReducer = combineReducers({
   config,
-  files
+  files,
 });
-
 
 export type IpfsState = StateType<typeof ipfsReducer>;

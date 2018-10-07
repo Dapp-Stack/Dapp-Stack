@@ -5,7 +5,7 @@ export type Wallet = {
   indexAccount: number;
 };
 
-export type InfuraNetwork = 'homestead' | 'rinkeby' | 'ropsten' | 'kovan'
+export type InfuraNetwork = 'homestead' | 'rinkeby' | 'ropsten' | 'kovan';
 export type GethType = 'dev' | 'ropsten' | 'mainnet';
 
 export type EthereumProvider = 'ganache' | 'geth' | 'infura';
@@ -14,7 +14,7 @@ export type Ethereum = {
   provider: EthereumProvider;
   infura: {
     network: InfuraNetwork;
-    apiKey?: string
+    apiKey?: string;
   };
   ganache: {
     mnemonic: string;

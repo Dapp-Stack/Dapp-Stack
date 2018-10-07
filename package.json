@@ -13,7 +13,8 @@
     "build": "wsrun build $PKG -r --stages --exclude-missing",
     "clean": "wsrun clean $PKG -r --parallel --exclude-missing",
     "rebuild": "run-s clean build",
-    "lint": "wsrun lint $PKG --stages --exclude-missing"
+    "lint": "wsrun lint $PKG --stages --exclude-missing",
+    "watch": "tsc -b -w"
   },
   "devDependencies": {
     "lerna": "^3.1.1",

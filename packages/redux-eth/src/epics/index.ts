@@ -1,4 +1,4 @@
-import config from './init';
-import files from './contracts';
+import contracts from './contracts';
+import init from './init';
 
 export default [...config, ...files];

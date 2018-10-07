@@ -1,8 +1,8 @@
 import { build, Structure } from '@solon/environment';
-import { Signale } from 'signale';
 import * as dockerode from 'dockerode';
 import * as fs from 'fs-extra';
 import * as path from 'path';
+import { Signale } from 'signale';
 
 const docker = new dockerode();
 
@@ -11,7 +11,7 @@ const signale = new Signale({ scope: 'Security' });
 
 export const run = async () => {
   const compile = build().compile;
-  let isDockerRunning: boolean = await pingDocker();
+  const isDockerRunning: boolean = await pingDocker();
   if (!isDockerRunning) {
     signale.error(new Error('Docker is not running'));
     process.exit(1);
@@ -30,13 +30,13 @@ const pingDocker = async () => {
   }
 };
 
-const runCheck = async function(contractName: string) {
+const runCheck = async function (contractName: string) {
   const securityFile = path.join(Structure.contracts.security, contractName.replace('.sol', '.md'));
   await fs.ensureFile(securityFile);
-  let stream = fs.createWriteStream(securityFile);
+  const stream = fs.createWriteStream(securityFile);
   const command = ['-o', 'markdown', '-x', `/solidity/src/${contractName}`];
   const options = { Binds: [`${Structure.contracts.src}:/solidity/src`] };
-  return docker.run('mythril/myth', command, stream, options).then(function(container) {
+  return docker.run('mythril/myth', command, stream, options).then(function (container) {
     return container.remove();
   });
 };

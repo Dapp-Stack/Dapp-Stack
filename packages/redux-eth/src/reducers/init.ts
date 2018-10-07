@@ -1,4 +1,5 @@
 import { getType } from 'typesafe-actions';
+
 import { config, ConfigAction } from '../actions';
 import { Config } from '../types';
 

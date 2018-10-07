@@ -1,9 +1,10 @@
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
+
 import { File } from '../types';
 
 type CreateFileInput = {
-  name: string,
-  content: Buffer | Blob
+  name: string;
+  content: Buffer | Blob;
 };
 
 export const request = {
@@ -17,19 +18,11 @@ export const request = {
     CreateFileInput,
     void,
     Error
-  >(),
+(),
 
-  mkdir: createAsyncAction('IPFS/MKDIR/REQUEST', 'IPFS/MKDIR/SUCCESS', 'IPFS/MKDIR/FAILURE')<
-    string,
-    void,
-    Error
-  >(),
+  mkdir: createAsyncAction('IPFS/MKDIR/REQUEST', 'IPFS/MKDIR/SUCCESS', 'IPFS/MKDIR/FAILURE')<string, void, Error>(),
 
-  rmdir: createAsyncAction('IPFS/RMDIR/REQUEST', 'IPFS/RMDIR/SUCCESS', 'IPFS/RMDIR/FAILURE')<
-    string,
-    void,
-    Error
-  >(),
+  rmdir: createAsyncAction('IPFS/RMDIR/REQUEST', 'IPFS/RMDIR/SUCCESS', 'IPFS/RMDIR/FAILURE')<string, void, Error>(),
 };
 
 export const cwd = createStandardAction('IPFS/CWD')<string>();

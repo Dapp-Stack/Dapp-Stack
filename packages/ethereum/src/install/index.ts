@@ -2,7 +2,7 @@ import { download } from './download';
 
 const error = (error: Error) => {
   process.stdout.write(`${error}\n`);
-  process.stdout.write(`Download failed!\n\n`);
+  process.stdout.write('Download failed!\n\n');
   process.exit(1);
 };
 

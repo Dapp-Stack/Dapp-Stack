@@ -1,6 +1,7 @@
 import { Ethereum } from '@solon/environment';
-import { IEthereumStrategy } from '../types';
 import { Signale } from 'signale';
+
+import { IEthereumStrategy } from '../types';
 
 export class Infura implements IEthereumStrategy {
   private config: Ethereum;
@@ -15,11 +16,11 @@ export class Infura implements IEthereumStrategy {
     return new Promise<boolean>(resolve => {
       resolve(true);
     });
-  };
+  }
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       resolve(true);
     });
-  };
+  }
 }

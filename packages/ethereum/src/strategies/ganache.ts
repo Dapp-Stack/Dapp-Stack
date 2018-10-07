@@ -1,8 +1,8 @@
 import { Ethereum } from '@solon/environment';
 import * as GanacheCore from 'ganache-core';
 import { Signale } from 'signale';
-import { IEthereumStrategy, GanacheEthereum } from '../types';
 
+import { GanacheEthereum, IEthereumStrategy } from '../types';
 import { GanacheFileLogger } from '../utils/ganacheFileLogger';
 
 export class Ganache implements IEthereumStrategy {
@@ -36,11 +36,11 @@ export class Ganache implements IEthereumStrategy {
         resolve(true);
       });
     });
-  };
+  }
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       resolve(true);
     });
-  };
+  }
 }

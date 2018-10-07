@@ -1,7 +1,7 @@
 import { ActionType } from 'typesafe-actions';
 
-import * as init from './init';
 import * as accounts from './accounts';
+import * as init from './init';
 
 export type InitAction = ActionType<typeof init>;
 export type AccountsAction = ActionType<typeof accounts>;

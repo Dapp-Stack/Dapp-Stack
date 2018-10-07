@@ -4,10 +4,10 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
+import { Structure } from '@solon/environment';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { Signale } from 'signale';
-import { Structure } from '@solon/environment';
 
 const gethDir = path.join(process.cwd(), '.geth');
 const webDir = path.join(process.cwd(), 'build');

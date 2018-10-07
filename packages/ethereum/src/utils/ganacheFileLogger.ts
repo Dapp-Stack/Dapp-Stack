@@ -10,5 +10,5 @@ export class GanacheFileLogger {
 
   log = (message: string): void => {
     this.logStream.write(`${message}\n`);
-  };
+  }
 }

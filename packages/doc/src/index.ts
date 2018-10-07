@@ -1,9 +1,9 @@
 import { build, Structure } from '@solon/environment';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import * as parser from 'solidity-parser-antlr';
 import * as sha1File from 'sha1-file';
 import { Signale } from 'signale';
+import * as parser from 'solidity-parser-antlr';
 
 const signale = new Signale({ scope: 'Doc' });
 

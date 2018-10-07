@@ -7,7 +7,7 @@ import { Signale } from 'signale';
 const log = console.log;
 
 function mute() {
-  console.log = function() {};
+  console.log = function () {};
 }
 
 function unmute() {

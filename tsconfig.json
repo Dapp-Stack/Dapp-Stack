@@ -16,20 +16,21 @@
     "declarationMap": true
   },
   "references": [
-    { "path": "./packages/ethereum" },
     { "path": "./packages/compiler" },
+    { "path": "./packages/connect" },
     { "path": "./packages/deployer" },
     { "path": "./packages/doc" },
     { "path": "./packages/environment" },
-    { "path": "./packages/monorepo" },
-    { "path": "./packages/react-web3" },
-    { "path": "./packages/redux-web3" },
-    { "path": "./packages/scripts" },
-    { "path": "./packages/security" },
+    { "path": "./packages/ethereum" },
     { "path": "./packages/ipfs" },
+    { "path": "./packages/monorepo" },
+    { "path": "./packages/redux-eth" },
+    { "path": "./packages/redux-ipfs" },
+    { "path": "./packages/scripts" },
+    { "path": "./packages/secrets" },
+    { "path": "./packages/security" },
     { "path": "./packages/test" },
     { "path": "./packages/tslint-config" },
-    { "path": "./packages/wallet" },
-    { "path": "./packages/web3-wrapper" }
+    { "path": "./packages/wallet" }
   ]
 }

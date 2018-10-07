@@ -1,9 +1,9 @@
-import * as goenv from 'go-platform';
-import * as path from 'path';
-import * as tarFS from 'tar-fs';
-import * as request from 'request';
-import * as gunzip from 'gunzip-maybe';
 import * as fs from 'fs-extra';
+import * as goenv from 'go-platform';
+import * as gunzip from 'gunzip-maybe';
+import * as path from 'path';
+import * as request from 'request';
+import * as tarFS from 'tar-fs';
 
 const VERSION = '1.8.15-89451f7c';
 

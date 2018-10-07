@@ -1,10 +1,11 @@
 import { Compile, Structure } from '@solon/environment';
-import { Signale } from 'signale';
-import { ICompileStrategy } from '../types';
 import * as fs from 'fs-extra';
-import * as path from 'path';
 import { forEach } from 'lodash';
+import * as path from 'path';
+import { Signale } from 'signale';
 import * as solc from 'solc';
+
+import { ICompileStrategy } from '../types';
 
 type CompilationOutput = {
   errors?: [
@@ -41,11 +42,11 @@ export class Solc implements ICompileStrategy {
         content: fs.readFileSync(path.join(Structure.contracts.src, contractName), 'utf-8').toString(),
       };
       return acc;
-    }, {});
+    },                                    {});
 
     return JSON.stringify({
       language: 'Solidity',
-      sources: sources,
+      sources,
       settings: {
         outputSelection: {
           optimizer: {
@@ -68,30 +69,30 @@ export class Solc implements ICompileStrategy {
         },
       },
     });
-  };
+  }
 
   findImports(filename: string) {
     if (fs.existsSync(filename)) {
-      return {contents: fs.readFileSync(filename).toString()};
+      return { contents: fs.readFileSync(filename).toString() };
     }
-    
+
     if (fs.existsSync(path.join('./node_modules/', filename))) {
-      return {contents: fs.readFileSync(path.join('./node_modules/', filename)).toString()};
+      return { contents: fs.readFileSync(path.join('./node_modules/', filename)).toString() };
     }
     if (fs.existsSync(path.join(Structure.contracts.src, filename))) {
-      return {contents: fs.readFileSync(path.join(Structure.contracts.src, filename)).toString()};
+      return { contents: fs.readFileSync(path.join(Structure.contracts.src, filename)).toString() };
     }
-    return {error: 'File not found'};
+    return { error: 'File not found' };
   }
 
   compile = () => {
-    this.signale.await(`Starting to compile the contracts`);
+    this.signale.await('Starting to compile the contracts');
     return new Promise<boolean>((resolve, reject) => {
       const output: CompilationOutput = JSON.parse(solc.compileStandardWrapper(this.input(), this.findImports));
 
       if (output.errors) {
-        this.signale.error(`Compilation failed`);
-        return reject(`Compilation failed`);
+        this.signale.error('Compilation failed');
+        return reject('Compilation failed');
       }
 
       forEach(output.contracts, (compilationResult, contractFile) => {
@@ -104,8 +105,8 @@ export class Solc implements ICompileStrategy {
           );
         });
       });
-      this.signale.success(`Contracts compiled`);
+      this.signale.success('Contracts compiled');
       resolve(true);
     });
-  };
+  }
 }

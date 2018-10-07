@@ -1,10 +1,8 @@
 import * as API from 'ipfs-api';
 import * as path from 'path';
-
-const bl = require('bl');
+import { Stream } from 'stream';
 
 import { Config, File } from '../types';
-import { Stream } from 'stream';
 
 const host = process.env.NODE_ENV !== 'production' ? 'localhost' : window.location.hostname;
 const port = process.env.NODE_ENV !== 'production' ? '5001' : window.location.port || 80;
@@ -45,7 +43,7 @@ export const cat = (name: string, api = localApi): Promise<string> => {
 };
 
 export const getConfig = async (api = localApi): Promise<Config> => {
-  let config: Buffer = await api.config.get();
+  const config: Buffer = await api.config.get();
   return JSON.parse(config.toString('utf8'));
 };
 

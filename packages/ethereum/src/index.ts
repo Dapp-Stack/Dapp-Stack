@@ -1,11 +1,11 @@
 import { build } from '@solon/environment';
 import { Signale } from 'signale';
 
-import { IEthereumStrategy } from './types';
+import { Ganache } from './strategies/ganache';
 import { Geth } from './strategies/geth';
 import { Infura } from './strategies/infura';
-import { Ganache } from './strategies/ganache';
 import { Null } from './strategies/null';
+import { IEthereumStrategy } from './types';
 
 const signale = new Signale({ scope: 'Ethereum' });
 

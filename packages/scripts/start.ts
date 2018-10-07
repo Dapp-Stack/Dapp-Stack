@@ -4,11 +4,11 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import * as ethereum from '@solon/ethereum';
-import * as ipfs from '@solon/ipfs';
 import * as compiler from '@solon/compiler';
 import * as deployer from '@solon/deployer';
 import * as doc from '@solon/doc';
+import * as ethereum from '@solon/ethereum';
+import * as ipfs from '@solon/ipfs';
 
 import * as lifecycle from './shared/lifecycle';
 import { watch } from './shared/watch';

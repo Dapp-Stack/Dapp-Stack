@@ -1,4 +1,5 @@
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
+
 import { Config } from '../types';
 
 export const request = {
@@ -6,7 +7,7 @@ export const request = {
     void,
     Config,
     Error
-  >(),
+(),
 };
 
 export const init = createStandardAction('IPFS/INIT')<void>();

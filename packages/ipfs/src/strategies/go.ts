@@ -1,9 +1,10 @@
-import { Signale } from 'signale';
-import { IIpfsStrategy } from '../types';
-import * as path from 'path';
+import { ChildProcess } from 'child_process';
 import * as spawn from 'cross-spawn';
 import * as fs from 'fs-extra';
-import { ChildProcess } from 'child_process';
+import * as path from 'path';
+import { Signale } from 'signale';
+
+import { IIpfsStrategy } from '../types';
 
 let child: ChildProcess;
 
@@ -20,16 +21,6 @@ export class Go implements IIpfsStrategy {
     this.logStream = fs.createWriteStream(path.join(process.cwd(), 'logs', 'ipfs.log'));
   }
 
-  private init = () => {
-    spawn.sync(this.binaryPath, ['init']);
-  };
-
-  private daemon = () => {
-    child = spawn(this.binaryPath, ['daemon'], { stdio: 'pipe' });
-    child.stdout.pipe(this.logStream);
-    child.stderr.pipe(this.logStream);
-  };
-
   start = () => {
     this.signale.await('Starting ipfs...');
     return new Promise<boolean>(resolve => {
@@ -38,12 +29,22 @@ export class Go implements IIpfsStrategy {
       this.signale.success('Ipfs is running');
       resolve(true);
     });
-  };
+  }
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       child && child.kill();
       resolve(true);
     });
-  };
+  }
+
+  private init = () => {
+    spawn.sync(this.binaryPath, ['init']);
+  }
+
+  private daemon = () => {
+    child = spawn(this.binaryPath, ['daemon'], { stdio: 'pipe' });
+    child.stdout.pipe(this.logStream);
+    child.stderr.pipe(this.logStream);
+  }
 }

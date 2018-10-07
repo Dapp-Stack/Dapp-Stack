@@ -4,8 +4,9 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import * as tester from '@solon/test';
 import * as compiler from '@solon/compiler';
+import * as tester from '@solon/test';
+
 import { testWeb } from './shared/web';
 
 async function testAsync() {
