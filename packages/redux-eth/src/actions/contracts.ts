@@ -1,12 +1,9 @@
 import { createAsyncAction, createStandardAction } from 'typesafe-actions';
-import contract from 'web3/eth/contract';
+import * as ethers from 'ethers';
+import { BuildContractsInput } from '../types';
 
 export const request = {
-  contracts: createAsyncAction('WEB3/CONTRACTS/REQUEST', 'WEB3/CONTRACTS/SUCCESS', 'WEB3/CONTRACTS/FAILURE')<
-    void,
-    Contract[],
-    Error
-(),
+  contracts: createAsyncAction('ETH/CONTRACTS/REQUEST', 'ETH/CONTRACTS/SUCCESS', 'ETH/CONTRACTS/FAILURE')<BuildContractsInput,ethers.Contract[],Error>(),
 };
 
-export const contracts = createStandardAction('WEB3/CONTRACTS')<void>();
+export const contracts = createStandardAction('ETH/CONTRACTS')<BuildContractsInput>();

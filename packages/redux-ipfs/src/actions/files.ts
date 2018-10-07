@@ -14,11 +14,7 @@ export const request = {
 
   rm: createAsyncAction('IPFS/RM/REQUEST', 'IPFS/RM/SUCCESS', 'IPFS/RM/FAILURE')<string, void, Error>(),
 
-  touch: createAsyncAction('IPFS/TOUCH/REQUEST', 'IPFS/TOUCH/SUCCESS', 'IPFS/TOUCH/FAILURE')<
-    CreateFileInput,
-    void,
-    Error
-(),
+  touch: createAsyncAction('IPFS/TOUCH/REQUEST', 'IPFS/TOUCH/SUCCESS', 'IPFS/TOUCH/FAILURE')<CreateFileInput,void,Error>(),
 
   mkdir: createAsyncAction('IPFS/MKDIR/REQUEST', 'IPFS/MKDIR/SUCCESS', 'IPFS/MKDIR/FAILURE')<string, void, Error>(),
 

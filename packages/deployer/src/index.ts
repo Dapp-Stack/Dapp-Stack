@@ -62,7 +62,7 @@ export class Deployer {
     const factory = new ethers.ContractFactory(abi, bytecode, deployerWallet);
     const contract = await factory.deploy(...args);
     await contract.deployed();
-    update(contractName, contract.address);
+    update(contractName, contract.address, abi);
     return contract;
   }
 

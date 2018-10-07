@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { StateType } from 'typesafe-actions';
 
-import accounts from './accounts';
-import init from './init';
+import contracts from './contracts';
+import provider from './provider';
 
-export const web3Reducer = combineReducers({
-  config,
-  files,
+export const ethReducer = combineReducers({
+  contracts,
+  provider,
 });
 
-export type Web3State = StateType<typeof web3Reducer>;
+export type EthState = StateType<typeof ethReducer>;

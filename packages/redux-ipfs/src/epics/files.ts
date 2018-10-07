@@ -109,4 +109,4 @@ const watchRmdir: Epic<IpfsAction, IpfsAction, IpfsState> = action$ =>
     map(action => files.request.rmdir.request(action.payload)),
   );
 
-export default [watchLs, watchCat, watchRm, watchTouch, watchMkdir, watchRmdir];
+export default [watchLs, ls, watchCat, cat, watchRm, rm, watchTouch, touch, watchMkdir, mkdir, watchRmdir, rmdir];

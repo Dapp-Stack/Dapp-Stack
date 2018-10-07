@@ -8,17 +8,6 @@ const host = process.env.NODE_ENV !== 'production' ? 'localhost' : window.locati
 const port = process.env.NODE_ENV !== 'production' ? '5001' : window.location.port || 80;
 const localApi = new API(host, port);
 
-const collect = (stream: Stream) => {
-  return new Promise((resolve, reject) => {
-    stream.pipe(
-      new bl((error: Error, buffer: Buffer) => {
-        if (error) return reject(error);
-        resolve(buffer);
-      }),
-    );
-  });
-};
-
 export const id = localApi.id;
 
 export const ls = (root: string, api = localApi): Promise<File[]> => {
@@ -39,7 +28,7 @@ export const touch = (root: string, name: string, blob: Blob | Buffer, api = loc
 };
 
 export const cat = (name: string, api = localApi): Promise<string> => {
-  return api.files.read(name).then(collect);
+  return api.files.read(name).then((buffer: Buffer) => buffer.toString('utf8'));
 };
 
 export const getConfig = async (api = localApi): Promise<Config> => {

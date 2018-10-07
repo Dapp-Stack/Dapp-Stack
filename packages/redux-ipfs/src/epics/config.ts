@@ -24,4 +24,4 @@ const watchConfig: Epic<IpfsAction, IpfsAction, IpfsState> = action$ =>
     map(config.request.load.request),
   );
 
-export default [watchConfig];
+export default [watchConfig, loadConfig];

@@ -45,7 +45,7 @@
     "redux-observable": "^1.0.0",
     "rxjs": "^6.3.3",
     "typesafe-actions": "^2.0.4",
-    "web3": "^1.0.0-beta.35"
+    "ethers": "^4.0.3"
   },
   "publishConfig": {
     "access": "public"

@@ -1,8 +1,8 @@
-export type Config = { host: string; port: string; protocol: string };
+import * as ethers from 'ethers';
 
-export type File = {
-  name: string;
-  size: number;
-  hash: string;
-  type: 'file' | 'directory';
-};
+export interface BuildContractsInput {
+  [name: string]: {
+    address: string,
+    abi: string
+  };
+}

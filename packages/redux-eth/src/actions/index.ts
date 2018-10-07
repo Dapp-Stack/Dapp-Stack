@@ -1,11 +1,11 @@
 import { ActionType } from 'typesafe-actions';
 
-import * as accounts from './accounts';
-import * as init from './init';
+import * as provider from './provider';
+import * as contracts from './contracts';
 
-export type InitAction = ActionType<typeof init>;
-export type AccountsAction = ActionType<typeof accounts>;
+export type ProviderAction = ActionType<typeof provider>;
+export type ContractsAction = ActionType<typeof contracts>;
 
-export type Web3Action = InitAction | AccountsAction;
+export type EthAction = ProviderAction | ContractsAction;
 
-export { init, accounts };
+export { provider, contracts };
