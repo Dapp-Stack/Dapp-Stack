@@ -3,7 +3,7 @@ import { Structure } from '@solon/environment';
 import * as spawn from 'cross-spawn';
 import * as GanacheCore from 'ganache-core';
 import * as path from 'path';
-import web3 = require('web3');
+import * as ethers from 'ethers';
 
 const balance = '10000000000000000000000000000000000';
 const mochaPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'mocha');
@@ -52,22 +52,22 @@ const defaultAccounts = [
 ];
 
 class Tester {
-  public web3: Web3;
   public deployer: Deployer;
+  public provider: ethers.providers.Web3Provider;
 
   constructor(ganacheOptions = {}) {
     const options = { ...{ accounts: defaultAccounts }, ...ganacheOptions };
-    this.web3 = new Web3();
-    this.web3.setProvider(GanacheCore.provider(options));
-    this.deployer = new Deployer(this.web3);
+    const ganache = GanacheCore.provider(ganacheOptions);
+    this.provider = new ethers.providers.Web3Provider(ganache);
+    this.deployer = new Deployer();
   }
 
-  deploy = (contract: string, options: { from?: string; args?: any[] } = {}) => {
-    return this.deployer.deploy(contract, options);
+  deploy = (contract: string, wallet: ethers.Wallet,...args: any[]) => {
+    return this.deployer.deploy(contract, wallet, ...args);
   }
 
-  accounts = () => {
-    return this.deployer.accounts;
+  getWallets = () => {
+    return defaultAccounts.map((account) => new ethers.Wallet(account.secretKey, this.provider));
   }
 }
 

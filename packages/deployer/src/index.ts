@@ -44,7 +44,7 @@ export class Deployer {
     }
   }
 
-  async deploy(contractName: string, ...args: any[]) {
+  async deploy(contractName: string, wallet?: ethers.ethers.Wallet, ...args: any[]) {
     if (!this.contractFiles) {
       return;
     }
@@ -57,8 +57,9 @@ export class Deployer {
     const source = JSON.parse(fs.readFileSync(contractFile).toString());
 
     const abi = source.abi;
+    const deployerWallet = wallet || this.wallet;
     const bytecode = `0x${source.evm.bytecode.object}`;
-    const factory = new ethers.ContractFactory(abi, bytecode, this.wallet);
+    const factory = new ethers.ContractFactory(abi, bytecode, deployerWallet);
     const contract = await factory.deploy(...args);
     await contract.deployed();
     update(contractName, contract.address);
