@@ -42,7 +42,7 @@ export class Solc implements ICompileStrategy {
         content: fs.readFileSync(path.join(Structure.contracts.src, contractName), 'utf-8').toString(),
       };
       return acc;
-    },                                    {});
+    }, {});
 
     return JSON.stringify({
       language: 'Solidity',
@@ -89,10 +89,9 @@ export class Solc implements ICompileStrategy {
     this.signale.await('Starting to compile the contracts');
     return new Promise<boolean>((resolve, reject) => {
       const output: CompilationOutput = JSON.parse(solc.compileStandardWrapper(this.input(), this.findImports));
-
-      if (output.errors) {
-        this.signale.error('Compilation failed');
-        return reject('Compilation failed');
+      if (output.errors && output.errors.filter((error) => error.severity === 'Warning').length > 0) {
+        this.signale.error('Compilation failed ', output.errors);
+        return reject();
       }
 
       forEach(output.contracts, (compilationResult, contractFile) => {

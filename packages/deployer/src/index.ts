@@ -7,6 +7,7 @@ import * as path from 'path';
 import { Signale } from 'signale';
 
 import { update } from './tracker';
+import { EnsBuilder } from './ensBuilder';
 
 export const run = async () => {
   const deployer = new Deployer();
@@ -18,6 +19,7 @@ export class Deployer {
   public contracts!: string[];
   public wallet: ethers.Wallet;
   public gasPrice!: ethers.ethers.utils.BigNumber;
+  public ens: EnsBuilder;
   private config: Deploy;
   private signale: Signale;
   private contractFiles!: { [basename: string]: string };
@@ -25,6 +27,7 @@ export class Deployer {
   constructor() {
     this.config = build().deploy;
     this.wallet = generateWallet();
+    this.ens = new EnsBuilder(this);
     this.signale = new Signale({ scope: 'Deployer' });
   }
 
@@ -43,8 +46,12 @@ export class Deployer {
       this.signale.error(error);
     }
   }
+  
+  async deploy(contractName: string, ...args: any[]) {
+    return this.deployWithWallet(contractName, this.wallet, ...args);
+  }
 
-  async deploy(contractName: string, wallet?: ethers.ethers.Wallet, ...args: any[]) {
+  async deployWithWallet(contractName: string, wallet: ethers.ethers.Wallet, ...args: any[]) {
     if (!this.contractFiles) {
       return;
     }
@@ -57,12 +64,15 @@ export class Deployer {
     const source = JSON.parse(fs.readFileSync(contractFile).toString());
 
     const abi = source.abi;
-    const deployerWallet = wallet || this.wallet;
     const bytecode = `0x${source.evm.bytecode.object}`;
-    const factory = new ethers.ContractFactory(abi, bytecode, deployerWallet);
+    const factory = new ethers.ContractFactory(abi, bytecode, wallet);
+    this.deployContractFactory(contractName, factory, ...args);
+  }
+
+  async deployContractFactory(contractName: string, factory: ethers.ContractFactory, ...args: any[]) {
     const contract = await factory.deploy(...args);
     await contract.deployed();
-    update(contractName, contract.address, abi);
+    update(contractName, contract.address, contract.abi);
     return contract;
   }
 

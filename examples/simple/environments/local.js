@@ -9,7 +9,8 @@ module.exports = {
   },
   deploy: {
     migrate: async (deployer) => {
-      let contract = await deployer.deploy('SimpleStorage', null, 10);
+      // await deployer.ens.bootstrapWith('simple', 'eth');
+      let contract = await deployer.deploy('SimpleStorage', 10);
     }
   }
 };

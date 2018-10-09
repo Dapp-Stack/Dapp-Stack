@@ -63,7 +63,7 @@ class Tester {
   }
 
   deploy = (contract: string, wallet: ethers.Wallet,...args: any[]) => {
-    return this.deployer.deploy(contract, wallet, ...args);
+    return this.deployer.deployWithWallet(contract, wallet, ...args);
   }
 
   getWallets = () => {
