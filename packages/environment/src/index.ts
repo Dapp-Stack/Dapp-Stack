@@ -3,9 +3,6 @@ import * as path from 'path';
 
 import { Environment } from './types';
 
-const MNEMONIC =
-  process.env.MNEMONIC || 'fault jeans unknown rain cherry cheese luggage number feature devote crack bottom';
-
 export const Structure = {
   contracts: {
     src: path.join(process.cwd(), 'contracts', 'src'),
@@ -24,16 +21,8 @@ export const Structure = {
 const defaultEnvironment: Environment = {
   services: {
     ethereum: {
-      provider: 'ganache',
-      infura: {
-        network: 'homestead',
-      },
-      ganache: {
-        mnemonic: MNEMONIC,
-      },
-      geth: {
-        type: 'dev',
-      },
+      network: 'dev',
+      migrate() {}
     },
     ipfs: false,
     web: true,
@@ -41,14 +30,7 @@ const defaultEnvironment: Environment = {
   compile: {
     solc: 'js',
     contracts: [],
-  },
-  deploy: {
-    wallet: {
-      mnemonic: MNEMONIC,
-      indexAccount: 0,
-    },
-    migrate() {},
-  },
+  }
 };
 
 export function build(): Environment {

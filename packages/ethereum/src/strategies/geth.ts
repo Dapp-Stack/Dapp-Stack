@@ -4,6 +4,7 @@ import * as spawn from 'cross-spawn';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { Signale } from 'signale';
+import * as ethers from 'ethers';
 
 import { IEthereumStrategy } from '../types';
 
@@ -28,7 +29,7 @@ export class Geth implements IEthereumStrategy {
 
   start = () => {
     this.signale.await('Starting geth...');
-    return new Promise<boolean>(resolve => {
+    return new Promise<boolean>(async resolve => {
       this.init();
       this.daemon();
       this.signale.success('Geth is running');
@@ -45,51 +46,41 @@ export class Geth implements IEthereumStrategy {
 
   console = () => {
     let attachTo: string = '';
-    switch (this.config.provider) {
-      case 'geth':
+    switch (this.config.network) {
+      case 'dev':
         attachTo = path.join(this.dataDir, 'geth.ipc');
-      case 'infura':
-        const { network, apiKey } = this.config.infura;
-        const subdomain = network === 'homestead' ? 'mainnet' : network;
-
-        attachTo = `https://${subdomain}.infura.io/${apiKey || ''}`;
       case 'ganache':
         attachTo = 'http://127.0.0.1:8545';
+      default:
+        attachTo = `https://${this.config.network}.infura.io/${this.config.apiKey || ''}`;
     }
 
     spawn.sync(this.binaryPath, ['attach', attachTo], { stdio: [process.stdin, process.stdout, process.stderr] });
   }
 
   private command = (): string[] => {
-    switch (this.config.geth.type) {
-      case 'dev':
-        return [
-          '--dev',
-          '--datadir',
-          this.dataDir,
-          '--ws',
-          '--wsaddr',
-          '0.0.0.0',
-          '--wsorigins',
-          '*',
-          '--wsport',
-          '8546',
-          '--rpc',
-          '--rpcapi',
-          'db,personal,eth,net,web3',
-          '--rpcaddr',
-          '0.0.0.0',
-          '--rpcport',
-          '8545',
-          '--rpccorsdomain',
-          '*',
-          '--nodiscover',
-        ];
-      case 'ropsten':
-        return [''];
-      case 'mainnet':
-        return [''];
-    }
+    return [
+      '--dev',
+      '--datadir',
+      this.dataDir,
+      '--ws',
+      '--wsaddr',
+      '0.0.0.0',
+      '--wsorigins',
+      '*',
+      '--wsport',
+      '8546',
+      '--rpc',
+      '--rpcapi',
+      'db,personal,eth,net,web3',
+      '--rpcaddr',
+      '0.0.0.0',
+      '--rpcport',
+      '8545',
+      '--rpccorsdomain',
+      '*',
+      '--nodiscover',
+    ];
   }
 
   private init = () => {

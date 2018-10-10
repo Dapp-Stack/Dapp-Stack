@@ -13,13 +13,13 @@ const strategy = (): IEthereumStrategy => {
   const ethereum = build().services.ethereum;
   if (!ethereum) return new Null();
 
-  switch (ethereum.provider) {
-    case 'geth':
+  switch (ethereum.network) {
+    case 'dev':
       return new Geth(ethereum, signale);
-    case 'infura':
-      return new Infura(ethereum, signale);
     case 'ganache':
       return new Ganache(ethereum, signale);
+    default:
+      return new Infura(ethereum, signale);
   }
 };
 

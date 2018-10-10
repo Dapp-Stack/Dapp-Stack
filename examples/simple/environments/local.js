@@ -5,12 +5,12 @@ module.exports = {
     ]
   },
   services: {
-    ipfs: 'ipfs'
-  },
-  deploy: {
-    migrate: async (deployer) => {
-      // await deployer.ens.bootstrapWith('simple', 'eth');
-      let contract = await deployer.deploy('SimpleStorage', 10);
-    }
+    ethereum: {
+      migrate: async (deployer) => {
+        await deployer.ens.bootstrapWith('simple', 'eth');
+        let contract = await deployer.deploy('SimpleStorage', 10);
+      }
+    },
+    ipfs: true
   }
 };

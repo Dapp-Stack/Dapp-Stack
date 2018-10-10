@@ -1,23 +1,23 @@
 import * as ethers from 'ethers';
 
-import { Deployer } from './index';
+import { EthererumDeployer } from './deployer';
 
-const ENSRegistry = require('../../abi/ENSRegistry.json');
-const PublicResolver = require('../../abi/PublicResolver.json');
-const FIFSRegistrar = require('../../abi/FIFSRegistrar.json');
-const ReverseRegistrar = require('../../abi/ReverseRegistrar.json');
-ethers.constants.HashZero
+const ENSRegistry = require('../../../abi/ENSRegistry.json');
+const PublicResolver = require('../../../abi/PublicResolver.json');
+const FIFSRegistrar = require('../../../abi/FIFSRegistrar.json');
+const ReverseRegistrar = require('../../../abi/ReverseRegistrar.json');
+
 const utils = ethers.utils
 const {namehash} = utils;
 
 export class EnsBuilder {
-  private deployer: Deployer;
+  private deployer: EthererumDeployer;
   private registrars: { [domain: string]: ethers.Contract }
   private ens!: ethers.Contract;
   private resolver!: ethers.Contract;
   private adminRegistrar!: ethers.Contract
   
-  constructor(deployer: Deployer) {
+  constructor(deployer: EthererumDeployer) {
     this.deployer = deployer;
     this.registrars = {};
   }
@@ -32,7 +32,8 @@ export class EnsBuilder {
   async registerTLD(tld: string) {
     const tldHash = utils.keccak256(utils.toUtf8Bytes(tld));
     const ethNode = namehash(tld);
-    await this.adminRegistrar.register(tldHash, this.deployer.wallet.address);
+    const address = await this.deployer.signer.getAddress();
+    await this.adminRegistrar.register(tldHash, address);
     await this.ens.setResolver(ethNode, this.resolver.address);
     this.registrars[tld] = await this.deploy('FIFSRegistrar', FIFSRegistrar, this.ens.address, ethNode);
     await this.ens.setOwner(ethNode, this.registrars[tld].address);
@@ -50,7 +51,8 @@ export class EnsBuilder {
     const labelHash = utils.keccak256(utils.toUtf8Bytes(label));
     const newDomain = `${label}.${domain}`;
     const node = namehash(newDomain);
-    await this.registrars[domain].register(labelHash, this.deployer.wallet.address);
+    const address = await this.deployer.signer.getAddress();
+    await this.registrars[domain].register(labelHash, address);
     await this.ens.setResolver(node, this.resolver.address);
     this.registrars[newDomain] = await this.deploy('FIFSRegistrar', FIFSRegistrar, this.ens.address, node);
     await this.ens.setOwner(node, this.registrars[newDomain].address);
@@ -60,7 +62,8 @@ export class EnsBuilder {
   async registerAddress(label: string, domain: string, address: string) {
     const node = namehash(`${label}.${domain}`);
     const hashLabel = utils.keccak256(utils.toUtf8Bytes(label));
-    await this.registrars[domain].register(hashLabel, this.deployer.wallet.address);
+    const signerAddress = await this.deployer.signer.getAddress();
+    await this.registrars[domain].register(hashLabel, signerAddress);
     await this.ens.setResolver(node, this.resolver.address);
     await this.resolver.setAddr(node, address);
   }
@@ -79,7 +82,7 @@ export class EnsBuilder {
   }
   
   private deploy = async (contractName: string, contract: {interface: string, bytecode: string}, ...args: any[]) => {
-    const factory = new ethers.ContractFactory(contract.interface, contract.bytecode, this.deployer.wallet);
+    const factory = new ethers.ContractFactory(contract.interface, contract.bytecode, this.deployer.signer);
     const deployedContract = await this.deployer.deployContractFactory(contractName, factory, ...args);
     return deployedContract
   }

@@ -17,7 +17,7 @@ export class Ganache implements IEthereumStrategy {
   start = () => {
     const logger = new GanacheFileLogger();
     const options = {
-      mnemonic: this.config.ganache.mnemonic,
+      mnemonic: this.config.mnemonic,
       logger,
     };
 

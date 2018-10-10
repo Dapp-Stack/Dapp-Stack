@@ -1,27 +1,12 @@
 export type Maybe<T> = false | T;
 
-export type Wallet = {
-  mnemonic: string;
-  indexAccount: number;
-};
-
-export type InfuraNetwork = 'homestead' | 'rinkeby' | 'ropsten' | 'kovan';
-export type GethType = 'dev' | 'ropsten' | 'mainnet';
-
-export type EthereumProvider = 'ganache' | 'geth' | 'infura';
+export type EthereumNetwork = 'homestead' | 'rinkeby' | 'ropsten' | 'kovan' | 'dev' | 'ganache';
 
 export type Ethereum = {
-  provider: EthereumProvider;
-  infura: {
-    network: InfuraNetwork;
-    apiKey?: string;
-  };
-  ganache: {
-    mnemonic: string;
-  };
-  geth: {
-    type: GethType;
-  };
+  network: EthereumNetwork;
+  apiKey?: string;
+  mnemonic?: string;
+  migrate: (deployer: any) => void;
 };
 
 export interface Services {
@@ -44,13 +29,7 @@ export interface Compile {
   solc: 'js' | 'binary';
 }
 
-export interface Deploy {
-  wallet: Wallet;
-  migrate: (deployer: any) => void;
-}
-
 export interface Environment {
   services: Services;
   compile: Compile;
-  deploy: Deploy;
 }
