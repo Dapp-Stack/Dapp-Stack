@@ -40,18 +40,18 @@ export class EthererumDeployer {
     }
   }
   
-  async deploy(contractName: string, ...args: any[]) {
+  async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract>{
     return this.deployWithWallet(contractName, this.signer, ...args);
   }
 
-  async deployWithWallet(contractName: string, signer: ethers.Signer, ...args: any[]) {
+  async deployWithWallet(contractName: string, signer: ethers.Signer, ...args: any[]): Promise<ethers.Contract> {
     if (!this.contractFiles) {
-      return;
+      throw new Error("Unexpected Error: contractFiles is not null")
     }
 
     const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
-      return;
+      throw new Error(`Contract not found: ${contractName}`);
     }
 
     const source = JSON.parse(fs.readFileSync(contractFile).toString());

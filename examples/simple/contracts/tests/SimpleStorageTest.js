@@ -7,18 +7,18 @@ describe('SimpleStorage', () => {
   let simpleStorage, tester, accounts;
   const initialValue = '10';
 
-  beforeEach(async () => {
-    tester = await setup();
-    accounts = tester.accounts();
-    simpleStorage = await tester.deploy('SimpleStorage', { args: [initialValue] });
+  before(async () => {
+    await setup(async deployer => {
+      simpleStorage = await deployer.deploy('SimpleStorage', initialValue);
+    })
   });
 
   it('sets default value', async () => {
-    expect(await simpleStorage.methods.get().call()).to.eq(initialValue);
+    expect((await simpleStorage.get()).eq(10)).to.eq(true);
   });
 
   it('allow to change the value', async () => {
-    await simpleStorage.methods.set(20).send({from: accounts[0]});
-    expect(await simpleStorage.methods.get().call()).to.eq('20');
+    await simpleStorage.set(20);
+    expect((await simpleStorage.get()).eq(20)).to.eq(true);
   });
 });
