@@ -19,8 +19,8 @@ export class EthererumDeployer {
 
   constructor(config: Ethereum, signer: ethers.Signer) {
     this.config = config
-    this.ens = new EnsBuilder(this);
     this.signer = signer
+    this.ens = new EnsBuilder(this);
     this.signale = new Signale({ scope: 'Deployer' });
   }
 
@@ -65,7 +65,7 @@ export class EthererumDeployer {
   async deployContractFactory(contractName: string, factory: ethers.ContractFactory, ...args: any[]) {
     const contract = await factory.deploy(...args);
     await contract.deployed();
-    update(contractName, contract.address, contract.abi);
+    update(contractName, contract.address, JSON.stringify(factory.interface.abi));
     return contract;
   }
 
