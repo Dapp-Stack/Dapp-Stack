@@ -1205,13 +1205,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/bn.js@*":
-  version "4.11.2"
-  resolved "https://registry.yarnpkg.com/@types/bn.js/-/bn.js-4.11.2.tgz#3179b977b9d18aa81f256cae7556282ee99fd1cc"
-  integrity sha512-OC3E/26kp/+JSOE4eJo86KivQM95MKPgnkug3uSCt+pXTWPovVBhixL1GwK1MLLsxgR3uZmTGjQQd8uKJEnurA==
-  dependencies:
-    "@types/node" "*"
-
 "@types/caseless@*":
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/@types/caseless/-/caseless-0.12.1.tgz#9794c69c8385d0192acc471a540d1f8e0d16218a"
@@ -1319,19 +1312,6 @@
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-2.3.3.tgz#7f226d67d654ec9070e755f46daebf014628e9d9"
   integrity sha512-MDQLxNFRLasqS4UlkWMSACMKeSm1x4Q3TxzUC7KQUsh6RK1ZrQ0VEyE3yzXcBu+K8ejVj4wuX32eUG02yNp+YQ==
-
-"@types/underscore@*":
-  version "1.8.9"
-  resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
-  integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
-
-"@types/web3@^1.0.4":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@types/web3/-/web3-1.0.6.tgz#ea6bd4591a59efa73c3399b2bf172a268630edbf"
-  integrity sha512-WHCAL0E0TXzpfMNLPHOe3lyjBZt7JxBGHBZ5FbSiw0ptltTjJSKnBnYNhKNM69CHZbGPA20vOKmF4ew3H2P9Rw==
-  dependencies:
-    "@types/bn.js" "*"
-    "@types/underscore" "*"
 
 "@webassemblyjs/ast@1.7.6":
   version "1.7.6"
