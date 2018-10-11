@@ -7,12 +7,16 @@ import { Signale } from 'signale';
 
 import { update } from './tracker';
 import { EnsBuilder } from './ensBuilder';
+import { Erc20 } from './erc20';
+import { Erc721 } from './erc721';
 
 export class EthererumDeployer {
   public contracts!: string[];
   public signer: ethers.Signer;
   public gasPrice!: ethers.utils.BigNumber;
   public ens: EnsBuilder;
+  public erc20: Erc20;
+  public erc721: Erc721;
   private config: Ethereum;
   private signale: Signale;
   private contractFiles!: { [basename: string]: string };
@@ -21,6 +25,8 @@ export class EthererumDeployer {
     this.config = config;
     this.signer = signer;
     this.ens = new EnsBuilder(this);
+    this.erc20 = new Erc20(this);
+    this.erc721 = new Erc721(this);
     this.signale = new Signale({ scope: 'Deployer' });
   }
 
