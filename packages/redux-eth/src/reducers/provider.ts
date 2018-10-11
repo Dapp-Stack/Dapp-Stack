@@ -6,7 +6,7 @@ type ProviderState = {
   provider?: ethers.providers.Web3Provider;
   network?: ethers.utils.Network;
   gasPrice?: ethers.utils.BigNumber;
-}
+};
 
 export default (state: ProviderState = {}, action: ProviderAction) => {
   switch (action.type) {
@@ -23,7 +23,7 @@ export default (state: ProviderState = {}, action: ProviderAction) => {
     case getType(provider.request.gasPrice.success):
       return {
         ...state,
-        gasPrice: action.payload
+        gasPrice: action.payload,
       };
     default:
       return state;

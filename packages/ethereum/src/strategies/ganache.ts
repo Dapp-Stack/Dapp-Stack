@@ -36,11 +36,11 @@ export class Ganache implements IEthereumStrategy {
         resolve(true);
       });
     });
-  }
+  };
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       resolve(true);
     });
-  }
+  };
 }

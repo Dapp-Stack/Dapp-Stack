@@ -30,13 +30,13 @@ const pingDocker = async () => {
   }
 };
 
-const runCheck = async function (contractName: string) {
+const runCheck = async function(contractName: string) {
   const securityFile = path.join(Structure.contracts.security, contractName.replace('.sol', '.md'));
   await fs.ensureFile(securityFile);
   const stream = fs.createWriteStream(securityFile);
   const command = ['-o', 'markdown', '-x', `/solidity/src/${contractName}`];
   const options = { Binds: [`${Structure.contracts.src}:/solidity/src`] };
-  return docker.run('mythril/myth', command, stream, options).then(function (container) {
+  return docker.run('mythril/myth', command, stream, options).then(function(container) {
     return container.remove();
   });
 };

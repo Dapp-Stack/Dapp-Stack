@@ -17,7 +17,7 @@ export const update = (name: string, address: string, abi: string) => {
     lockfile.lockSync(Structure.contracts.tracker);
     const content = fs.readFileSync(Structure.contracts.tracker).toString('utf-8') || '{}';
     const tracker: Tracker = JSON.parse(content);
-    tracker[name] = {address, abi};
+    tracker[name] = { address, abi };
     fs.writeJSONSync(Structure.contracts.tracker, tracker);
   } finally {
     lockfile.unlockSync(Structure.contracts.tracker);

@@ -7,16 +7,16 @@ const PublicResolver = require('../../../abi/PublicResolver.json');
 const FIFSRegistrar = require('../../../abi/FIFSRegistrar.json');
 const ReverseRegistrar = require('../../../abi/ReverseRegistrar.json');
 
-const utils = ethers.utils
-const {namehash} = utils;
+const utils = ethers.utils;
+const { namehash } = utils;
 
 export class EnsBuilder {
   private deployer: EthererumDeployer;
-  private registrars: { [domain: string]: ethers.Contract }
+  private registrars: { [domain: string]: ethers.Contract };
   private ens!: ethers.Contract;
   private resolver!: ethers.Contract;
-  private adminRegistrar!: ethers.Contract
-  
+  private adminRegistrar!: ethers.Contract;
+
   constructor(deployer: EthererumDeployer) {
     this.deployer = deployer;
     this.registrars = {};
@@ -24,7 +24,12 @@ export class EnsBuilder {
 
   async bootstrap() {
     this.ens = await this.deploy('ENSRegistry', ENSRegistry);
-    this.adminRegistrar = await this.deploy('FIFSRegistrar', FIFSRegistrar, this.ens.address, ethers.constants.HashZero);
+    this.adminRegistrar = await this.deploy(
+      'FIFSRegistrar',
+      FIFSRegistrar,
+      this.ens.address,
+      ethers.constants.HashZero,
+    );
     this.resolver = await this.deploy('PublicResolver', PublicResolver, this.ens.address);
     await this.ens.setOwner(ethers.constants.HashZero, this.adminRegistrar.address);
   }
@@ -43,7 +48,12 @@ export class EnsBuilder {
     await this.registerTLD('reverse');
     const label = 'addr';
     const labelHash = utils.keccak256(utils.toUtf8Bytes(label));
-    this.registrars['addr.reverse'] = await this.deploy('ReverseRegistrar', ReverseRegistrar, this.ens.address, this.resolver.address);
+    this.registrars['addr.reverse'] = await this.deploy(
+      'ReverseRegistrar',
+      ReverseRegistrar,
+      this.ens.address,
+      this.resolver.address,
+    );
     await this.registrars.reverse.register(labelHash, this.registrars['addr.reverse'].address);
   }
 
@@ -80,10 +90,10 @@ export class EnsBuilder {
     await this.registerDomain(label, domain);
     return this.ens;
   }
-  
-  private deploy = async (contractName: string, contract: {interface: string, bytecode: string}, ...args: any[]) => {
+
+  private deploy = async (contractName: string, contract: { interface: string; bytecode: string }, ...args: any[]) => {
     const factory = new ethers.ContractFactory(contract.interface, contract.bytecode, this.deployer.signer);
     const deployedContract = await this.deployer.deployContractFactory(contractName, factory, ...args);
-    return deployedContract
-  }
+    return deployedContract;
+  };
 }

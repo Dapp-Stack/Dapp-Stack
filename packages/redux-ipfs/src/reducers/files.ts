@@ -16,7 +16,7 @@ const defaultState: State = {
   content: '',
 };
 
-export default function (state: State = defaultState, action: FilesAction) {
+export default function(state: State = defaultState, action: FilesAction) {
   switch (action.type) {
     case getType(files.cwd):
       return {

@@ -16,11 +16,11 @@ export class Infura implements IEthereumStrategy {
     return new Promise<boolean>(resolve => {
       resolve(true);
     });
-  }
+  };
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       resolve(true);
     });
-  }
+  };
 }

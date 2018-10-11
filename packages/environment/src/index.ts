@@ -22,7 +22,7 @@ const defaultEnvironment: Environment = {
   services: {
     ethereum: {
       network: 'dev',
-      migrate() {}
+      migrate() {},
     },
     ipfs: false,
     web: true,
@@ -30,7 +30,7 @@ const defaultEnvironment: Environment = {
   compile: {
     solc: 'js',
     contracts: [],
-  }
+  },
 };
 
 export function build(): Environment {

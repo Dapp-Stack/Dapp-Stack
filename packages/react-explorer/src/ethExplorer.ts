@@ -6,6 +6,6 @@ const IpfsExplorer = () => (
   <Layout>
     <p>hello</p>
   </Layout>
-)
+);
 
 export default IpfsExplorer;

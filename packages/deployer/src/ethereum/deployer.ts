@@ -18,8 +18,8 @@ export class EthererumDeployer {
   private contractFiles!: { [basename: string]: string };
 
   constructor(config: Ethereum, signer: ethers.Signer) {
-    this.config = config
-    this.signer = signer
+    this.config = config;
+    this.signer = signer;
     this.ens = new EnsBuilder(this);
     this.signale = new Signale({ scope: 'Deployer' });
   }
@@ -28,7 +28,7 @@ export class EthererumDeployer {
     await fs.ensureFile(Structure.contracts.tracker);
     await this.initializeContracts();
     await this.initializeEthereum();
-  }
+  };
 
   async run() {
     try {
@@ -39,14 +39,14 @@ export class EthererumDeployer {
       this.signale.error(error);
     }
   }
-  
-  async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract>{
+
+  async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract> {
     return this.deployWithWallet(contractName, this.signer, ...args);
   }
 
   async deployWithWallet(contractName: string, signer: ethers.Signer, ...args: any[]): Promise<ethers.Contract> {
     if (!this.contractFiles) {
-      throw new Error("Unexpected Error: contractFiles is not null")
+      throw new Error('Unexpected Error: contractFiles is not null');
     }
 
     const contractFile = this.contractFiles[contractName];
@@ -75,16 +75,16 @@ export class EthererumDeployer {
         this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
           acc[path.basename(file, '.json')] = file;
           return acc;
-        },                                {});
+        }, {});
         this.contracts = Object.keys(this.contractFiles);
         resolve();
       });
     });
-  }
+  };
 
   private initializeEthereum = async () => {
     if (this.signer.provider) {
       this.gasPrice = await this.signer.provider.getGasPrice();
     }
-  }
+  };
 }

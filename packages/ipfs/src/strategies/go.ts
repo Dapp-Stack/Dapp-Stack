@@ -29,22 +29,22 @@ export class Go implements IIpfsStrategy {
       this.signale.success('Ipfs is running');
       resolve(true);
     });
-  }
+  };
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       child && child.kill();
       resolve(true);
     });
-  }
+  };
 
   private init = () => {
     spawn.sync(this.binaryPath, ['init']);
-  }
+  };
 
   private daemon = () => {
     child = spawn(this.binaryPath, ['daemon'], { stdio: 'pipe' });
     child.stdout.pipe(this.logStream);
     child.stderr.pipe(this.logStream);
-  }
+  };
 }

@@ -10,7 +10,7 @@ const mochaPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'm
 export const setup = async (migrate: (deployer: any) => {}, ganacheOptions = {}) => {
   const ganache = GanacheCore.provider(ganacheOptions);
   const provider = new ethers.providers.Web3Provider(ganache);
-  await testRun(migrate, provider.getSigner())
+  await testRun(migrate, provider.getSigner());
 };
 
 export const run = () => {

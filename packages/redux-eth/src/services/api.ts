@@ -48,7 +48,7 @@ export const getContracts = (provider: ethers.providers.Web3Provider | undefined
   return new Promise<ethers.Contract[]>((resolve, reject) => {
     if (!provider) return reject(error);
     const names = Object.keys(input);
-    const contracts = names.map(name => new ethers.Contract(input[name].address, input[name].abi, provider))
+    const contracts = names.map(name => new ethers.Contract(input[name].address, input[name].abi, provider));
     resolve(contracts);
   });
 };

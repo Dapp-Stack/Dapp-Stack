@@ -9,7 +9,7 @@ const signale = new Signale({ scope: 'Deployer' });
 export const run = async () => {
   const config = build().services.ethereum;
   if (!config) return;
-  
+
   const wallet = await generateWallet();
   if (!wallet.provider) {
     return;
@@ -27,10 +27,10 @@ export const run = async () => {
 export const testRun = async (migrate: (deployer: EthererumDeployer) => {}, signer: ethers.Signer) => {
   const config = {
     network: 'ganache' as EthereumNetwork,
-    migrate
+    migrate,
   };
 
   const deployer = new EthererumDeployer(config, signer);
   await deployer.initialize();
   await deployer.run();
-}
+};

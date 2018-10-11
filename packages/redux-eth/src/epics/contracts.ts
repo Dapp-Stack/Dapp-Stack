@@ -18,7 +18,6 @@ const loadContracts: Epic<EthAction, EthAction, EthState> = (action$, state$) =>
     ),
   );
 
-
 const watchContracts: Epic<EthAction, EthAction, EthState> = action$ =>
   action$.pipe(
     filter(isActionOf(contracts.contracts)),

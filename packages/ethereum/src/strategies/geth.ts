@@ -35,14 +35,14 @@ export class Geth implements IEthereumStrategy {
       this.signale.success('Geth is running');
       resolve(true);
     });
-  }
+  };
 
   stop = () => {
     return new Promise<boolean>(resolve => {
       child && child.kill();
       resolve(true);
     });
-  }
+  };
 
   console = () => {
     let attachTo: string = '';
@@ -56,7 +56,7 @@ export class Geth implements IEthereumStrategy {
     }
 
     spawn.sync(this.binaryPath, ['attach', attachTo], { stdio: [process.stdin, process.stdout, process.stderr] });
-  }
+  };
 
   private command = (): string[] => {
     return [
@@ -81,15 +81,15 @@ export class Geth implements IEthereumStrategy {
       '*',
       '--nodiscover',
     ];
-  }
+  };
 
   private init = () => {
     spawn.sync(this.binaryPath, this.command().concat('init'));
-  }
+  };
 
   private daemon = () => {
     child = spawn(this.binaryPath, this.command(), { stdio: 'pipe' });
     child.stdout.pipe(this.logStream);
     child.stderr.pipe(this.logStream);
-  }
+  };
 }
