@@ -55,7 +55,7 @@ function updatePackage(appPath: string) {
 function installTemplate(appPath: string) {
   const ownPackageName = require(path.join(__dirname, '..', 'package.json')).name;
   const ownPath = path.join(appPath, 'node_modules', ownPackageName);
-  const templatePath = path.join(ownPath, 'template');
+  const templatePath = path.join(ownPath, '..', '..', 'template');
   fs.copySync(templatePath, appPath);
 }
 

@@ -6,7 +6,7 @@
   },
   "description": "Solon scripts",
   "bin": {
-    "solon-scripts": "./scripts/index.js"
+    "solon-scripts": "./lib/src/index.js"
   },
   "scripts": {
     "watch": "tsc -w",

@@ -34,7 +34,6 @@
   "homepage": "https://github.com/solonproject/solon/packages/redux-eth/README.md",
   "devDependencies": {
     "@types/lodash": "4.14.116",
-    "@types/web3": "^1.0.4",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"

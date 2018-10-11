@@ -1,12 +1,10 @@
 {
-  "name": "@solon/connect",
+  "name": "@solon/create-react-app",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Solon connect to ethereum",
-  "main": "lib/src/index.js",
-  "types": "lib/src/index.d.ts",
+  "description": "Solon create-react-app",
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",
@@ -31,15 +29,20 @@
   "bugs": {
     "url": "https://github.com/solonproject/solon/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/connect/README.md",
+  "homepage": "https://github.com/solonproject/solon/packages/create-react-app/README.md",
   "devDependencies": {
+    "@types/cross-spawn": "^6.0.0",
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.9.4",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/environment": "0.1.0",
-    "ethers": "^4.0.3"
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^7.0.0",
+    "react-scripts": "^1.1.5",
+    "signale": "^1.2.1"
   },
   "publishConfig": {
     "access": "public"
