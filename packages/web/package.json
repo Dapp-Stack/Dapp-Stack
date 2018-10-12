@@ -4,7 +4,9 @@
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Solon vue cli",
+  "description": "Solon web",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",
