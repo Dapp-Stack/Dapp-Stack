@@ -6,8 +6,7 @@ process.on('unhandledRejection', err => {
 
 import * as compiler from '@solon/compiler';
 import * as tester from '@solon/test';
-
-import { testWeb } from './shared/web';
+import * as web from '@solon/web';
 
 async function testAsync() {
   await compiler.run();
@@ -17,7 +16,7 @@ async function testAsync() {
 
 const command = process.argv[2];
 if (command === 'web') {
-  testWeb();
+  web.test();
 } else if (command === 'contract') {
   testAsync();
 }

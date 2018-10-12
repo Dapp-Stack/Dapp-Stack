@@ -25,7 +25,7 @@ const defaultEnvironment: Environment = {
       migrate() {},
     },
     ipfs: false,
-    web: true,
+    web: 'react',
   },
   compile: {
     solc: 'js',

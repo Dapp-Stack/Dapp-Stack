@@ -2,6 +2,8 @@ export type Maybe<T> = false | T;
 
 export type EthereumNetwork = 'homestead' | 'rinkeby' | 'ropsten' | 'kovan' | 'dev' | 'ganache';
 
+export type Web = 'react' | 'angular' | 'vue';
+
 export type Ethereum = {
   network: EthereumNetwork;
   apiKey?: string;
@@ -12,7 +14,7 @@ export type Ethereum = {
 export interface Services {
   ethereum: Maybe<Ethereum>;
   ipfs: boolean;
-  web: boolean;
+  web: Maybe<Web>;
 }
 
 export interface Structure {

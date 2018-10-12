@@ -9,10 +9,10 @@ import * as deployer from '@solon/deployer';
 import * as doc from '@solon/doc';
 import * as ethereum from '@solon/ethereum';
 import * as ipfs from '@solon/ipfs';
+import * as web from '@solon/web';
 
 import * as lifecycle from './shared/lifecycle';
 import { watch } from './shared/watch';
-import { startWeb } from './shared/web';
 
 async function startAsync() {
   await ethereum.start();
@@ -21,7 +21,7 @@ async function startAsync() {
   doc.runAll();
   await deployer.run();
   watch();
-  startWeb();
+  web.start();
 }
 
 startAsync();

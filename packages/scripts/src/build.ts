@@ -9,10 +9,9 @@ import * as deployer from '@solon/deployer';
 import * as doc from '@solon/doc';
 import * as ethereum from '@solon/ethereum';
 import * as ipfs from '@solon/ipfs';
+import * as web from '@solon/web';
 
 import * as lifecycle from './shared/lifecycle';
-
-import { buildWeb } from './shared/web';
 
 async function buildAsync() {
   await ethereum.start();
@@ -20,7 +19,7 @@ async function buildAsync() {
   await compiler.run();
   doc.runAll();
   await deployer.run();
-  await buildWeb();
+  await web.build();
   await lifecycle.stopAsync({ shouldExit: true });
 }
 

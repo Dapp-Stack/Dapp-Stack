@@ -1,13 +1,11 @@
-import { build, Environment } from '@solon/environment';
 import * as ethereum from '@solon/ethereum';
 import * as ipfs from '@solon/ipfs';
-
-import { stopWeb } from './web';
+import * as web from '@solon/web';
 
 export async function stopAsync({ shouldExit }: { shouldExit: boolean } = { shouldExit: false }) {
   await ethereum.stop();
   await ipfs.stop();
-  stopWeb();
+  web.stop();
 
   if (shouldExit) {
     process.exit();

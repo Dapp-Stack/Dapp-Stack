@@ -31,6 +31,6 @@ node_modules/
 
 # build
 packages/*/lib/
-packages/scripts/scripts/
+packages/create-react-app/scripts/
 packages/ethereum/bin/*
 websites/landing/dist

@@ -1,13 +1,10 @@
 {
-  "name": "@solon/scripts",
+  "name": "@solon/web",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Solon scripts",
-  "bin": {
-    "solon-scripts": "./lib/src/index.js"
-  },
+  "description": "Solon vue cli",
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",
@@ -32,28 +29,18 @@
   "bugs": {
     "url": "https://github.com/solonproject/solon/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/security/README.md",
+  "homepage": "https://github.com/solonproject/solon/packages/web/README.md",
   "devDependencies": {
     "@types/cross-spawn": "^6.0.0",
-    "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.9.4",
-    "@types/chokidar": "^1.7.5",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/compiler": "0.1.0",
-    "@solon/deployer": "0.1.0",
     "@solon/environment": "0.1.0",
-    "@solon/ethereum": "0.1.0",
-    "@solon/security": "0.1.0",
-    "@solon/ipfs": "0.1.0",
-    "@solon/doc": "0.1.0",
-    "@solon/web": "0.1.0",
-    "chokidar": "^2.0.4",
     "cross-spawn": "^6.0.5",
-    "fs-extra": "^7.0.0",
+    "react-scripts": "^1.1.5",
     "signale": "^1.2.1"
   },
   "publishConfig": {
