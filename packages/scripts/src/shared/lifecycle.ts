@@ -1,10 +1,12 @@
 import * as ethereum from '@solon/ethereum';
 import * as ipfs from '@solon/ipfs';
 import * as web from '@solon/web';
+import * as test from '@solon/test';
 
 export async function stopAsync({ shouldExit }: { shouldExit: boolean } = { shouldExit: false }) {
   await ethereum.stop();
   await ipfs.stop();
+  tester.cleanCoverage();
   web.stop();
 
   if (shouldExit) {

@@ -42,10 +42,14 @@
   "dependencies": {
     "@solon/deployer": "0.1.0",
     "@solon/environment": "0.1.0",
+    "@types/istanbul": "^0.4.30",
     "cross-spawn": "^6.0.5",
+    "ethers": "^4.0.3",
     "ganache-core": "^2.2.1",
+    "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
-    "ethers": "^4.0.3"
+    "sol-explore": "^1.6.2",
+    "solidity-parser-antlr": "^0.2.1"
   },
   "publishConfig": {
     "access": "public"

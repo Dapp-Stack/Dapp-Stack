@@ -24,3 +24,4 @@ async function buildAsync() {
 }
 
 buildAsync();
+lifecycle.after();
