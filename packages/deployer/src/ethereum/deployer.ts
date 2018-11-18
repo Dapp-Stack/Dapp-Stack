@@ -69,7 +69,7 @@ export class EthererumDeployer {
 
   async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract> {
     if (!this.contractFiles) {
-      throw new Error('Unexpected Error: solon is not ready');
+      throw new Error('Contracts not parsed.');
     }
 
     const contractFile = this.contractFiles[contractName];
@@ -86,6 +86,8 @@ export class EthererumDeployer {
   }
 
   async deployContractFactory(contractName: string, factory: ethers.ContractFactory, ...args: any[]) {
+    this.signale.await(`Deploying ${contractName}...`);
+
     const contract = await factory.deploy(...args);
     await contract.deployed();
 

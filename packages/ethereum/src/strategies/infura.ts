@@ -14,6 +14,7 @@ export class Infura implements IEthereumStrategy {
 
   start = () => {
     return new Promise<boolean>(resolve => {
+      this.signale.success('Connected to infura.');
       resolve(true);
     });
   };
