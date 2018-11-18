@@ -12,10 +12,10 @@
     "dist"
   ],
   "scripts": {
-    "postinstall": "node lib/src/install/index.js",
+    "postinstall": "node dist/src/install/index.js",
     "watch": "tsc -w",
     "build": "tsc",
-    "clean": "shx rm -rf lib/src/strategies; shx rm -rf lib/src/index*",
+    "clean": "shx rm -rf dist/src/strategies; shx rm -rf dist/src/index*",
     "lint": "tslint  --project .",
     "doc": "typedoc --options ../../typedoc.json --out ../../documentation/ethereum"
   },
