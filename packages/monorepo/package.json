@@ -6,8 +6,8 @@
     "node": ">=8.11"
   },
   "description": "Monorepo scripts",
-  "main": "lib/src/index.js",
-  "types": "lib/src/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",

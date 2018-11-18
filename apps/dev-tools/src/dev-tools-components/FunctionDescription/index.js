@@ -4,7 +4,6 @@ import styles from './FunctionDescription.module.scss';
 
 import Button from '../../components/Button'
 import Card from '../../components/Card'
-import Text from '../../components/Text'
 import TextInput from '../../components/TextInput'
 import Pill from '../../components/Pill'
 

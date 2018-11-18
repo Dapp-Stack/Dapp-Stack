@@ -5,6 +5,12 @@
     "node": ">=8.11"
   },
   "description": "Create-React-App template for Solon",
+  "main": "scripts/init.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist",
+    "template"
+  ],
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",
@@ -40,6 +46,7 @@
     "@types/node": "^10.9.4",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
+    "typedoc": "^0.13.0",
     "typescript": "3.0.1"
   },
   "dependencies": {

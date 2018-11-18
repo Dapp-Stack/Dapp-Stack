@@ -30,8 +30,7 @@ node_modules/
 .env
 
 # build
-packages/*/lib/
-packages/create-react-app/scripts/
+packages/*/dist/
 packages/ethereum/bin/
 apps/landing/dist
 

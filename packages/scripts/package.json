@@ -6,8 +6,13 @@
   },
   "description": "Solon scripts, entrypoint for solon ecosystem",
   "bin": {
-    "solon-scripts": "./lib/src/index.js"
+    "solon-scripts": "./dist/src/index.js"
   },
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",
@@ -43,6 +48,7 @@
     "@types/chokidar": "^1.7.5",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
+    "typedoc": "^0.13.0",
     "typescript": "3.0.1"
   },
   "dependencies": {
