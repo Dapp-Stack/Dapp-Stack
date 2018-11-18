@@ -69,3 +69,25 @@
   align-items: center;
   justify-content: center;
 }
+
+.notBlockWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.notBlock {
+  margin: $s-spacing;
+  max-width: 38rem;
+}
+
+.notBlockCard {
+  padding: $l-spacing;
+
+  button {
+    @media only screen and (min-width: 48em) {
+      width: auto;
+    }
+  }
+}

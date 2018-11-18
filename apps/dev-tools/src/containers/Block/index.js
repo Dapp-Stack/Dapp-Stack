@@ -3,10 +3,13 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import eth from '@solon/redux-eth';
+
 import styles from './Block.module.scss';
 
 import Loader from '../../components/Loader';
 import Text from '../../components/Text';
+import Card from '../../components/Card';
+import ZeroState from '../../components/ZeroState';
 import BlockCard from '../../dev-tools-components/BlockCard';
 import BlockTransactions from '../../dev-tools-components/BlockTransactions';
 
@@ -33,10 +36,32 @@ class BlockComponent extends React.Component {
 
   render() {
     const { block, transactionCount, blockNumber, address, gasPrice, balance } = this.props
-    if (!block || transactionCount === undefined || blockNumber === undefined || !address || gasPrice === undefined || balance === undefined){
+    if (!transactionCount === undefined || blockNumber === undefined || !address || gasPrice === undefined || balance === undefined){
       return (
         <div className={`${styles.loadingBody}`}>
           <Loader color="blue" size="medium" />
+        </div>
+      );
+    }
+
+    if (!block) {
+      return (
+        <div className={styles.noBlockWrapper}>
+          <div className={`${styles.noBlock}`}>
+            <Card className={styles.notBlockCard}>
+              <Card.Body>
+                <ZeroState
+                  title={'No block.'}
+                >
+                  <ZeroState.BodyText>
+                    We could not find the block with the following number:
+                    {this.props.match.params.number}. Make sure you enter
+                    a correct block number.
+                  </ZeroState.BodyText>
+                </ZeroState>
+              </Card.Body>
+            </Card>
+          </div>
         </div>
       );
     }

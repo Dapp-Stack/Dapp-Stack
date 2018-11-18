@@ -15,6 +15,10 @@ import ZeroState from '../../components/ZeroState';
 import BlockCard from '../../dev-tools-components/BlockCard';
 
 class BlocksPanelComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { blockNumber: '' };
+  }
 
   componentDidMount = () => {
     if (this.props.blocks.length < 5) {
@@ -35,6 +39,14 @@ class BlocksPanelComponent extends React.Component {
   renderBlocks = blocks => {
     return blocks.map(block => <BlockCard key={block.number} gasPrice={this.props.gasPrice} block={block} />);
   };
+
+  handleBlockNumberChange = (newValue) => {
+    this.setState({ blockNumber: newValue });
+  }
+
+  goTo = () => {
+    this.props.history.push(`/blocks/${this.state.blockNumber}`)
+  }
 
   render() {
     const {
@@ -101,7 +113,10 @@ class BlocksPanelComponent extends React.Component {
             {blocks.length} Blocks out of {blockNumber}
           </Text>
           <div className={styles.search}>
-            <Search />
+            <Search value={this.state.blockNumber}
+                    placeholder="Go to block"
+                    onChange={this.handleBlockNumberChange}
+                    onEnter={this.goTo} />
           </div>
         </div>
 

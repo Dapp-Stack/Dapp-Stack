@@ -8,6 +8,7 @@ import styles from './TransactionCard.module.scss';
 import Card from '../../components/Card';
 import Text from '../../components/Text';
 import Currency from '../../components/Currency';
+import { weiToGwei } from '../../utils/helpers';
 
 const TransactionCard = ({transaction}) => {
 
@@ -89,9 +90,9 @@ const TransactionCard = ({transaction}) => {
           <div className={`col-xs-3 col-sm-2 col-lg-2 ${styles.transactionCost}`}>
             <Currency
               className={styles.price}
-              primaryValue={transaction.gasPrice.toString()}
-              primaryCurrency={"Wei"}
-              primaryClassName={styles.wei}
+              primaryValue={weiToGwei(transaction.gasPrice)}
+              primaryCurrency={"Gwei"}
+              primaryClassName={styles.gwei}
               currencyClass={styles.currency}
             />
           </div>

@@ -15,6 +15,12 @@ class Search extends React.Component {
     this.props.onChange(value);
   };
 
+  onKeyPress = e => {
+    if (e.key === 'Enter') {
+      this.props.onEnter();
+    }
+  }
+
   render() {
     const { value } = this.props;
     const { searchText } = this.state;
@@ -29,9 +35,10 @@ class Search extends React.Component {
         <input
           className={`${styles.searchInput}`}
           type="text"
-          placeholder="Search..."
+          placeholder={this.props.placeholder}
           onChange={this.onSearchChange}
           value={searchValue}
+          onKeyPress={this.onKeyPress}
         />
       </div>
     );
@@ -39,11 +46,16 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onEnter: PropTypes.func,
+  value: PropTypes.string,
+  placeholder: PropTypes.string
 };
 
 Search.defaultProps = {
-  onChange: () => {}
+  placeholder: "Search...",
+  onChange: () => {},
+  onEnter: () => {}
 };
 
 export default Search;
