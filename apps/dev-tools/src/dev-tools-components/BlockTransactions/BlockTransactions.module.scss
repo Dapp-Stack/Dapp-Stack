@@ -1,0 +1,9 @@
+@import "../../styles/variables.scss";
+
+.transactionsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $l-spacing 0;
+  width: 100%;
+}

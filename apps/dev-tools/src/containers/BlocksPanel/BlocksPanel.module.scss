@@ -1,0 +1,35 @@
+@import "../../styles/variables.scss";
+
+.loadMoreButton {
+  width: 100%;
+  text-align: center;
+  padding-bottom: $l-spacing;
+}
+
+.zeroStateWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.zeroState {
+  max-width: 25rem;
+  margin-bottom: $xxl-spacing * 3;
+
+  @media only screen and (min-width: 48em) {
+    margin-bottom: 0;
+  }
+}
+
+.blocksPanelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $l-spacing 0;
+  width: 100%;
+}
+
+.search {
+  float: right;
+}

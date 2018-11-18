@@ -1,0 +1,68 @@
+{
+  "name": "@solon/scripts",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Solon scripts, entrypoint for solon ecosystem",
+  "bin": {
+    "solon-scripts": "./lib/src/index.js"
+  },
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/scripts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "scripts",
+    "npm"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/scripts/README.md",
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.0",
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.9.4",
+    "@types/chokidar": "^1.7.5",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "@solon/compiler": "0.1.0",
+    "@solon/deployer": "0.1.0",
+    "@solon/environment": "0.1.0",
+    "@solon/ethereum": "0.1.0",
+    "@solon/security": "0.1.0",
+    "@solon/ipfs": "0.1.0",
+    "@solon/doc": "0.1.0",
+    "@solon/web": "0.1.0",
+    "@solon/wallet": "0.1.0",
+    "@solon/test": "0.1.0",
+    "@solon/api": "0.1.0",
+    "chokidar": "^2.0.4",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^7.0.0",
+    "signale": "^1.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

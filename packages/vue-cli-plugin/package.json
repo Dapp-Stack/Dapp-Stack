@@ -1,0 +1,51 @@
+{
+  "name": "vue-cli-plugin-solon",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Vue CLI plugin to install Solon",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/vue-cli-plugin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "Vue",
+    "Plugin"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/vue-cli-plugin/README.md",
+  "devDependencies": {
+    "@types/signale": "^1.2.0",
+    "@types/node": "^10.9.4",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "signale": "^1.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

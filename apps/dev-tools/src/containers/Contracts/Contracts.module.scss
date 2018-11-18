@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+
+.contractsBody {
+  @media only screen and (min-width: 48em) {
+    padding: $xl-spacing $base-spacing $xl-spacing calc(#{$filterNav-width-small} + #{$base-spacing});
+  }
+
+  @media only screen and (min-width: 65em) {
+    padding-left: $filterNav-width-large + $m-spacing;
+    padding-right: $m-spacing;
+  }
+}
+
+.contractsSidebar {
+  display: none;
+  @media only screen and (min-width: 48em) {
+    display: block;
+  }
+}
+
+.bodyLoading {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}

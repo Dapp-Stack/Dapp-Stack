@@ -1,0 +1,54 @@
+{
+  "name": "@solon/redux-eth",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Redux actions for ethers.js",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib scripts",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/redux-eth"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "ethereum",
+    "Solon",
+    "typescript",
+    "ts",
+    "ethers.js"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/redux-eth/README.md",
+  "devDependencies": {
+    "@types/lodash": "4.14.116",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "redux": "^4.0.0",
+    "redux-observable": "^1.0.0",
+    "rxjs": "6.1.0",
+    "typesafe-actions": "^2.0.4",
+    "ethers": "^4.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

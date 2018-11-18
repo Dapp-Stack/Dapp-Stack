@@ -1,0 +1,73 @@
+{
+  "name": "@solon/website",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Solon public website",
+  "scripts": {
+    "watch": "webpack-dev-server --progress --hide-modules --mode development",
+    "build": "webpack --progress --hide-modules --mode production",
+    "clean": "rm -rf build",
+    "deploy": "gh-pages -d dist",
+    "publish": "yarn build && yarn deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "landing"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/websites/landing/README.md",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "autoprefixer": "^8.6.3",
+    "babel-loader": "^8.0.0-beta.0",
+    "browser-sync": "^2.24.4",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "cssnano": "^3.10.0",
+    "exports-loader": "^0.7.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "gh-pages": "^1.2.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.3.1",
+    "jsonminify": "^0.4.1",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "sass-loader": "^7.0.3",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-subresource-integrity": "^1.1.0-rc.4",
+    "webpackbar": "^2.6.1"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.0",
+    "popper.js": "^1.14.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "@solon/dev-tools",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "private": true,
+  "description": "Solon dev tools",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "react",
+    "redux",
+    "dev tools",
+    "admin"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@fortawesome/react-fontawesome": "^0.1.3",
+    "@solon/redux-eth": "0.1.0",
+    "@solon/redux-ipfs": "0.1.0",
+    "axios": "^0.18.0",
+    "connected-react-router": "^5.0.0",
+    "croppie": "^2.6.2",
+    "history": "^4.7.2",
+    "lodash": "^4.17.11",
+    "react": "^16.6.0",
+    "react-blockies": "^1.4.0",
+    "react-dom": "^16.6.0",
+    "react-hot-loader": "^4.3.12",
+    "react-redux": "^5.1.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "react-select": "^2.1.1",
+    "react-slick": "^0.23.2",
+    "react-toastify": "^4.4.0",
+    "react-toggle": "^4.0.2",
+    "react-transition-group": "^2.5.0",
+    "redux": "^4.0.1",
+    "redux-observable": "^1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "clean": "rm -rf build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

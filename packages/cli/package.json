@@ -1,0 +1,56 @@
+{
+  "name": "@solon/cli",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Solon CLI, generate a new project",
+  "bin": {
+    "solon": "./lib/src/index.js"
+  },
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "cli",
+    "npm"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/cli/README.md",
+  "devDependencies": {
+    "@types/ejs": "^2.6.0",
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.9.4",
+    "@types/signale": "^1.2.0",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "fs-extra": "^7.0.0",
+    "signale": "^1.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

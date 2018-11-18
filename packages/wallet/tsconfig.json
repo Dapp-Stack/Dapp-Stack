@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types"],
+    "outDir": "lib",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "*": ["../typings/*"]
+    }
+  },
+  "include": ["./src/**/*"]
+}

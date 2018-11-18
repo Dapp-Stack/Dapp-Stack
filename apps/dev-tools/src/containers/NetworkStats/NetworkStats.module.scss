@@ -1,0 +1,89 @@
+@import "../../styles/variables.scss";
+
+.dashboardHeader {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  padding-top: $xxl-spacing;
+
+  @media only screen and (min-width: 48em) {
+    padding-bottom: ($xxl-spacing * 2);
+  }
+
+  @media only screen and (min-width: 52em) {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+.dashboardAvatar {
+  margin-bottom: $l-spacing;
+
+  @media only screen and (min-width: 52em) {
+    margin-bottom: 0;
+  }
+}
+
+.statsContainer {
+  display: flex;
+  align-items: center;
+  padding-bottom: $xxl-spacing;
+
+  @media only screen and (min-width: 48em) {
+    padding-bottom: 0;
+  }
+}
+
+.stats {
+  display: flex;
+
+  @media only screen and (min-width: 65em) {
+    padding-left: $xl-spacing;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: $l-spacing;
+  padding: 0 $l-spacing;
+
+  &:not(:last-child) {
+    padding-right: $l-spacing;
+    border-right: $base-border;
+  }
+
+  @media only screen and (min-width: 48em) {
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  @media only screen and (min-width: 52em) {
+    margin-top: 0;
+  }
+
+  &:not(:first-child) {
+    padding-left: $l-spacing;
+  }
+
+  &Value {
+    font-size: $h2-font-size;
+
+    @media only screen and (min-width: 48em) {
+      font-size: $h1-font-size;
+    }
+  }
+
+  &Label {
+    line-height: 1.4;
+    padding-top: $base-spacing;
+  }
+}
+
+.alignLeft {
+  text-align: left;
+}

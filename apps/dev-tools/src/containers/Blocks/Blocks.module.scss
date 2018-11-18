@@ -1,0 +1,67 @@
+@import "../../styles/variables.scss";
+
+.desktopContainer {
+  display: none;
+
+  @media only screen and (min-width: 48em) {
+    display: block;
+  }
+}
+
+.mobileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow-x: hidden;
+
+  @media only screen and (min-width: 48em) {
+    display: none;
+  }
+}
+
+.panelContainer {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.blocksPanel {
+  box-shadow: none;
+  border-radius: 0;
+
+  @media only screen and (min-width: 48em) {
+    box-shadow: $base-box-shadow;
+    border-radius: $base-border-radius;
+  }
+}
+
+.blocksPanel {
+  height: 100%;
+  width: 100%;
+
+  @media only screen and (min-width: 48em) {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+    height: 30rem;
+  }
+
+  @media only screen and (min-width: 60em) {
+    margin-right: $base-spacing;
+    width: calc(50% - #{$base-spacing});
+  }
+}
+
+.bodyClass {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.loadingBody {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

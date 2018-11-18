@@ -1,0 +1,54 @@
+{
+  "name": "@solon/security",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Security check for contracts using mythril",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/security"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "docker",
+    "security",
+    "mythril"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/security/README.md",
+  "devDependencies": {
+    "@types/dockerode": "^2.5.5",
+    "@types/signale": "^1.2.0",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "@solon/environment": "0.1.0",
+    "dockerode": "^2.5.7",
+    "signale": "^1.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

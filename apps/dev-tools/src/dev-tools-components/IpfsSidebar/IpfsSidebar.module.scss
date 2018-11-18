@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+.ipfsSidebar {
+  background: $brand-white;
+  padding: $l-spacing;
+  margin-top: 0;
+  max-width: $filterNav-width-large;
+  width: 70vw;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+
+  @media only screen and (min-width: 48em) {
+    width: $filterNav-width-small;
+  }
+
+  @media only screen and (min-width: 65em) {
+    width: $filterNav-width-large;
+    padding: $l-spacing;
+  }
+}
+
+.fixed {
+  position: fixed;
+  @media only screen and (min-width: 48em) {
+    top: $header-height-sm;
+  }
+   @media only screen and (min-width: 65em) {
+    top: $header-height-lg;
+  }
+}
+
+.marginTop {
+  margin-top: $xl-spacing;
+}

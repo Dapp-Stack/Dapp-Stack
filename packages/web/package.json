@@ -1,0 +1,56 @@
+{
+  "name": "@solon/web",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Web connector of Solon, wrapper for Create React App, Vue CLI and Angular",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "Create react app",
+    "Vue",
+    "Angular"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/web/README.md",
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.0",
+    "@types/node": "^10.9.4",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "@solon/environment": "0.1.0",
+    "cross-spawn": "^6.0.5",
+    "react-scripts": "^2.0.4",
+    "signale": "^1.2.1",
+    "go-ipfs": "^0.4.17"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

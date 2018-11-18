@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $l-spacing;
+}
+
+.errorWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error {
+  margin: $s-spacing;
+  max-width: 38rem;;
+}
+
+.errorCard {
+  padding: $l-spacing;
+
+  button {
+    @media only screen and (min-width: 48em) {
+      width: auto;
+    }
+  }
+}

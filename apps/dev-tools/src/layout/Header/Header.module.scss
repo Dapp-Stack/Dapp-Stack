@@ -1,0 +1,82 @@
+@import "../../styles/variables.scss";
+
+.header {
+  width: 100%;
+  height: $header-height-sm;
+  box-shadow: $base-box-shadow;
+  background-color: $brand-white;
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (min-width: 65em) {
+    height: $header-height-lg;
+  }
+}
+
+.iconArea {
+  background-color: $brand-purple;
+  font-size: 40px;
+  height: $header-height-sm;
+  width: $header-height-sm;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (min-width: 48em) {
+    display: flex;
+  }
+
+  @media only screen and (min-width: 65em) {
+    height: $header-height-lg;
+    width: $header-height-lg;
+  }
+}
+
+.network {
+  display: none;
+  margin-left: $xl-spacing;
+
+  @media only screen and (min-width: 48em) {
+    display: block;
+  }
+}
+
+.sideNavTrigger {
+  cursor: pointer;
+  display: block;
+  margin-left: $m-spacing;
+  @media only screen and (min-width: 48em) {
+    display: none;
+  }
+}
+
+.avatarArea {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.avatar {
+  margin-right: $m-spacing;
+}
+
+.desktopButtonText {
+  display: none;
+  @media only screen and (min-width: 48em) {
+    display: inline-block;
+  }
+}
+
+.mobileButtonText {
+  display: inline-block;
+
+  @media only screen and (min-width: 48em) {
+    padding-right: $base-spacing;
+  }
+}

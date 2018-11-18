@@ -1,0 +1,49 @@
+@import "../../styles/variables.scss";
+
+.app {
+  background-color: $brand-nearWhite;
+  height: 100%;
+  width: 100%;
+}
+
+.body {
+  padding-top: $header-height-sm;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+
+  @media only screen and (min-width: 48em) {
+    margin-left: $sidebar-width-sm;
+    padding-top: $header-height-sm;
+  }
+
+  @media only screen and (min-width: 65em) {
+    margin-left: $sidebar-width-lg;
+    padding-top: $header-height-lg;
+  }
+}
+
+.network {
+  margin-bottom: $m-spacing;
+  width: 100;
+  display: flex;
+  justify-content: center;
+  @media only screen and (min-width: 48em) {
+    display: none;
+  }
+}
+
+.mobileSideNav {
+  display: block;
+  @media only screen and (min-width: 48em) {
+    display: none;
+  }
+}
+
+.desktopSideNav {
+  display: none;
+  @media only screen and (min-width: 48em) {
+    display: block;
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "@solon/ipfs",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Start and manage IPFS daemon",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/ipfs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "ipfs",
+    "daemon"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/ipfs/README.md",
+  "devDependencies": {
+    "@solon/environment": "0.1.0",
+    "@types/cross-spawn": "^6.0.0",
+    "@types/node": "^10.9.4",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "cross-spawn": "^6.0.5",
+    "go-ipfs": "^0.4.17"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

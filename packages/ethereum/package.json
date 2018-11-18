@@ -1,0 +1,61 @@
+{
+  "name": "@solon/ethereum",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Start and manage an ethereum chain using Geth, Ganache or just connect to infura",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "bin": {
+    "geth": "bin/geth"
+  },
+  "scripts": {
+    "postinstall": "node lib/src/install/index.js",
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib/src/strategies; shx rm -rf lib/src/index*",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/ethereum"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "geth",
+    "infura"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/ethereum/README.md",
+  "devDependencies": {
+    "@solon/environment": "0.1.0",
+    "@types/node": "^10.9.4",
+    "@types/request": "^2.47.1",
+    "@types/tar-fs": "^1.16.1",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "go-platform": "^1.0.0",
+    "gunzip-maybe": "^1.4.1",
+    "request": "^2.88.0",
+    "tar-fs": "^1.16.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

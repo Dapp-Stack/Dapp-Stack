@@ -1,0 +1,19 @@
+@import "../../styles/variables.scss";
+
+.ipfsBody {
+  @media only screen and (min-width: 48em) {
+    padding: $xl-spacing $base-spacing $xl-spacing calc(#{$filterNav-width-small} + #{$base-spacing});
+  }
+
+  @media only screen and (min-width: 65em) {
+    padding-left: $filterNav-width-large + $m-spacing;
+    padding-right: $m-spacing;
+  }
+}
+
+.ipfsSidebar {
+  display: none;
+  @media only screen and (min-width: 48em) {
+    display: block;
+  }
+}

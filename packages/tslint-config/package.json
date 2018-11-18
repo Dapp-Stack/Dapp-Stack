@@ -1,0 +1,37 @@
+{
+  "name": "@solon/tslint-config",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Lint rules related to Solon for TSLint",
+  "main": "tslint.json",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "tslint",
+    "config",
+    "Solon",
+    "typescript",
+    "ts"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/tslint-config/README.md",
+  "dependencies": {
+    "typescript": "3.0.1",
+    "tslint": "5.11.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

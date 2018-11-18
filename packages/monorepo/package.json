@@ -1,0 +1,58 @@
+{
+  "name": "@solon/monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Monorepo scripts",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint  --project .",
+    "find_unused_deps": "run-s build script:find_unused_deps",
+    "check_deps_versions": "run-s build script:check_deps_versions",
+    "script:find_unused_deps": "node ./lib/src/findUnusedDependencies.js",
+    "script:check_deps_versions": "node ./lib/src/checkDependenciesVersions.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "monorepo"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/monorepo/README.md",
+  "devDependencies": {
+    "@types/depcheck": "^0.6.0",
+    "@types/lodash": "4.14.116",
+    "@types/node": "^10.9.4",
+    "npm-run-all": "^4.1.2",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "depcheck": "^0.6.9",
+    "lodash": "^4.17.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

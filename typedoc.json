@@ -1,0 +1,10 @@
+{
+  "name": "Solon",
+  "mode": "modules",
+  "theme": "default",
+  "ignoreCompilerErrors": "false",
+  "preserveConstEnums": "true",
+  "exclude": "*.spec.ts",
+  "stripInternal": "false",
+  "jsx": true
+}

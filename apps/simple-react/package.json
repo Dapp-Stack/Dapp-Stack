@@ -1,0 +1,30 @@
+{
+  "name": "@solon/simple-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@solon/redux-eth": "0.1.0",
+    "@solon/redux-ipfs": "0.1.0",
+    "@solon/scripts": "0.1.0",
+    "@solon/test": "0.1.0",
+    "openzeppelin-solidity": "^1.12.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.1",
+    "redux-observable": "^1.0.0",
+    "solium": "^1.1.8"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
+  },
+  "scripts": {
+    "solon": "solon-scripts"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

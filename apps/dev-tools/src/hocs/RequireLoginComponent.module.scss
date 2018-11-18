@@ -1,0 +1,29 @@
+@import "../styles/variables.scss";
+
+.connectedWrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.notConnectedWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.notConnected {
+  margin: $s-spacing;
+  max-width: 38rem;
+}
+
+.notConnectedCard {
+  padding: $l-spacing;
+
+  button {
+    @media only screen and (min-width: 48em) {
+      width: auto;
+    }
+  }
+}

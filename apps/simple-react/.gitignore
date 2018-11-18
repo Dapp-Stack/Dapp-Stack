@@ -1,0 +1,8 @@
+node_modules
+.geth
+logs
+build
+contracts/build
+contracts/doc
+contracts/security
+public/tracker.json

@@ -1,0 +1,57 @@
+{
+  "name": "@solon/doc",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "description": "Generate markdown documentation from the solidity contracts",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint  --project .",
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SolonProject/solon.git"
+  },
+  "keywords": [
+    "web3",
+    "Solon",
+    "typescript",
+    "ts",
+    "markdown",
+    "documentation",
+    "solidity"
+  ],
+  "author": {
+    "name": "Anthony Laibe",
+    "email": "anthony@laibe.cc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/solonproject/solon/issues"
+  },
+  "homepage": "https://github.com/solonproject/solon/packages/doc/README.md",
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
+    "@types/signale": "^1.2.0",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1"
+  },
+  "dependencies": {
+    "@solon/environment": "0.1.0",
+    "fs-extra": "^7.0.0",
+    "sha1-file": "^1.0.1",
+    "signale": "^1.2.1",
+    "solidity-parser-antlr": "^0.3.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
