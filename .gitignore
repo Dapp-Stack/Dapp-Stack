@@ -32,7 +32,7 @@ node_modules/
 # build
 packages/*/dist/
 packages/ethereum/bin/
-apps/landing/dist
 
 # documentation
 documentation/
+apps/solonproject.org
