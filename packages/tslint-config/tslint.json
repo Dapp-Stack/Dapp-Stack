@@ -6,7 +6,6 @@
     "no-debugger": true,
     "no-return-await": true,
     "no-var-keyword": true,
-    "prefer-readonly": true,
-    "completed-docs": true
+    "prefer-readonly": true
   }
 }

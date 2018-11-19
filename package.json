@@ -5,8 +5,7 @@
     "apps/*"
   ],
   "scripts": {
-    "prettier": "prettier --write '**/*.{ts,tsx,json,md}' --config .prettierrc",
-    "prettier:ci": "prettier --list-different '**/*.{ts,tsx,json,md}' --config .prettierrc",
+    "prettier": "prettier --write 'packages/**/*.{ts,tsx,json,md}' --config .prettierrc",
     "wsrun": "wsrun",
     "lerna": "lerna",
     "build": "wsrun build $PKG -r --stages --exclude-missing",

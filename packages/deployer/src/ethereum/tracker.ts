@@ -14,8 +14,8 @@ interface ITrackerData {
 }
 
 export class Tracker {
-  private network: ethers.utils.Network;
-  private filename: string;
+  private readonly network: ethers.utils.Network;
+  private readonly filename: string;
 
   constructor(network: ethers.utils.Network, webConfig: Web) {
     this.network = network;
@@ -34,7 +34,7 @@ export class Tracker {
     });
   };
 
-  private whileLock = (execution: Function) => {
+  private readonly whileLock = (execution: Function) => {
     if (this.isTest()) {
       return;
     }
@@ -51,7 +51,7 @@ export class Tracker {
     }
   };
 
-  private isTest = () => {
+  private readonly isTest = () => {
     return process.env.SOLON_ENV === 'test';
   };
 }
