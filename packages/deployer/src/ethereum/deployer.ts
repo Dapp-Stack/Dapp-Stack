@@ -22,7 +22,7 @@ export class EthererumDeployer {
   private readonly config: Ethereum;
   private readonly webConfig: Web;
   private readonly signale: Signale;
-  private contractFiles: { [basename: string]: string };
+  private readonly contractFiles: { [basename: string]: string };
 
   constructor(config: Ethereum, webConfig: Web, signer: ethers.Signer) {
     this.config = config;
