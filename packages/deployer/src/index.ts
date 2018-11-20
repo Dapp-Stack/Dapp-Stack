@@ -1,4 +1,4 @@
-import { build, EthereumNetwork } from '@solon/environment';
+import { build } from '@solon/environment';
 import { EthererumDeployer } from './ethereum/deployer';
 import { generateWallet } from '@solon/wallet';
 import { Signale } from 'signale';

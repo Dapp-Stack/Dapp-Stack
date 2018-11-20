@@ -1,7 +1,7 @@
-import { Ethereum, Structure, Web, Maybe } from '@solon/environment';
+import { Ethereum, Structure, Web } from '@solon/environment';
 import * as ethers from 'ethers';
 import * as fs from 'fs-extra';
-import { glob } from 'glob';
+import * as globule from 'globule';
 import * as path from 'path';
 import { Signale } from 'signale';
 
@@ -11,7 +11,7 @@ import { Erc20 } from './erc20';
 import { Erc721 } from './erc721';
 
 export class EthererumDeployer {
-  public contracts!: string[];
+  public contracts: string[];
   public signer: ethers.Signer;
   public network!: ethers.utils.Network;
   public gasPrice!: ethers.utils.BigNumber;
@@ -22,7 +22,7 @@ export class EthererumDeployer {
   private readonly config: Ethereum;
   private readonly webConfig: Web;
   private readonly signale: Signale;
-  private contractFiles!: { [basename: string]: string };
+  private contractFiles: { [basename: string]: string };
 
   constructor(config: Ethereum, webConfig: Web, signer: ethers.Signer) {
     this.config = config;
@@ -32,10 +32,11 @@ export class EthererumDeployer {
     this.erc20 = new Erc20(this);
     this.erc721 = new Erc721(this);
     this.signale = new Signale({ scope: 'Deployer' });
+    this.contractFiles = this.getContractFiles();
+    this.contracts = Object.keys(this.contractFiles);
   }
 
   initialize = async () => {
-    await this.initializeContracts();
     await this.initializeEthereum();
     this.tracker = new Tracker(this.network, this.webConfig);
   };
@@ -53,10 +54,6 @@ export class EthererumDeployer {
   }
 
   attach(contractName: string, address: string): ethers.Contract {
-    if (!this.contractFiles) {
-      throw new Error('Unexpected Error: solon is not ready');
-    }
-
     const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
       throw new Error(`Contract not found: ${contractName}`);
@@ -68,10 +65,6 @@ export class EthererumDeployer {
   }
 
   async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract> {
-    if (!this.contractFiles) {
-      throw new Error('Contracts not parsed.');
-    }
-
     const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
       throw new Error(`Contract not found: ${contractName}`);
@@ -97,17 +90,12 @@ export class EthererumDeployer {
     return contract;
   }
 
-  private readonly initializeContracts = () => {
-    return new Promise<void>(resolve => {
-      glob(`${Structure.contracts.build}/**/*.json`, {}, (_, files: string[]) => {
-        this.contractFiles = files.reduce((acc: { [basename: string]: string }, file) => {
-          acc[path.basename(file, '.json')] = file;
-          return acc;
-        }, {});
-        this.contracts = Object.keys(this.contractFiles);
-        resolve();
-      });
-    });
+  private readonly getContractFiles = () => {
+    const files = globule.find(`${Structure.contracts.build}/**/*.json`);
+    return files.reduce((acc: { [basename: string]: string }, file) => {
+      acc[path.basename(file, '.json')] = file;
+      return acc;
+    }, {});
   };
 
   private readonly initializeEthereum = async () => {
