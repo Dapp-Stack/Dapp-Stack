@@ -1,14 +1,11 @@
-import { build, EthereumNetwork } from '@solon/environment';
+import { EthereumNetwork } from '@solon/environment';
 import * as ethers from 'ethers';
 import { Signale } from 'signale';
 
 const signale = new Signale({ scope: 'Connection' });
 
-export const connect = (): ethers.providers.JsonRpcProvider => {
-  const ethereum = build().ethereum;
-  if (!ethereum) throw new Error('Unexpected Error: ethereum is disabled');
-
-  const provider = getProvider(ethereum.network);
+export const connect = (network: EthereumNetwork): ethers.providers.JsonRpcProvider => {
+  const provider = getProvider(network);
   checkConnection(provider);
 
   return provider;

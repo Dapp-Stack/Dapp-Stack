@@ -17,7 +17,11 @@ exports.download = function () {
         var folder = "geth-" + platform + "-" + arch + "-" + VERSION;
         var filename = "" + folder + extension;
         var url = "https://gethstore.blob.core.windows.net/builds/" + filename;
+        var isEmpty = fs.readdirSync(installPath).length === 0;
         var done = function () { return resolve({ filename: filename, installPath: installPath }); };
+        if (!isEmpty) {
+            return new Promise(function (resolve) { return done(); });
+        }
         var unpack = function (stream) {
             return stream.pipe(gunzip()).pipe(tarFS.extract(installPath).on('finish', function () {
                 fs.moveSync(path.join(installPath, folder, 'geth'), path.join(installPath, 'geth'), { overwrite: true });
@@ -25,7 +29,7 @@ exports.download = function () {
             }));
         };
         process.stdout.write("Downloading " + url + "\n");
-        request
+        return request
             .get(url, function (error, response, body) {
             if (error) {
                 return reject(error);

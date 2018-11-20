@@ -56,7 +56,7 @@ export class EthererumDeployer {
   attach(contractName: string, address: string): ethers.Contract {
     const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
-      throw new Error(`Contract not found: ${contractName}`);
+      this.contractNotFound(contractFile);
     }
 
     const source = JSON.parse(fs.readFileSync(contractFile).toString());
@@ -67,7 +67,7 @@ export class EthererumDeployer {
   async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract> {
     const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
-      throw new Error(`Contract not found: ${contractName}`);
+      this.contractNotFound(contractFile);
     }
 
     const source = JSON.parse(fs.readFileSync(contractFile).toString());
@@ -103,6 +103,10 @@ export class EthererumDeployer {
       this.gasPrice = await this.signer.provider.getGasPrice();
       this.network = await this.signer.provider.getNetwork();
     }
+  };
+
+  private readonly contractNotFound = (contractName: string) => {
+    throw new Error(`Contract not found: ${contractName}, make sure this contract exists.`);
   };
 
   private readonly printResult = (

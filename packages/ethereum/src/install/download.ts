@@ -20,8 +20,12 @@ export const download = (): Promise<DownloadResult> => {
     const folder = `geth-${platform}-${arch}-${VERSION}`;
     const filename = `${folder}${extension}`;
     const url = `https://gethstore.blob.core.windows.net/builds/${filename}`;
-
+    const isEmpty = fs.readdirSync(installPath).length === 0;
     const done = () => resolve({ filename, installPath });
+
+    if (!isEmpty) {
+      return new Promise(resolve => done());
+    }
 
     const unpack = (stream: request.Response) => {
       return stream.pipe(gunzip()).pipe(
@@ -34,7 +38,7 @@ export const download = (): Promise<DownloadResult> => {
 
     process.stdout.write(`Downloading ${url}\n`);
 
-    request
+    return request
       .get(url, (error, response, body) => {
         if (error) {
           return reject(error);

@@ -20,7 +20,7 @@ export const generateWallet = async (): Promise<WalletEnhanced> => {
   if (!ethereum) {
     return { balance: new ethers.utils.BigNumber(0) };
   }
-  const provider = connect();
+  const provider = connect(ethereum.network);
 
   if (ethereum.network === 'dev') {
     const addresses = await provider.listAccounts();
