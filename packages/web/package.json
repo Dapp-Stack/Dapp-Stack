@@ -1,10 +1,10 @@
 {
-  "name": "@solon/web",
+  "name": "@dapp-stack/web",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Web connector of Solon, wrapper for Create React App, Vue CLI and Angular",
+  "description": "Web connector of Dapp Stack, wrapper for Create React App, Vue CLI and Angular",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "Create react app",
@@ -36,9 +36,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/web/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/web/README.md",
   "devDependencies": {
     "@types/cross-spawn": "^6.0.0",
     "@types/node": "^10.9.4",
@@ -48,7 +48,7 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/environment": "0.1.0",
+    "@dapp-stack/environment": "0.1.0",
     "cross-spawn": "^6.0.5",
     "react-scripts": "^2.0.4",
     "signale": "^1.2.1",

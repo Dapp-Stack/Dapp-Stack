@@ -1,11 +1,11 @@
-import { build, Structure } from '@solon/environment';
+import { build, Structure } from '@dapp-stack/environment';
 import * as chokidar from 'chokidar';
 import * as path from 'path';
 import { Signale } from 'signale';
 
-import * as compiler from '@solon/compiler';
-import * as deployer from '@solon/deployer';
-import * as doc from '@solon/doc';
+import * as compiler from '@dapp-stack/compiler';
+import * as deployer from '@dapp-stack/deployer';
+import * as doc from '@dapp-stack/doc';
 
 export function watch(): void {
   const compile = build().compile;

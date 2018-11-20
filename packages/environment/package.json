@@ -1,5 +1,5 @@
 {
-  "name": "@solon/environment",
+  "name": "@dapp-stack/environment",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "environment",
@@ -35,9 +35,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/environment/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/environment/README.md",
   "devDependencies": {
     "@types/lodash": "4.14.116",
     "@types/signale": "^1.2.0",

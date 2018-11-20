@@ -1,10 +1,10 @@
 {
-  "name": "@solon/create-react-app",
+  "name": "@dapp-stack/create-react-app",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Create-React-App template for Solon",
+  "description": "Create-React-App template for Dapp Stack",
   "main": "scripts/init.js",
   "types": "dist/src/index.d.ts",
   "files": [
@@ -20,11 +20,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "Create React App",
@@ -36,9 +36,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/create-react-app/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/create-react-app/README.md",
   "devDependencies": {
     "@types/cross-spawn": "^6.0.0",
     "@types/ejs": "^2.6.0",

@@ -1,12 +1,12 @@
 {
-  "name": "@solon/scripts",
+  "name": "@dapp-stack/scripts",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Solon scripts, entrypoint for solon ecosystem",
+  "description": "Dapp Stack scripts, entrypoint for Dapp Stack ecosystem",
   "bin": {
-    "solon-scripts": "./dist/src/index.js"
+    "dapp-stack-scripts": "./dist/src/index.js"
   },
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -22,11 +22,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "scripts",
@@ -38,9 +38,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/scripts/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/scripts/README.md",
   "devDependencies": {
     "@types/cross-spawn": "^6.0.0",
     "@types/fs-extra": "^5.0.4",
@@ -52,17 +52,17 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/compiler": "0.1.0",
-    "@solon/deployer": "0.1.0",
-    "@solon/environment": "0.1.0",
-    "@solon/ethereum": "0.1.0",
-    "@solon/security": "0.1.0",
-    "@solon/ipfs": "0.1.0",
-    "@solon/doc": "0.1.0",
-    "@solon/web": "0.1.0",
-    "@solon/wallet": "0.1.0",
-    "@solon/test": "0.1.0",
-    "@solon/api": "0.1.0",
+    "@dapp-stack/compiler": "0.1.0",
+    "@dapp-stack/deployer": "0.1.0",
+    "@dapp-stack/environment": "0.1.0",
+    "@dapp-stack/ethereum": "0.1.0",
+    "@dapp-stack/security": "0.1.0",
+    "@dapp-stack/ipfs": "0.1.0",
+    "@dapp-stack/doc": "0.1.0",
+    "@dapp-stack/web": "0.1.0",
+    "@dapp-stack/wallet": "0.1.0",
+    "@dapp-stack/test": "0.1.0",
+    "@dapp-stack/api": "0.1.0",
     "chokidar": "^2.0.4",
     "cross-spawn": "^6.0.5",
     "fs-extra": "^7.0.0",

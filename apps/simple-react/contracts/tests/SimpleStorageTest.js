@@ -1,5 +1,5 @@
 const chai = require('chai');
-const { setup } = require('@solon/test');
+const { setup } = require('@dapp-stack/test');
 
 const { expect } = chai;
 

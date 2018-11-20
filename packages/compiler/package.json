@@ -1,5 +1,5 @@
 {
-  "name": "@solon/compiler",
+  "name": "@dapp-stack/compiler",
   "private": true,
   "version": "0.1.0",
   "engines": {
@@ -20,11 +20,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "contracts",
@@ -38,9 +38,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/compiler/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/compiler/README.md",
   "devDependencies": {
     "@types/lodash": "4.14.116",
     "@types/signale": "^1.2.0",
@@ -50,7 +50,7 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/environment": "0.1.0",
+    "@dapp-stack/environment": "0.1.0",
     "lodash": "^4.17.10",
     "signale": "^1.2.1",
     "solc": "^0.4.25"

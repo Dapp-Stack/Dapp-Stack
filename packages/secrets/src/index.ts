@@ -1,4 +1,4 @@
-import { Structure } from '@solon/environment';
+import { Structure } from '@dapp-stack/environment';
 import * as spawn from 'cross-spawn';
 import * as crypto from 'crypto';
 import * as fs from 'fs-extra';

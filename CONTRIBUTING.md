@@ -1,5 +1,5 @@
-# Contributing to Solon
+# Contributing to Dapp Stack
 
-Want to contribute to Solon? There are a few things you need to know.  
+Want to contribute to Dapp Stack? There are a few things you need to know.  
 
-We wrote a **[contribution guide](https://solonproject.org/contributing/how-to-contribute.html)** to help you get started.
+We wrote a **[contribution guide](https://dapp-stack.org/contributing/how-to-contribute.html)** to help you get started.

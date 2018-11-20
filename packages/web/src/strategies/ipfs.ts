@@ -1,7 +1,7 @@
 import * as spawn from 'cross-spawn';
 import * as path from 'path';
 import { Signale } from 'signale';
-import { Structure } from '@solon/environment';
+import { Structure } from '@dapp-stack/environment';
 import { IWebDeployStrategy } from '../types';
 
 const ipfsPath = path.resolve(__dirname, '..', '..', '..', 'node_modules', '.bin', 'ipfs');

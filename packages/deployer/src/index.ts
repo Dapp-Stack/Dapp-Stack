@@ -1,6 +1,6 @@
-import { build } from '@solon/environment';
+import { build } from '@dapp-stack/environment';
 import { EthererumDeployer } from './ethereum/deployer';
-import { generateWallet } from '@solon/wallet';
+import { generateWallet } from '@dapp-stack/wallet';
 import { Signale } from 'signale';
 
 const signale = new Signale({ scope: 'Deployer' });

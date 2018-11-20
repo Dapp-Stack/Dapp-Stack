@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import eth from '@solon/redux-eth';
+import eth from '@dapp-stack/redux-eth';
 import styles from './Contracts.module.scss';
 import Loader from '../../components/Loader';
 import ContractFunction from '../../dev-tools-components/ContractFunction';

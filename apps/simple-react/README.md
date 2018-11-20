@@ -1,3 +1,3 @@
-# Solon Example
+# Dapp Stack Example
 
 TODO

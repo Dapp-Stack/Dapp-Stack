@@ -23,7 +23,7 @@ yarn build
 To build a specific package:
 
 ```bash
-PKG=@solon/connect yarn build
+PKG=@dapp-stack/connect yarn build
 ```
 
 ### Clean
@@ -37,7 +37,7 @@ yarn clean
 Clean a specific package
 
 ```bash
-PKG=@solon/connect yarn clean
+PKG=@dapp-stack/connect yarn clean
 ```
 
 ### Rebuild
@@ -51,7 +51,7 @@ yarn rebuild
 To re-build (clean & build) a specific package & it's deps:
 
 ```bash
-PKG=@solon/connect yarn rebuild
+PKG=@dapp-stack/connect yarn rebuild
 ```
 
 ### Lint
@@ -65,5 +65,5 @@ yarn lint
 Lint a specific package:
 
 ```bash
-PKG=@solon/connect yarn clean
+PKG=@dapp-stack/connect yarn clean
 ```

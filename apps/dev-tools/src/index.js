@@ -5,8 +5,8 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { combineReducers, compose, createStore, applyMiddleware } from 'redux';
 import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router';
 
-import ipfs from '@solon/redux-ipfs';
-import eth from '@solon/redux-eth';
+import ipfs from '@dapp-stack/redux-ipfs';
+import eth from '@dapp-stack/redux-eth';
 
 import { trackerReducer } from './modules/Tracker'
 import trackerEpics from './modules/Tracker/epics'

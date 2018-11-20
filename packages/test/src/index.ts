@@ -1,5 +1,5 @@
-import { Structure } from '@solon/environment';
-import * as deployer from '@solon/deployer';
+import { Structure } from '@dapp-stack/environment';
+import * as deployer from '@dapp-stack/deployer';
 import * as spawn from 'cross-spawn';
 import * as path from 'path';
 import * as ethers from 'ethers';

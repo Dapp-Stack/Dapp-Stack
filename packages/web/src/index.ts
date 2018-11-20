@@ -1,4 +1,4 @@
-import { build as buildEnv } from '@solon/environment';
+import { build as buildEnv } from '@dapp-stack/environment';
 import { Signale } from 'signale';
 
 import { IWebFrameworkStrategy, IWebDeployStrategy } from './types';

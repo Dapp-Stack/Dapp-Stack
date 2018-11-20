@@ -4,11 +4,11 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import * as compiler from '@solon/compiler';
-import * as deployer from '@solon/deployer';
-import * as doc from '@solon/doc';
-import * as ethereum from '@solon/ethereum';
-import * as web from '@solon/web';
+import * as compiler from '@dapp-stack/compiler';
+import * as deployer from '@dapp-stack/deployer';
+import * as doc from '@dapp-stack/doc';
+import * as ethereum from '@dapp-stack/ethereum';
+import * as web from '@dapp-stack/web';
 
 import * as lifecycle from './shared/lifecycle';
 import { globalError } from './shared/globalError';

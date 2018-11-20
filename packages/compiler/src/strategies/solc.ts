@@ -1,4 +1,4 @@
-import { Compile, Structure } from '@solon/environment';
+import { Compile, Structure } from '@dapp-stack/environment';
 import * as fs from 'fs-extra';
 import { forEach } from 'lodash';
 import * as path from 'path';

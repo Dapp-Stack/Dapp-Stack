@@ -112,16 +112,16 @@ const defaultEnvironment: Environment = {
 };
 
 export const build = (): Environment => {
-  const solonEnv = process.env.SOLON_ENV || 'local';
+  const dappEnv = process.env.DAPP_ENV || 'local';
   let environmentFile;
   try {
-    environmentFile = require(path.resolve(process.cwd(), 'environments', solonEnv)) || {};
+    environmentFile = require(path.resolve(process.cwd(), 'environments', dappEnv)) || {};
   } catch (_error) {
     signale.error(
       `Cannot load the environment file, make sure the following file exists: ${path.resolve(
         process.cwd(),
         'environments',
-        solonEnv,
+        dappEnv,
       )}`,
     );
     process.exit(1);

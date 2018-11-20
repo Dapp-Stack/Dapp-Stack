@@ -1,4 +1,4 @@
-import { build } from '@solon/environment';
+import { build } from '@dapp-stack/environment';
 import { Signale } from 'signale';
 
 import { Geth } from './strategies/geth';

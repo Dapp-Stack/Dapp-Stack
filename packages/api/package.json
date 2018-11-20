@@ -1,11 +1,11 @@
 {
-  "name": "@solon/api",
+  "name": "@dapp-stack/api",
   "private": true,
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Solon API for the dev tools",
+  "description": "Dapp Stack API for the dev tools",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
@@ -20,11 +20,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "api"
@@ -35,9 +35,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/api/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/api/README.md",
   "devDependencies": {
     "@types/express": "^4.16.0",
     "@types/node": "^10.9.4",
@@ -47,7 +47,7 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/environment": "0.1.0",
+    "@dapp-stack/environment": "0.1.0",
     "@types/cors": "^2.8.4",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",

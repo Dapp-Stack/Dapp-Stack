@@ -1,4 +1,4 @@
-import { build, Structure } from '@solon/environment';
+import { build, Structure } from '@dapp-stack/environment';
 import { Request, Response } from 'express';
 import * as fs from 'fs';
 

@@ -1,3 +1,3 @@
-### SOLON
+### Dapp Stack
 
 TODO

@@ -1,10 +1,10 @@
 {
-  "name": "@solon/angular-cli",
+  "name": "@dapp-stack/angular-cli",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Angular plugin for solon",
+  "description": "Angular plugin for Dapp Stack",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
@@ -20,11 +20,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "angular"
@@ -35,9 +35,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/angular-cli/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/angular-cli/README.md",
   "devDependencies": {
     "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.9.4",

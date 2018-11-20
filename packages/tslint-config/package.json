@@ -1,20 +1,20 @@
 {
-  "name": "@solon/tslint-config",
+  "name": "@dapp-stack/tslint-config",
   "private": true,
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Lint rules related to Solon for TSLint",
+  "description": "Lint rules related to Dapp Stack for TSLint",
   "main": "tslint.json",
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "tslint",
     "config",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts"
   ],
@@ -24,9 +24,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/tslint-config/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/tslint-config/README.md",
   "dependencies": {
     "typescript": "3.0.1",
     "tslint": "5.11.0"

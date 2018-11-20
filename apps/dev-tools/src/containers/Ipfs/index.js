@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import ipfs from '@solon/redux-ipfs';
+import ipfs from '@dapp-stack/redux-ipfs';
 import { faFolder, faFile } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Ipfs.module.scss'

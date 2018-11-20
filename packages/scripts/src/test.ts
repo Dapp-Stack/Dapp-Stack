@@ -4,16 +4,16 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import * as compiler from '@solon/compiler';
-import * as tester from '@solon/test';
-import * as web from '@solon/web';
-import * as ethereum from '@solon/ethereum';
-import * as ipfs from '@solon/ipfs';
+import * as compiler from '@dapp-stack/compiler';
+import * as tester from '@dapp-stack/test';
+import * as web from '@dapp-stack/web';
+import * as ethereum from '@dapp-stack/ethereum';
+import * as ipfs from '@dapp-stack/ipfs';
 
 import * as lifecycle from './shared/lifecycle';
 import { globalError } from './shared/globalError';
 
-process.env.SOLON_ENV = 'test';
+process.env.DAPP_ENV = 'test';
 
 const shouldRunCoverage = process.env.COVERAGE;
 

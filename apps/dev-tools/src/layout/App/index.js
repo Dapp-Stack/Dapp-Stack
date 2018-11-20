@@ -1,5 +1,5 @@
 import React from 'react';
-import eth from '@solon/redux-eth';
+import eth from '@dapp-stack/redux-eth';
 import { hot } from 'react-hot-loader';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { compose } from 'redux';

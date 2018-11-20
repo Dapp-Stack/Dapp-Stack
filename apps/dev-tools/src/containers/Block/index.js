@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import eth from '@solon/redux-eth';
+import eth from '@dapp-stack/redux-eth';
 
 import styles from './Block.module.scss';
 

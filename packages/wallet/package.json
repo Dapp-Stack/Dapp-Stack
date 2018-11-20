@@ -1,5 +1,5 @@
 {
-  "name": "@solon/wallet",
+  "name": "@dapp-stack/wallet",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "ethers.js"
@@ -34,9 +34,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/wallet/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/wallet/README.md",
   "devDependencies": {
     "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.9.4",
@@ -47,8 +47,8 @@
     "typescript": "3.0.1"
   },
   "dependencies": {
-    "@solon/connect": "0.1.0",
-    "@solon/environment": "0.1.0",
+    "@dapp-stack/connect": "0.1.0",
+    "@dapp-stack/environment": "0.1.0",
     "ethers": "^4.0.3",
     "keythereum": "^1.0.4",
     "signale": "^1.2.0",

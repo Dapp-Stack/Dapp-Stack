@@ -3,7 +3,7 @@ import { from, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { actionTypes, actions } from './index';
-import { getTracker } from '../../services/solon';
+import { getTracker } from '../../services/dappStack';
 
 const watchGetTracker = action$ =>
   action$.pipe(

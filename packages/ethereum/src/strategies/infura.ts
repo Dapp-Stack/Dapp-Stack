@@ -1,4 +1,4 @@
-import { Ethereum } from '@solon/environment';
+import { Ethereum } from '@dapp-stack/environment';
 import { Signale } from 'signale';
 
 import { IEthereumStrategy } from '../types';

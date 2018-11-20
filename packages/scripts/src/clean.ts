@@ -4,7 +4,7 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import { Structure } from '@solon/environment';
+import { Structure } from '@dapp-stack/environment';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { Signale } from 'signale';

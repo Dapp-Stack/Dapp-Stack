@@ -48,25 +48,25 @@ const packageData = {
   name: path.basename(process.cwd()),
   version: '0.1.0',
   scripts: {
-    solon: 'solon-scripts',
+    das: 'dapp-stack-scripts',
   },
   dependencies: {
-    '@solon/scripts': '0.1.0',
-    '@solon/test': '0.1.0',
+    '@dapp-stack/scripts': '0.1.0',
+    '@dapp-stack/test': '0.1.0',
     solium: '^1.1.8',
   },
 };
 fs.writeFileSync(packageDest, JSON.stringify(packageData, null, 2) + EOL);
 
-signale.success('Congratulations, your Solon app has been generated.');
+signale.success('Congratulations, your Dapp has been generated.');
 signale.success('First, install the dependencies using npm install or yarn install');
 signale.success('');
 signale.success('Then if you use yarn you can use the following commands:');
-signale.success('     yarn solon start    Start solon in development mode');
-signale.success('     yarn solon build    Start solon in build mode');
+signale.success('     yarn das start    Start the Dapp in development mode');
+signale.success('     yarn das build    Build the Dapp');
 signale.success('');
 signale.success('If you use npm you can use the following commands:');
-signale.success('     npm run solon start    Start solon in development mode');
-signale.success('     npm solon build        Start solon in build mode');
+signale.success('     npm run das start    Start Dapp in development mode');
+signale.success('     npm run das build    Build the Dapp');
 signale.success('');
-signale.success('You can also find more commands and documentation at https://github.com/SolonProject/solon');
+signale.success('You can also find more commands and documentation at https://github.com/Dapp-Stack/Dapp-Stack');

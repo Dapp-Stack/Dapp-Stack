@@ -1,5 +1,5 @@
 {
-  "name": "@solon/redux-ipfs",
+  "name": "@dapp-stack/redux-ipfs",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "ipfs",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "redux",
@@ -35,9 +35,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/redux-ipfs/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/redux-ipfs/README.md",
   "devDependencies": {
     "@types/lodash": "4.14.116",
     "shx": "^0.2.2",

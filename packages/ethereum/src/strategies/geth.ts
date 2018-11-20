@@ -1,4 +1,4 @@
-import { Ethereum } from '@solon/environment';
+import { Ethereum } from '@dapp-stack/environment';
 import { ChildProcess } from 'child_process';
 import * as spawn from 'cross-spawn';
 import * as fs from 'fs-extra';

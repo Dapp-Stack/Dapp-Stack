@@ -1,4 +1,4 @@
-import { EthereumNetwork } from '@solon/environment';
+import { EthereumNetwork } from '@dapp-stack/environment';
 import * as ethers from 'ethers';
 import { Signale } from 'signale';
 

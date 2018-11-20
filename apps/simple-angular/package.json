@@ -1,5 +1,5 @@
 {
-  "name": "@solon/simple-angular",
+  "name": "@dapp-stack/simple-angular",
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",

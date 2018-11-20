@@ -1,5 +1,5 @@
 {
-  "name": "@solon/ethereum",
+  "name": "@dapp-stack/ethereum",
   "private": true,
   "version": "0.1.0",
   "engines": {
@@ -21,11 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "geth",
@@ -37,11 +37,11 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/ethereum/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/ethereum/README.md",
   "devDependencies": {
-    "@solon/environment": "0.1.0",
+    "@dapp-stack/environment": "0.1.0",
     "@types/node": "^10.9.4",
     "@types/request": "^2.47.1",
     "@types/tar-fs": "^1.16.1",

@@ -40,7 +40,7 @@ function updatePackage(appPath: string) {
   appPackage.dependencies = appPackage.dependencies || {};
 
   appPackage.scripts = {
-    solon: 'solon-scripts',
+    das: 'dapp-stack-scripts',
   };
 
   fs.writeFileSync(path.join(appPath, 'package.json'), JSON.stringify(appPackage, null, 2) + EOL);
@@ -68,20 +68,20 @@ function initReactScripts(
   unmute();
 }
 
-function initSolonScripts(appPath: string) {
-  const solonScripts = new Signale({ interactive: true, scope: 'Solon Scripts' });
-  solonScripts.await('[%d/2] - Installing...', 1);
+function initDappScripts(appPath: string) {
+  const dappScripts = new Signale({ interactive: true, scope: 'Dapp Scripts' });
+  dappScripts.await('[%d/2] - Installing...', 1);
 
   const isYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
   installDependencies(isYarn);
   updatePackage(appPath);
   installTemplate(appPath);
-  solonScripts.success('[%d/2] - Success', 2);
+  dappScripts.success('[%d/2] - Success', 2);
 }
 
 function init(appPath: string, appName: string, verbose: boolean, originalDirectory: string, template: string) {
   initReactScripts(appPath, appName, verbose, originalDirectory, template);
-  initSolonScripts(appPath);
+  initDappScripts(appPath);
 }
 
 module.exports = init;

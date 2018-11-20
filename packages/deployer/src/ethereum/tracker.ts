@@ -1,4 +1,4 @@
-import { Structure, Web } from '@solon/environment';
+import { Structure, Web } from '@dapp-stack/environment';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as lockfile from 'proper-lockfile';
@@ -52,6 +52,6 @@ export class Tracker {
   };
 
   private readonly isTest = () => {
-    return process.env.SOLON_ENV === 'test';
+    return process.env.DAPP_ENV === 'test';
   };
 }

@@ -1,5 +1,5 @@
-import { connect } from '@solon/connect';
-import { build } from '@solon/environment';
+import { connect } from '@dapp-stack/connect';
+import { build } from '@dapp-stack/environment';
 import * as ethers from 'ethers';
 import * as path from 'path';
 import * as fs from 'fs-extra';

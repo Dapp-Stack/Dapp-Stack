@@ -1,4 +1,4 @@
-import { build, Structure } from '@solon/environment';
+import { build, Structure } from '@dapp-stack/environment';
 import * as dockerode from 'dockerode';
 import * as fs from 'fs-extra';
 import * as path from 'path';

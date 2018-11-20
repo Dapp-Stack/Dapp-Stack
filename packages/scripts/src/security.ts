@@ -4,7 +4,7 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-import * as security from '@solon/security';
+import * as security from '@dapp-stack/security';
 
 import { globalError } from './shared/globalError';
 

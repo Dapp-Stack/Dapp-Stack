@@ -1,12 +1,12 @@
 {
-  "name": "@solon/simple-react",
+  "name": "@dapp-stack/simple-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@solon/redux-eth": "0.1.0",
-    "@solon/redux-ipfs": "0.1.0",
-    "@solon/scripts": "0.1.0",
-    "@solon/test": "0.1.0",
+    "@dapp-stack/redux-eth": "0.1.0",
+    "@dapp-stack/redux-ipfs": "0.1.0",
+    "@dapp-stack/scripts": "0.1.0",
+    "@dapp-stack/test": "0.1.0",
     "openzeppelin-solidity": "^1.12.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -19,7 +19,7 @@
     "chai": "^4.2.0"
   },
   "scripts": {
-    "solon": "solon-scripts"
+    "das": "dapp-stack-scripts"
   },
   "browserslist": [
     ">0.2%",

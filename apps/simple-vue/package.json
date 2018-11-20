@@ -1,5 +1,5 @@
 {
-  "name": "@solon/simple-vue",
+  "name": "@dapp-stack/simple-vue",
   "version": "0.1.0",
   "private": true,
   "scripts": {

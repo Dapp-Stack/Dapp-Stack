@@ -60,6 +60,6 @@ switch (command) {
   }
   default:
     console.log(`Unknown command ${command}.`);
-    console.log('Perhaps you need to update solon-scripts?');
+    console.log('Perhaps you need to update dapp-stack-scripts?');
     break;
 }

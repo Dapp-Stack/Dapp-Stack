@@ -1,7 +1,7 @@
-import * as ethereum from '@solon/ethereum';
-import * as ipfs from '@solon/ipfs';
-import * as web from '@solon/web';
-import * as test from '@solon/test';
+import * as ethereum from '@dapp-stack/ethereum';
+import * as ipfs from '@dapp-stack/ipfs';
+import * as web from '@dapp-stack/web';
+import * as test from '@dapp-stack/test';
 
 export async function stopAsync({ shouldExit }: { shouldExit: boolean } = { shouldExit: false }) {
   await ethereum.stop();

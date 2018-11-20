@@ -1,4 +1,4 @@
-import { build, Structure } from '@solon/environment';
+import { build, Structure } from '@dapp-stack/environment';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as sha1File from 'sha1-file';
@@ -103,7 +103,7 @@ export const run = async (contractFile: string) => {
     },
   });
 
-  const reportContents = `## Solon's Description Report
+  const reportContents = `## Dapp's Description Report
 ### Files Description Table
 ${filesTable}
 ### Contracts Description Table

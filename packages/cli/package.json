@@ -1,12 +1,12 @@
 {
-  "name": "@solon/cli",
+  "name": "@dapp-stack/cli",
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Solon CLI, generate a new project",
+  "description": "Dapp Stack CLI, generate a new project",
   "bin": {
-    "solon": "dist/src/index.js"
+    "dapp-stack": "dist/src/index.js"
   },
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -23,11 +23,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/SolonProject/solon.git"
+    "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Solon",
+    "Dapp Stack",
     "typescript",
     "ts",
     "cli",
@@ -39,9 +39,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/solonproject/solon/issues"
+    "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/solonproject/solon/packages/cli/README.md",
+  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/cli/README.md",
   "devDependencies": {
     "@types/ejs": "^2.6.0",
     "@types/fs-extra": "^5.0.4",

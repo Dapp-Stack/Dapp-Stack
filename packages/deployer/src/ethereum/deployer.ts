@@ -1,4 +1,4 @@
-import { Ethereum, Structure, Web } from '@solon/environment';
+import { Ethereum, Structure, Web } from '@dapp-stack/environment';
 import * as ethers from 'ethers';
 import * as fs from 'fs-extra';
 import * as globule from 'globule';
