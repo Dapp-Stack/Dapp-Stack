@@ -1,6 +1,6 @@
 export enum FileType {
   File,
-  Directory,
+  Directory
 }
 
 export type File = {
@@ -8,4 +8,4 @@ export type File = {
   size: number;
   hash: string;
   type: FileType;
-};
+}

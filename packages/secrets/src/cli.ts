@@ -1,21 +1,21 @@
 process.on('unhandledRejection', err => {
-  throw err;
-});
+  throw err
+})
 
-import * as program from 'commander';
+import * as program from 'commander'
 
-import * as secrets from './index';
+import * as secrets from './index'
 
 program.command('setup').action(() => {
-  secrets.setup();
-});
+  secrets.setup()
+})
 
 program.command('show').action(() => {
-  secrets.show();
-});
+  secrets.show()
+})
 
 program.command('edit').action(() => {
-  secrets.edit();
-});
+  secrets.edit().then().catch()
+})
 
-program.parse(process.argv);
+program.parse(process.argv)

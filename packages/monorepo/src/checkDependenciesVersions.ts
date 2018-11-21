@@ -1,53 +1,53 @@
 #!/usr/bin/env node
-import * as _ from 'lodash';
+import * as _ from 'lodash'
 
-import { logger } from './logger';
-import { Dependencies, findPackages, Package, PackageJSON } from './packageHelper';
+import { logger } from './logger'
+import { Dependencies, findPackages, Package, PackageJSON } from './packageHelper'
 
 interface Versions {
-  [packageName: string]: string;
+  [packageName: string]: string
 }
 interface VersionsByDependency {
-  [depName: string]: Versions;
+  [depName: string]: Versions
 }
 
-function flatDependencies(packageJson: PackageJSON): Dependencies {
+function flatDependencies (packageJson: PackageJSON): Dependencies {
   return {
     ...packageJson.dependencies,
-    ...packageJson.devDependencies,
-  };
+    ...packageJson.devDependencies
+  }
 }
 
-function loadVersionsByDependency(): VersionsByDependency {
-  const versionsByDependency: VersionsByDependency = {};
+function loadVersionsByDependency (): VersionsByDependency {
+  const versionsByDependency: VersionsByDependency = {}
 
   findPackages().map((pkg: Package) => {
-    const dependencies = flatDependencies(pkg.packageJson);
+    const dependencies = flatDependencies(pkg.packageJson)
 
     _.map(dependencies, (version: string, depName: string) => {
       if (_.isUndefined(versionsByDependency[depName])) {
-        versionsByDependency[depName] = {};
+        versionsByDependency[depName] = {}
       }
-      versionsByDependency[depName][pkg.packageJson.name] = version;
-    });
-  });
+      versionsByDependency[depName][pkg.packageJson.name] = version
+    })
+  })
 
-  return versionsByDependency;
+  return versionsByDependency
 }
 
-function print(versions: Versions, name: string): void {
+function print (versions: Versions, name: string): void {
   if (_.uniq(_.values(versions)).length === 1) {
-    return;
+    return
   }
-  logger.bold(name);
+  logger.bold(name)
   _.each(versions, (version: string, packageName: string) => {
-    logger.info(`├── ${packageName} -> ${version}`);
-  });
+    logger.info(`├── ${packageName} -> ${version}`)
+  })
 }
 
-export function checkDependenciesVersions(): void {
-  const versionsByDependency = loadVersionsByDependency();
-  _.each(versionsByDependency, print);
+export function checkDependenciesVersions (): void {
+  const versionsByDependency = loadVersionsByDependency()
+  _.each(versionsByDependency, print)
 }
 
-checkDependenciesVersions();
+checkDependenciesVersions()

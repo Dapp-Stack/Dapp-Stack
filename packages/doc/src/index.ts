@@ -1,112 +1,112 @@
-import { build, Structure } from '@dapp-stack/environment';
-import * as fs from 'fs-extra';
-import * as path from 'path';
-import * as sha1File from 'sha1-file';
-import { Signale } from 'signale';
-import * as parser from 'solidity-parser-antlr';
+import { build, Structure } from '@dapp-stack/environment'
+import * as fs from 'fs-extra'
+import * as path from 'path'
+import * as sha1File from 'sha1-file'
+import { Signale } from 'signale'
+import * as parser from 'solidity-parser-antlr'
 
-const signale = new Signale({ scope: 'Doc' });
+const signale = new Signale({ scope: 'Doc' })
 
 export const runAll = () => {
-  const compile = build().compile;
-  const contracts = compile.contracts.map(contract => path.join(Structure.contracts.src, contract));
+  const compile = build().compile
+  const contracts = compile.contracts.map(contract => path.join(Structure.contracts.src, contract))
 
-  contracts.forEach(contractFile => run(contractFile));
-};
+  contracts.forEach(contractFile => run(contractFile))
+}
 
 export const run = async (contractFile: string) => {
   if (!fs.existsSync(contractFile)) {
-    signale.error(`File not found: ${contractFile}`);
-    return;
+    signale.error(`File not found: ${contractFile}`)
+    return
   }
 
-  const outFile = path.join(Structure.contracts.doc, `${path.basename(contractFile, '.sol')}.md`);
-  await fs.ensureFile(outFile);
+  const outFile = path.join(Structure.contracts.doc, `${path.basename(contractFile, '.sol')}.md`)
+  await fs.ensureFile(outFile)
 
   let filesTable = `
 |  File Name  |  SHA-1 Hash  |
 |-------------|--------------|
-`;
+`
 
   let contractsTable = `
 |  Contract  |         Type        |       Bases      |                  |                 |
 |:----------:|:-------------------:|:----------------:|:----------------:|:---------------:|
 |     └      |  **Function Name**  |  **Visibility**  |  **Mutability**  |  **Modifiers**  |
-`;
+`
 
   filesTable += `| ${contractFile} | ${sha1File(contractFile)} |
-`;
+`
 
-  const content = fs.readFileSync(contractFile).toString('utf-8');
-  const ast = parser.parse(content, {});
+  const content = fs.readFileSync(contractFile).toString('utf-8')
+  const ast = parser.parse(content, {})
 
   parser.visit(ast, {
-    ContractDefinition(node) {
-      const name = node.name;
+    ContractDefinition (node) {
+      const name = node.name
       const bases = node.baseContracts
         .map(spec => {
-          return spec.baseName.namePath;
+          return spec.baseName.namePath
         })
-        .join(', ');
+        .join(', ')
 
-      let specs = '';
+      let specs = ''
       if (node.kind === 'library') {
-        specs += 'Library';
+        specs += 'Library'
       } else if (node.kind === 'interface') {
-        specs += 'Interface';
+        specs += 'Interface'
       } else {
-        specs += 'Implementation';
+        specs += 'Implementation'
       }
 
       contractsTable += `||||||
 | **${name}** | ${specs} | ${bases} |||
-`;
+`
     },
 
-    FunctionDefinition(node) {
-      let name;
+    FunctionDefinition (node) {
+      let name
 
       if (node.isConstructor) {
-        name = '\\<Constructor\\>';
+        name = '\\<Constructor\\>'
       } else if (!node.name) {
-        name = '\\<Fallback\\>';
+        name = '\\<Fallback\\>'
       } else {
-        name = node.name;
+        name = node.name
       }
 
-      let spec = '';
+      let spec = ''
       if (node.visibility === 'public' || node.visibility === 'default') {
-        spec += 'Public ❗️';
+        spec += 'Public ❗️'
       } else if (node.visibility === 'external') {
-        spec += 'External ❗️';
+        spec += 'External ❗️'
       } else if (node.visibility === 'private') {
-        spec += 'Private 🔐';
+        spec += 'Private 🔐'
       } else if (node.visibility === 'internal') {
-        spec += 'Internal 🔒';
+        spec += 'Internal 🔒'
       }
 
-      let payable = '';
+      let payable = ''
       if (node.stateMutability === 'payable') {
-        payable = '💵';
+        payable = '💵'
       }
 
-      let mutating = '';
+      let mutating = ''
       if (!node.stateMutability) {
-        mutating = '🛑';
+        mutating = '🛑'
       }
 
-      contractsTable += `| └ | ${name} | ${spec} | ${mutating} ${payable} |`;
+      contractsTable += `| └ | ${name} | ${spec} | ${mutating} ${payable} |`
     },
 
-    'FunctionDefinition:exit'(node) {
+    'FunctionDefinition:exit' (node) {
       contractsTable += ` |
-`;
+`
     },
 
-    ModifierInvocation(node) {
-      contractsTable += ` ${node.name}`;
-    },
-  });
+    ModifierInvocation (node) {
+      contractsTable += ` ${node.name}`
+    }
+  })
 
   const reportContents = `## Dapp's Description Report
 ### Files Description Table
@@ -118,11 +118,11 @@ ${contractsTable}
 |:--------:|-----------|
 |    🛑    | Function can modify state |
 |    💵    | Function is payable |
-`;
+`
 
   try {
-    fs.writeFileSync(outFile, reportContents, { flag: 'w' });
+    fs.writeFileSync(outFile, reportContents, { flag: 'w' })
   } catch (error) {
-    signale.error(error);
+    signale.error(error)
   }
-};
+}

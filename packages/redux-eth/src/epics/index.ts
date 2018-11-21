@@ -1,4 +1,4 @@
-import contracts from './contracts';
-import provider from './provider';
+import contracts from './contracts'
+import provider from './provider'
 
-export default [...contracts, ...provider];
+export default [...contracts, ...provider]

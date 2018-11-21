@@ -1,12 +1,12 @@
-import { combineReducers } from 'redux';
-import { StateType } from 'typesafe-actions';
+import { combineReducers } from 'redux'
+import { StateType } from 'typesafe-actions'
 
-import contracts from './contracts';
-import provider from './provider';
+import contracts from './contracts'
+import provider from './provider'
 
 export const ethReducer = combineReducers({
   contracts,
-  provider,
-});
+  provider
+})
 
-export type EthState = StateType<{ eth: typeof ethReducer }>;
+export type EthState = StateType<{ eth: typeof ethReducer }>

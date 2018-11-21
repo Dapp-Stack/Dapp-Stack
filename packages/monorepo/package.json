@@ -12,7 +12,7 @@
     "watch": "tsc -w",
     "build": "tsc",
     "clean": "shx rm -rf lib",
-    "lint": "tslint  --project .",
+    "lint": "tslint --fix --project .",
     "find_unused_deps": "run-s build script:find_unused_deps",
     "check_deps_versions": "run-s build script:check_deps_versions",
     "script:find_unused_deps": "node ./lib/src/findUnusedDependencies.js",
@@ -45,7 +45,7 @@
     "npm-run-all": "^4.1.2",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
-    "typescript": "3.0.1"
+    "typescript": "3.1.1"
   },
   "dependencies": {
     "chalk": "^2.4.1",

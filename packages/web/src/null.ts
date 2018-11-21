@@ -1,19 +1,19 @@
-import { IWebFrameworkStrategy, IWebDeployStrategy } from './types';
+import { IWebFrameworkStrategy, IWebDeployStrategy } from './types'
 
 export class Null implements IWebFrameworkStrategy, IWebDeployStrategy {
-  start = () => {};
+  start = () => undefined
 
   build = () => {
-    return new Promise<void>(resolve => resolve());
-  };
+    return new Promise<void>(resolve => resolve())
+  }
 
-  eject = () => {};
+  eject = () => undefined
 
-  test = () => {};
+  test = () => undefined
 
-  stop = () => {};
+  stop = () => undefined
 
   deploy = () => {
-    return new Promise<void>(resolve => resolve());
-  };
+    return new Promise<void>(resolve => resolve())
+  }
 }

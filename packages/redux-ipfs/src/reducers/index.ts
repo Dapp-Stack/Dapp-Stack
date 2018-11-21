@@ -1,7 +1,7 @@
-import { StateType } from 'typesafe-actions';
-import { combineReducers } from 'redux';
+import { StateType } from 'typesafe-actions'
+import { combineReducers } from 'redux'
 
-import files from './files';
+import files from './files'
 
-export const ipfsReducer = combineReducers({ files });
-export type IpfsState = StateType<{ ipfs: typeof ipfsReducer }>;
+export const ipfsReducer = combineReducers({ files })
+export type IpfsState = StateType<{ ipfs: typeof ipfsReducer }>

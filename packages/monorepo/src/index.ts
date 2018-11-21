@@ -1,2 +1,2 @@
-export { checkDependenciesVersions } from './checkDependenciesVersions';
-export { findUnusedDependencies } from './findUnusedDependencies';
+export { checkDependenciesVersions } from './checkDependenciesVersions'
+export { findUnusedDependencies } from './findUnusedDependencies'

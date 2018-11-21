@@ -14,7 +14,7 @@
     "watch": "tsc -w",
     "build": "tsc",
     "clean": "shx rm -rf lib scripts",
-    "lint": "tslint  --project .",
+    "lint": "tslint --fix --project .",
     "doc": "typedoc --options ../../typedoc.json --out ../../documentation/redux-ipfs"
   },
   "repository": {
@@ -43,7 +43,7 @@
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typedoc": "^0.13.0",
-    "typescript": "3.0.1"
+    "typescript": "3.1.1"
   },
   "dependencies": {
     "ipfs-api": "^24.0.2",

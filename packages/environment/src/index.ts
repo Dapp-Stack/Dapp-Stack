@@ -1,11 +1,11 @@
-import { merge } from 'lodash';
-import * as path from 'path';
-import { Signale } from 'signale';
-import * as Ajv from 'ajv';
+import { merge } from 'lodash'
+import * as path from 'path'
+import { Signale } from 'signale'
+import * as Ajv from 'ajv'
 
-import { Environment, WebFramework, Maybe } from './types';
+import { Environment, WebFramework, Maybe } from './types'
 
-const signale = new Signale({ scope: 'Environment' });
+const signale = new Signale({ scope: 'Environment' })
 
 export const Structure = {
   contracts: {
@@ -14,7 +14,7 @@ export const Structure = {
     doc: path.join(process.cwd(), 'contracts', 'doc'),
     security: path.join(process.cwd(), 'contracts', 'security'),
     test: path.join(process.cwd(), 'contracts', 'tests'),
-    coverage: path.join(process.cwd(), 'contracts', 'coverage'),
+    coverage: path.join(process.cwd(), 'contracts', 'coverage')
   },
   secrets: path.join(process.cwd(), 'secrets.json.enc'),
   masterKey: path.join(process.cwd(), 'master.key'),
@@ -23,14 +23,14 @@ export const Structure = {
     switch (framework) {
       case 'vue':
       case 'react':
-        return path.join(process.cwd(), 'public', 'tracker.json');
+        return path.join(process.cwd(), 'public', 'tracker.json')
       case 'angular':
-        return path.join(process.cwd(), 'src', 'assets', 'tracker.json');
+        return path.join(process.cwd(), 'src', 'assets', 'tracker.json')
       default:
-        return path.join(process.cwd(), 'tracker.json');
+        return path.join(process.cwd(), 'tracker.json')
     }
-  },
-};
+  }
+}
 
 const schema = {
   title: 'Environment Schema',
@@ -41,34 +41,34 @@ const schema = {
       properties: {
         network: {
           type: 'string',
-          enum: ['homestead', 'rinkeby', 'ropsten', 'kovan', 'dev', 'external'],
+          enum: ['homestead', 'rinkeby', 'ropsten', 'kovan', 'dev', 'external']
         },
         apiKey: {
-          type: 'string',
+          type: 'string'
         },
         mnemonic: {
-          type: 'string',
+          type: 'string'
         },
-        migrate: {},
+        migrate: {}
       },
-      required: ['network', 'migrate'],
+      required: ['network', 'migrate']
     },
     ipfs: {
-      type: 'boolean',
+      type: 'boolean'
     },
     web: {
       type: 'object',
       properties: {
         framework: {
           type: 'string',
-          enum: ['react', 'angular', 'vue', 'test'],
+          enum: ['react', 'angular', 'vue', 'test']
         },
         deploy: {
           type: 'string',
-          enum: ['ipfs'],
-        },
+          enum: ['ipfs']
+        }
       },
-      required: ['framework', 'deploy'],
+      required: ['framework', 'deploy']
     },
     compile: {
       type: 'object',
@@ -77,62 +77,62 @@ const schema = {
           type: 'array',
           items: [
             {
-              type: 'string',
-            },
-          ],
+              type: 'string'
+            }
+          ]
         },
         solc: {
           type: 'string',
-          enum: ['js', 'binary'],
-        },
+          enum: ['js', 'binary']
+        }
       },
-      required: ['contracts', 'solc'],
-    },
+      required: ['contracts', 'solc']
+    }
   },
-  required: ['ipfs', 'web', 'compile'],
-};
+  required: ['ipfs', 'web', 'compile']
+}
 
-const ajv = new Ajv();
-const environmentSchema = ajv.compile(schema);
+const ajv = new Ajv()
+const environmentSchema = ajv.compile(schema)
 
 const defaultEnvironment: Environment = {
   ethereum: {
     network: 'dev',
-    migrate() {},
+    migrate () { return new Promise<void>(resolve => resolve()) }
   },
   ipfs: false,
   web: {
     framework: 'react',
-    deploy: 'ipfs',
+    deploy: 'ipfs'
   },
   compile: {
     solc: 'js',
-    contracts: [],
-  },
-};
+    contracts: []
+  }
+}
 
 export const build = (): Environment => {
-  const dappEnv = process.env.DAPP_ENV || 'local';
-  let environmentFile;
+  const dappEnv = process.env.DAPP_ENV || 'local'
+  let environmentFile
   try {
-    environmentFile = require(path.resolve(process.cwd(), 'environments', dappEnv)) || {};
+    environmentFile = require(path.resolve(process.cwd(), 'environments', dappEnv)) || {}
   } catch (_error) {
     signale.error(
       `Cannot load the environment file, make sure the following file exists: ${path.resolve(
         process.cwd(),
         'environments',
-        dappEnv,
-      )}`,
-    );
-    process.exit(1);
+        dappEnv
+      )}`
+    )
+    process.exit(1)
   }
-  const environment = merge({}, defaultEnvironment, environmentFile);
+  const environment = merge({}, defaultEnvironment, environmentFile)
   if (!environmentSchema(environment)) {
-    signale.error('The environment file does not follow the specification.');
-    signale.error(ajv.errorsText(environmentSchema.errors));
-    process.exit(1);
+    signale.error('The environment file does not follow the specification.')
+    signale.error(ajv.errorsText(environmentSchema.errors))
+    process.exit(1)
   }
-  return environment;
-};
+  return environment
+}
 
-export * from './types';
+export * from './types'

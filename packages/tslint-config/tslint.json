@@ -1,4 +1,5 @@
 {
+  "extends": "tslint-config-standard",
   "defaultSeverity": "error",
   "rules": {
     "adjacent-overload-signatures": true,

@@ -1,8 +1,8 @@
-import { Structure, Web } from '@dapp-stack/environment';
-import * as fs from 'fs-extra';
-import * as path from 'path';
-import * as lockfile from 'proper-lockfile';
-import { ethers } from 'ethers';
+import { Structure, Web } from '@dapp-stack/environment'
+import * as fs from 'fs-extra'
+import * as path from 'path'
+import * as lockfile from 'proper-lockfile'
+import { ethers } from 'ethers'
 
 interface ITrackerData {
   [network: number]: {
@@ -10,48 +10,48 @@ interface ITrackerData {
       name: string;
       abi: string;
     };
-  };
+  }
 }
 
 export class Tracker {
-  private readonly network: ethers.utils.Network;
-  private readonly filename: string;
+  private readonly network: ethers.utils.Network
+  private readonly filename: string
 
-  constructor(network: ethers.utils.Network, webConfig: Web) {
-    this.network = network;
-    this.filename = Structure.tracker(webConfig.framework);
+  constructor (network: ethers.utils.Network, webConfig: Web) {
+    this.network = network
+    this.filename = Structure.tracker(webConfig.framework)
   }
 
   reset = () => {
     this.whileLock((data: ITrackerData) => {
-      data[this.network.chainId] = {};
-    });
-  };
+      data[this.network.chainId] = {}
+    })
+  }
 
   update = (name: string, address: string, abi: string) => {
     this.whileLock((data: ITrackerData) => {
-      data[this.network.chainId][address] = { name, abi };
-    });
-  };
+      data[this.network.chainId][address] = { name, abi }
+    })
+  }
 
   private readonly whileLock = (execution: Function) => {
     if (this.isTest()) {
-      return;
+      return
     }
 
-    fs.ensureFileSync(this.filename);
+    fs.ensureFileSync(this.filename)
     try {
-      lockfile.lockSync(this.filename);
-      const content = fs.readFileSync(this.filename).toString('utf-8') || '{}';
-      const data: ITrackerData = JSON.parse(content);
-      execution(data);
-      fs.writeJSONSync(this.filename, data);
+      lockfile.lockSync(this.filename)
+      const content = fs.readFileSync(this.filename).toString('utf-8') || '{}'
+      const data: ITrackerData = JSON.parse(content)
+      execution(data)
+      fs.writeJSONSync(this.filename, data)
     } finally {
-      lockfile.unlockSync(this.filename);
+      lockfile.unlockSync(this.filename)
     }
-  };
+  }
 
   private readonly isTest = () => {
-    return process.env.DAPP_ENV === 'test';
-  };
+    return process.env.DAPP_ENV === 'test'
+  }
 }

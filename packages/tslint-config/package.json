@@ -28,10 +28,13 @@
   },
   "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/tslint-config/README.md",
   "dependencies": {
-    "typescript": "3.0.1",
-    "tslint": "5.11.0"
+    "tslint": "5.11.0",
+    "typescript": "3.1.1"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "tslint-config-standard": "^8.0.1"
   }
 }
