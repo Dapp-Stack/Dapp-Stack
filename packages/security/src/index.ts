@@ -31,8 +31,8 @@ const pingDocker = async () => {
 };
 
 const runCheck = async function(contractName: string) {
-  if (!fs.existsSync(contractFile)) {
-    signale.error(`File not found: ${contractFile}`);
+  if (!fs.existsSync(contractName)) {
+    signale.error(`File not found: ${contractName}`);
     return;
   }
 
