@@ -9,10 +9,11 @@
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "install"
   ],
   "scripts": {
-    "postinstall": "node dist/src/install/index.js",
+    "postinstall": "node install/index.js",
     "watch": "tsc -w",
     "build": "tsc",
     "clean": "shx rm -rf dist/src/strategies; shx rm -rf dist/src/index*",

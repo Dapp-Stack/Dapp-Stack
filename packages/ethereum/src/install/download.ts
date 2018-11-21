@@ -13,7 +13,7 @@ export const download = (): Promise<DownloadResult> => {
   return new Promise<DownloadResult>((resolve, reject) => {
     const platform: string = goenv.GOOS
     const arch: string = goenv.GOARCH
-    const installPath = path.join(__dirname, '..', '..', '..', 'bin')
+    const installPath = path.join(__dirname, '..', 'bin')
     const isWindows: boolean = platform === 'windows'
 
     const extension = isWindows ? '.exe' : '.tar.gz'
