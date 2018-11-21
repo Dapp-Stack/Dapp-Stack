@@ -31,6 +31,11 @@ const pingDocker = async () => {
 };
 
 const runCheck = async function(contractName: string) {
+  if (!fs.existsSync(contractFile)) {
+    signale.error(`File not found: ${contractFile}`);
+    return;
+  }
+
   const securityFile = path.join(Structure.contracts.security, contractName.replace('.sol', '.md'));
   await fs.ensureFile(securityFile);
   const stream = fs.createWriteStream(securityFile);

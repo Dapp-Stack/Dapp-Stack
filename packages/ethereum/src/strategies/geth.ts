@@ -30,7 +30,7 @@ export class Geth implements IEthereumStrategy {
     this.signale.await('Starting geth...');
     return new Promise<boolean>(async resolve => {
       this.init();
-      this.daemon();
+      await this.daemon();
       this.signale.success('Geth is running');
       resolve(true);
     });
@@ -90,5 +90,29 @@ export class Geth implements IEthereumStrategy {
     child = spawn(this.binaryPath, this.command(), { stdio: 'pipe' });
     child.stdout.pipe(this.logStream);
     child.stderr.pipe(this.logStream);
+
+    return new Promise<void>(resolve => {
+      let ipcOpened = false;
+      let httpOpened = false;
+      let websocketOpened = false;
+
+      child.stderr.on('data', (data: Buffer) => {
+        if (data.toString().includes('IPC endpoint opened')) {
+          ipcOpened = true;
+        }
+
+        if (data.toString().includes('HTTP endpoint opened')) {
+          httpOpened = true;
+        }
+
+        if (data.toString().includes('WebSocket endpoint opened')) {
+          websocketOpened = true;
+        }
+
+        if (ipcOpened && httpOpened && websocketOpened) {
+          resolve();
+        }
+      });
+    });
   };
 }

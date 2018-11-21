@@ -56,7 +56,7 @@ export class EthererumDeployer {
   attach(contractName: string, address: string): ethers.Contract {
     const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
-      this.contractNotFound(contractFile);
+      this.contractNotFound(contractName);
     }
 
     const source = JSON.parse(fs.readFileSync(contractFile).toString());
@@ -67,7 +67,7 @@ export class EthererumDeployer {
   async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract> {
     const contractFile = this.contractFiles[contractName];
     if (!contractFile) {
-      this.contractNotFound(contractFile);
+      this.contractNotFound(contractName);
     }
 
     const source = JSON.parse(fs.readFileSync(contractFile).toString());

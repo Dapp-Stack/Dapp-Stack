@@ -15,6 +15,11 @@ export const runAll = () => {
 };
 
 export const run = async (contractFile: string) => {
+  if (!fs.existsSync(contractFile)) {
+    signale.error(`File not found: ${contractFile}`);
+    return;
+  }
+
   const outFile = path.join(Structure.contracts.doc, `${path.basename(contractFile, '.sol')}.md`);
   await fs.ensureFile(outFile);
 

@@ -38,9 +38,12 @@ export class Solc implements ICompileStrategy {
 
   input = (): string => {
     const sources = this.contracts.reduce((acc: { [contractName: string]: { content: string } }, contractName) => {
-      acc[contractName] = {
-        content: fs.readFileSync(path.join(Structure.contracts.src, contractName), 'utf-8').toString(),
-      };
+      const filepath = path.join(Structure.contracts.src, contractName);
+      if (!fs.existsSync(filepath)) {
+        this.signale.error(`File not found: ${filepath}`);
+        return acc;
+      }
+      acc[contractName] = { content: fs.readFileSync(filepath, 'utf-8').toString() };
       return acc;
     }, {});
 
