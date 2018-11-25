@@ -16,7 +16,6 @@
     "declarationMap": true
   },
   "references": [
-    { "path": "./packages/angular-cli" },
     { "path": "./packages/api" },
     { "path": "./packages/cli" },
     { "path": "./packages/compiler" },
@@ -34,7 +33,6 @@
     { "path": "./packages/secrets" },
     { "path": "./packages/security" },
     { "path": "./packages/test" },
-    { "path": "./packages/vue-cli-plugin" },
     { "path": "./packages/wallet" },
     { "path": "./packages/web" }
   ]

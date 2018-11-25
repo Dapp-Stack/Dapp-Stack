@@ -1,3 +1,0 @@
-### Dapp Stack
-
-TODO
