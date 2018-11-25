@@ -75,7 +75,7 @@ if (!fs.existsSync(readmeDest)) {
 }
 
 if (fs.existsSync(gitignoreDest)) {
-  const data  = fs.readFileSync(gitignoreDest)
+  const data = fs.readFileSync(gitignoreDest)
   fs.appendFileSync(gitignoreDest, data)
 } else {
   fs.copySync(path.join(base, 'gitignore'), gitignoreDest)
