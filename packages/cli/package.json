@@ -6,13 +6,14 @@
   },
   "description": "Dapp Stack CLI, generate a new project",
   "bin": {
-    "dapp-stack": "dist/src/index.js"
+    "dapp-stack": "bin/index.js"
   },
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
     "dist",
-    "template"
+    "template",
+    "bin"
   ],
   "scripts": {
     "watch": "tsc -w",

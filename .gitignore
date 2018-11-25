@@ -14,12 +14,6 @@ pids
 # Dependency directories
 node_modules/
 
-# Optional eslint cache
-.eslintcache
-
-# Optional REPL history
-.node_repl_history
-
 # Output of 'npm pack'
 *.tgz
 
@@ -36,3 +30,5 @@ packages/ethereum/bin/
 # documentation
 documentation/
 apps/dapp-stack.org
+apps/dapp-stack.org/.cache
+apps/dapp-stack.org/public

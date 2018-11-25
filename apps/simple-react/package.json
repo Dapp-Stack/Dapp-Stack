@@ -5,8 +5,6 @@
   "dependencies": {
     "@dapp-stack/redux-eth": "0.1.0",
     "@dapp-stack/redux-ipfs": "0.1.0",
-    "@dapp-stack/scripts": "0.1.0",
-    "@dapp-stack/test": "0.1.0",
     "openzeppelin-solidity": "^1.12.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -16,10 +14,14 @@
     "solium": "^1.1.8"
   },
   "devDependencies": {
+    "@dapp-stack/scripts": "0.1.0",
+    "@dapp-stack/secrets": "0.1.0",
+    "@dapp-stack/test": "0.1.0",
     "chai": "^4.2.0"
   },
   "scripts": {
-    "das": "dapp-stack-scripts"
+    "das": "dapp-stack-scripts",
+    "secrets": "dapp-stack-secrets"
   },
   "browserslist": [
     ">0.2%",

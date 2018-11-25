@@ -9,7 +9,8 @@
   "types": "dist/src/index.d.ts",
   "files": [
     "dist",
-    "template"
+    "template",
+    "scripts"
   ],
   "scripts": {
     "watch": "tsc -w",

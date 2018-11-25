@@ -48,11 +48,13 @@ const packageData = {
   name: path.basename(process.cwd()),
   version: '0.1.0',
   scripts: {
-    das: 'dapp-stack-scripts'
+    das: 'dapp-stack-scripts',
+    secrest: 'dapp-stack-secrets'
   },
-  dependencies: {
+  devDependencies: {
     '@dapp-stack/scripts': '0.1.0',
     '@dapp-stack/test': '0.1.0',
+    '@dapp-stack/secrets': '0.1.0',
     solium: '^1.1.8'
   }
 }
