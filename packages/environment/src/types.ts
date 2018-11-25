@@ -17,15 +17,6 @@ export type Ethereum = {
   migrate: (deployer: any) => Promise<void>;
 }
 
-export interface Structure {
-  contracts: {
-    src: string;
-    build: string;
-  }
-  src: string
-  public: string
-}
-
 export interface Compile {
   contracts: string[]
 }

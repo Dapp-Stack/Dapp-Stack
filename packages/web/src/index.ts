@@ -1,4 +1,4 @@
-import { build as buildEnv } from '@dapp-stack/environment'
+import { build as buildEnv, WebFramework } from '@dapp-stack/environment'
 import { Signale } from 'signale'
 
 import { IWebFrameworkStrategy, IWebDeployStrategy } from './types'
@@ -8,8 +8,8 @@ import { Ipfs } from './strategies/ipfs'
 
 const signale = new Signale({ scope: 'Web' })
 
-const frameworkStrategy = (): IWebFrameworkStrategy => {
-  const framework = buildEnv().web.framework
+const frameworkStrategy = (strategy: Maybe<WebFramework>): IWebFrameworkStrategy => {
+  const framework = strategy || buildEnv().web.framework
   if (!framework) return new Null()
 
   switch (framework) {
@@ -24,8 +24,8 @@ const frameworkStrategy = (): IWebFrameworkStrategy => {
   }
 }
 
-const deployStrategy = (): IWebDeployStrategy => {
-  const deploy = buildEnv().web.deploy
+const deployStrategy = (strategy: Maybe<WebDeploy>): IWebDeployStrategy => {
+  const deploy = strategy || buildEnv().web.deploy
   if (!deploy) return new Null()
 
   switch (deploy) {
@@ -34,18 +34,18 @@ const deployStrategy = (): IWebDeployStrategy => {
   }
 }
 
-export const start = () => {
-  frameworkStrategy().start()
+export const start = (strategy: Maybe<WebFramework> = null) => {
+  frameworkStrategy(strategy).start()
 }
 
-export const build = () => {
-  return frameworkStrategy().build()
+export const build = (strategy: Maybe<WebFramework> = null) => {
+  return frameworkStrategy(strategy).build()
 }
 
-export const stop = () => {
-  frameworkStrategy().stop()
+export const stop = (strategy: Maybe<WebFramework> = null) => {
+  frameworkStrategy(strategy).stop()
 }
 
-export const deploy = () => {
-  return deployStrategy().deploy()
+export const deploy = (strategy: Maybe<WebDeploy> = null) => {
+  return deployStrategy(strategy).deploy()
 }

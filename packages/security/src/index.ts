@@ -1,4 +1,4 @@
-import { build, Structure } from '@dapp-stack/environment'
+import { build, Structure, Maybe } from '@dapp-stack/environment'
 import * as dockerode from 'dockerode'
 import * as fs from 'fs-extra'
 import * as path from 'path'
@@ -9,8 +9,11 @@ const docker = new dockerode()
 const IMAGE_NAME = 'mythril/myth:latest'
 const signale = new Signale({ scope: 'Security' })
 
-export const run = async () => {
-  const compile = build().compile
+export const run = async (contracts: Maybe<string[]> = false) => {
+  if (!contracts) {
+    const contracts = build().compile.contracts
+  }
+  
   const isDockerRunning: boolean = await pingDocker()
   if (!isDockerRunning) {
     signale.error(new Error('Docker is not running'))
@@ -18,7 +21,7 @@ export const run = async () => {
   }
   await downloadImage()
   signale.await('Running security checks')
-  compile.contracts.forEach(contract => runCheck(contract))
+  contracts.forEach(contract => runCheck(contract))
 }
 
 const pingDocker = async () => {

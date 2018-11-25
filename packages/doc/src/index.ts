@@ -1,4 +1,4 @@
-import { build, Structure } from '@dapp-stack/environment'
+import { build, Structure, Maybe } from '@dapp-stack/environment'
 import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as sha1File from 'sha1-file'
@@ -7,11 +7,13 @@ import * as parser from 'solidity-parser-antlr'
 
 const signale = new Signale({ scope: 'Doc' })
 
-export const runAll = () => {
-  const compile = build().compile
-  const contracts = compile.contracts.map(contract => path.join(Structure.contracts.src, contract))
-
-  contracts.forEach(contractFile => run(contractFile))
+export const runAll = (contracts: Maybe<string[]> = false) => {
+  if (!contracts) {
+    contracts = build().compile.contracts
+  }
+  
+  const contractFiles = contracts.map(contract => path.join(Structure.contracts.src, contract))
+  contractFiles.forEach(contractFile => run(contractFile))
 }
 
 export const run = async (contractFile: string) => {

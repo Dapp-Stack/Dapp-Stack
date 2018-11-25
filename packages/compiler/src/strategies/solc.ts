@@ -27,12 +27,10 @@ type CompilationOutput = {
 
 export class Solc implements ICompileStrategy {
   private readonly contracts: string[]
-  private readonly config: Compile
   private readonly signale: Signale
 
-  constructor (contracts: string[], config: Compile, signale: Signale) {
+  constructor (contracts: string[], signale: Signale) {
     this.contracts = contracts
-    this.config = config
     this.signale = signale
   }
 
