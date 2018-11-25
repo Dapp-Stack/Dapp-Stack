@@ -42,12 +42,6 @@ program.command('clean')
          require('./clean')
        })
 
-program.command('export')
-       .description('Show the private keys of the node (only for development)')
-       .action(() => {
-         require('./export')
-       })
-
 program.command('console')
        .description('Start a geth console')
        .action(() => {
