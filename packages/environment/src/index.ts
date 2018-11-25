@@ -106,7 +106,6 @@ const defaultEnvironment: Environment = {
     deploy: 'ipfs'
   },
   compile: {
-    solc: 'js',
     contracts: []
   }
 }

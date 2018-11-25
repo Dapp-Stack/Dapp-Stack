@@ -28,7 +28,6 @@ export interface Structure {
 
 export interface Compile {
   contracts: string[]
-  solc: 'js' | 'binary'
 }
 
 export interface Environment {
