@@ -1,12 +1,5 @@
-#!/usr/bin/env node
-
-process.on('unhandledRejection', err => {
-  throw err
-})
-
 import * as compiler from '@dapp-stack/compiler'
 import * as tester from '@dapp-stack/test'
-import * as web from '@dapp-stack/web'
 import * as ethereum from '@dapp-stack/ethereum'
 import * as ipfs from '@dapp-stack/ipfs'
 
@@ -32,11 +25,4 @@ async function testAsync () {
   await lifecycle.stopAsync({ shouldExit: true })
 }
 
-const command = process.argv[2]
-
-if (command === 'web') {
-  web.test()
-} else if (command === 'contract') {
-  testAsync().then().catch(globalError)
-  lifecycle.after()
-}
+testAsync().then().catch(globalError);

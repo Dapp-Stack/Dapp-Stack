@@ -59,16 +59,6 @@ export class React implements IWebFrameworkStrategy {
     })
   }
 
-  eject = () => {
-    spawn.sync('node', [reactScriptsPath, 'eject'], { stdio: [process.stdin, process.stdout, process.stderr] })
-  }
-
-  test = () => {
-    spawn.sync('node', [reactScriptsPath, 'test', '--env=jsdom'], {
-      stdio: [process.stdin, process.stdout, process.stderr]
-    })
-  }
-
   stop = () => {
     this.child && this.child.kill()
   }

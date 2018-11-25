@@ -42,14 +42,6 @@ export const build = () => {
   return frameworkStrategy().build()
 }
 
-export const test = () => {
-  frameworkStrategy().test()
-}
-
-export const eject = () => {
-  frameworkStrategy().eject()
-}
-
 export const stop = () => {
   frameworkStrategy().stop()
 }

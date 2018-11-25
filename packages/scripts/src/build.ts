@@ -1,9 +1,3 @@
-#!/usr/bin/env node
-
-process.on('unhandledRejection', err => {
-  throw err
-})
-
 import * as compiler from '@dapp-stack/compiler'
 import * as deployer from '@dapp-stack/deployer'
 import * as doc from '@dapp-stack/doc'

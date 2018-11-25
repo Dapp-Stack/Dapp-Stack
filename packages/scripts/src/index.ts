@@ -1,65 +1,62 @@
-#!/usr/bin/env node
+import * as program from 'commander'
 
-process.on('unhandledRejection', err => {
-  throw err
+program.command('build')
+       .description('Generate the masket key and the encrypted secrets')
+       .action(() => {
+  require('./build')
 })
 
-import * as spawn from 'cross-spawn'
-const args = process.argv.slice(2)
+program.command('start')
+       .description('Start to developer with auto deploy and watchers')
+       .action(() => {
+  require('./start')
+})
 
-const commandIndex = args.findIndex(
-  x =>
-    x === 'build' ||
-    x === 'start' ||
-    x === 'stop' ||
-    x === 'test' ||
-    x === 'deploy' ||
-    x === 'eject' ||
-    x === 'security' ||
-    x === 'clean' ||
-    x === 'export' ||
-    x === 'console'
-)
-const command = commandIndex === -1 ? args[0] : args[commandIndex]
-const nodeArgs = commandIndex > 0 ? args.slice(0, commandIndex) : []
+program.command('stop')
+       .description('Stop all dapp-stack process, in case there is zombies')
+       .action(() => {
+  require('./stop')
+})
 
-switch (command) {
-  case 'build':
-  case 'console':
-  case 'deploy':
-  case 'clean':
-  case 'export':
-  case 'stop':
-  case 'start':
-  case 'eject':
-  case 'security':
-  case 'test': {
-    const result = spawn.sync(
-      'node',
-      nodeArgs.concat(require.resolve(`./${command}`)).concat(args.slice(commandIndex + 1)),
-      { stdio: 'inherit' }
-    )
-    if (result.signal) {
-      if (result.signal === 'SIGKILL') {
-        console.log(
-          'The build failed because the process exited too early. ' +
-            'This probably means the system ran out of memory or someone called ' +
-            '`kill -9` on the process.'
-        )
-      } else if (result.signal === 'SIGTERM') {
-        console.log(
-          'The build failed because the process exited too early. ' +
-            'Someone might have called `kill` or `killall`, or the system could ' +
-            'be shutting down.'
-        )
-      }
-      process.exit(1)
-    }
-    process.exit(result.status)
-    break
-  }
-  default:
-    console.log(`Unknown command ${command}.`)
-    console.log('Perhaps you need to update dapp-stack-scripts?')
-    break
+program.command('test')
+       .description('Run the contracts tests')
+       .action(() => {
+  require('./test')
+})
+
+program.command('deploy')
+       .description('Deploy the contracts and the assets')
+       .action(() => {
+  require('./deploy')
+})
+
+program.command('security')
+       .description('Run security check on the contracts (require docker)')
+       .action(() => {
+  require('./security')
+})
+
+program.command('clean')
+       .description('Remove all dapp stack temporary directories')
+       .action(() => {
+  require('./clean')
+})
+
+program.command('export')
+       .description('Show the private keys of the node (only for development)')
+       .action(() => {
+  require('./export')
+})
+
+program.command('console')
+       .description('Start a geth console')
+       .action(() => {
+  require('./console')
+})
+
+program.parse(process.argv)
+
+const showHelp = program.args.length === 0;
+if (showHelp) {
+  program.help();
 }

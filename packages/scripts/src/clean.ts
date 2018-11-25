@@ -1,9 +1,3 @@
-#!/usr/bin/env node
-
-process.on('unhandledRejection', err => {
-  throw err
-})
-
 import { Structure } from '@dapp-stack/environment'
 import * as fs from 'fs-extra'
 import * as path from 'path'
