@@ -39,12 +39,10 @@ function installDependencies (isYarn: boolean) {
 
 function updatePackage (appPath: string) {
   const appPackage = require(path.join(appPath, 'package.json'))
-  appPackage.dependencies = appPackage.dependencies || {}
+  appPackage.scripts = appPackage.scripts || {}
 
-  appPackage.scripts = {
-    das: 'dapp-stack-scripts',
-    secrest: 'dapp-stack-secrets'
-  }
+  appPackage.scripts.das = 'dapp-stack-scripts'
+  appPackage.scripts.secrets = 'dapp-stack-secrets'
 
   fs.writeFileSync(path.join(appPath, 'package.json'), JSON.stringify(appPackage, null, 2) + EOL)
 }

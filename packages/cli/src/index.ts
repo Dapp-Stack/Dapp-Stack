@@ -21,10 +21,7 @@ if (
   fs.existsSync(contractsDest) ||
   fs.existsSync(environmentsDest) ||
   fs.existsSync(soliumignoreDest) ||
-  fs.existsSync(soliumrcDest) ||
-  fs.existsSync(packageDest) ||
-  fs.existsSync(readmeDest) ||
-  fs.existsSync(gitignoreDest)
+  fs.existsSync(soliumrcDest)
 ) {
   signale.error(
     'One of the destination file/folder already exists, it is better to start from an empty directory to avoid conflict.'
@@ -35,8 +32,6 @@ if (
 fs.copySync(path.join(base, 'contracts'), contractsDest)
 fs.copySync(path.join(base, 'environments'), environmentsDest)
 fs.copySync(path.join(base, '.soliumignore'), soliumignoreDest)
-fs.copySync(path.join(base, 'README.md'), readmeDest)
-fs.copySync(path.join(base, 'gitignore'), gitignoreDest)
 
 const filename = path.join(environmentsDest, 'local.js.ejs')
 const local = fs.readFileSync(filename, 'utf-8')
@@ -44,21 +39,47 @@ const compiled = ejs.render(local, { webFramework: false })
 fs.writeFileSync(path.join(environmentsDest, 'local.js'), compiled)
 fs.unlinkSync(filename)
 
-const packageData = {
-  name: path.basename(process.cwd()),
-  version: '0.1.0',
-  scripts: {
-    das: 'dapp-stack-scripts',
-    secrest: 'dapp-stack-secrets'
-  },
-  devDependencies: {
-    '@dapp-stack/scripts': '0.1.0',
-    '@dapp-stack/test': '0.1.0',
-    '@dapp-stack/secrets': '0.1.0',
-    solium: '^1.1.8'
+let packageData = {}
+if (fs.existsSync(packageDest)) {
+  const packageData = fs.readJSONSync(packageDest)
+  packageData.scripts = packageData.scripts || {}
+
+  packageData.scripts.das = 'dapp-stack-scripts'
+  packageData.scripts.secrets = 'dapp-stack-secrets'
+
+  packageData.devDependencies = packageData.devDependencies || {}
+  packageData.devDependencies['@dapp-stack/scripts'] = '^0.1.0'
+  packageData.devDependencies['@dapp-stack/test'] = '^0.1.0'
+  packageData.devDependencies['@dapp-stack/secrets'] = '^0.1.0'
+  packageData.devDependencies.solium = '^1.1.8'
+} else {
+  const packageData = {
+    name: path.basename(process.cwd()),
+    version: '0.1.0',
+    scripts: {
+      das: 'dapp-stack-scripts',
+      secrest: 'dapp-stack-secrets'
+    },
+    devDependencies: {
+      '@dapp-stack/scripts': '^0.1.0',
+      '@dapp-stack/test': '^0.1.0',
+      '@dapp-stack/secrets': '^0.1.0',
+      solium: '^1.1.8'
+    }
   }
 }
 fs.writeFileSync(packageDest, JSON.stringify(packageData, null, 2) + EOL)
+
+if (!fs.existsSync(readmeDest)) {
+  fs.copySync(path.join(base, 'README.md'), readmeDest)
+}
+
+if (fs.existsSync(gitignoreDest)) {
+  const data  = fs.readFileSync(gitignoreDest)
+  fs.appendFileSync(gitignoreDest, data)
+} else {
+  fs.copySync(path.join(base, 'gitignore'), gitignoreDest)
+}
 
 signale.success('Congratulations, your Dapp has been generated.')
 signale.success('First, install the dependencies using npm install or yarn install')
