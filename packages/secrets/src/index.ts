@@ -1,5 +1,4 @@
 import { Structure } from '@dapp-stack/environment'
-import * as spawn from 'cross-spawn'
 import * as crypto from 'crypto'
 import * as fs from 'fs-extra'
 import * as generator from 'generate-password'
@@ -50,25 +49,25 @@ export const show = () => {
 const decrypt = () => {
   const password = getPassword()
   const text = getText()
-  // tslint:disable-next-line: deprecation
-  const decipher = crypto.createDecipher(ALGORITHM, password)
-  let dec = decipher.update(text, 'hex', 'utf8')
+  const [iv, encryptedText] = text.split(':')
+  const decipher = crypto.createDecipheriv(ALGORITHM, password, Buffer.from(iv, 'hex'))
+  let dec = decipher.update(encryptedText, 'hex', 'utf8')
   dec += decipher.final('utf8')
   return dec
 }
 
 const encrypt = (text: string) => {
+  const iv = crypto.randomBytes(16)
   const password = getPassword()
-  // tslint:disable-next-line: deprecation
-  const cipher = crypto.createCipher(ALGORITHM, password)
+  const cipher = crypto.createCipheriv(ALGORITHM, password, iv)
   let crypted = cipher.update(text, 'utf8', 'hex')
   crypted += cipher.final('hex')
-  return crypted
+  return iv.toString('hex') + ':' + crypted
 }
 
 const generatePassword = () => {
   return generator.generate({
-    length: 20,
+    length: 32,
     numbers: true
   })
 }

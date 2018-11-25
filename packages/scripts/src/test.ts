@@ -25,4 +25,4 @@ async function testAsync () {
   await lifecycle.stopAsync({ shouldExit: true })
 }
 
-testAsync().then().catch(globalError);
+testAsync().then().catch(globalError)

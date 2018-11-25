@@ -3,60 +3,60 @@ import * as program from 'commander'
 program.command('build')
        .description('Generate the masket key and the encrypted secrets')
        .action(() => {
-  require('./build')
-})
+         require('./build')
+       })
 
 program.command('start')
        .description('Start to developer with auto deploy and watchers')
        .action(() => {
-  require('./start')
-})
+         require('./start')
+       })
 
 program.command('stop')
        .description('Stop all dapp-stack process, in case there is zombies')
        .action(() => {
-  require('./stop')
-})
+         require('./stop')
+       })
 
 program.command('test')
        .description('Run the contracts tests')
        .action(() => {
-  require('./test')
-})
+         require('./test')
+       })
 
 program.command('deploy')
        .description('Deploy the contracts and the assets')
        .action(() => {
-  require('./deploy')
-})
+         require('./deploy')
+       })
 
 program.command('security')
        .description('Run security check on the contracts (require docker)')
        .action(() => {
-  require('./security')
-})
+         require('./security')
+       })
 
 program.command('clean')
        .description('Remove all dapp stack temporary directories')
        .action(() => {
-  require('./clean')
-})
+         require('./clean')
+       })
 
 program.command('export')
        .description('Show the private keys of the node (only for development)')
        .action(() => {
-  require('./export')
-})
+         require('./export')
+       })
 
 program.command('console')
        .description('Start a geth console')
        .action(() => {
-  require('./console')
-})
+         require('./console')
+       })
 
 program.parse(process.argv)
 
-const showHelp = program.args.length === 0;
+const showHelp = program.args.length === 0
 if (showHelp) {
-  program.help();
+  program.help()
 }
