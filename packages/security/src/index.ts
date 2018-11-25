@@ -13,7 +13,7 @@ export const run = async (contracts: Maybe<string[]> = false) => {
   if (!contracts) {
     const contracts = build().compile.contracts
   }
-  
+
   const isDockerRunning: boolean = await pingDocker()
   if (!isDockerRunning) {
     signale.error(new Error('Docker is not running'))

@@ -80,13 +80,9 @@ const schema = {
               type: 'string'
             }
           ]
-        },
-        solc: {
-          type: 'string',
-          enum: ['js', 'binary']
         }
       },
-      required: ['contracts', 'solc']
+      required: ['contracts']
     }
   },
   required: ['ipfs', 'web', 'compile']

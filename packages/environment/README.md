@@ -1,3 +1,50 @@
-### Dapp Stack
+# `@dapp-stack/environment`
 
-TODO
+This package allows you to build your environment and verify that it is conform.
+
+## Installation
+
+```sh
+# Yarn
+yarn add @dapp-stack/environment
+
+# NPM
+npm install @dapp-stack/environment
+```
+
+## Usage
+
+Expected directories:
+* environments
+* * local.js
+* * test.js
+* * rinkeby.js
+
+```js
+import * as env from "@dapp-stack/environment";
+
+const environment = env.build()
+```
+
+The name of the file that is read come from the environment variable:
+`DAPP_ENV`
+
+If not set, `local` will be used.
+
+If empty, the environment returned will be:
+```js
+const defaultEnvironment = {
+  ethereum: {
+    network: 'dev',
+    migrate () { return new Promise(resolve => resolve()) }
+  },
+  ipfs: false,
+  web: {
+    framework: 'react',
+    deploy: 'ipfs'
+  },
+  compile: {
+    contracts: []
+  }
+}
+```

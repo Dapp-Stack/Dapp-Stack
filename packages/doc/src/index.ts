@@ -11,7 +11,7 @@ export const runAll = (contracts: Maybe<string[]> = false) => {
   if (!contracts) {
     contracts = build().compile.contracts
   }
-  
+
   const contractFiles = contracts.map(contract => path.join(Structure.contracts.src, contract))
   contractFiles.forEach(contractFile => run(contractFile))
 }
