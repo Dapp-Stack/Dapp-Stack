@@ -20,7 +20,6 @@
     { "path": "./packages/cli" },
     { "path": "./packages/compiler" },
     { "path": "./packages/connect" },
-    { "path": "./packages/create-react-app" },
     { "path": "./packages/deployer" },
     { "path": "./packages/doc" },
     { "path": "./packages/environment" },
