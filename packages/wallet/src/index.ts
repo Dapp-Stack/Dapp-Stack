@@ -15,19 +15,28 @@ export interface WalletEnhanced {
   balance: ethers.utils.BigNumber
 }
 
-export const generateWallet = async (): Promise<WalletEnhanced> => {
-  const ethereum = build().ethereum
-  if (!ethereum) {
-    return { balance: new ethers.utils.BigNumber(0) }
-  }
-  const provider = connect(ethereum.network)
+export const generateWallet = async (
+network: Maybe<EthereumNetwork> = false,
+mnemonic: Maybe<string> = false
+  ): Promise<WalletEnhanced> => {
+  if (!network || !mnemonic) {
+    const ethereum = build().ethereum
+    if (!ethereum) {
+      return { balance: new ethers.utils.BigNumber(0) }
+    }
 
-  if (ethereum.network === 'dev') {
+    network = ethereum.network
+    mnemonic = ethereum.mnemonic
+  }
+  
+  const provider = connect(network)
+
+  if (network === 'dev') {
     return devWallet(provider)
   }
 
-  if (ethereum.mnemonic) {
-    return mnemonicWallet(ethereum.mnemonic, provider)
+  if (mnemonic) {
+    return mnemonicWallet(mnemonic, provider)
   }
 
   return { provider, balance: new ethers.utils.BigNumber(0) }
