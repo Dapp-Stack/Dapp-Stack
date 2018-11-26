@@ -27,11 +27,11 @@
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
   "dependencies": {
+    "@dapp-stack/redux-eth": "0.1.0",
+    "@dapp-stack/redux-ipfs": "0.1.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@fortawesome/react-fontawesome": "^0.1.3",
-    "@dapp-stack/redux-eth": "0.1.0",
-    "@dapp-stack/redux-ipfs": "0.1.0",
     "axios": "^0.18.0",
     "connected-react-router": "^5.0.0",
     "croppie": "^2.6.2",
@@ -71,5 +71,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "node-sass": "^4.10.0"
+  }
 }
