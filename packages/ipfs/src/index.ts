@@ -7,17 +7,19 @@ import { IIpfsStrategy } from './types'
 
 const signale = new Signale({ scope: 'Ipfs' })
 
-const strategy = (): IIpfsStrategy => {
-  const enabled = build().ipfs
-  if (!enabled) return new Null()
+const strategy = (force: boolean): IIpfsStrategy => {
+  if (!force) {
+    const enabled = build().ipfs
+    if (!enabled) return new Null()
+  }
 
   return new Go(signale)
 }
 
-export const start = (): Promise<boolean> => {
-  return strategy().start()
+export const start = (force: boolean = false): Promise<boolean> => {
+  return strategy(force).start()
 }
 
-export const stop = (): Promise<boolean> => {
-  return strategy().stop()
+export const stop = (force: boolean = false): Promise<boolean> => {
+  return strategy(force).stop()
 }
