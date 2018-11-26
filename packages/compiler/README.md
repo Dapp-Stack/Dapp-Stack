@@ -15,7 +15,7 @@ npm install @dapp-stack/compiler
 ## Usage
 
 ```js
-import * as compiler* from "@dapp-stack/compiler";
+import * as compiler from "@dapp-stack/compiler";
 
 compiler.run(["SimpleStorage.sol"])
 ```
