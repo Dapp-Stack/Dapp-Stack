@@ -1,4 +1,4 @@
-import { build as buildEnv, WebFramework } from '@dapp-stack/environment'
+import { build as buildEnv, WebFramework, WebDeploy, Maybe } from '@dapp-stack/environment'
 import { Signale } from 'signale'
 
 import { IWebFrameworkStrategy, IWebDeployStrategy } from './types'
@@ -34,18 +34,18 @@ const deployStrategy = (strategy: Maybe<WebDeploy>): IWebDeployStrategy => {
   }
 }
 
-export const start = (strategy: Maybe<WebFramework> = null) => {
+export const start = (strategy: Maybe<WebFramework> = false) => {
   frameworkStrategy(strategy).start()
 }
 
-export const build = (strategy: Maybe<WebFramework> = null) => {
+export const build = (strategy: Maybe<WebFramework> = false) => {
   return frameworkStrategy(strategy).build()
 }
 
-export const stop = (strategy: Maybe<WebFramework> = null) => {
+export const stop = (strategy: Maybe<WebFramework> = false) => {
   frameworkStrategy(strategy).stop()
 }
 
-export const deploy = (strategy: Maybe<WebDeploy> = null) => {
+export const deploy = (strategy: Maybe<WebDeploy> = false) => {
   return deployStrategy(strategy).deploy()
 }

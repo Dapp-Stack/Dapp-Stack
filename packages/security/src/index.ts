@@ -11,7 +11,7 @@ const signale = new Signale({ scope: 'Security' })
 
 export const run = async (contracts: Maybe<string[]> = false) => {
   if (!contracts) {
-    const contracts = build().compile.contracts
+    contracts = build().compile.contracts
   }
 
   const isDockerRunning: boolean = await pingDocker()
