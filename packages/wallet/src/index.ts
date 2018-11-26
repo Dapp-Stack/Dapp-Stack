@@ -15,10 +15,8 @@ export interface WalletEnhanced {
   balance: ethers.utils.BigNumber
 }
 
-export const generateWallet = async (
-network: Maybe<EthereumNetwork> = false,
-mnemonic?: string
-  ): Promise<WalletEnhanced> => {
+export const generateWallet = async (network: Maybe<EthereumNetwork> = false,
+                                     mnemonic?: string): Promise<WalletEnhanced> => {
   if (!network || !mnemonic) {
     const ethereum = build().ethereum
     if (!ethereum) {
