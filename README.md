@@ -1,3 +1,7 @@
+# Dapp Stack umbrella repository
+
+[![CircleCI](https://circleci.com/gh/Dapp-Stack/Dapp-Stack.svg?style=svg)](https://circleci.com/gh/Dapp-Stack/Dapp-Stack)
+
 ### Install dependencies
 
 Make sure you are using Yarn. To install using brew:
