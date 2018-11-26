@@ -1,4 +1,4 @@
-import { build } from '@dapp-stack/environment'
+import { build, Ethereum, Web, Maybe } from '@dapp-stack/environment'
 import { EthererumDeployer } from './ethereum/deployer'
 import { generateWallet } from '@dapp-stack/wallet'
 import { Signale } from 'signale'
@@ -8,15 +8,18 @@ const signale = new Signale({ scope: 'Deployer' })
 const DEFAULT_MIGRATE = () => { return new Promise<void>(resolve => resolve()) }
 
 export const run = async (
-  network: Maybe<EthereumNetwork> = false,
-  mnemonic: Maybe<string> = false,
-  migrate: (deployer: EthererumDeployer) => Promise<void> = DEFAULT_MIGRATE,
-  extraMigrate: (deployer: EthererumDeployer) => Promise<void> = DEFAULT_MIGRATE
-  ) => {
-  const { ethereum, web } = build()
+  extraMigrate: (deployer: EthererumDeployer) => Promise<void> = DEFAULT_MIGRATE,
+  ethereum: Maybe<Ethereum> = false,
+  web: Maybe<Web> = false) => {
+  if (!ethereum || !web) {
+    const environment = build()
+    ethereum = environment.ethereum
+    web = environment.web
+  }
+
   if (!ethereum) return
 
-  const wallet = await generateWallet(network, mnemonic)
+  const wallet = await generateWallet(ethereum.network, ethereum.mnemonic)
   if (!wallet.provider) {
     return
   }

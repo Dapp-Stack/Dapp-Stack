@@ -1,5 +1,5 @@
 import { connect } from '@dapp-stack/connect'
-import { build, Ethereum } from '@dapp-stack/environment'
+import { build, EthereumNetwork, Maybe } from '@dapp-stack/environment'
 import * as ethers from 'ethers'
 import * as path from 'path'
 import * as fs from 'fs-extra'
@@ -17,7 +17,7 @@ export interface WalletEnhanced {
 
 export const generateWallet = async (
 network: Maybe<EthereumNetwork> = false,
-mnemonic: Maybe<string> = false
+mnemonic?: string
   ): Promise<WalletEnhanced> => {
   if (!network || !mnemonic) {
     const ethereum = build().ethereum
@@ -28,7 +28,7 @@ mnemonic: Maybe<string> = false
     network = ethereum.network
     mnemonic = ethereum.mnemonic
   }
-  
+
   const provider = connect(network)
 
   if (network === 'dev') {
