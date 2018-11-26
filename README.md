@@ -1,4 +1,4 @@
-# Dapp Stack umbrella repository
+# Dapp Stack
 
 [![CircleCI](https://circleci.com/gh/Dapp-Stack/Dapp-Stack.svg?style=svg)](https://circleci.com/gh/Dapp-Stack/Dapp-Stack)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Dapp-Stack/Dapp-Stack/blob/master/LICENSE)
