@@ -10,7 +10,7 @@ process.env.DAPP_ENV = 'test'
 
 const shouldRunCoverage = process.env.COVERAGE
 
-async function testAsync () {
+async function testAsync() {
   await ethereum.start()
   await ipfs.start()
   if (shouldRunCoverage) {
@@ -25,4 +25,6 @@ async function testAsync () {
   await lifecycle.stopAsync({ shouldExit: true })
 }
 
-testAsync().then().catch(globalError)
+testAsync()
+  .then()
+  .catch(globalError)

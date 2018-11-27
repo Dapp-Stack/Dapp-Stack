@@ -4,7 +4,7 @@ export type ContractsState = { [name: string]: ethers.Contract }
 
 export interface BuildContractsInput {
   [address: string]: {
-    name: string;
-    abi: string;
+    name: string
+    abi: string
   }
 }

@@ -4,8 +4,8 @@ export enum FileType {
 }
 
 export type File = {
-  name: string;
-  size: number;
-  hash: string;
-  type: FileType;
+  name: string
+  size: number
+  hash: string
+  type: FileType
 }

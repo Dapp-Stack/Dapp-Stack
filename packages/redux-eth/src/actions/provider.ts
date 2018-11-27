@@ -50,5 +50,7 @@ export const request = {
 }
 
 export const findBlock = createStandardAction('ETH/FIND_BLOCK')<number>()
-export const findTransaction = createStandardAction('ETH/FIND_TRANSACTION')<string>()
+export const findTransaction = createStandardAction('ETH/FIND_TRANSACTION')<
+  string
+>()
 export const start = createStandardAction('ETH/START')<void>()

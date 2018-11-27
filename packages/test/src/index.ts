@@ -5,13 +5,22 @@ import * as path from 'path'
 import { Signale } from 'signale'
 
 const signale = new Signale({ scope: 'Test' })
-const mochaPath = path.resolve(__dirname, '..', '..', 'node_modules', '.bin', 'mocha')
+const mochaPath = path.resolve(
+  __dirname,
+  '..',
+  '..',
+  'node_modules',
+  '.bin',
+  'mocha'
+)
 
 export const setup = async (migrate: (deployer: any) => Promise<void>) => {
   const environment = build()
   const ethereum = environment.ethereum
   if (!ethereum) {
-    signale.error('Test cannot run if ethereum is not configured in the test enviornment.')
+    signale.error(
+      'Test cannot run if ethereum is not configured in the test enviornment.'
+    )
     process.exit(1)
     return
   }
@@ -26,9 +35,13 @@ export const setupCoverage = () => {
 }
 
 export const run = () => {
-  spawn.sync('node', [mochaPath, `${Structure.contracts.test}**/*Test.js`, '--reporter', 'spec'], {
-    stdio: [process.stdin, process.stdout, process.stderr]
-  })
+  spawn.sync(
+    'node',
+    [mochaPath, `${Structure.contracts.test}**/*Test.js`, '--reporter', 'spec'],
+    {
+      stdio: [process.stdin, process.stdout, process.stderr]
+    }
+  )
 }
 
 export const finishCoverage = () => {

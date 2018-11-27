@@ -68,7 +68,13 @@ const touch: Epic<IpfsAction, IpfsAction, IpfsState> = (action$, state$) =>
   action$.pipe(
     filter(isActionOf(files.request.touch.request)),
     mergeMap(action =>
-      from(api.touch(state$.value.ipfs.files.root, action.payload.name, action.payload.content)).pipe(
+      from(
+        api.touch(
+          state$.value.ipfs.files.root,
+          action.payload.name,
+          action.payload.content
+        )
+      ).pipe(
         map(files.request.touch.success),
         catchError(error => of(files.request.touch.failure(error)))
       )

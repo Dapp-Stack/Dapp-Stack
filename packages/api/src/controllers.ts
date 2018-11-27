@@ -15,7 +15,10 @@ export class Controllers {
       const data = JSON.parse(content)
       res.json(data)
     } catch {
-      res.status(422).send({ error: 'We could not load the tracker file, please check your installation.' })
+      res.status(422).send({
+        error:
+          'We could not load the tracker file, please check your installation.'
+      })
     }
   }
 }

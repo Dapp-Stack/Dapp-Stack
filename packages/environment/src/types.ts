@@ -1,20 +1,26 @@
 export type Maybe<T> = false | T
 
-export type EthereumNetwork = 'homestead' | 'rinkeby' | 'ropsten' | 'kovan' | 'dev' | 'external'
+export type EthereumNetwork =
+  | 'homestead'
+  | 'rinkeby'
+  | 'ropsten'
+  | 'kovan'
+  | 'dev'
+  | 'external'
 
 export type WebFramework = 'react' | 'angular' | 'vue' | 'test'
 export type WebDeploy = 'ipfs'
 
 export type Web = {
-  framework: Maybe<WebFramework>;
-  deploy: Maybe<WebDeploy>;
+  framework: Maybe<WebFramework>
+  deploy: Maybe<WebDeploy>
 }
 
 export type Ethereum = {
-  network: EthereumNetwork;
-  apiKey?: string;
-  mnemonic?: string;
-  migrate: (deployer: any) => Promise<void>;
+  network: EthereumNetwork
+  apiKey?: string
+  mnemonic?: string
+  migrate: (deployer: any) => Promise<void>
 }
 
 export interface Compile {

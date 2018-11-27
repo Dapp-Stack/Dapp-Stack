@@ -5,13 +5,21 @@ import { Signale } from 'signale'
 
 import { IWebFrameworkStrategy } from '../types'
 
-const reactScriptsPath = path.resolve(__dirname, '..', '..', '..', 'node_modules', '.bin', 'react-scripts')
+const reactScriptsPath = path.resolve(
+  __dirname,
+  '..',
+  '..',
+  '..',
+  'node_modules',
+  '.bin',
+  'react-scripts'
+)
 
 export class React implements IWebFrameworkStrategy {
   private readonly signale: Signale
   private child!: child_process.ChildProcess
 
-  constructor (signale: Signale) {
+  constructor(signale: Signale) {
     this.signale = signale
   }
 

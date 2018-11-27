@@ -5,8 +5,10 @@ import { Signale } from 'signale'
 
 const signale = new Signale({ scope: 'Deployer' })
 
-export const run = async (ethereum: Maybe<Ethereum> = false,
-                          web: Maybe<Web> = false) => {
+export const run = async (
+  ethereum: Maybe<Ethereum> = false,
+  web: Maybe<Web> = false
+) => {
   if (!ethereum || !web) {
     const environment = build()
     ethereum = environment.ethereum
@@ -20,7 +22,9 @@ export const run = async (ethereum: Maybe<Ethereum> = false,
     return
   }
   if (!wallet.signer || wallet.balance.eq(0)) {
-    signale.error('Skipping contract deployment due to unsuficient fund, Did you set the mnemonic?')
+    signale.error(
+      'Skipping contract deployment due to unsuficient fund, Did you set the mnemonic?'
+    )
     return
   }
 

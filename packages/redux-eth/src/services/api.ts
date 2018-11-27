@@ -8,7 +8,9 @@ declare global {
   }
 }
 
-const error = new Error('Non-Ethereum browser detected. You should consider trying MetaMask!')
+const error = new Error(
+  'Non-Ethereum browser detected. You should consider trying MetaMask!'
+)
 
 export const connect = () => {
   return new Promise<ethers.providers.Web3Provider>(async (resolve, reject) => {
@@ -16,7 +18,9 @@ export const connect = () => {
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       return resolve(provider)
     } else if (window.web3) {
-      const provider = new ethers.providers.Web3Provider(window.web3.currentProvider)
+      const provider = new ethers.providers.Web3Provider(
+        window.web3.currentProvider
+      )
       return resolve(provider)
     } else {
       return reject()
@@ -24,7 +28,9 @@ export const connect = () => {
   })
 }
 
-export const getNetwork = (provider: ethers.providers.Web3Provider | undefined) => {
+export const getNetwork = (
+  provider: ethers.providers.Web3Provider | undefined
+) => {
   return new Promise<ethers.utils.Network>((resolve, reject) => {
     if (!provider) return reject(error)
     return provider
@@ -34,7 +40,9 @@ export const getNetwork = (provider: ethers.providers.Web3Provider | undefined) 
   })
 }
 
-export const getGasPrice = async (provider: ethers.providers.Web3Provider | undefined) => {
+export const getGasPrice = async (
+  provider: ethers.providers.Web3Provider | undefined
+) => {
   return new Promise<ethers.utils.BigNumber>((resolve, reject) => {
     if (!provider) return reject(error)
     return provider
@@ -44,7 +52,9 @@ export const getGasPrice = async (provider: ethers.providers.Web3Provider | unde
   })
 }
 
-export const getAddress = async (provider: ethers.providers.Web3Provider | undefined) => {
+export const getAddress = async (
+  provider: ethers.providers.Web3Provider | undefined
+) => {
   return new Promise<string>((resolve, reject) => {
     if (!provider) return reject(error)
     return provider
@@ -55,7 +65,9 @@ export const getAddress = async (provider: ethers.providers.Web3Provider | undef
   })
 }
 
-export const getBlockNumber = async (provider: ethers.providers.Web3Provider | undefined) => {
+export const getBlockNumber = async (
+  provider: ethers.providers.Web3Provider | undefined
+) => {
   return new Promise<number>((resolve, reject) => {
     if (!provider) return reject(error)
     return provider
@@ -65,7 +77,9 @@ export const getBlockNumber = async (provider: ethers.providers.Web3Provider | u
   })
 }
 
-export const getTransactionCount = async (provider: ethers.providers.Web3Provider | undefined) => {
+export const getTransactionCount = async (
+  provider: ethers.providers.Web3Provider | undefined
+) => {
   return new Promise<number>((resolve, reject) => {
     if (!provider) return reject(error)
     return provider
@@ -76,7 +90,10 @@ export const getTransactionCount = async (provider: ethers.providers.Web3Provide
   })
 }
 
-export const getBlock = async (provider: ethers.providers.Web3Provider | undefined, blockNumber: number) => {
+export const getBlock = async (
+  provider: ethers.providers.Web3Provider | undefined,
+  blockNumber: number
+) => {
   return new Promise<ethers.providers.Block>((resolve, reject) => {
     if (!provider) return reject(error)
     return provider
@@ -86,17 +103,24 @@ export const getBlock = async (provider: ethers.providers.Web3Provider | undefin
   })
 }
 
-export const getTransaction = async (provider: ethers.providers.Web3Provider | undefined, hash: string) => {
-  return new Promise<ethers.providers.TransactionResponse>((resolve, reject) => {
-    if (!provider) return reject(error)
-    return provider
-      .getTransaction(hash)
-      .then(resolve)
-      .catch(reject)
-  })
+export const getTransaction = async (
+  provider: ethers.providers.Web3Provider | undefined,
+  hash: string
+) => {
+  return new Promise<ethers.providers.TransactionResponse>(
+    (resolve, reject) => {
+      if (!provider) return reject(error)
+      return provider
+        .getTransaction(hash)
+        .then(resolve)
+        .catch(reject)
+    }
+  )
 }
 
-export const getBalance = async (provider: ethers.providers.Web3Provider | undefined) => {
+export const getBalance = async (
+  provider: ethers.providers.Web3Provider | undefined
+) => {
   return new Promise<ethers.utils.BigNumber>((resolve, reject) => {
     if (!provider) return reject(error)
     return provider
@@ -107,12 +131,19 @@ export const getBalance = async (provider: ethers.providers.Web3Provider | undef
   })
 }
 
-export const getContracts = (provider: ethers.providers.Web3Provider | undefined, input: BuildContractsInput) => {
+export const getContracts = (
+  provider: ethers.providers.Web3Provider | undefined,
+  input: BuildContractsInput
+) => {
   return new Promise<ContractsState>((resolve, reject) => {
     if (!provider) return reject(error)
     const addresses = Object.keys(input)
     const contracts = addresses.reduce((acc: ContractsState, address) => {
-      acc[input[address].name] = new ethers.Contract(address, input[address].abi, provider.getSigner())
+      acc[input[address].name] = new ethers.Contract(
+        address,
+        input[address].abi,
+        provider.getSigner()
+      )
       return acc
     }, {})
     resolve(contracts)

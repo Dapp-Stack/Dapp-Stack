@@ -10,7 +10,7 @@ import * as lifecycle from './shared/lifecycle'
 import { watch } from './shared/watch'
 import { globalError } from './shared/globalError'
 
-async function startAsync () {
+async function startAsync() {
   try {
     await ethereum.start()
     await ipfs.start()
@@ -25,5 +25,7 @@ async function startAsync () {
   }
 }
 
-startAsync().then().catch()
+startAsync()
+  .then()
+  .catch()
 lifecycle.after()

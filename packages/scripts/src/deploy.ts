@@ -7,7 +7,7 @@ import * as web from '@dapp-stack/web'
 import * as lifecycle from './shared/lifecycle'
 import { globalError } from './shared/globalError'
 
-async function buildAsync () {
+async function buildAsync() {
   try {
     await ethereum.start()
     await compiler.run()
@@ -21,5 +21,7 @@ async function buildAsync () {
   }
 }
 
-buildAsync().then().catch()
+buildAsync()
+  .then()
+  .catch()
 lifecycle.after()

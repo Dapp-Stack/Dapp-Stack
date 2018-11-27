@@ -94,7 +94,9 @@ const environmentSchema = ajv.compile(schema)
 const defaultEnvironment: Environment = {
   ethereum: {
     network: 'dev',
-    migrate () { return new Promise<void>(resolve => resolve()) }
+    migrate() {
+      return new Promise<void>(resolve => resolve())
+    }
   },
   ipfs: false,
   web: {
@@ -110,7 +112,8 @@ export const build = (): Environment => {
   const dappEnv = process.env.DAPP_ENV || 'local'
   let environmentFile
   try {
-    environmentFile = require(path.resolve(process.cwd(), 'environments', dappEnv)) || {}
+    environmentFile =
+      require(path.resolve(process.cwd(), 'environments', dappEnv)) || {}
   } catch (_error) {
     signale.error(
       `Cannot load the environment file, make sure the following file exists: ${path.resolve(

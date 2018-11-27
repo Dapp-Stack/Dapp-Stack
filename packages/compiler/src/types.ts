@@ -1,3 +1,3 @@
 export interface ICompileStrategy {
-  compile (): Promise<boolean>
+  compile(): Promise<boolean>
 }

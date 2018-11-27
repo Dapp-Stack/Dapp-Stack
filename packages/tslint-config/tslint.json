@@ -1,12 +1,7 @@
 {
-  "extends": "tslint-config-standard",
-  "defaultSeverity": "error",
-  "rules": {
-    "adjacent-overload-signatures": true,
-    "member-ordering": [true, { "order": "fields-first" }],
-    "no-debugger": true,
-    "no-return-await": true,
-    "no-var-keyword": true,
-    "prefer-readonly": true
-  }
+  "extends": [
+    "tslint-config-standard",
+    "tslint-config-prettier"
+  ],
+  "defaultSeverity": "error"
 }

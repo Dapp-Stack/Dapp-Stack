@@ -1,10 +1,10 @@
 export interface IEthereumStrategy {
-  start (): Promise<boolean>
-  stop (): Promise<boolean>
+  start(): Promise<boolean>
+  stop(): Promise<boolean>
 }
 
 export type GanacheEthereum = {
   personal_accounts: {
-    [publicKey: string]: number;
-  };
+    [publicKey: string]: number
+  }
 }

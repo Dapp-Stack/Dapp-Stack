@@ -24,7 +24,7 @@ export class EthererumDeployer {
   private readonly signale: Signale
   private readonly contractFiles: { [basename: string]: string }
 
-  constructor (config: Ethereum, webConfig: Web, signer: ethers.Signer) {
+  constructor(config: Ethereum, webConfig: Web, signer: ethers.Signer) {
     this.config = config
     this.webConfig = webConfig
     this.signer = signer
@@ -41,9 +41,11 @@ export class EthererumDeployer {
     this.tracker = new Tracker(this.network, this.webConfig)
   }
 
-  async run () {
+  async run() {
     try {
-      this.signale.await('Starting to deploy ethererum contracts by running migrate...')
+      this.signale.await(
+        'Starting to deploy ethererum contracts by running migrate...'
+      )
       this.tracker.reset()
       await this.config.migrate(this)
       this.signale.success('Ethererum contracts have been deployed')
@@ -52,7 +54,7 @@ export class EthererumDeployer {
     }
   }
 
-  attach (contractName: string, address: string): ethers.Contract {
+  attach(contractName: string, address: string): ethers.Contract {
     const contractFile = this.contractFiles[contractName]
     if (!contractFile) {
       this.contractNotFound(contractName)
@@ -63,7 +65,7 @@ export class EthererumDeployer {
     return new ethers.Contract(address, source.abi, this.signer)
   }
 
-  async deploy (contractName: string, ...args: any[]): Promise<ethers.Contract> {
+  async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract> {
     const contractFile = this.contractFiles[contractName]
     if (!contractFile) {
       this.contractNotFound(contractName)
@@ -77,13 +79,21 @@ export class EthererumDeployer {
     return this.deployContractFactory(contractName, factory, ...args)
   }
 
-  async deployContractFactory (contractName: string, factory: ethers.ContractFactory, ...args: any[]) {
+  async deployContractFactory(
+    contractName: string,
+    factory: ethers.ContractFactory,
+    ...args: any[]
+  ) {
     this.signale.await(`Deploying ${contractName}...`)
 
     const contract = await factory.deploy(...args)
     await contract.deployed()
 
-    this.tracker.update(contractName, contract.address, JSON.stringify(factory.interface.abi))
+    this.tracker.update(
+      contractName,
+      contract.address,
+      JSON.stringify(factory.interface.abi)
+    )
     const receipt = await contract.deployTransaction.wait(1)
     this.printResult(contractName, contract, receipt)
     return contract
@@ -105,7 +115,9 @@ export class EthererumDeployer {
   }
 
   private readonly contractNotFound = (contractName: string) => {
-    throw new Error(`Contract not found: ${contractName}, make sure this contract exists.`)
+    throw new Error(
+      `Contract not found: ${contractName}, make sure this contract exists.`
+    )
   }
 
   private readonly printResult = (

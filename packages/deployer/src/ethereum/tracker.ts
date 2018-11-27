@@ -7,9 +7,9 @@ import { ethers } from 'ethers'
 interface ITrackerData {
   [network: number]: {
     [address: string]: {
-      name: string;
-      abi: string;
-    };
+      name: string
+      abi: string
+    }
   }
 }
 
@@ -17,7 +17,7 @@ export class Tracker {
   private readonly network: ethers.utils.Network
   private readonly filename: string
 
-  constructor (network: ethers.utils.Network, webConfig: Web) {
+  constructor(network: ethers.utils.Network, webConfig: Web) {
     this.network = network
     this.filename = Structure.tracker(webConfig.framework)
   }

@@ -13,12 +13,22 @@ export class Go implements IIpfsStrategy {
   private readonly binaryPath: string
   private readonly logStream: fs.WriteStream
 
-  constructor (signale: Signale) {
+  constructor(signale: Signale) {
     this.signale = signale
-    this.binaryPath = path.resolve(__dirname, '..', '..', '..', 'node_modules', '.bin', 'ipfs')
+    this.binaryPath = path.resolve(
+      __dirname,
+      '..',
+      '..',
+      '..',
+      'node_modules',
+      '.bin',
+      'ipfs'
+    )
 
     fs.ensureDirSync(path.join(process.cwd(), 'logs'))
-    this.logStream = fs.createWriteStream(path.join(process.cwd(), 'logs', 'ipfs.log'))
+    this.logStream = fs.createWriteStream(
+      path.join(process.cwd(), 'logs', 'ipfs.log')
+    )
   }
 
   start = () => {
@@ -44,11 +54,27 @@ export class Go implements IIpfsStrategy {
   }
 
   private readonly updateCorsConfig = () => {
-    [
-      ['--json', 'API.HTTPHeaders.Access-Control-Allow-Origin', '["http://localhost:3000"]'],
-      ['--json', 'API.HTTPHeaders.Access-Control-Allow-Methods', '["GET", "POST"]'],
-      ['--json', 'API.HTTPHeaders.Access-Control-Allow-Headers', '["Authorization"]'],
-      ['--json', 'API.HTTPHeaders.Access-Control-Expose-Headers', '["Location"]'],
+    ;[
+      [
+        '--json',
+        'API.HTTPHeaders.Access-Control-Allow-Origin',
+        '["http://localhost:3000"]'
+      ],
+      [
+        '--json',
+        'API.HTTPHeaders.Access-Control-Allow-Methods',
+        '["GET", "POST"]'
+      ],
+      [
+        '--json',
+        'API.HTTPHeaders.Access-Control-Allow-Headers',
+        '["Authorization"]'
+      ],
+      [
+        '--json',
+        'API.HTTPHeaders.Access-Control-Expose-Headers',
+        '["Location"]'
+      ],
       ['--json', 'API.HTTPHeaders.Access-Control-Allow-Credentials', '["true"]']
     ].forEach(command => {
       spawn.sync(this.binaryPath, ['config'].concat(command))

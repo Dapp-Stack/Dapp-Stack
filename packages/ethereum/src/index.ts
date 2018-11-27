@@ -1,4 +1,9 @@
-import { build, EthereumNetwork, Maybe, Ethereum } from '@dapp-stack/environment'
+import {
+  build,
+  EthereumNetwork,
+  Maybe,
+  Ethereum
+} from '@dapp-stack/environment'
 import { Signale } from 'signale'
 
 import { Geth } from './strategies/geth'
@@ -37,16 +42,22 @@ export const console = (network: Maybe<EthereumNetwork> = false) => {
   }
 
   if (!ethereum) {
-    return signale.error('This command is only available when using the ethereum network')
+    return signale.error(
+      'This command is only available when using the ethereum network'
+    )
   }
 
   new Geth(ethereum, signale).console()
 }
 
-export const start = (network: Maybe<EthereumNetwork> = false): Promise<boolean> => {
+export const start = (
+  network: Maybe<EthereumNetwork> = false
+): Promise<boolean> => {
   return strategy(network).start()
 }
 
-export const stop = (network: Maybe<EthereumNetwork> = false): Promise<boolean> => {
+export const stop = (
+  network: Maybe<EthereumNetwork> = false
+): Promise<boolean> => {
   return strategy(network).stop()
 }

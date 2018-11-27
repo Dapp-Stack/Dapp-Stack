@@ -1,7 +1,7 @@
 import * as ethereum from '@dapp-stack/ethereum'
 import { globalError } from './shared/globalError'
 
-function consoleAsync () {
+function consoleAsync() {
   try {
     ethereum.console()
   } catch (error) {

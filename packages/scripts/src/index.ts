@@ -1,52 +1,60 @@
 import * as program from 'commander'
 
-program.command('build')
-       .description('Generate the masket key and the encrypted secrets')
-       .action(() => {
-         require('./build')
-       })
+program
+  .command('build')
+  .description('Generate the masket key and the encrypted secrets')
+  .action(() => {
+    require('./build')
+  })
 
-program.command('start')
-       .description('Start to developer with auto deploy and watchers')
-       .action(() => {
-         require('./start')
-       })
+program
+  .command('start')
+  .description('Start to developer with auto deploy and watchers')
+  .action(() => {
+    require('./start')
+  })
 
-program.command('stop')
-       .description('Stop all dapp-stack process, in case there is zombies')
-       .action(() => {
-         require('./stop')
-       })
+program
+  .command('stop')
+  .description('Stop all dapp-stack process, in case there is zombies')
+  .action(() => {
+    require('./stop')
+  })
 
-program.command('test')
-       .description('Run the contracts tests')
-       .action(() => {
-         require('./test')
-       })
+program
+  .command('test')
+  .description('Run the contracts tests')
+  .action(() => {
+    require('./test')
+  })
 
-program.command('deploy')
-       .description('Deploy the contracts and the assets')
-       .action(() => {
-         require('./deploy')
-       })
+program
+  .command('deploy')
+  .description('Deploy the contracts and the assets')
+  .action(() => {
+    require('./deploy')
+  })
 
-program.command('security')
-       .description('Run security check on the contracts (require docker)')
-       .action(() => {
-         require('./security')
-       })
+program
+  .command('security')
+  .description('Run security check on the contracts (require docker)')
+  .action(() => {
+    require('./security')
+  })
 
-program.command('clean')
-       .description('Remove all dapp stack temporary directories')
-       .action(() => {
-         require('./clean')
-       })
+program
+  .command('clean')
+  .description('Remove all dapp stack temporary directories')
+  .action(() => {
+    require('./clean')
+  })
 
-program.command('console')
-       .description('Start a geth console')
-       .action(() => {
-         require('./console')
-       })
+program
+  .command('console')
+  .description('Start a geth console')
+  .action(() => {
+    require('./console')
+  })
 
 program.parse(process.argv)
 

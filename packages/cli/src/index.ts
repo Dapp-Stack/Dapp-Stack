@@ -40,7 +40,7 @@ const compiled = ejs.render(local, { webFramework: false })
 fs.writeFileSync(path.join(environmentsDest, 'local.js'), compiled)
 fs.unlinkSync(filename)
 
-let packageData;
+let packageData
 if (fs.existsSync(packageDest)) {
   packageData = fs.readJSONSync(packageDest)
   packageData.scripts = packageData.scripts || {}
@@ -87,7 +87,9 @@ if (fs.existsSync(createReactAppIndex)) {
 }
 
 signale.success('Congratulations, your Dapp has been generated.')
-signale.success('First, install the dependencies using npm install or yarn install')
+signale.success(
+  'First, install the dependencies using npm install or yarn install'
+)
 signale.success('')
 signale.success('Then if you use yarn you can use the following commands:')
 signale.success('     yarn das start    Start the Dapp in development mode')
@@ -97,4 +99,6 @@ signale.success('If you use npm you can use the following commands:')
 signale.success('     npm run das start    Start Dapp in development mode')
 signale.success('     npm run das build    Build the Dapp')
 signale.success('')
-signale.success('You can also find more commands and documentation at https://github.com/Dapp-Stack/Dapp-Stack')
+signale.success(
+  'You can also find more commands and documentation at https://github.com/Dapp-Stack/Dapp-Stack'
+)

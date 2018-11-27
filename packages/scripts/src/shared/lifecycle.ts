@@ -3,7 +3,9 @@ import * as ipfs from '@dapp-stack/ipfs'
 import * as web from '@dapp-stack/web'
 import * as test from '@dapp-stack/test'
 
-export async function stopAsync ({ shouldExit }: { shouldExit: boolean } = { shouldExit: false }) {
+export async function stopAsync(
+  { shouldExit }: { shouldExit: boolean } = { shouldExit: false }
+) {
   await ethereum.stop()
   await ipfs.stop()
   test.cleanCoverage()
@@ -14,7 +16,7 @@ export async function stopAsync ({ shouldExit }: { shouldExit: boolean } = { sho
   }
 }
 
-export function after () {
+export function after() {
   process.stdin.resume()
 
   process.on('SIGTERM', stopAsync.bind(null, { shouldExit: true }))

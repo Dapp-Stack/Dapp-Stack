@@ -7,7 +7,7 @@ export class Infura implements IEthereumStrategy {
   private readonly config: Ethereum
   private readonly signale: Signale
 
-  constructor (config: Ethereum, signale: Signale) {
+  constructor(config: Ethereum, signale: Signale) {
     this.config = config
     this.signale = signale
   }

@@ -10,6 +10,8 @@ export const run = (contracts: Maybe<string[]> = false): Promise<boolean> => {
     contracts = build().compile.contracts
   }
 
-  const solcContracts = contracts.filter(contractName => contractName.endsWith('.sol'))
+  const solcContracts = contracts.filter(contractName =>
+    contractName.endsWith('.sol')
+  )
   return new Solc(solcContracts, signale).compile()
 }

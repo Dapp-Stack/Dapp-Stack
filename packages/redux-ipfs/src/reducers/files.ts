@@ -5,10 +5,10 @@ import { files, FilesAction } from '../actions'
 import { File } from '../types'
 
 type State = {
-  root: string;
-  list: File[];
-  content: string;
-  error: Error | null;
+  root: string
+  list: File[]
+  content: string
+  error: Error | null
 }
 
 const defaultState: State = {
@@ -18,7 +18,7 @@ const defaultState: State = {
   error: null
 }
 
-export default function (state: State = defaultState, action: FilesAction) {
+export default function(state: State = defaultState, action: FilesAction) {
   switch (action.type) {
     case getType(files.cwd):
       return {

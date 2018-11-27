@@ -1,4 +1,9 @@
-import { build as buildEnv, WebFramework, WebDeploy, Maybe } from '@dapp-stack/environment'
+import {
+  build as buildEnv,
+  WebFramework,
+  WebDeploy,
+  Maybe
+} from '@dapp-stack/environment'
 import { Signale } from 'signale'
 
 import { IWebFrameworkStrategy, IWebDeployStrategy } from './types'
@@ -8,7 +13,9 @@ import { Ipfs } from './strategies/ipfs'
 
 const signale = new Signale({ scope: 'Web' })
 
-const frameworkStrategy = (strategy: Maybe<WebFramework>): IWebFrameworkStrategy => {
+const frameworkStrategy = (
+  strategy: Maybe<WebFramework>
+): IWebFrameworkStrategy => {
   const framework = strategy || buildEnv().web.framework
   if (!framework) return new Null()
 

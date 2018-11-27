@@ -4,7 +4,9 @@ import { Signale } from 'signale'
 
 const signale = new Signale({ scope: 'Connection' })
 
-export const connect = (network: EthereumNetwork): ethers.providers.JsonRpcProvider => {
+export const connect = (
+  network: EthereumNetwork
+): ethers.providers.JsonRpcProvider => {
   const provider = getProvider(network)
   checkConnection(provider)
 

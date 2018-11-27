@@ -35,6 +35,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "tslint-config-prettier": "^1.17.0",
     "tslint-config-standard": "^8.0.1"
   }
 }

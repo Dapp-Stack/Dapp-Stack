@@ -2,7 +2,12 @@
 import * as _ from 'lodash'
 
 import { logger } from './logger'
-import { Dependencies, findPackages, Package, PackageJSON } from './packageHelper'
+import {
+  Dependencies,
+  findPackages,
+  Package,
+  PackageJSON
+} from './packageHelper'
 
 interface Versions {
   [packageName: string]: string
@@ -11,14 +16,14 @@ interface VersionsByDependency {
   [depName: string]: Versions
 }
 
-function flatDependencies (packageJson: PackageJSON): Dependencies {
+function flatDependencies(packageJson: PackageJSON): Dependencies {
   return {
     ...packageJson.dependencies,
     ...packageJson.devDependencies
   }
 }
 
-function loadVersionsByDependency (): VersionsByDependency {
+function loadVersionsByDependency(): VersionsByDependency {
   const versionsByDependency: VersionsByDependency = {}
 
   findPackages().map((pkg: Package) => {
@@ -35,7 +40,7 @@ function loadVersionsByDependency (): VersionsByDependency {
   return versionsByDependency
 }
 
-function print (versions: Versions, name: string): void {
+function print(versions: Versions, name: string): void {
   if (_.uniq(_.values(versions)).length === 1) {
     return
   }
@@ -45,7 +50,7 @@ function print (versions: Versions, name: string): void {
   })
 }
 
-export function checkDependenciesVersions (): void {
+export function checkDependenciesVersions(): void {
   const versionsByDependency = loadVersionsByDependency()
   _.each(versionsByDependency, print)
 }

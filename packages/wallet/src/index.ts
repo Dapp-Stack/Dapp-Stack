@@ -15,8 +15,10 @@ export interface WalletEnhanced {
   balance: ethers.utils.BigNumber
 }
 
-export const generateWallet = async (network: Maybe<EthereumNetwork> = false,
-                                     mnemonic?: string): Promise<WalletEnhanced> => {
+export const generateWallet = async (
+  network: Maybe<EthereumNetwork> = false,
+  mnemonic?: string
+): Promise<WalletEnhanced> => {
   if (!network || !mnemonic) {
     const ethereum = build().ethereum
     if (!ethereum) {
@@ -40,7 +42,9 @@ export const generateWallet = async (network: Maybe<EthereumNetwork> = false,
   return { provider, balance: new ethers.utils.BigNumber(0) }
 }
 
-const devWallet = async (provider: ethers.providers.JsonRpcProvider): Promise<WalletEnhanced> => {
+const devWallet = async (
+  provider: ethers.providers.JsonRpcProvider
+): Promise<WalletEnhanced> => {
   const addresses = await provider.listAccounts()
   const address = addresses[0]
   const balance = await provider.getBalance(address)
@@ -66,7 +70,10 @@ const getPrivateKey = () => {
   return keythereum.recover('', keyObject).toString('hex')
 }
 
-const mnemonicWallet = async (mnemonic: string, provider: ethers.providers.JsonRpcProvider): Promise<WalletEnhanced> => {
+const mnemonicWallet = async (
+  mnemonic: string,
+  provider: ethers.providers.JsonRpcProvider
+): Promise<WalletEnhanced> => {
   const wallet = ethers.Wallet.fromMnemonic(mnemonic).connect(provider)
   const balance = await wallet.getBalance()
 

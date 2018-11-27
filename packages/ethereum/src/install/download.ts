@@ -30,7 +30,11 @@ export const download = (): Promise<DownloadResult> => {
     const unpack = (stream: request.Response) => {
       return stream.pipe(gunzip()).pipe(
         tarFS.extract(installPath).on('finish', () => {
-          fs.moveSync(path.join(installPath, folder, 'geth'), path.join(installPath, 'geth'), { overwrite: true })
+          fs.moveSync(
+            path.join(installPath, folder, 'geth'),
+            path.join(installPath, 'geth'),
+            { overwrite: true }
+          )
           done()
         })
       )
@@ -54,7 +58,11 @@ export const download = (): Promise<DownloadResult> => {
         }
 
         if (isWindows) {
-          fs.moveSync(path.join(installPath, filename), path.join(installPath, 'geth.exe'), { overwrite: true })
+          fs.moveSync(
+            path.join(installPath, filename),
+            path.join(installPath, 'geth.exe'),
+            { overwrite: true }
+          )
           return done()
         }
         unpack(response)

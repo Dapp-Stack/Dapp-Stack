@@ -50,7 +50,11 @@ const decrypt = () => {
   const password = getPassword()
   const text = getText()
   const [iv, encryptedText] = text.split(':')
-  const decipher = crypto.createDecipheriv(ALGORITHM, password, Buffer.from(iv, 'hex'))
+  const decipher = crypto.createDecipheriv(
+    ALGORITHM,
+    password,
+    Buffer.from(iv, 'hex')
+  )
   let dec = decipher.update(encryptedText, 'hex', 'utf8')
   dec += decipher.final('utf8')
   return dec

@@ -13,7 +13,7 @@ export interface PackageJSON {
   main?: string
   scripts?: { [command: string]: string }
   config?: {
-    additionalTsTypings?: string[];
+    additionalTsTypings?: string[]
   }
   dependencies: Dependencies
   devDependencies: Dependencies
@@ -26,8 +26,11 @@ export interface Package {
 
 const ROOT_DIR = path.join(__dirname, '../../../..')
 
-export function findPackages (): Package[] {
-  const rootPackageJsonString = fs.readFileSync(`${ROOT_DIR}/package.json`, 'utf8')
+export function findPackages(): Package[] {
+  const rootPackageJsonString = fs.readFileSync(
+    `${ROOT_DIR}/package.json`,
+    'utf8'
+  )
   const rootPackageJson = JSON.parse(rootPackageJsonString)
   const packages = []
 
@@ -37,7 +40,10 @@ export function findPackages (): Package[] {
 
     for (const subpackageName of subpackageNames) {
       const pathToPackageJson = `${ROOT_DIR}/${workspacePath}${subpackageName}`
-      const packageJsonString = fs.readFileSync(`${pathToPackageJson}/package.json`, 'utf8')
+      const packageJsonString = fs.readFileSync(
+        `${pathToPackageJson}/package.json`,
+        'utf8'
+      )
 
       packages.push({
         location: pathToPackageJson,

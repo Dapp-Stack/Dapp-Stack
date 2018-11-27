@@ -18,17 +18,17 @@ class App {
   public app: express.Application
   public routesPrv: Routes = new Routes()
 
-  constructor () {
+  constructor() {
     this.app = express()
     this.config()
     this.routesPrv.routes(this.app)
   }
 
-  start () {
+  start() {
     this.app.listen(PORT)
   }
 
-  private config (): void {
+  private config(): void {
     this.app.use(cors(corsOptions))
     this.app.use(bodyParser.json())
     this.app.use(bodyParser.urlencoded({ extended: false }))

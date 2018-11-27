@@ -33,20 +33,25 @@ const pingDocker = async () => {
   }
 }
 
-const runCheck = async function (contractName: string) {
+const runCheck = async function(contractName: string) {
   if (!fs.existsSync(contractName)) {
     signale.error(`File not found: ${contractName}`)
     return
   }
 
-  const securityFile = path.join(Structure.contracts.security, contractName.replace('.sol', '.md'))
+  const securityFile = path.join(
+    Structure.contracts.security,
+    contractName.replace('.sol', '.md')
+  )
   await fs.ensureFile(securityFile)
   const stream = fs.createWriteStream(securityFile)
   const command = ['-o', 'markdown', '-x', `/solidity/src/${contractName}`]
   const options = { Binds: [`${Structure.contracts.src}:/solidity/src`] }
-  return docker.run('mythril/myth', command, stream, options).then(function (container) {
-    return container.remove()
-  })
+  return docker
+    .run('mythril/myth', command, stream, options)
+    .then(function(container) {
+      return container.remove()
+    })
 }
 
 const downloadImage = (): Promise<boolean> => {
@@ -58,7 +63,7 @@ const downloadImage = (): Promise<boolean> => {
         return reject(err)
       }
       docker.modem.followProgress(stream, onFinished)
-      function onFinished () {
+      function onFinished() {
         signale.success('Docker image downloaded')
         return resolve(true)
       }

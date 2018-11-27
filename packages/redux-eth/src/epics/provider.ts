@@ -66,7 +66,9 @@ const block: Epic<EthAction, EthAction, EthState> = (action$, state$) =>
   action$.pipe(
     filter(isActionOf(provider.request.block.request)),
     mergeMap(action =>
-      from(api.getBlock(state$.value.eth.provider.instance, action.payload)).pipe(
+      from(
+        api.getBlock(state$.value.eth.provider.instance, action.payload)
+      ).pipe(
         map(provider.request.block.success),
         catchError(error => of(provider.request.block.failure(error)))
       )
@@ -77,20 +79,27 @@ const transaction: Epic<EthAction, EthAction, EthState> = (action$, state$) =>
   action$.pipe(
     filter(isActionOf(provider.request.transaction.request)),
     mergeMap(action =>
-      from(api.getTransaction(state$.value.eth.provider.instance, action.payload)).pipe(
+      from(
+        api.getTransaction(state$.value.eth.provider.instance, action.payload)
+      ).pipe(
         map(provider.request.transaction.success),
         catchError(error => of(provider.request.transaction.failure(error)))
       )
     )
   )
 
-const transactionCount: Epic<EthAction, EthAction, EthState> = (action$, state$) =>
+const transactionCount: Epic<EthAction, EthAction, EthState> = (
+  action$,
+  state$
+) =>
   action$.pipe(
     filter(isActionOf(provider.request.transactionCount.request)),
     mergeMap(_action =>
       from(api.getTransactionCount(state$.value.eth.provider.instance)).pipe(
         map(provider.request.transactionCount.success),
-        catchError(error => of(provider.request.transactionCount.failure(error)))
+        catchError(error =>
+          of(provider.request.transactionCount.failure(error))
+        )
       )
     )
   )
@@ -124,37 +133,61 @@ const watchFindTransaction: Epic<EthAction, EthAction, EthState> = action$ =>
     map(action => provider.request.transaction.request(action.payload))
   )
 
-const watchConnectSuccessForGasPrice: Epic<EthAction, EthAction, EthState> = action$ =>
+const watchConnectSuccessForGasPrice: Epic<
+  EthAction,
+  EthAction,
+  EthState
+> = action$ =>
   action$.pipe(
     filter(isActionOf(provider.request.connect.success)),
     map(provider.request.gasPrice.request)
   )
 
-const watchConnectSuccessForNetwork: Epic<EthAction, EthAction, EthState> = action$ =>
+const watchConnectSuccessForNetwork: Epic<
+  EthAction,
+  EthAction,
+  EthState
+> = action$ =>
   action$.pipe(
     filter(isActionOf(provider.request.connect.success)),
     map(provider.request.network.request)
   )
 
-const watchConnectSuccessForAddress: Epic<EthAction, EthAction, EthState> = action$ =>
+const watchConnectSuccessForAddress: Epic<
+  EthAction,
+  EthAction,
+  EthState
+> = action$ =>
   action$.pipe(
     filter(isActionOf(provider.request.connect.success)),
     map(provider.request.address.request)
   )
 
-const watchConnectSuccessForBalance: Epic<EthAction, EthAction, EthState> = action$ =>
+const watchConnectSuccessForBalance: Epic<
+  EthAction,
+  EthAction,
+  EthState
+> = action$ =>
   action$.pipe(
     filter(isActionOf(provider.request.connect.success)),
     map(provider.request.balance.request)
   )
 
-const watchConnectSuccessForBlockNumber: Epic<EthAction, EthAction, EthState> = action$ =>
+const watchConnectSuccessForBlockNumber: Epic<
+  EthAction,
+  EthAction,
+  EthState
+> = action$ =>
   action$.pipe(
     filter(isActionOf(provider.request.connect.success)),
     map(provider.request.blockNumber.request)
   )
 
-const watchConnectSuccessForTransactionCount: Epic<EthAction, EthAction, EthState> = action$ =>
+const watchConnectSuccessForTransactionCount: Epic<
+  EthAction,
+  EthAction,
+  EthState
+> = action$ =>
   action$.pipe(
     filter(isActionOf(provider.request.connect.success)),
     map(provider.request.transactionCount.request)

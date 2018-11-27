@@ -12,7 +12,9 @@ export const runAll = (contracts: Maybe<string[]> = false) => {
     contracts = build().compile.contracts
   }
 
-  const contractFiles = contracts.map(contract => path.join(Structure.contracts.src, contract))
+  const contractFiles = contracts.map(contract =>
+    path.join(Structure.contracts.src, contract)
+  )
   contractFiles.forEach(contractFile => run(contractFile))
 }
 
@@ -22,7 +24,10 @@ export const run = async (contractFile: string) => {
     return
   }
 
-  const outFile = path.join(Structure.contracts.doc, `${path.basename(contractFile, '.sol')}.md`)
+  const outFile = path.join(
+    Structure.contracts.doc,
+    `${path.basename(contractFile, '.sol')}.md`
+  )
   await fs.ensureFile(outFile)
 
   let filesTable = `
@@ -43,7 +48,7 @@ export const run = async (contractFile: string) => {
   const ast = parser.parse(content, {})
 
   parser.visit(ast, {
-    ContractDefinition (node) {
+    ContractDefinition(node) {
       const name = node.name
       const bases = node.baseContracts
         .map(spec => {
@@ -65,7 +70,7 @@ export const run = async (contractFile: string) => {
 `
     },
 
-    FunctionDefinition (node) {
+    FunctionDefinition(node) {
       let name
 
       if (node.isConstructor) {
@@ -100,12 +105,12 @@ export const run = async (contractFile: string) => {
       contractsTable += `| └ | ${name} | ${spec} | ${mutating} ${payable} |`
     },
 
-    'FunctionDefinition:exit' (node) {
+    'FunctionDefinition:exit'(node) {
       contractsTable += ` |
 `
     },
 
-    ModifierInvocation (node) {
+    ModifierInvocation(node) {
       contractsTable += ` ${node.name}`
     }
   })

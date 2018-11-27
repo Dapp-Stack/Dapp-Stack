@@ -11,7 +11,9 @@ const loadContracts: Epic<EthAction, EthAction, EthState> = (action$, state$) =>
   action$.pipe(
     filter(isActionOf(contracts.request.contracts.request)),
     switchMap(action =>
-      from(api.getContracts(state$.value.eth.provider.instance, action.payload)).pipe(
+      from(
+        api.getContracts(state$.value.eth.provider.instance, action.payload)
+      ).pipe(
         map(contracts.request.contracts.success),
         catchError(map(contracts.request.contracts.failure))
       )

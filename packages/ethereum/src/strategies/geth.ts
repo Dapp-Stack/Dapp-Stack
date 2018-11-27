@@ -16,14 +16,16 @@ export class Geth implements IEthereumStrategy {
   private readonly dataDir: string
   private readonly logStream: fs.WriteStream
 
-  constructor (config: Ethereum, signale: Signale) {
+  constructor(config: Ethereum, signale: Signale) {
     this.config = config
     this.signale = signale
     this.binaryPath = path.resolve(__dirname, '..', '..', '..', 'bin', 'geth')
     this.dataDir = path.join(process.cwd(), '.geth')
     fs.ensureDirSync(this.dataDir)
     fs.ensureDirSync(path.join(process.cwd(), 'logs'))
-    this.logStream = fs.createWriteStream(path.join(process.cwd(), 'logs', 'geth.log'))
+    this.logStream = fs.createWriteStream(
+      path.join(process.cwd(), 'logs', 'geth.log')
+    )
   }
 
   start = () => {
@@ -53,10 +55,13 @@ export class Geth implements IEthereumStrategy {
         attachTo = 'http://127.0.0.1:8545'
         break
       default:
-        attachTo = `https://${this.config.network}.infura.io/${this.config.apiKey || ''}`
+        attachTo = `https://${this.config.network}.infura.io/${this.config
+          .apiKey || ''}`
     }
 
-    spawn.sync(this.binaryPath, ['attach', attachTo], { stdio: [process.stdin, process.stdout, process.stderr] })
+    spawn.sync(this.binaryPath, ['attach', attachTo], {
+      stdio: [process.stdin, process.stdout, process.stderr]
+    })
   }
 
   private readonly command = (): string[] => {

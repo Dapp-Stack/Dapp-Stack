@@ -4,24 +4,29 @@ import { provider, ProviderAction } from '../actions'
 import { request } from 'https'
 
 type ProviderState = {
-  instance?: ethers.providers.Web3Provider;
-  network?: ethers.utils.Network;
-  string?: number;
-  address?: string;
-  transactionCount?: number;
-  blockNumber?: number;
-  blocks: ethers.providers.Block[];
-  transactions: ethers.providers.TransactionResponse[];
+  instance?: ethers.providers.Web3Provider
+  network?: ethers.utils.Network
+  string?: number
+  address?: string
+  transactionCount?: number
+  blockNumber?: number
+  blocks: ethers.providers.Block[]
+  transactions: ethers.providers.TransactionResponse[]
   errors: {
-    [event: string]: Error | null;
-  };
+    [event: string]: Error | null
+  }
   loading: {
-    [event: string]: boolean;
-  };
+    [event: string]: boolean
+  }
 }
 
 export default (
-  state: ProviderState = { blocks: [], transactions: [], errors: {}, loading: {} },
+  state: ProviderState = {
+    blocks: [],
+    transactions: [],
+    errors: {},
+    loading: {}
+  },
   action: ProviderAction
 ) => {
   const [_base, event, _type] = action.type.split('/').map(s => s.toLowerCase())
@@ -103,7 +108,10 @@ export default (
       }
     case getType(provider.request.block.success):
       const blocks = [...state.blocks, action.payload]
-        .filter((value, index, self) => index === self.findIndex(b => b.number === value.number))
+        .filter(
+          (value, index, self) =>
+            index === self.findIndex(b => b.number === value.number)
+        )
         .sort((a, b) => b.number - a.number)
       return {
         ...state,
@@ -113,7 +121,8 @@ export default (
       }
     case getType(provider.request.transaction.success):
       const transactions = [...state.transactions, action.payload].filter(
-        (value, index, self) => index === self.findIndex(t => t.hash === value.hash)
+        (value, index, self) =>
+          index === self.findIndex(t => t.hash === value.hash)
       )
       return {
         ...state,
