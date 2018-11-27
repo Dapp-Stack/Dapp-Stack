@@ -6,6 +6,10 @@ import { Routes } from './routes'
 
 const PORT = 55555
 
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://dev-tools.dapp-stack.org']
+}
+
 export const start = () => {
   new App().start()
 }
@@ -25,7 +29,7 @@ class App {
   }
 
   private config (): void {
-    this.app.use(cors())
+    this.app.use(cors(corsOptions))
     this.app.use(bodyParser.json())
     this.app.use(bodyParser.urlencoded({ extended: false }))
   }
