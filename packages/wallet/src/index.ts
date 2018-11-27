@@ -45,11 +45,16 @@ const devWallet = async (provider: ethers.providers.JsonRpcProvider): Promise<Wa
   const address = addresses[0]
   const balance = await provider.getBalance(address)
   const signer = provider.getSigner()
-  const privateKey = getPrivateKey()
+
   signale.success('Dev Wallet:')
   signale.success(`Address: ${address}`)
   signale.success(`Balance: ${ethers.utils.formatEther(balance)} Eth`)
-  signale.success(`Private key: ${privateKey}`)
+
+  if (process.env.DAPP_ENV !== 'test') {
+    const privateKey = getPrivateKey()
+    signale.success(`Private key: ${privateKey}`)
+  }
+
   return { provider, address, balance, signer }
 }
 

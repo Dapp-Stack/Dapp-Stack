@@ -37,7 +37,7 @@ const schema = {
   type: 'object',
   properties: {
     ethereum: {
-      type: 'object',
+      type: ['object', 'boolean'],
       properties: {
         network: {
           type: 'string',
@@ -60,12 +60,12 @@ const schema = {
       type: 'object',
       properties: {
         framework: {
-          type: 'string',
-          enum: ['react', 'angular', 'vue', 'test']
+          type: ['string', 'boolean'],
+          enum: ['react', 'angular', 'vue', 'test', false]
         },
         deploy: {
-          type: 'string',
-          enum: ['ipfs']
+          type: ['string', 'boolean'],
+          enum: ['ipfs', false]
         }
       },
       required: ['framework', 'deploy']

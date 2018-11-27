@@ -41,12 +41,11 @@ export class EthererumDeployer {
     this.tracker = new Tracker(this.network, this.webConfig)
   }
 
-  async run (extraMigrate: (deployer: EthererumDeployer) => Promise<void>) {
+  async run () {
     try {
       this.signale.await('Starting to deploy ethererum contracts by running migrate...')
       this.tracker.reset()
       await this.config.migrate(this)
-      await extraMigrate(this)
       this.signale.success('Ethererum contracts have been deployed')
     } catch (error) {
       this.signale.error(error)

@@ -5,10 +5,7 @@ import { Signale } from 'signale'
 
 const signale = new Signale({ scope: 'Deployer' })
 
-const DEFAULT_MIGRATE = () => { return new Promise<void>(resolve => resolve()) }
-
-export const run = async (extraMigrate: (deployer: EthererumDeployer) => Promise<void> = DEFAULT_MIGRATE,
-                          ethereum: Maybe<Ethereum> = false,
+export const run = async (ethereum: Maybe<Ethereum> = false,
                           web: Maybe<Web> = false) => {
   if (!ethereum || !web) {
     const environment = build()
@@ -29,5 +26,5 @@ export const run = async (extraMigrate: (deployer: EthererumDeployer) => Promise
 
   const deployer = new EthererumDeployer(ethereum, web, wallet.signer)
   await deployer.initialize()
-  await deployer.run(extraMigrate)
+  await deployer.run()
 }
