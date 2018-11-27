@@ -16,6 +16,7 @@ const soliumrcDest = path.join(process.cwd(), '.soliumrc.json')
 const packageDest = path.join(process.cwd(), 'package.json')
 const readmeDest = path.join(process.cwd(), 'README.md')
 const gitignoreDest = path.join(process.cwd(), '.gitignore')
+const createReactAppIndex = path.join(process.cwd(), 'public', 'index.html')
 
 if (
   fs.existsSync(contractsDest) ||
@@ -39,9 +40,9 @@ const compiled = ejs.render(local, { webFramework: false })
 fs.writeFileSync(path.join(environmentsDest, 'local.js'), compiled)
 fs.unlinkSync(filename)
 
-let packageData = {}
+let packageData;
 if (fs.existsSync(packageDest)) {
-  const packageData = fs.readJSONSync(packageDest)
+  packageData = fs.readJSONSync(packageDest)
   packageData.scripts = packageData.scripts || {}
 
   packageData.scripts.das = 'dapp-stack-scripts'
@@ -53,7 +54,7 @@ if (fs.existsSync(packageDest)) {
   packageData.devDependencies['@dapp-stack/secrets'] = '^0.1.0'
   packageData.devDependencies.solium = '^1.1.8'
 } else {
-  const packageData = {
+  packageData = {
     name: path.basename(process.cwd()),
     version: '0.1.0',
     scripts: {
@@ -79,6 +80,10 @@ if (fs.existsSync(gitignoreDest)) {
   fs.appendFileSync(gitignoreDest, data)
 } else {
   fs.copySync(path.join(base, 'gitignore'), gitignoreDest)
+}
+
+if (fs.existsSync(createReactAppIndex)) {
+  fs.copySync(path.join(base, 'create-react-app.html'), createReactAppIndex)
 }
 
 signale.success('Congratulations, your Dapp has been generated.')

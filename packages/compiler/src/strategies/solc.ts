@@ -88,11 +88,19 @@ export class Solc implements ICompileStrategy {
 
   compile = () => {
     this.signale.await('Starting to compile the contracts')
-    return new Promise<boolean>((resolve, reject) => {
+    return new Promise<boolean>((resolve) => {
       const output: CompilationOutput = JSON.parse(solc.compile(this.input(), this.findImports))
-      if (output.errors && output.errors.filter(error => error.severity === 'Warning').length > 0) {
-        this.signale.error('Compilation failed ', output.errors)
-        return reject()
+
+      if (output.errors) {
+        const hasError = output.errors.filter(error => error.severity === 'error').length > 0
+        if (hasError) {
+          this.signale.error('Compilation failed:')
+          this.signale.error(output.errors)
+          return resolve(false)
+        } else {
+          this.signale.error('Compiled with warning:')
+          this.signale.error(output.errors)
+        }
       }
 
       forEach(output.contracts, (compilationResult, contractFile) => {
