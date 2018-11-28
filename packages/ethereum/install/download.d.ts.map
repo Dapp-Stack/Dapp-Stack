@@ -1,1 +1,1 @@
-{"version":3,"file":"download.d.ts","sourceRoot":"","sources":["../../../src/install/download.ts"],"names":[],"mappings":"AASA,aAAK,cAAc,GAAG;IAAE,QAAQ,EAAE,MAAM,CAAC;IAAC,WAAW,EAAE,MAAM,CAAA;CAAE,CAAA;AAE/D,eAAO,MAAM,QAAQ,+BAmDpB,CAAA"}
+{"version":3,"file":"download.d.ts","sourceRoot":"","sources":["../../../src/install/download.ts"],"names":[],"mappings":"AASA,aAAK,cAAc,GAAG;IAAE,QAAQ,EAAE,MAAM,CAAC;IAAC,WAAW,EAAE,MAAM,CAAA;CAAE,CAAA;AAE/D,eAAO,MAAM,QAAQ,+BA2DpB,CAAA"}

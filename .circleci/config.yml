@@ -24,5 +24,6 @@ jobs:
 
       - run: yarn lint
       - run: yarn build
+      - run: bash ./scripts/e2e.sh
 
 
