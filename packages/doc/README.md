@@ -14,12 +14,14 @@ npm install @dapp-stack/doc
 
 ## Usage
 
-Expected directories:
-* contracts
-* * src
-* * doc
+Required directories:
+```
+my-app
+└── contracts
+    └── src
+```
 
-### Passing contracts as arguments
+The ouput will be in `my-app/contracts/doc`
 
 ```js
 import * as doc from "@dapp-stack/doc";
@@ -29,17 +31,14 @@ doc.runAll(["SimpleStorage.sol"])
 doc.run("/code/simple-react/contracts/src/SimpleStorage.sol")
 ```
 
-### With environment file
+If you call the function `doc.runAll` without any arguments,
+we will try to fetch the list contracts to compile from
+the environment file at:
 
-We will read the contracts array from the environment file.
+`environments/[DAPP_ENV].js`
+
 See: [Environment](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/environment)
-for more details about it.
-
-```js
-import * as doc from "@dapp-stack/doc";
-
-doc.runAll()
-```
+for more detail.
 
 ## Example of output
 

@@ -2,8 +2,6 @@
 
 Create dapp with no configuration
 
-- [Creating a dApp](#creating-an-dapp) – How to create a new dapp.
-
 Dapp Stack works on macOS, Windows, and Linux.<br>
 If something doesn’t work, please [file an issue](https://github.com/Dapp-Stack/Dapp-Stack/issues/new?template=bug_report.md).
 

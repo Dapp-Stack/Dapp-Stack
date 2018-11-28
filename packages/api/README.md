@@ -25,7 +25,7 @@ api.start()
 
 * `GET /ping`
 
-It will just return `204` http status code if started.
+It will return a `204` http status code if started.
 
 * `GET /tracker`
 

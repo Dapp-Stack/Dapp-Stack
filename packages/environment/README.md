@@ -14,11 +14,16 @@ npm install @dapp-stack/environment
 
 ## Usage
 
-Expected directories:
-* environments
-* * local.js
-* * test.js
-* * rinkeby.js
+Example of directory structure:
+
+```
+my-app
+├── environments
+    ├── local.js
+    ├── rinkeby.js
+    ├── mainnet.js
+    └── test.js
+```
 
 ```js
 import * as env from "@dapp-stack/environment";

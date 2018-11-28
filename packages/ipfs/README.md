@@ -17,6 +17,15 @@ npm install @dapp-stack/ipfs
 ```js
 import * as ipfs from "@dapp-stack/ipfs";
 
-ipfs.start()
-ipfs.stop()
+ipfs.start(true)
+ipfs.stop(true)
 ```
+
+If you call the function `ipfs.start` or `ipfs.stop`
+without any arguments, we will try to fetch the network from the environment file
+at:
+
+`environments/[DAPP_ENV].js`
+
+See: [Environment](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/environment)
+for more detail.

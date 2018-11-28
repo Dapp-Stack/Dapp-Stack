@@ -17,12 +17,14 @@ npm install @dapp-stack/security
 
 ## Usage
 
-Expected directories:
-* contracts
-* * src
-* * security
+Required directories:
+```
+my-app
+└── contracts
+    └── src
+```
 
-### Passing contracts as arguments
+The ouput will be in `my-app/contracts/security`
 
 ```js
 import * as security from "@dapp-stack/security";
@@ -30,14 +32,11 @@ import * as security from "@dapp-stack/security";
 security.run(["SimpleStorage.sol"])
 ```
 
-### With environment file
+If you call the function `security.run`
+without any arguments, we will try to fetch the contracts from the environment file
+at:
 
-We will read the contracts array from the environment file.
+`environments/[DAPP_ENV].js`
+
 See: [Environment](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/environment)
-for more details about it.
-
-```js
-import * as security from "@dapp-stack/security";
-
-security.run()
-```
+for more detail.
