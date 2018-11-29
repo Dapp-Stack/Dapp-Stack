@@ -19,12 +19,12 @@ npm install @dapp-stack/security
 
 Required directories:
 ```
-my-app
+my-dapp
 └── contracts
     └── src
 ```
 
-The ouput will be in `my-app/contracts/security`
+The  output will be in `my-dapp/contracts/security`
 
 ```js
 import * as security from "@dapp-stack/security";

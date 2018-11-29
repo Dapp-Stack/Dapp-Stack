@@ -31,12 +31,12 @@ function RequireLoginComponentHOC(WrappedComponent) {
               <Card className={styles.notConnectedCard}>
                 <Card.Body>
                   <ZeroState
-                    title={'Connect to use Dapp Stack Dev Tools.'}
+                    title={'Connect to use DApp Stack Dev Tools.'}
                     iconColor="blue"
                     icon={faSignInAlt}
                   >
                     <ZeroState.BodyText>
-                      In order to use Dapp Stack Dev tools, you need to be
+                      In order to use DApp Stack Dev tools, you need to be
                       connected to Ethereum network. In order to do so,
                       you can install metamask or use mist browser.
                     </ZeroState.BodyText>
@@ -55,7 +55,7 @@ function RequireLoginComponentHOC(WrappedComponent) {
               <Card className={styles.notConnectedCard}>
                 <Card.Body>
                   <ZeroState
-                    title={'Unlock your account to use Dapp Stack Dev Tools.'}
+                    title={'Unlock your account to use DApp Stack Dev Tools.'}
                     action
                     actionText={'Unlock'}
                     iconColor="blue"

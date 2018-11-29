@@ -1,6 +1,6 @@
 # `@dapp-stack/connect`
 
-This package allows to connect to ethereum network
+This package allows to connect to ethereum network.
 
 ## Installation
 
@@ -21,6 +21,7 @@ const provider = connect("homestead")
 ```
 
 The network argument can be one of the following:
+
 - `homestead`
 - `rinkeby`
 - `ropsten`

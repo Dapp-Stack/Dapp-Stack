@@ -83,6 +83,7 @@ type State = {
 ## Actions
 
 Actions name follow UNIX style:
+
 * `provider.start`: Initialize metadata from the network
 * `provider.findTransaction`: Find a transaction by hash
 * `provider.findBlock`: Find a block by number
@@ -99,4 +100,4 @@ connect(
 )(YourComponent);
 ```
 
-You can also see a detailed usage of the packate in our [dev-tools](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/apps/dev-tools)
+You can also see a detailed usage of the package in our [dev-tools](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/apps/dev-tools)

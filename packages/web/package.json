@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Web connector of Dapp Stack, wrapper for Create React App, Vue CLI and Angular",
+  "description": "Web connector of DApp Stack, wrapper for Create React App, Vue CLI and Angular",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
@@ -23,7 +23,7 @@
   },
   "keywords": [
     "web3",
-    "Dapp Stack",
+    "DApp Stack",
     "typescript",
     "ts",
     "Create react app",

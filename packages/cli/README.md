@@ -2,14 +2,15 @@
 
 Create dapp with no configuration
 
-Dapp Stack works on macOS, Windows, and Linux.<br>
+DApp Stack works on macOS, Windows, and Linux.  
+
 If something doesn’t work, please [file an issue](https://github.com/Dapp-Stack/Dapp-Stack/issues/new?template=bug_report.md).
 
 ## Quick Overview
 
 ```sh
-mkdir my-app
-cd my-app
+mkdir my-dapp
+cd my-dapp
 npx dapp-stack
 npm install
 npm run das start
@@ -19,8 +20,9 @@ _([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7
 
 ### Get Started Immediately
 
-You **don’t** need to install or configure tools like Geth or IPFS.<br>
-They are preconfigured and hidden so that you can focus on the code.
+You **don’t** need to install or configure tools like Geth or IPFS.  
+
+They are pre-configured and hidden so that you can focus on the code.
 
 Just create a project, and you’re good to go.
 
@@ -33,8 +35,8 @@ To create a new dapp, you may choose one of the following methods:
 ### npx
 
 ```sh
-mkdir my-app
-cd my-app
+mkdir my-dapp
+cd my-dapp
 npx dapp-stack
 npm install
 ```
@@ -44,8 +46,8 @@ _([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7
 ### npm
 
 ```sh
-mkdir my-app
-cd my-app
+mkdir my-dapp
+cd my-dapp
 npm init dapp-stack
 npm install
 ```
@@ -55,19 +57,20 @@ _`npm init <initializer>` is available in npm 6+_
 ### Yarn
 
 ```sh
-mkdir my-app
-cd my-app
+mkdir my-dapp
+cd my-dapp
 yarn create dapp-stack
 yarn install
 ```
 
 _`yarn create` is available in Yarn 0.25+_
 
-It will create a directory called `my-app` inside the current folder.<br>
+It will create a directory called `my-dapp` inside the current folder.  
+
 Inside that directory, it will generate the initial project structure:
 
-```
-my-app
+```sh
+my-dapp
 ├── README.md
 ├── node_modules
 ├── package.json
@@ -82,14 +85,16 @@ my-app
         └── SimpleStorageTest.js
 ```
 
-No configuration or complicated folder structures, just the files you need to build your dapp.<br>
+No configuration or complicated folder structures, just the files you need to build your dapp.  
 
 Inside the newly created project, you can run some built-in commands:
 
 ### `npm run  das start` or `yarn das start`
 
-Runs the app in development mode.<br>
+Runs the app in development mode.  
+
 
 ### `npm run  das test` or `yarn das test`
 
-Runs the test.<br>
+Runs the test.  
+

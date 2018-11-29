@@ -1,3 +1,6 @@
+
+# @dapp-stack/template
+
 This project was bootstrapped with [Dapp-Stack](https://github.com/Dapp-Stack/Dapp-Stack).
 
 ## Available Scripts

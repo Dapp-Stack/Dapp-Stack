@@ -1,6 +1,6 @@
 # `@dapp-stack/compiler`
 
-This package allows to compile your solidity contracts
+This package allows to compile your solidity contracts.
 
 ## Installation
 
@@ -15,13 +15,14 @@ npm install @dapp-stack/compiler
 ## Usage
 
 Required directories:
-```
-my-app
+
+```sh
+my-dapp
 └── contracts
     └── src
 ```
 
-The ouput will be in `my-app/contracts/build`
+The  output will be in `my-dapp/contracts/build`
 
 ```js
 import * as compiler from "@dapp-stack/compiler";

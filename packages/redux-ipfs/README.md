@@ -88,6 +88,7 @@ const defaultState: State = {
 ## Actions
 
 Actions name follow UNIX style:
+
 * `cwd`: Change directory
 * `ls`: List files
 * `rm`: Remove file
@@ -107,4 +108,4 @@ connect(
 )(YourComponent);
 ```
 
-You can also see a detailed usage of the packate in our [dev-tools](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/apps/dev-tools)
+You can also see a detailed usage of the package in our [dev-tools](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/apps/dev-tools)

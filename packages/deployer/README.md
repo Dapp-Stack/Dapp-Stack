@@ -1,6 +1,6 @@
 # `@dapp-stack/deployer`
 
-This package allows to deploy your solidity contracts
+This package allows to deploy your solidity contracts.
 
 ## Installation
 
@@ -15,8 +15,9 @@ npm install @dapp-stack/deployer
 ## Usage
 
 Required directories:
-```
-my-app
+
+```sh
+my-dapp
 └── contracts
     |── build
     └── src

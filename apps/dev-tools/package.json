@@ -5,14 +5,14 @@
     "node": ">=8.11"
   },
   "private": true,
-  "description": "Dapp Stack dev tools",
+  "description": "DApp Stack dev tools",
   "repository": {
     "type": "git",
     "url": "git://github.com:Dapp-Stack/Dapp-Stack.git"
   },
   "keywords": [
     "web3",
-    "Dapp Stack",
+    "DApp Stack",
     "react",
     "redux",
     "dev tools",
