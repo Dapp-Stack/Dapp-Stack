@@ -1,6 +1,6 @@
 # `@dapp-stack/test`
 
-Simple test runner for solidity contracts
+Simple test runner for solidity contracts.
 
 ## Installation
 
@@ -15,14 +15,15 @@ npm install @dapp-stack/test
 ## Usage
 
 Required directories:
-```
-my-app
+
+```sh
+my-dapp
 └── contracts
     |── tests
     └── src
 ```
 
-First, you will need to write a test file in `my-app/contracts/tests/`:
+First, you will need to write a test file in `my-dapp/contracts/tests/`:
 
 ```js
 const chai = require('chai');

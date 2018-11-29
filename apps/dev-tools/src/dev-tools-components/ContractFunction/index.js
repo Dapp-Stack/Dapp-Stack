@@ -17,14 +17,14 @@ const ContractFunction = (props) => {
           <Card className={styles.notStartedCard}>
             <Card.Body>
               <ZeroState
-                title={'Start a Dapp Stack Instance'}
+                title={'Start a DApp Stack Instance'}
                 type="error"
                 iconColor="red"
                 icon={faExclamationTriangle}
               >
                 <ZeroState.BodyText>
                   In order for you to show and interact with the contracts,
-                  please start a Dapp Stack instance.
+                  please start a DApp Stack instance.
                 </ZeroState.BodyText>
               </ZeroState>
             </Card.Body>

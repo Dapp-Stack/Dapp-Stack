@@ -21,7 +21,7 @@ const Files = (props) => {
                 type="error"
                 icon={faExclamationTriangle}
                 iconColor="red"
-                text={`Dapp Stack Dev Tools could not connect to your local IPFS instance, make sure it is running on http://localhost:5001`}
+                text={`DApp Stack Dev Tools could not connect to your local IPFS instance, make sure it is running on http://localhost:5001`}
               />
             </Card.Body>
           </Card>

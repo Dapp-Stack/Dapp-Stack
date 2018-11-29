@@ -1,6 +1,6 @@
 # `@dapp-stack/doc`
 
-This package allows you generate markdown documentation for your solidity contracts
+This package allows you to generate markdown documentation for your solidity contracts.
 
 ## Installation
 
@@ -15,13 +15,14 @@ npm install @dapp-stack/doc
 ## Usage
 
 Required directories:
-```
-my-app
+
+```sh
+my-dapp
 └── contracts
     └── src
 ```
 
-The ouput will be in `my-app/contracts/doc`
+The  output will be in `my-dapp/contracts/doc`
 
 ```js
 import * as doc from "@dapp-stack/doc";

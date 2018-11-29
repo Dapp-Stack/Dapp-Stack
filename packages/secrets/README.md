@@ -44,7 +44,7 @@ dapp-stack-secrets edit
 dapp-stack-secrets show
 ```
 
-## Access the secrets programatically
+## Access the secrets programmatically
 
 ```sh
 const secrets = require("@dapp-stack/secrets");

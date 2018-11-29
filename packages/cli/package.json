@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Dapp Stack CLI, generate a new project",
+  "description": "DApp Stack CLI, generate a new project",
   "bin": {
     "dapp-stack": "bin/index.js"
   },
@@ -28,7 +28,7 @@
   },
   "keywords": [
     "web3",
-    "Dapp Stack",
+    "DApp Stack",
     "typescript",
     "ts",
     "cli",

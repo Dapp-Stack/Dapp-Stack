@@ -5,7 +5,7 @@
   "engines": {
     "node": ">=8.11"
   },
-  "description": "Lint rules related to Dapp Stack for TSLint",
+  "description": "Lint rules related to DApp Stack for TSLint",
   "main": "tslint.json",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "keywords": [
     "tslint",
     "config",
-    "Dapp Stack",
+    "DApp Stack",
     "typescript",
     "ts"
   ],

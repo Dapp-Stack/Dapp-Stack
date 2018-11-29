@@ -16,8 +16,8 @@ npm install @dapp-stack/environment
 
 Example of directory structure:
 
-```
-my-app
+```sh
+my-dapp
 ├── environments
     ├── local.js
     ├── rinkeby.js
@@ -37,6 +37,7 @@ The name of the file that is read come from the environment variable:
 If not set, `local` will be used.
 
 If empty, the environment returned will be:
+
 ```js
 const defaultEnvironment = {
   ethereum: {

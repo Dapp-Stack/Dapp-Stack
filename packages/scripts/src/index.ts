@@ -44,7 +44,7 @@ program
 
 program
   .command('clean')
-  .description('Remove all dapp stack temporary directories')
+  .description('Remove all DApp Stack temporary directories')
   .action(() => {
     require('./clean')
   })

@@ -21,6 +21,7 @@ wallet.generateWallet("roptsten", "fault jeans unknown rain cherry cheese luggag
 ```
 
 The network argument can be one of the following:
+
 - `homestead`
 - `rinkeby`
 - `ropsten`
@@ -33,7 +34,7 @@ If `dev` or `external` it will try to connect using:
 
 otherwise we will use infura.
 
-The second paramter which is optional is the mnemonic.
+The second parameter which is optional is the mnemonic.
 
 In case of `dev` network, we will return a wallet with ether in it,
 you don't need to pass a mnemonic. This is only needed in case of public network.

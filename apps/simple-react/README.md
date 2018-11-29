@@ -13,4 +13,4 @@ npm dapp-stack
 yarn install
 ```
 
-edit `environments/local.js` and update web framwork to `react`
+edit `environments/local.js` and update web framework to `react`

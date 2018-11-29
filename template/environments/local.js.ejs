@@ -27,7 +27,7 @@ module.exports = {
     // Make sure it is funded.
     // mnemonic: decryptedSecrets.rinkeby.mnemonic,
 
-    // Function executed by Dapp Stack to deploy the contracts.
+    // Function executed by DApp Stack to deploy the contracts.
     migrate: async (deployer) => {
       await deployer.ens.bootstrapWith('simple', 'eth');
       await deployer.erc20.bootstrap();
