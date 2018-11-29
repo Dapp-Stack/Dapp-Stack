@@ -63,6 +63,17 @@ This example will create a simple DApp with a very simple contract and start the
 
 You'll notice that you didn't have to download any third parties like geth or ganache. We do everything for you.
 
+## Roadmap for V1.0.0
+
+Those are the minimum requirements before releasing the v1.0.0:
+
+* [ ] Support [vue.js](https://vuejs.org)
+* [ ] Support [angular](https://angular.io)
+* [ ] Support [next.js](https://nextjs.org)
+* [ ] Debugger
+* [ ] Code coverage
+* [ ] Vyper
+
 ## Contributing
 
 The main purpose of this repository is to continue to evolve DApp Stack core, making it faster and easier to use. Development of DApp Stack happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving DApp Stack.
