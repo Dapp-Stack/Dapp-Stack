@@ -1,6 +1,5 @@
 import {Link} from 'gatsby';
 import React from 'react';
-import ExternalLinkSvg from 'templates/components/ExternalLinkSvg';
 import slugify from 'utils/slugify';
 import {colors, media} from 'theme';
 
