@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "cross-spawn": "^6.0.5",
-    "go-ipfs": "^0.4.17"
+    "go-ipfs": "0.4.17"
   },
   "publishConfig": {
     "access": "public"
