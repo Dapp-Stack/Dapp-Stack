@@ -46,7 +46,7 @@ const defaultEnvironment = {
   },
   ipfs: false,
   web: {
-    framework: 'react',
+    framework: 'create-react-app',
     deploy: 'ipfs'
   },
   compile: {

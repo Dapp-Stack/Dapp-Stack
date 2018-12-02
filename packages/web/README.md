@@ -17,13 +17,13 @@ npm install @dapp-stack/web
 ```js
 import * as web from "@dapp-stack/web";
 
-web.start("react")
-web.build("react")
-web.stop("react")
-web.deploy("ipfs")
+web.start("create-react-react")
+web.build("create-react-react")
+web.stop("create-react-react")
+web.deploy("create-react-react")
 ```
 
-Currently the only web framework supported is `react`.
+Currently the only web framework supported is `create-react-react`.
 It will delegate all the call to (create-react-app)[https://github.com/facebook/create-react-app]
 
 The only deploy strategy supported is `ipfs`

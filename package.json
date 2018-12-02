@@ -7,13 +7,16 @@
   "scripts": {
     "wsrun": "wsrun",
     "lerna": "lerna",
+    "prettier": "prettier",
     "build": "wsrun build $PKG -r --stages --exclude-missing",
     "clean": "wsrun clean $PKG -r --parallel --exclude-missing",
     "rebuild": "run-s clean build",
     "lint": "wsrun lint $PKG --stages --exclude-missing",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "doc": "wsrun doc $PKG -r --parallel --exclude-missing",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "netlify:dapp-stack.org": "cd apps/dapp-stack.org; yarn netflify",
+    "netlify:dev-tools": "cd dev-tools; yarn netlify"
   },
   "lint-staged": {
     "*.ts": [

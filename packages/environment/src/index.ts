@@ -22,7 +22,7 @@ export const Structure = {
   tracker: (framework: Maybe<WebFramework>): string => {
     switch (framework) {
       case 'vue':
-      case 'react':
+      case 'create-react-app':
         return path.join(process.cwd(), 'public', 'tracker.json')
       case 'angular':
         return path.join(process.cwd(), 'src', 'assets', 'tracker.json')
@@ -61,7 +61,7 @@ const schema = {
       properties: {
         framework: {
           type: ['string', 'boolean'],
-          enum: ['react', 'angular', 'vue', 'test', false]
+          enum: ['create-react-app', 'angular', 'vue', 'test', false]
         },
         deploy: {
           type: ['string', 'boolean'],
@@ -100,7 +100,7 @@ const defaultEnvironment: Environment = {
   },
   ipfs: false,
   web: {
-    framework: 'react',
+    framework: 'create-react-app',
     deploy: 'ipfs'
   },
   compile: {

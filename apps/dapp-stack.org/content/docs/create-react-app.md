@@ -1,0 +1,89 @@
+---
+id: create-react-app
+title: Create React app instalation
+permalink: docs/create-react-app.html
+prev: standalone.html
+---
+
+In order to get started with create-react, you can do the following based on the method you prefer:
+
+### npx
+
+```sh
+npx creat-react-app my-dapp
+cd my-dapp
+npx dapp-stack
+npm install
+```
+
+If you use npm 5.1 or earlier, you can't use npx. Instead, install dapp-stack globally:
+
+```sh
+npm install -g create-reacp-app
+npm install -g dapp-stack
+```
+
+Now you can run:
+
+```sh
+create-react-app my-dapp
+cd my-dapp
+dapp-stack
+npm install
+```
+
+### npm
+
+```sh
+npm init create-react-app my-dapp
+cd my-dapp;
+npm init dapp-stack
+npm install
+```
+
+npm init <initializer> is available in npm 6+
+
+### yarn
+
+```sh
+yarn create create-react-app my-dapp
+cd my-dapp
+npm init dapp-stack
+yarn create dapp-stack
+yarn install
+```
+
+yarn create is available in Yarn 0.25+
+
+It will create a directory called my-dapp inside the current folder.
+Inside that directory, it will generate the initial project structure:
+
+```sh
+my-dapp
+├── README.md
+├── node_modules
+├── package.json
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+│── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   └── serviceWorker.js
+├── environments
+│   ├── local.js
+│   └── test.js
+└── contracts
+    ├── src
+    |   └── SimpleStorage.sol
+    └── tests
+        └── SimpleStorageTest.js
+```
+
+No configuration or complicated folder structures, just the files you need to build your dapp.

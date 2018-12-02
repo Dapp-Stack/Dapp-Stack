@@ -29,6 +29,5 @@ packages/ethereum/bin/
 
 # documentation
 documentation/
-apps/dapp-stack.org
 apps/dapp-stack.org/.cache
 apps/dapp-stack.org/public

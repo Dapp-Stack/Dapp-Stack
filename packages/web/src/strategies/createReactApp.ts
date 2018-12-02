@@ -15,7 +15,7 @@ const reactScriptsPath = path.resolve(
   'react-scripts'
 )
 
-export class React implements IWebFrameworkStrategy {
+export class CreateReactApp implements IWebFrameworkStrategy {
   private readonly signale: Signale
   private child!: child_process.ChildProcess
 

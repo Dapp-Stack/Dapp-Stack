@@ -20,7 +20,6 @@ DApp Stack has been designed for gradual adoption from the start, and **you can 
 * [Create a New DApp](https://dapp-stack.org/docs/create-a-new-dapp.html) if you're looking for a powerful JavaScript toolbelt.
 
 ## Documentation
-
 You can find the DApp Stack documentation [on the website](https://dapp-stack.org/docs).
 
 Check out the [Getting Started](https://dapp-stack.org/docs/getting-started.html) page for a quick overview.

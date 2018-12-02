@@ -1,16 +1,5 @@
 # @dapp-stack/simple-react
 
-This is an example project of dapp-stack with react
+Want to build this DApp step by step. 
 
-The project has been generated using create-react-app for the web.
-
-How to rebuild this project from scratch:
-
-```sh
-npx create-react-app simple-react
-cd simple-react
-npm dapp-stack
-yarn install
-```
-
-edit `environments/local.js` and update web framework to `react`
+We wrote a **[tutorial](https://dapp-stack.org/tutorial/tutorial.html)** to do it.

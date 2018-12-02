@@ -1,0 +1,39 @@
+- title: Installation
+  items:
+    - id: getting-started
+      title: Getting Started
+    - id: standalone
+      title: Standalone
+    - id: create-react-app
+      title: Create React App
+- title: Main Concepts
+  isOrdered: true
+  items:
+    - id: environments
+      title: Environment
+    - id: development
+      title: Development
+    - id: testing
+      title: Testing
+    - id: build
+      title: Build
+    - id: deploy
+      title: Deploy
+    - id: web
+      title: Web
+- title: Advanced Guides
+  items:
+    - id: manage-secrets
+      title: Manage Secrets
+    - id: modularity
+      title: Modularity
+    - id: ethereum-console
+      title: Ethereum Console
+    - id: smart-contracts-security
+      title: Smart Contracts Security
+- title: Contributing
+  items:
+  - id: how-to-contribute
+    title: How to Contribute
+  - id: codebase-overview
+    title: Codebase Overview
