@@ -19,7 +19,7 @@ We don't necessarily recommend any of these conventions in DApp Stack apps. Many
 After cloning the [DApp Stacl repository](https://github.com/Dapp-Stack/Dapp-Stack), you will see a few top-level folders in it:
 
 * [`packages`](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages) contains metadata (such as `package.json`) and the source code (`src` subdirectory) for all packages in the DApp Stack repository. **If your change is related to the code, the `src` subdirectory of each package is where you'll spend most of your time.**
-* [`apps`](https://github.com/facebook/react/tree/master/app) contains this documentation, the code for the tutorial and the dev-tools.
+* [`apps`](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/apps) contains this documentation, the code for the tutorial and the dev-tools.
 
 There are a few other top-level folders but they are mostly used for the tooling and you likely won't ever encounter them when contributing.
 
