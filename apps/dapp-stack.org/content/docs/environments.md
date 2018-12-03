@@ -2,7 +2,6 @@
 id: environments
 title: Environments
 permalink: docs/environments.html
-next: development.md
 ---
 
 ## What is environements
