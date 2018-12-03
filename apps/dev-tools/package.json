@@ -59,7 +59,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf build",
-    "netlify": "yarn --version && rimraf node_modules && yarn install --frozen-lockfile --check-files && yarn build"
+    "netlify": "yarn build"
   },
   "publishConfig": {
     "access": "public"
@@ -74,7 +74,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "node-sass": "^4.10.0",
-    "rimraf": "^2.6.1"
+    "node-sass": "^4.10.0"
   }
 }

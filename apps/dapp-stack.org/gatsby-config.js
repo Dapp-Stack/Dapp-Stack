@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Dapp Stack: A toolbelt to develop DApp with ease',
     siteUrl: 'https://dapp-stack.org',
-    rssFeedTitle: 'Dapp Stack',
+    rssFeedTitle: 'DApp Stack',
     rssFeedDescription: 'A toolbelt to develop DApp with ease',
   },
   mapping: {
@@ -58,7 +58,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-41298772-1',
+        trackingId: '',
       },
     },
     {
