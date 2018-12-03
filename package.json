@@ -16,7 +16,7 @@
     "doc": "wsrun doc $PKG -r --parallel --exclude-missing",
     "precommit": "lint-staged",
     "netlify:dapp-stack.org": "cd apps/dapp-stack.org; yarn netlify",
-    "netlify:dev-tools": "cd dev-tools; yarn netlify"
+    "netlify:dev-tools": "cd apps/dev-tools; yarn netlify"
   },
   "lint-staged": {
     "*.ts": [
