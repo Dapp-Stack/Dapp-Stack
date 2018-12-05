@@ -166,6 +166,14 @@ const sharedStyles = {
   },
 
   markdown: {
+    '& pre': {
+      backgroundColor: colors.dark,
+      color: colors.white,
+      padding: 10,
+      marginTop: 10,
+      borderRadius: 10,
+    },
+
     lineHeight: '25px',
 
     '& .gatsby-highlight': {
