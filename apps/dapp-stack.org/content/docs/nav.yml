@@ -19,18 +19,14 @@
       title: Build
     - id: deploy
       title: Deploy
-    - id: web
-      title: Web
 - title: Advanced Guides
   items:
+    - id: extra-commands
+      title: Extra Commands
     - id: manage-secrets
       title: Manage Secrets
     - id: modularity
       title: Modularity
-    - id: ethereum-console
-      title: Ethereum Console
-    - id: smart-contracts-security
-      title: Smart Contracts Security
 - title: Contributing
   items:
   - id: how-to-contribute

@@ -6,12 +6,12 @@ permalink: docs/environments.html
 
 ## What is environements
 
-DApp Stack is greatly inspired from Ruby on Rails and as such everything running with DApp stack depends of
+DApp Stack is greatly inspired from Ruby on Rails and as such everything running with DApp Stack depends of
 the environment.
 
 If no environemnt is specified, the default one will be `local`.
 
-The only exception is the `test` command which will wuse the `test` environment.
+The only exception is the `test` command which will use the `test` environment.
 
 In order to switch environment, you will need to specify the `DAPP_ENV` environment variable.
 
