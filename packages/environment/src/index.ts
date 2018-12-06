@@ -114,7 +114,7 @@ export const build = (): Environment => {
   try {
     environmentFile =
       require(path.resolve(process.cwd(), 'environments', dappEnv)) || {}
-  } catch (_error) {
+  } catch (error) {
     signale.error(
       `Cannot load the environment file, make sure the following file exists: ${path.resolve(
         process.cwd(),
@@ -122,6 +122,7 @@ export const build = (): Environment => {
         dappEnv
       )}`
     )
+    signale.error(error)
     process.exit(1)
   }
   const environment = merge({}, defaultEnvironment, environmentFile)

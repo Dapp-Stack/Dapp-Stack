@@ -1,6 +1,6 @@
 const secrets = require("@dapp-stack/secrets");
 
-// const decryptedSecrets = JSON.parse(secrets.decrypt());
+const decryptedSecrets = JSON.parse(secrets.decrypt());
 
 module.exports = {
   compile: {
@@ -16,7 +16,7 @@ module.exports = {
     // Default value is dev
     // Possible values are: homestead, rinkeby, ropsten, kovan, dev and external
     // In case of external, the expected url will be http://localhost:8545
-    // network: 'dev',
+    network: 'ropsten',
 
     // If the network is public (homestead, rinkeby, ropsten or kovan)
     // you can set your infura API key with this setting.
@@ -25,7 +25,7 @@ module.exports = {
     // If the network is public (homestead, rinkeby, ropsten or kovan)
     // the mnemonic is required in order to deploy the contracts.
     // Make sure it is funded.
-    // mnemonic: decryptedSecrets.rinkeby.mnemonic,
+    mnemonic: decryptedSecrets.ropsten.mnemonic,
 
     // Function executed by DApp Stack to deploy the contracts.
     migrate: async (deployer) => {
@@ -38,7 +38,7 @@ module.exports = {
       // Deploy an ERC721 contract
       // await deployer.erc721.bootstrap();
 
-      await deployer.deploy('SimpleStorage', 10);
+      await deployer.deploy('SimpleStorage');
     }
   },
 
@@ -52,7 +52,7 @@ module.exports = {
     // The web framework you are using.
     // Default value is react
     // Possible values are: create-react-app, angular, vue, test and false
-    framework: <%= webFramework %>,
+    framework: 'create-react-app',
 
     // How to deploy the assets,
     // Default value is ipfs

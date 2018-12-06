@@ -1,27 +1,18 @@
 pragma solidity ^0.5.0;
 
-import "ownership/Ownable.sol";
-import "math/SafeMath.sol";
+contract SimpleStorage {
 
-contract SimpleStorage is Ownable {
-    using SafeMath for uint256;
+    string public ipfsHash;
 
-    uint public storedData;
+    event Change(string message, string ipfsHash);
 
-    event Change(string message, uint newVal);
-
-    constructor(uint initVal) public {
-        emit Change("initialized", initVal);
-        storedData = initVal;
+    function set(string memory _ipfsHash) public {
+        emit Change("set", ipfsHash);
+        ipfsHash = _ipfsHash;
     }
 
-    function set(uint x) public {
-        emit Change("set", x);
-        storedData = x;
-    }
-
-    function get() public view returns (uint retVal) {
-        return storedData;
+    function get() public view returns (string memory) {
+        return ipfsHash;
     }
 
 }

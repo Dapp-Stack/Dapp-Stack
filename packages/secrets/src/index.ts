@@ -46,7 +46,7 @@ export const show = () => {
   console.log(content)
 }
 
-const decrypt = () => {
+export const decrypt = () => {
   const password = getPassword()
   const text = getText()
   const [iv, encryptedText] = text.split(':')
@@ -60,7 +60,7 @@ const decrypt = () => {
   return dec
 }
 
-const encrypt = (text: string) => {
+export const encrypt = (text: string) => {
   const iv = crypto.randomBytes(16)
   const password = getPassword()
   const cipher = crypto.createCipheriv(ALGORITHM, password, iv)
