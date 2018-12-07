@@ -1,6 +1,5 @@
 {
   "name": "@dapp-stack/compiler",
-  "private": true,
   "version": "0.1.0",
   "engines": {
     "node": ">=8.11"
