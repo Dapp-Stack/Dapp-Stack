@@ -38,7 +38,7 @@
   "bugs": {
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/web/README.md",
+  "homepage": "https://dapp-stack.org",
   "devDependencies": {
     "@types/cross-spawn": "^6.0.0",
     "@types/node": "^10.9.4",

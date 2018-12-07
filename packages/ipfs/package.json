@@ -37,7 +37,7 @@
   "bugs": {
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/ipfs/README.md",
+  "homepage": "https://dapp-stack.org",
   "devDependencies": {
     "@dapp-stack/environment": "0.1.0",
     "@types/cross-spawn": "^6.0.0",

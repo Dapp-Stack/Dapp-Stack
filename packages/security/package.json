@@ -38,7 +38,7 @@
   "bugs": {
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/security/README.md",
+  "homepage": "https://dapp-stack.org",
   "devDependencies": {
     "@types/dockerode": "^2.5.5",
     "@types/signale": "^1.2.0",

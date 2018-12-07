@@ -36,7 +36,7 @@
   "bugs": {
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/api/README.md",
+  "homepage": "https://dapp-stack.org",
   "devDependencies": {
     "@types/express": "^4.16.0",
     "@types/node": "^10.9.4",

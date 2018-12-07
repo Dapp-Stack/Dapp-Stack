@@ -42,7 +42,7 @@
   "bugs": {
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/cli/README.md",
+  "homepage": "https://dapp-stack.org",
   "devDependencies": {
     "@types/ejs": "^2.6.0",
     "@types/fs-extra": "^5.0.4",

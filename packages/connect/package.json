@@ -38,7 +38,7 @@
   "bugs": {
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/connect/README.md",
+  "homepage": "https://dapp-stack.org",
   "devDependencies": {
     "@types/signale": "^1.2.0",
     "shx": "^0.2.2",

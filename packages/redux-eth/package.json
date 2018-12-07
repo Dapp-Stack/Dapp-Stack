@@ -36,7 +36,7 @@
   "bugs": {
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
-  "homepage": "https://github.com/Dapp-Stack/Dapp-Stack/packages/redux-eth/README.md",
+  "homepage": "https://dapp-stack.org",
   "devDependencies": {
     "@types/lodash": "4.14.116",
     "shx": "^0.2.2",
