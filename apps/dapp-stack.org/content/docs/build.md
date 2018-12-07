@@ -20,5 +20,5 @@ yarn das build
 This command is quite similar to the `development` one, however the watcher won't start
 and the command will stop at the end of the process.
 
-`build` can be helpfull to run in order to make sure everything compile before doing a deploy
+`build` can be helpful to run in order to make sure everything compile before doing a deploy
 for example
