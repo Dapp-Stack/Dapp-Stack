@@ -17,7 +17,7 @@ Using yarn
 yarn das start
 ```
 
-You will then see something similar to the follow trace:
+You will then see something similar to the following trace:
 
 ```sh
 yarn run v1.12.3
@@ -50,14 +50,14 @@ $ dapp-stack-scripts start
 [Web] › ℹ  info      Starting the development server...
 ```
 
-As you can see each component of DApp Stack is logging usefull information.
-Let's go though all component one by one:
+As you can see each component of DApp Stack is logging useful information.
+Let's go through all components one by one:
 
-* Ethereum: Starts or connect to an ethereum node.
+* Ethereum: Starts or connects to an ethereum node.
 * Ipfs: Starts an Ipfs daemon
-* Compiler: Compile the contracts and display warnings or errors if there is any
-* Connection: Check that we sucessfuly connect to the ethereum node
-* Wallet: Display information about your wallet: balance, private key (only for dev network) and address
-* Deployer: Deploy the contract and display the result
-* Watcher: Watch any changes to the contracts and recompile/redeploy them if needed
-* Web: Start the web framework of your choice
+* Compiler: Compiles the contracts and displays warnings or errors if there is any
+* Connection: Checks that we successfully connect to the ethereum node
+* Wallet: Displays information about your wallet: balance, private key (only for dev network) and address
+* Deployer: Deploys the contract and display the result
+* Watcher: Watches any change to the contracts and recompiles/redeploys them if needed
+* Web: Starts the web framework of your choice
