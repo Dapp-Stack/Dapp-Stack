@@ -19,9 +19,9 @@ yarn das test
 
 This command will:
 
-* Ethereum: Starts or connect to an ethereum node.
+* Ethereum: Starts or connects to an ethereum node.
 * Ipfs: Starts an Ipfs daemon
-* Compiler: Compile the contracts and display warnings or errors if there is any
+* Compiler: Compiles the contracts and displays warnings or errors if there is any
 * Run the Smart Contracts test
 
 The tests must be located in `contracts/tests` and a simple test looks like:
