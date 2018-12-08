@@ -7,7 +7,7 @@ You love Create React App and want to use it with Dapp Stack, perfect, follow th
 
 Using NPM:
 
-```sh
+```bash
 npx creat-react-app my-dapp
 cd my-dapp
 npx dapp-stack
@@ -17,7 +17,7 @@ npm run das start
 
 or using yarn:
 
-```sh
+```bash
 npx creat-react-app my-dapp
 cd my-dapp
 npx dapp-stack

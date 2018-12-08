@@ -22,7 +22,7 @@ However if you want to use our secrets packages, you can process as follow:
 
 ### Setup the secrets
 
-```sh
+```bash
 yarn secrets setup
 ```
 
@@ -34,13 +34,13 @@ with this file can decrypt your secrets.
 
 ### Show the secrets:
 
-```sh
+```bash
 yarn secrets show
 ```
 
 ### Edit the secrets:
 
-```sh
+```bash
 yarn secrets edit
 ```
 

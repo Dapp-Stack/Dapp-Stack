@@ -9,7 +9,7 @@ In order to get started with create-react, you can do the following based on the
 
 ### npx
 
-```sh
+```bash
 npx creat-react-app my-dapp
 cd my-dapp
 npx dapp-stack
@@ -18,14 +18,14 @@ npm install
 
 If you use npm 5.1 or earlier, you can't use npx. Instead, install dapp-stack globally:
 
-```sh
+```bash
 npm install -g create-reacp-app
 npm install -g dapp-stack
 ```
 
 Now you can run:
 
-```sh
+```bash
 create-react-app my-dapp
 cd my-dapp
 dapp-stack
@@ -34,7 +34,7 @@ npm install
 
 ### npm
 
-```sh
+```bash
 npm init create-react-app my-dapp
 cd my-dapp;
 npm init dapp-stack
@@ -45,7 +45,7 @@ npm init <initializer> is available in npm 6+
 
 ### yarn
 
-```sh
+```bash
 yarn create create-react-app my-dapp
 cd my-dapp
 npm init dapp-stack
@@ -58,7 +58,7 @@ yarn create is available in Yarn 0.25+
 It will create a directory called my-dapp inside the current folder.
 Inside that directory, it will generate the initial project structure:
 
-```sh
+```bash
 my-dapp
 ├── README.md
 ├── node_modules

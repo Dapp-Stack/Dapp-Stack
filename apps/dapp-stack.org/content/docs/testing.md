@@ -8,12 +8,12 @@ layout: docs
 The command to run the test:
 
 Using npm
-```sh
+```bash
 npm run das test
 ```
 
 Using yarn
-```sh
+```bash
 yarn das test
 ```
 
@@ -57,7 +57,7 @@ As you can see, we deploy the contract using the deployer from the before hook. 
 
 Example of output:
 
-```sh
+```bash
 $ dapp-stack-scripts test
 [Ethereum] › …  awaiting  Starting geth...
 [Ethereum] › ✔  success   Geth is running

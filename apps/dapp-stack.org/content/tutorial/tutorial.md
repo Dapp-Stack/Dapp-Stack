@@ -66,7 +66,7 @@ Now that you're set up, let's get an overview of DApp Stack!
 
 You will see the following folder structure:
 
-```sh
+```bash
 tutorial
 ├── README.md
 ├── node_modules
@@ -100,7 +100,7 @@ rest comes from Create React App.
 ### Develop the Contract
 
 The first things to do when you start to develop is to start DApp Stack, in order to so you can run:
-```sh
+```bash
 yarn das start
 ```
 
@@ -153,7 +153,7 @@ We suggest that you use [Metamask](https://metamask.io).
 Once you have installed and your account created you can now import the account from your local node.
 For that, DApp Stack produce a log with the private key. It looks like that:
 
-```sh
+```bash
 [Wallet] › ✔  success   Private key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
@@ -168,7 +168,7 @@ You should also be able to see that you have ether, that means you will be able 
 In order to interact with out contract we are going to use DApp Stack redux packages.
 You first need to install a few dependencies:
 
-```sh
+```bash
 yarn add @dapp-stack/redux-eth @dapp-stack/redux-ipfs react-redux redux-observable
 ```
 
@@ -361,7 +361,7 @@ DApp Stack refresh everything for you.
 
 In order to run the tests, you can execute the following command:
 
-```sh
+```bash
 yarn das test
 ```
 
@@ -414,7 +414,7 @@ Finally change the mnemonic to: `mnemonic: decryptedSecrets.ropsten.mnemonic,`
 In order to safely store our secrets, we will the `secrets` package.
 You first need to initialize it by running:
 
-```sh
+```bash
   yarn secrets setup
 ```
 
@@ -422,7 +422,7 @@ You first need to initialize it by running:
 
 Now we can add the mnemonic into the encrypted file by doing:
 
-```sh
+```bash
 yarn secrets edit
 ```
 
@@ -440,7 +440,7 @@ It needs to look like that:
 ```
 
 If you run:
-```sh
+```bash
 yarn secrets show
 ```
 
@@ -448,7 +448,7 @@ You should see exactly what you typed.
 
 The last step to publish your dapp is to run:
 
-```sh
+```bash
 export DAPP_ENV=ropsten && yarn das deploy
 ```
 

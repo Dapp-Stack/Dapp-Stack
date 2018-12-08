@@ -8,18 +8,18 @@ layout: docs
 The command to start the development mode:
 
 Using npm
-```sh
+```bash
 npm run das start
 ```
 
 Using yarn
-```sh
+```bash
 yarn das start
 ```
 
 You will then see something similar to the following trace:
 
-```sh
+```bash
 yarn run v1.12.3
 $ dapp-stack-scripts start
 [Ethereum] › …  awaiting  Starting geth...

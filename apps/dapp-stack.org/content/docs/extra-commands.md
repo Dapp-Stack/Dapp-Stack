@@ -8,12 +8,12 @@ layout: docs
 ### Ethereum Console
 
 Using npm
-```sh
+```bash
 npm run das console
 ```
 
 Using yarn
-```sh
+```bash
 yarn das console
 ```
 
@@ -24,12 +24,12 @@ This command will start a geth console, this is the same as [JavaScript Console]
 > Warning: Docker running is required.
 
 Using npm
-```sh
+```bash
 npm run das security
 ```
 
 Using yarn
-```sh
+```bash
 yarn das security
 ```
 
@@ -38,12 +38,12 @@ Check the security of your contract using [mythril-classic](https://github.com/C
 ### Smart Contracts Documentation
 
 Using npm
-```sh
+```bash
 npm run das doc
 ```
 
 Using yarn
-```sh
+```bash
 yarn das doc
 ```
 

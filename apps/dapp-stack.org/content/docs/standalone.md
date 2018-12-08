@@ -11,7 +11,7 @@ you can do the following based on the method you prefer:
 
 ### npx
 
-```sh
+```bash
 mkdir my-dapp
 cd my-dapp
 npx dapp-stack
@@ -20,13 +20,13 @@ npm install
 
 If you use npm 5.1 or earlier, you can't use npx. Instead, install dapp-stack globally:
 
-```sh
+```bash
 npm install -g dapp-stack
 ```
 
 Now you can run:
 
-```sh
+```bash
 mkdir my-dapp
 cd my-dapp
 dapp-stack
@@ -35,7 +35,7 @@ npm install
 
 ### npm
 
-```sh
+```bash
 mkdir my-dapp
 cd my-dapp
 npm init dapp-stack
@@ -46,7 +46,7 @@ npm init <initializer> is available in npm 6+
 
 ### yarn
 
-```sh
+```bash
 mkdir my-dapp
 cd my-dapp
 npm init dapp-stack
@@ -58,7 +58,7 @@ yarn create is available in Yarn 0.25+
 It will create a directory called my-dapp inside the current folder.
 Inside that directory, it will generate the initial project structure:
 
-```sh
+```bash
 my-dapp
 ├── README.md
 ├── node_modules

@@ -7,7 +7,7 @@ You are not interested by the client side part and just want help on developing/
 
 Using NPM:
 
-```sh
+```bash
 mkdir my-dapp
 cd my-dapp
 npx dapp-stack
@@ -17,7 +17,7 @@ npm run das start
 
 or using yarn:
 
-```sh
+```bash
 mkdir my-dapp
 cd my-dapp
 npx dapp-stack

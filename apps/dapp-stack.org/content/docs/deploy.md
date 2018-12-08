@@ -8,12 +8,12 @@ layout: docs
 The command to run the deploy:
 
 Using npm
-```sh
+```bash
 npm run das deploy
 ```
 
 Using yarn
-```sh
+```bash
 yarn das deploy
 ```
 

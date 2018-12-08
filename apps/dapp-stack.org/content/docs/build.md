@@ -8,12 +8,12 @@ layout: docs
 The command to run the build:
 
 Using npm
-```sh
+```bash
 npm run das build
 ```
 
 Using yarn
-```sh
+```bash
 yarn das build
 ```
 

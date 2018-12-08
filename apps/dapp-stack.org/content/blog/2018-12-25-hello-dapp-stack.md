@@ -18,7 +18,7 @@ This is only one of many example, and in general we really favour simplicity and
 
 Let's proof it and run a DApp in few minutes, just run the following command:
 
-```sh
+```bash
 mkdir my-dapp
 cd my-dapp
 npx dapp-stack
