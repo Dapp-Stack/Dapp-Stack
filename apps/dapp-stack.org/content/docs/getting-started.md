@@ -25,12 +25,12 @@ This page is an overview of the DApp Stack documentation and related resources.
 - [Versioned Documentation](#versioned-documentation)
 - [Something Missing?](#something-missing)
 
-## DApp Stack
+## Learn DApp Stack
 
 People come to DApp Stack from different backgrounds and with different learning styles. Whether you prefer a more theoretical or a practical approach, we hope you'll find this section helpful.
 
 * If you prefer to **learn by doing**, start with our [practical tutorial](/tutorial/tutorial.html).
-* If you prefer to **learn concepts step by step**, start with our [guide to main concepts](/docs/hello-world.html).
+* If you prefer to **learn concepts step by step**, start with our [guide to main concepts](/docs/environments.html).
 
 Like any unfamiliar technology, DApp Stack does have a learning curve. With practice and some patience, you *will* get the hang of it.
 
@@ -60,12 +60,12 @@ If you prefer to **learn by doing,** check out our [practical tutorial](/tutoria
 
 ### Step-by-Step Guide
 
-If you prefer to **learn concepts step by step,** our [guide to main concepts](/docs/hello-world.html) is the best place to start. Every next chapter in it builds on the knowledge introduced in the previous chapters so you won't miss anything as you go along.
+If you prefer to **learn concepts step by step,** our [guide to main concepts](/docs/environments.html) is the best place to start. Every next chapter in it builds on the knowledge introduced in the previous chapters so you won't miss anything as you go along.
 
 
 ### Advanced Concepts
 
-Once you're comfortable with the [main concepts](#main-concepts) and played with DApp Stack a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used DApp Stack features.
+Once you're comfortable with the [main concepts](#/docs/environments.html) and played with DApp Stack a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used DApp Stack features.
 
 
 ## Staying Informed

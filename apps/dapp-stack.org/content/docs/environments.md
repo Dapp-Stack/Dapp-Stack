@@ -81,4 +81,4 @@ module.exports = {
 From there you can choose which services to start, which web framework you want to use.
 In case of ethereum, you can also elect smart contracts for compilations.
 
-Finally, the migrate function specify how you want to deploy the contracts.
+Finally, the migrate function specifies how you want to deploy the contracts.
