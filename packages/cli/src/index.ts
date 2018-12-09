@@ -52,6 +52,7 @@ if (fs.existsSync(packageDest)) {
   packageData.devDependencies['@dapp-stack/scripts'] = '^0.1.0'
   packageData.devDependencies['@dapp-stack/test'] = '^0.1.0'
   packageData.devDependencies['@dapp-stack/secrets'] = '^0.1.0'
+  packageData.devDependencies.chai = '^4.2.0'
   packageData.devDependencies.solium = '^1.1.8'
 } else {
   packageData = {
@@ -65,6 +66,7 @@ if (fs.existsSync(packageDest)) {
       '@dapp-stack/scripts': '^0.1.0',
       '@dapp-stack/test': '^0.1.0',
       '@dapp-stack/secrets': '^0.1.0',
+      chai: '^4.2.0',
       solium: '^1.1.8'
     }
   }
