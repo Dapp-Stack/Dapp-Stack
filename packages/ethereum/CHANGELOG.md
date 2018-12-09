@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.1.2...v0.1.3) (2018-12-09)
+
+
+### Bug Fixes
+
+* **ethereum:** missing fs-extra ([5521503](https://github.com/Dapp-Stack/Dapp-Stack/commit/5521503))
+
+
+
+
+
 # 0.1.0 (2018-12-09)
 
 
