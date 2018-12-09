@@ -5,14 +5,9 @@ import { Signale } from 'signale'
 
 import { IWebFrameworkStrategy } from '../types'
 
-const reactScriptsPath = path.resolve(
-  process.cwd(),
-  'node_modules',
-  '.bin',
-  'react-scripts'
-)
+const angularCliPath = path.resolve(process.cwd(), 'node_modules', '.bin', 'ng')
 
-export class CreateReactApp implements IWebFrameworkStrategy {
+export class Angular implements IWebFrameworkStrategy {
   private readonly signale: Signale
   private child!: child_process.ChildProcess
 
@@ -21,8 +16,10 @@ export class CreateReactApp implements IWebFrameworkStrategy {
   }
 
   start = () => {
-    this.signale.await('Starting react-scripts...')
-    this.child = spawn('node', [reactScriptsPath, 'start'], { stdio: 'pipe' })
+    this.signale.await('Starting angular...')
+    this.child = spawn('node', [angularCliPath, 'serve', '-o'], {
+      stdio: 'pipe'
+    })
     this.child.stderr.on('data', (data: Buffer) => {
       data
         .toString('utf-8')
@@ -40,8 +37,8 @@ export class CreateReactApp implements IWebFrameworkStrategy {
   }
 
   build = () => {
-    this.signale.await('Building react-scripts...')
-    this.child = spawn('node', [reactScriptsPath, 'build'], { stdio: 'pipe' })
+    this.signale.await('Building angular...')
+    this.child = spawn('node', [angularCliPath, 'build'], { stdio: 'pipe' })
     this.child.stderr.on('data', (data: Buffer) => {
       data
         .toString('utf-8')

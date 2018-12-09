@@ -3,14 +3,15 @@ id: create-react-app
 title: Create React app instalation
 permalink: docs/create-react-app.html
 prev: standalone.html
+next: angular.html
 ---
 
-In order to get started with create-react, you can do the following based on the method you prefer:
+In order to get started with create-react-app, you can do the following based on the method you prefer:
 
 ### npx
 
 ```bash
-npx creat-react-app my-dapp
+npx create-react-app my-dapp
 cd my-dapp
 npx create-dapp-stack
 npm install
@@ -19,7 +20,7 @@ npm install
 If you use npm 5.1 or earlier, you can't use npx. Instead, install dapp-stack globally:
 
 ```bash
-npm install -g create-reacp-app
+npm install -g create-react-app
 npm install -g create-dapp-stack
 ```
 

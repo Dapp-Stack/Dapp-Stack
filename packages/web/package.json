@@ -51,8 +51,11 @@
     "@dapp-stack/environment": "^0.1.0",
     "cross-spawn": "^6.0.5",
     "go-ipfs": "0.4.17",
-    "react-scripts": "^2.0.4",
     "signale": "^1.2.1"
+  },
+  "peerDependencies": {
+    "react-scripts": "^2.0.4",
+    "@angular/cli": "^7.1.2"
   },
   "publishConfig": {
     "access": "public"
