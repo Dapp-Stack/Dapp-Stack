@@ -59,7 +59,7 @@ if (fs.existsSync(packageDest)) {
     version: '0.1.0',
     scripts: {
       das: 'dapp-stack-scripts',
-      secrest: 'dapp-stack-secrets'
+      secrets: 'dapp-stack-secrets'
     },
     devDependencies: {
       '@dapp-stack/scripts': '^0.1.0',
