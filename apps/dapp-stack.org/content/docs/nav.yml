@@ -6,6 +6,8 @@
       title: Standalone
     - id: create-react-app
       title: Create React App
+    - id: angular
+      title: Angular
 - title: Main Concepts
   isOrdered: true
   items:

@@ -23,8 +23,10 @@ web.stop("create-react-react")
 web.deploy("create-react-react")
 ```
 
-Currently the only web framework supported is `create-react-react`.
-It will delegate all the call to (create-react-app)[https://github.com/facebook/create-react-app]
+Currently the only web framework supported are `create-react-react` and `angular`.
+It will delegate all the call to the underlying web framework:
+- [create-react-app](https://github.com/facebook/create-react-app)
+- [angular](https://github.com/angular/angular)
 
 The only deploy strategy supported is `ipfs`
 

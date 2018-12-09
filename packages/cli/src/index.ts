@@ -17,6 +17,7 @@ const packageDest = path.join(process.cwd(), 'package.json')
 const readmeDest = path.join(process.cwd(), 'README.md')
 const gitignoreDest = path.join(process.cwd(), '.gitignore')
 const createReactAppIndex = path.join(process.cwd(), 'public', 'index.html')
+const angularIndex = path.join(process.cwd(), 'src', 'index.html')
 
 if (
   fs.existsSync(contractsDest) ||
@@ -34,13 +35,8 @@ fs.copySync(path.join(base, 'contracts'), contractsDest)
 fs.copySync(path.join(base, 'environments'), environmentsDest)
 fs.copySync(path.join(base, '.soliumignore'), soliumignoreDest)
 
-const filename = path.join(environmentsDest, 'local.js.ejs')
-const local = fs.readFileSync(filename, 'utf-8')
-const compiled = ejs.render(local, { webFramework: false })
-fs.writeFileSync(path.join(environmentsDest, 'local.js'), compiled)
-fs.unlinkSync(filename)
-
 let packageData
+let webFramework: boolean | string = false
 if (fs.existsSync(packageDest)) {
   packageData = fs.readJSONSync(packageDest)
   packageData.scripts = packageData.scripts || {}
@@ -54,6 +50,14 @@ if (fs.existsSync(packageDest)) {
   packageData.devDependencies['@dapp-stack/secrets'] = '^0.1.0'
   packageData.devDependencies.chai = '^4.2.0'
   packageData.devDependencies.solium = '^1.1.8'
+
+  if (Object.keys(packageData.devDependencies).includes('@angular/cli')) {
+    webFramework = "'angular'"
+    fs.copySync(path.join(base, 'angular.html'), angularIndex)
+  } else if (Object.keys(packageData.dependencies).includes('react-scripts')) {
+    webFramework = "'create-react-app'"
+    fs.copySync(path.join(base, 'create-react-app.html'), createReactAppIndex)
+  }
 } else {
   packageData = {
     name: path.basename(process.cwd()),
@@ -73,6 +77,12 @@ if (fs.existsSync(packageDest)) {
 }
 fs.writeFileSync(packageDest, JSON.stringify(packageData, null, 2) + EOL)
 
+const filename = path.join(environmentsDest, 'local.js.ejs')
+const local = fs.readFileSync(filename, 'utf-8')
+const compiled = ejs.render(local, { webFramework })
+fs.writeFileSync(path.join(environmentsDest, 'local.js'), compiled)
+fs.unlinkSync(filename)
+
 if (!fs.existsSync(readmeDest)) {
   fs.copySync(path.join(base, 'README.md'), readmeDest)
 }
@@ -82,10 +92,6 @@ if (fs.existsSync(gitignoreDest)) {
   fs.appendFileSync(gitignoreDest, data)
 } else {
   fs.copySync(path.join(base, 'gitignore'), gitignoreDest)
-}
-
-if (fs.existsSync(createReactAppIndex)) {
-  fs.copySync(path.join(base, 'create-react-app.html'), createReactAppIndex)
 }
 
 signale.success('Congratulations, your Dapp has been generated.')
