@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.1.0...v0.1.1) (2018-12-09)
+
+
+### Bug Fixes
+
+* move template to cli ([d480d1f](https://github.com/Dapp-Stack/Dapp-Stack/commit/d480d1f))
+* name of package ([09a462a](https://github.com/Dapp-Stack/Dapp-Stack/commit/09a462a))
+
+
+
+
+
 # 0.1.0 (2018-12-09)
 
 
