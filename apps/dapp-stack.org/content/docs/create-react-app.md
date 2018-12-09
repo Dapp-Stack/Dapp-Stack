@@ -12,7 +12,7 @@ In order to get started with create-react, you can do the following based on the
 ```bash
 npx creat-react-app my-dapp
 cd my-dapp
-npx dapp-stack
+npx create-dapp-stack
 npm install
 ```
 
@@ -20,7 +20,7 @@ If you use npm 5.1 or earlier, you can't use npx. Instead, install dapp-stack gl
 
 ```bash
 npm install -g create-reacp-app
-npm install -g dapp-stack
+npm install -g create-dapp-stack
 ```
 
 Now you can run:
@@ -28,7 +28,7 @@ Now you can run:
 ```bash
 create-react-app my-dapp
 cd my-dapp
-dapp-stack
+create-dapp-stack
 npm install
 ```
 
@@ -48,7 +48,6 @@ npm init <initializer> is available in npm 6+
 ```bash
 yarn create create-react-app my-dapp
 cd my-dapp
-npm init dapp-stack
 yarn create dapp-stack
 yarn install
 ```

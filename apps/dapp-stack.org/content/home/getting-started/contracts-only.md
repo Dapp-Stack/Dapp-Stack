@@ -10,7 +10,7 @@ Using NPM:
 ```bash
 mkdir my-dapp
 cd my-dapp
-npx dapp-stack
+npx create-dapp-stack
 npm install
 npm run das start
 ```
@@ -20,7 +20,7 @@ or using yarn:
 ```bash
 mkdir my-dapp
 cd my-dapp
-npx dapp-stack
+npx create-dapp-stack
 yarn install
 yarn das start
 ```

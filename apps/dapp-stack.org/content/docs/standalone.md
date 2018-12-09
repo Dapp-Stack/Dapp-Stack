@@ -14,14 +14,14 @@ you can do the following based on the method you prefer:
 ```bash
 mkdir my-dapp
 cd my-dapp
-npx dapp-stack
+npx create-dapp-stack
 npm install
 ```
 
 If you use npm 5.1 or earlier, you can't use npx. Instead, install dapp-stack globally:
 
 ```bash
-npm install -g dapp-stack
+npm install -g create-dapp-stack
 ```
 
 Now you can run:
@@ -29,7 +29,7 @@ Now you can run:
 ```bash
 mkdir my-dapp
 cd my-dapp
-dapp-stack
+create-dapp-stack
 npm install
 ```
 
@@ -39,7 +39,7 @@ npm install
 mkdir my-dapp
 cd my-dapp
 npm init dapp-stack
-yarn install
+npm install
 ```
 
 npm init <initializer> is available in npm 6+
@@ -49,8 +49,8 @@ npm init <initializer> is available in npm 6+
 ```bash
 mkdir my-dapp
 cd my-dapp
-npm init dapp-stack
 yarn create dapp-stack
+yarn install
 ```
 
 yarn create is available in Yarn 0.25+

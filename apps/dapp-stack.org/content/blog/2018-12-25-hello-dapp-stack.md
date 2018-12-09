@@ -21,7 +21,7 @@ Let's proof it and run a DApp in few minutes, just run the following command:
 ```bash
 mkdir my-dapp
 cd my-dapp
-npx dapp-stack
+npx create-dapp-stack
 npm install
 npm run das start
 ```

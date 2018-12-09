@@ -1,4 +1,4 @@
-# @dapp-stack/cli
+# create-dapp-stack
 
 Create dapp with no configuration
 
@@ -11,7 +11,7 @@ If something doesn’t work, please [file an issue](https://github.com/Dapp-Stac
 ```sh
 mkdir my-dapp
 cd my-dapp
-npx dapp-stack
+npx create-dapp-stack
 npm install
 npm run das start
 ```
@@ -37,7 +37,7 @@ To create a new dapp, you may choose one of the following methods:
 ```sh
 mkdir my-dapp
 cd my-dapp
-npx dapp-stack
+npx create-dapp-stack
 npm install
 ```
 
