@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.1.4...v0.1.5) (2018-12-09)
+
+
+### Bug Fixes
+
+* **scripts:** add bin to package ([200ac7b](https://github.com/Dapp-Stack/Dapp-Stack/commit/200ac7b))
+
+
+
+
+
 ## [0.1.4](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.1.3...v0.1.4) (2018-12-09)
 
 **Note:** Version bump only for package @dapp-stack/scripts
