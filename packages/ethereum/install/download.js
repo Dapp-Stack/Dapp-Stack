@@ -13,6 +13,7 @@ exports.download = function () {
         var arch = goenv.GOARCH;
         var installPath = path.join(__dirname, '..', 'bin');
         var isWindows = platform === 'windows';
+        fs.ensureDirSync(installPath);
         var extension = isWindows ? '.exe' : '.tar.gz';
         var folder = "geth-" + platform + "-" + arch + "-" + VERSION;
         var filename = "" + folder + extension;

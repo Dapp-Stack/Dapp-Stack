@@ -15,6 +15,7 @@ export const download = (): Promise<DownloadResult> => {
     const arch: string = goenv.GOARCH
     const installPath = path.join(__dirname, '..', 'bin')
     const isWindows: boolean = platform === 'windows'
+    fs.ensureDirSync(installPath)
 
     const extension = isWindows ? '.exe' : '.tar.gz'
     const folder = `geth-${platform}-${arch}-${VERSION}`
