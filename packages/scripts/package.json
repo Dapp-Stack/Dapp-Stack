@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/scripts",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "engines": {
     "node": ">=8.11"
   },
@@ -56,7 +56,7 @@
     "@dapp-stack/deployer": "^0.1.0",
     "@dapp-stack/doc": "^0.1.0",
     "@dapp-stack/environment": "^0.1.0",
-    "@dapp-stack/ethereum": "^0.1.3",
+    "@dapp-stack/ethereum": "^0.1.4",
     "@dapp-stack/ipfs": "^0.1.0",
     "@dapp-stack/security": "^0.1.0",
     "@dapp-stack/test": "^0.1.0",
