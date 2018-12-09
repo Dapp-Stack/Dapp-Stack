@@ -1,10 +1,20 @@
 {
   "version": "0.1.0",
-  "packages": ["packages/*", "apps/*"],
+  "packages": [
+    "packages/*",
+    "apps/*"
+  ],
   "command": {
     "publish": {
       "conventionalCommits": true,
-      "ignoreChanges": ["test/**/*", "*.md", "scripts", "lib", "tslint.json", "tsconfig.json"]
+      "ignoreChanges": [
+        "test/**/*",
+        "*.md",
+        "scripts",
+        "lib",
+        "tslint.json",
+        "tsconfig.json"
+      ]
     }
   },
   "useWorkspaces": true,

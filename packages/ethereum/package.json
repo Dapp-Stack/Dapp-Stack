@@ -41,7 +41,7 @@
   },
   "homepage": "https://dapp-stack.org",
   "devDependencies": {
-    "@dapp-stack/environment": "0.1.0",
+    "@dapp-stack/environment": "^0.1.0",
     "@types/node": "^10.9.4",
     "@types/request": "^2.47.1",
     "@types/tar-fs": "^1.16.1",
