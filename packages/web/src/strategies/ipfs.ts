@@ -4,6 +4,8 @@ import { Signale } from 'signale'
 import { Structure } from '@dapp-stack/environment'
 import { IWebDeployStrategy } from '../types'
 
+const opn = require('opn')
+
 const ipfsPath = path.resolve(
   __dirname,
   '..',
@@ -52,7 +54,12 @@ export class Ipfs implements IWebDeployStrategy {
             stdio: 'inherit'
           }
         )
-        resolve()
+        const url = `http://localhost:8080/ipfs/${rootHash}`
+        opn(url)
+        setTimeout(() => {
+          this.signale.success(`Deployment finished with success.`)
+          resolve()
+        }, 3000)
       })
     })
   }

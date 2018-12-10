@@ -42,6 +42,7 @@
   "devDependencies": {
     "@types/cross-spawn": "^6.0.0",
     "@types/node": "^10.9.4",
+    "@types/opn": "^5.1.0",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typedoc": "^0.13.0",
@@ -51,6 +52,7 @@
     "@dapp-stack/environment": "^0.2.0",
     "cross-spawn": "^6.0.5",
     "go-ipfs": "0.4.17",
+    "opn": "^5.4.0",
     "signale": "^1.2.1"
   },
   "peerDependencies": {
