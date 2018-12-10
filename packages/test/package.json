@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/test",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "node": ">=8.11"
   },
@@ -51,8 +51,8 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
-    "@dapp-stack/deployer": "^0.1.0",
-    "@dapp-stack/environment": "^0.1.0",
+    "@dapp-stack/deployer": "^0.2.0",
+    "@dapp-stack/environment": "^0.2.0",
     "cross-spawn": "^6.0.5",
     "ethers": "^4.0.3",
     "istanbul": "^0.4.5",

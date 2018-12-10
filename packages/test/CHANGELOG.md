@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.1.6...v0.2.0) (2018-12-10)
+
+**Note:** Version bump only for package @dapp-stack/test
+
+
+
+
+
 # 0.1.0 (2018-12-09)
 
 

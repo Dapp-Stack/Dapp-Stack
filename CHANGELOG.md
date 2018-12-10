@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.1.6...v0.2.0) (2018-12-10)
+
+
+### Bug Fixes
+
+* add redirects for netlify ([2a0a7cf](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/2a0a7cf))
+
+
+### Features
+
+* add angular integration ([835e1f0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/835e1f0)), closes [#5](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/5)
+* add vue.js integration ([c289e42](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/c289e42)), closes [#3](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/3)
+
+
+
+
+
 ## [0.1.6](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.1.5...v0.1.6) (2018-12-09)
 
 
