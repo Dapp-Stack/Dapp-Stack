@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.0...v0.2.1) (2018-12-10)
+
+
+### Bug Fixes
+
+* **cli:** update dependencies to 0.2.0 ([71030e3](https://github.com/Dapp-Stack/Dapp-Stack/commit/71030e3))
+
+
+
+
+
 # [0.2.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.1.6...v0.2.0) (2018-12-10)
 
 
