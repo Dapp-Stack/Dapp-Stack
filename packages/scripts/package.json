@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/scripts",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "engines": {
     "node": ">=8.11"
   },
@@ -62,7 +62,7 @@
     "@dapp-stack/security": "^0.2.0",
     "@dapp-stack/test": "^0.2.0",
     "@dapp-stack/wallet": "^0.2.0",
-    "@dapp-stack/web": "^0.2.0",
+    "@dapp-stack/web": "^0.2.2",
     "chokidar": "^2.0.4",
     "commander": "^2.18.0",
     "fs-extra": "^7.0.0",

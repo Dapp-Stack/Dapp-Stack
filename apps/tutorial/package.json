@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/simple-react",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "private": true,
   "dependencies": {
     "@dapp-stack/redux-eth": "^0.2.0",
@@ -13,7 +13,7 @@
     "solium": "^1.1.8"
   },
   "devDependencies": {
-    "@dapp-stack/scripts": "^0.2.0",
+    "@dapp-stack/scripts": "^0.2.2",
     "@dapp-stack/secrets": "^0.2.0",
     "@dapp-stack/test": "^0.2.0",
     "chai": "^4.2.0"

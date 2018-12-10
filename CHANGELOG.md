@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.2.1...v0.2.2) (2018-12-10)
+
+
+### Bug Fixes
+
+* add missing peer dependency ([0f3e2b8](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/0f3e2b8))
+
+
+
+
+
 ## [0.2.1](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.2.0...v0.2.1) (2018-12-10)
 
 

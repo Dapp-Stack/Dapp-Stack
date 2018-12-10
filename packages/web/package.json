@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/web",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "engines": {
     "node": ">=8.11"
   },
@@ -55,8 +55,8 @@
   },
   "peerDependencies": {
     "@angular/cli": "^7.1.2",
-    "react-scripts": "^2.0.4",
-    "@vue/cli-service": "^3.0.5"
+    "@vue/cli-service": "^3.0.5",
+    "react-scripts": "^2.0.4"
   },
   "publishConfig": {
     "access": "public"
