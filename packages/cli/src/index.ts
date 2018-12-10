@@ -63,6 +63,8 @@ if (fs.existsSync(packageDest)) {
   ) {
     webFramework = "'vue'"
     fs.copySync(path.join(base, 'vue.html'), vueIndex)
+  } else if (Object.keys(packageData.dependencies).includes('next')) {
+    webFramework = "'next'"
   }
 } else {
   packageData = {

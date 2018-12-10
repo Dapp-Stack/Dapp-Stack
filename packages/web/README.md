@@ -23,11 +23,12 @@ web.stop("create-react-react")
 web.deploy("ipfs")
 ```
 
-Currently the only web framework supported are `create-react-react`, `angular` and `vue`.
+Currently the only web framework supported are `create-react-react`, `angular`, `next` and `vue`.
 It will delegate all the call to the underlying web framework:
 - [create-react-app](https://github.com/facebook/create-react-app)
 - [angular](https://github.com/angular/angular)
 - [vue](https://github.com/vuejs/vue)
+- [next](https://github.com/zeit/next.js/)
 
 The only deploy strategy supported is `ipfs`
 

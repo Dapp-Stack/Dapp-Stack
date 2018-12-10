@@ -26,6 +26,8 @@ export const Structure = {
         return path.join(process.cwd(), 'public', 'tracker.json')
       case 'angular':
         return path.join(process.cwd(), 'src', 'assets', 'tracker.json')
+      case 'next':
+        return path.join(process.cwd(), 'static', 'tracker.json')
       default:
         return path.join(process.cwd(), 'tracker.json')
     }
@@ -61,7 +63,7 @@ const schema = {
       properties: {
         framework: {
           type: ['string', 'boolean'],
-          enum: ['create-react-app', 'angular', 'vue', 'test', false]
+          enum: ['create-react-app', 'angular', 'vue', 'test', 'next', false]
         },
         deploy: {
           type: ['string', 'boolean'],

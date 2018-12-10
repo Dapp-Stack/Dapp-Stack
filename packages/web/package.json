@@ -58,6 +58,7 @@
   "peerDependencies": {
     "@angular/cli": "^7.1.2",
     "@vue/cli-service": "^3.0.5",
+    "next": "^7.0.2",
     "react-scripts": "^2.0.4"
   },
   "publishConfig": {

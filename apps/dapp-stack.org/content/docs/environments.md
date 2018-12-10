@@ -67,7 +67,7 @@ module.exports = {
   web: {
     // The web framework you are using.
     // Default value is create-react-app
-    // Possible values are: create-react-app, angular, vue, test and false
+    // Possible values are: create-react-app, angular, vue, test, next and false
     framework: false,
 
     // How to deploy the assets,

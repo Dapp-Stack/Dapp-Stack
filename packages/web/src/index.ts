@@ -10,6 +10,7 @@ import { IWebFrameworkStrategy, IWebDeployStrategy } from './types'
 import { Null } from './null'
 import { CreateReactApp } from './strategies/createReactApp'
 import { Angular } from './strategies/angular'
+import { Next } from './strategies/next'
 import { Vue } from './strategies/vue'
 import { Ipfs } from './strategies/ipfs'
 
@@ -28,6 +29,8 @@ const frameworkStrategy = (
       return new Vue(signale)
     case 'angular':
       return new Angular(signale)
+    case 'next':
+      return new Next(signale)
     default:
       return new Null()
   }
