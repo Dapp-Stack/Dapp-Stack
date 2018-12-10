@@ -66,7 +66,7 @@ You'll notice that you didn't have to download any third parties like geth or ga
 
 Those are the minimum requirements before releasing the v1.0.0:
 
-* [ ] Support [vue.js](https://vuejs.org)
+* [X] Support [vue.js](https://vuejs.org)
 * [X] Support [angular](https://angular.io)
 * [ ] Support [next.js](https://nextjs.org)
 * [ ] Debugger

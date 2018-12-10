@@ -93,8 +93,6 @@ Inside the newly created project, you can run some built-in commands:
 
 Runs the app in development mode.  
 
-
 ### `npm run  das test` or `yarn das test`
 
 Runs the test.  
-

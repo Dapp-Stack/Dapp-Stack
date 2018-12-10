@@ -8,6 +8,8 @@
       title: Create React App
     - id: angular
       title: Angular
+    - id: vue
+      title: Vue.js
 - title: Main Concepts
   isOrdered: true
   items:
