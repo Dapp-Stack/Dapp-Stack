@@ -47,7 +47,7 @@ npm init <initializer> is available in npm 6+
 ### yarn
 
 ```bash
-yarn create create-react-app my-dapp
+yarn create react-app my-dapp
 cd my-dapp
 yarn create dapp-stack
 yarn install

@@ -8,7 +8,12 @@ export type EthereumNetwork =
   | 'dev'
   | 'external'
 
-export type WebFramework = 'create-react-app' | 'angular' | 'vue' | 'test'
+export type WebFramework =
+  | 'create-react-app'
+  | 'angular'
+  | 'vue'
+  | 'next'
+  | 'test'
 export type WebDeploy = 'ipfs'
 
 export type Web = {

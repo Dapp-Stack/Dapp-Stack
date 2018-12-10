@@ -10,6 +10,8 @@
       title: Angular
     - id: vue
       title: Vue.js
+    - id: next
+      title: Next.js
 - title: Main Concepts
   isOrdered: true
   items:

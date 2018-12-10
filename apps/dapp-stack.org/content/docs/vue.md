@@ -3,6 +3,7 @@ id: vue
 title: Vue.js instalation
 permalink: docs/vue.html
 prev: angular.html
+next: next.html
 ---
 
 In order to get started with vue.js, you can do the following based on the method you prefer:
