@@ -2,12 +2,14 @@
   "name": "@dapp-stack/simple-react",
   "version": "0.2.2",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@dapp-stack/redux-eth": "^0.2.0",
     "@dapp-stack/redux-ipfs": "^0.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
+    "react-scripts": "^2.1.1",
     "redux": "^4.0.1",
     "redux-observable": "^1.0.0",
     "solium": "^1.1.8"

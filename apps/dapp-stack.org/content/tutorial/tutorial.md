@@ -446,6 +446,14 @@ yarn secrets show
 
 You should see exactly what you typed.
 
+Before runnning the deploy command you need to update the `package.json` with the following snippet:
+
+```js
+"homepage": "./",
+```
+
+This is specific to create-react-app so that downloading assets will works.
+
 The last step to publish your dapp is to run:
 
 ```bash
