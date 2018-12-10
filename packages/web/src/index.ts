@@ -10,6 +10,7 @@ import { IWebFrameworkStrategy, IWebDeployStrategy } from './types'
 import { Null } from './null'
 import { CreateReactApp } from './strategies/createReactApp'
 import { Angular } from './strategies/angular'
+import { Vue } from './strategies/vue'
 import { Ipfs } from './strategies/ipfs'
 
 const signale = new Signale({ scope: 'Web' })
@@ -23,8 +24,8 @@ const frameworkStrategy = (
   switch (framework) {
     case 'create-react-app':
       return new CreateReactApp(signale)
-    // case 'vue':
-    //   return new Vue(signale);
+    case 'vue':
+      return new Vue(signale)
     case 'angular':
       return new Angular(signale)
     default:

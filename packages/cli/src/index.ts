@@ -17,6 +17,7 @@ const packageDest = path.join(process.cwd(), 'package.json')
 const readmeDest = path.join(process.cwd(), 'README.md')
 const gitignoreDest = path.join(process.cwd(), '.gitignore')
 const createReactAppIndex = path.join(process.cwd(), 'public', 'index.html')
+const vueIndex = path.join(process.cwd(), 'public', 'index.html')
 const angularIndex = path.join(process.cwd(), 'src', 'index.html')
 
 if (
@@ -57,6 +58,11 @@ if (fs.existsSync(packageDest)) {
   } else if (Object.keys(packageData.dependencies).includes('react-scripts')) {
     webFramework = "'create-react-app'"
     fs.copySync(path.join(base, 'create-react-app.html'), createReactAppIndex)
+  } else if (
+    Object.keys(packageData.devDependencies).includes('@vue/cli-service')
+  ) {
+    webFramework = "'vue'"
+    fs.copySync(path.join(base, 'vue.html'), vueIndex)
   }
 } else {
   packageData = {

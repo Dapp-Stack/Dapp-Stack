@@ -20,13 +20,14 @@ import * as web from "@dapp-stack/web";
 web.start("create-react-react")
 web.build("create-react-react")
 web.stop("create-react-react")
-web.deploy("create-react-react")
+web.deploy("ipfs")
 ```
 
-Currently the only web framework supported are `create-react-react` and `angular`.
+Currently the only web framework supported are `create-react-react`, `angular` and `vue`.
 It will delegate all the call to the underlying web framework:
 - [create-react-app](https://github.com/facebook/create-react-app)
 - [angular](https://github.com/angular/angular)
+- [vue](https://github.com/vuejs/vue)
 
 The only deploy strategy supported is `ipfs`
 

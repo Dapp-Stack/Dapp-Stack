@@ -3,6 +3,7 @@ id: angular
 title: Angular instalation
 permalink: docs/angular.html
 prev: create-react-app.html
+next: vue.html
 ---
 
 In order to get started with angular, you can do the following based on the method you prefer:
