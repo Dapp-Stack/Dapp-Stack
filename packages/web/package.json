@@ -55,7 +55,8 @@
   },
   "peerDependencies": {
     "@angular/cli": "^7.1.2",
-    "react-scripts": "^2.0.4"
+    "react-scripts": "^2.0.4",
+    "@vue/cli-service": "^3.0.5"
   },
   "publishConfig": {
     "access": "public"
