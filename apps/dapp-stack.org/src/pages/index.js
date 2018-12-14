@@ -19,7 +19,7 @@ class Home extends Component {
     return (
       <Layout location={location}>
         <TitleAndMetaTags
-          title="Dapp Stack &ndash; A toolbelt to develop DApp with ease"
+          title="Dapp Stack &ndash; A toolkit to develop DApp with ease"
           ogUrl={createOgUrl('index.html')}
         />
         <div css={{width: '100%'}}>
@@ -102,7 +102,7 @@ class Home extends Component {
                         fontSize: 30,
                       },
                     }}>
-                    A toolbelt to develop DApp with ease
+                    A toolkit to develop DApp with ease
                   </p>
                   <Flex
                     valign="center"

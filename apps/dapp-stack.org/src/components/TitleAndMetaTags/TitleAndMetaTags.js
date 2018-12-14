@@ -1,7 +1,7 @@
 import Helmet from 'react-helmet';
 import React from 'react';
 
-const defaultDescription = 'A toolbelt to develop DApp with ease';
+const defaultDescription = 'A toolkit to develop DApp with ease';
 
 type Props = {
   title: string,

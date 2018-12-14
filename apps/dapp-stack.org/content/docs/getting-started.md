@@ -16,7 +16,7 @@ redirect_from:
 
 This page is an overview of the DApp Stack documentation and related resources.
 
-**DApp Stack** is a toolbelt to develop DApp with ease. Learn what DApp Stack is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
+**DApp Stack** is a toolkit to develop DApp with ease. Learn what DApp Stack is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
 
 ---
 

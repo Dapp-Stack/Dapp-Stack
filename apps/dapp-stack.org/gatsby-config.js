@@ -2,10 +2,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'Dapp Stack: A toolbelt to develop DApp with ease',
+    title: 'Dapp Stack: A toolkit to develop DApp with ease',
     siteUrl: 'https://dapp-stack.org',
     rssFeedTitle: 'DApp Stack',
-    rssFeedDescription: 'A toolbelt to develop DApp with ease',
+    rssFeedDescription: 'A toolkit to develop DApp with ease',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
