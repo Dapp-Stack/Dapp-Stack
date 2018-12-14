@@ -1,14 +1,14 @@
 # [DApp Stack](https://dapp-stack.org) &middot; [![CircleCI](https://circleci.com/gh/Dapp-Stack/Dapp-Stack.svg?style=svg)](https://circleci.com/gh/Dapp-Stack/Dapp-Stack) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Dapp-Stack/Dapp-Stack/blob/master/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://dapp-stack.org/docs/how-to-contribute.html#your-first-pull-request)
 
-DApp Stack is a JavaScript toolbelt to develop DApp with ease
+DApp Stack is a JavaScript toolkit to develop DApp with ease
 
-* **Convention over Configuration:** DApp Stack makes it painless to create DApp. You will be able to be from zero to development
+* **Convention over Configuration:** DApp Stack makes it painless to create DApp allowing you to go from zero to development
 in less time that you would expect, the only thing we require is that you have node.js LTS installed on your system. We kept the
 configuration to a minimum and if you need to change it, it will be very simple and well documented.
-* **Compatibility:** You love the web and we love it too. We make sure that DApp Stack is well integrated with your favorite
-web framework, if you prefer to develop without any of them, it is fine too.
+* **Compatibility:** You love the web and we love it too. We ensure that DApp Stack is well integrated with your favorite
+web framework, if you prefer to develop without any of them, that is fine too.
 * **Modularity:** We don't make assumptions about the rest of your technology stack, so you can develop new features using DApp
-Stack packages without changing everything. DApp Stack can also be used as a whole if you wish too and we aim to provide full
+Stack packages without changing everything. DApp Stack can also be used as a whole if you wish to and we aim to provide full
 support of the stack.
 
 [Learn how to use DApp Stack in your own project](https://dapp-stack.org/docs/getting-started.html).
@@ -17,12 +17,12 @@ support of the stack.
 
 DApp Stack has been designed for gradual adoption from the start, and **you can use as little or as much DApp Stack as you need**:
 
-* [Create a New DApp](https://dapp-stack.org/docs/create-a-new-dapp.html) if you're looking for a powerful JavaScript toolbelt.
+* [Create a New DApp](https://dapp-stack.org/docs/create-a-new-dapp.html) if you're looking for a powerful JavaScript toolkit.
 
 ## Documentation
 You can find the DApp Stack documentation [on the website](https://dapp-stack.org/docs).
 
-Check out the [Getting Started](https://dapp-stack.org/docs/getting-started.html) page for a quick overview.
+Check out the [Getting Started](https://dapp-stack.org/docs/getting-started.html) guide for a quick overview.
 
 The documentation is divided into several sections:
 
@@ -92,3 +92,6 @@ To help you get your feet wet and get you familiar with our contribution process
 ### License
 
 DApp Stack is [MIT licensed](./LICENSE).
+
+### Security
+Remember a DApp is backend code running on a decentralized peer-to-peer network so it is up to you to ensure your data is secure.
