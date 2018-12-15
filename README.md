@@ -70,7 +70,7 @@ Those are the minimum requirements before releasing the v1.0.0:
 * [X] Support [angular](https://angular.io)
 * [X] Support [next.js](https://nextjs.org)
 * [ ] Debugger
-* [ ] Code coverage
+* [X] Code coverage
 * [ ] Vyper
 
 ## Contributing
@@ -94,4 +94,5 @@ To help you get your feet wet and get you familiar with our contribution process
 DApp Stack is [MIT licensed](./LICENSE).
 
 ### Security
+
 Remember a DApp is backend code running on a decentralized peer-to-peer network so it is up to you to ensure your data is secure.

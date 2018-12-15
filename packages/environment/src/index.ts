@@ -9,8 +9,13 @@ const signale = new Signale({ scope: 'Environment' })
 
 export const Structure = {
   contracts: {
-    src: path.join(process.cwd(), 'contracts', 'src'),
-    build: path.join(process.cwd(), 'contracts', 'build'),
+    realSrc: path.join(process.cwd(), 'contracts', 'src'),
+    src: process.env.COVERAGE
+      ? path.join(process.cwd(), 'contracts', 'coverage', 'src')
+      : path.join(process.cwd(), 'contracts', 'src'),
+    build: process.env.COVERAGE
+      ? path.join(process.cwd(), 'contracts', 'coverage', 'build')
+      : path.join(process.cwd(), 'contracts', 'build'),
     doc: path.join(process.cwd(), 'contracts', 'doc'),
     security: path.join(process.cwd(), 'contracts', 'security'),
     test: path.join(process.cwd(), 'contracts', 'tests'),
@@ -28,6 +33,8 @@ export const Structure = {
         return path.join(process.cwd(), 'src', 'assets', 'tracker.json')
       case 'next':
         return path.join(process.cwd(), 'static', 'tracker.json')
+      case 'test':
+        return path.join(Structure.contracts.coverage, 'tracker.json')
       default:
         return path.join(process.cwd(), 'tracker.json')
     }
@@ -133,6 +140,7 @@ export const build = (): Environment => {
     signale.error(ajv.errorsText(environmentSchema.errors))
     process.exit(1)
   }
+
   return environment
 }
 

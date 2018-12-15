@@ -8,7 +8,6 @@ export async function stopAsync(
 ) {
   await ethereum.stop()
   await ipfs.stop()
-  test.cleanCoverage()
   web.stop()
 
   if (shouldExit) {

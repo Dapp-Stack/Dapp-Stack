@@ -1,4 +1,5 @@
 import * as program from 'commander'
+import { Signale } from 'signale'
 
 program
   .command('build')
@@ -55,6 +56,16 @@ program
   .action(() => {
     require('./console')
   })
+
+const signale = new Signale({ scope: 'Scipts' })
+
+if (process.env.COVERAGE) {
+  signale.pending("Code Coverage is enable and will instrument your contracts")
+}
+
+if (process.env.DAPP_ENV && process.env.DAPP_ENV !== 'local' && process.env.DAPP_ENV !== 'test') {
+  signale.pending("Non local or test environment, be careful")
+}
 
 program.parse(process.argv)
 

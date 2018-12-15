@@ -4,6 +4,8 @@ import * as spawn from 'cross-spawn'
 import * as path from 'path'
 import { Signale } from 'signale'
 
+import { Coverage } from './coverage'
+
 const signale = new Signale({ scope: 'Test' })
 const mochaPath = path.resolve(
   __dirname,
@@ -14,40 +16,80 @@ const mochaPath = path.resolve(
   'mocha'
 )
 
-export const setup = async (migrate: (deployer: any) => Promise<void>) => {
+const istanbulPath = path.resolve(
+  __dirname,
+  '..',
+  '..',
+  'node_modules',
+  '.bin',
+  'istanbul'
+)
+const coverage = new Coverage()
+
+export const setup = async (migrate: (_deployer: any) => Promise<void>) => {
   const environment = build()
-  const ethereum = environment.ethereum
-  if (!ethereum) {
+  const { ethereum, web } = environment
+  if (!ethereum || ethereum.network !== 'dev') {
     signale.error(
-      'Test cannot run if ethereum is not configured in the test enviornment.'
+      'Test cannot run if ethereum is not configured with dev network'
+    )
+    process.exit(1)
+    return
+  }
+
+  if (web.framework !== 'test') {
+    signale.error(
+      'Test cannot run if web is not configured with test framework'
     )
     process.exit(1)
     return
   }
   ethereum.migrate = migrate
   await deployer.run(ethereum, environment.web)
+
   return
 }
 
-export const setupCoverage = () => {
-  // coverage.prepare();
-  // coverage.instrument();
+export const setupCoverage = async () => {
+  if (process.env.COVERAGE) {
+    const environment = build()
+    await coverage.setup(environment.compile.contracts)
+  }
 }
 
 export const run = () => {
+  const env = Object.create(process.env)
   spawn.sync(
     'node',
     [mochaPath, `${Structure.contracts.test}**/*Test.js`, '--reporter', 'spec'],
     {
-      stdio: [process.stdin, process.stdout, process.stderr]
+      stdio: [process.stdin, process.stdout, process.stderr],
+      env
     }
   )
 }
 
-export const finishCoverage = () => {
-  // coverage.report();
-}
+export const finishCoverage = async () => {
+  if (process.env.COVERAGE) {
+    const environment = build()
+    await coverage.registerContracts(environment.web.framework)
+    await coverage.finish()
 
-export const cleanCoverage = () => {
-  // coverage.clean();
+    spawn.sync(
+      'node',
+      [
+        istanbulPath,
+        'report',
+        '--root',
+        Structure.contracts.coverage,
+        '--dir',
+        Structure.contracts.coverage,
+        '--format',
+        'html'
+      ],
+      {
+        stdio: [process.stdin, process.stdout, process.stderr]
+      }
+    )
+  }
 }

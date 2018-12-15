@@ -78,7 +78,7 @@ export class Geth implements IEthereumStrategy {
       '8546',
       '--rpc',
       '--rpcapi',
-      'db,personal,eth,net,web3',
+      'db,personal,eth,net,web3,ssh',
       '--rpcaddr',
       '0.0.0.0',
       '--rpcport',

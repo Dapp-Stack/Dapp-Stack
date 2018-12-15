@@ -385,12 +385,22 @@ describe('SimpleStorage', () => {
   it('allow to change the value', async () => {
     await simpleStorage.set("hello");
     const value = await simpleStorage.get();
-    expect(value).to.eq("hello");
+    if (!process.env.COVERAGE) {
+      expect(value).to.eq("hello");
+    }
   });
 });
 ```
 
 If you run them one more time, you should see that they run successfully this time.
+
+In order to produce the code coverage, you can run the same command with COVERAGE at true:
+
+```bash
+COVERAGE=true yarn das test
+```
+
+You can find an html report at `contracts/coverage/index.html`
 
 ## Deploy It
 

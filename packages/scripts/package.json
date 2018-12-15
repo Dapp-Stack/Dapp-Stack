@@ -46,6 +46,7 @@
     "@types/chokidar": "^1.7.5",
     "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.9.4",
+    "@types/signale": "^1.2.0",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typedoc": "^0.13.0",
