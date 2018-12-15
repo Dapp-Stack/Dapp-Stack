@@ -47,9 +47,9 @@ const Versions = ({location}: Props) => (
                       Changelog
                     </a>
                   </li>
-                  {version.path && (
+                  {version.url && (
                     <li>
-                      <a href={version.path} rel="nofollow">
+                      <a href={version.url} rel="nofollow">
                         Documentation
                       </a>
                     </li>

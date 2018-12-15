@@ -1,4 +1,4 @@
 const urlRoot = 'https://dapp-stack.org';
-const version = '0.1.0';
+const version = '0.2.2';
 
 export {urlRoot, version};
