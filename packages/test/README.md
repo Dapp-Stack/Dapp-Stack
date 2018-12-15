@@ -62,3 +62,15 @@ const { run } = require('@dapp-stack/test');
 
 run();
 ```
+
+If you want to run the code coverage too, you can execute the following:
+
+```js
+const { finishCoverage, run, setupCoverage } = require('@dapp-stack/test');
+
+setupCoverage()
+run();
+finishCoverage()
+```
+
+You can then see the html reports at `contracts/coverage/index.html`

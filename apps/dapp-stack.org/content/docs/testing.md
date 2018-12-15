@@ -89,3 +89,29 @@ $ dapp-stack-scripts test
 
 ✨  Done in 4.47s.
 ```
+
+### Smart Contract Coverage
+
+DApp Stack ships with a code coverage tool for your solidity contracts, in order to enable it, you just have to set
+the COVERAGE environment variable as follow:
+
+Using npm
+```bash
+COVERAGE=true npm run das test
+```
+
+Using yarn
+```bash
+COVERAGE=true yarn das test
+```
+
+It will produce an html report at `contracts/coverage/index.html`
+
+> WARNING: Because we change the constant call to non-constant, you will have to adapt your test as the result won't be
+> the same
+
+#### How it works
+
+In order to keep track of the code coverage, we instrument your contracts by adding events. We also change all the constant function to non-constant, that allow us to also get coverage for call that usually don't trigger transaction.
+
+You can find the instrumented contracts at `contracts/coverage/index.html`

@@ -42,9 +42,11 @@
   "homepage": "https://dapp-stack.org",
   "devDependencies": {
     "@types/cross-spawn": "^6.0.0",
+    "@types/fs-extra": "^5.0.4",
     "@types/istanbul": "^0.4.30",
     "@types/mocha": "^5.2.5",
     "@types/signale": "^1.2.0",
+    "@types/web3": "^1.0.14",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typedoc": "^0.13.0",
@@ -54,12 +56,12 @@
     "@dapp-stack/deployer": "^0.2.0",
     "@dapp-stack/environment": "^0.2.0",
     "cross-spawn": "^6.0.5",
-    "ethers": "^4.0.3",
+    "fs-extra": "^7.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "signale": "^1.2.1",
-    "sol-explore": "^1.6.2",
-    "solidity-parser-antlr": "^0.2.1"
+    "solidity-parser-antlr": "^0.2.1",
+    "web3": "^1.0.0-beta.37"
   },
   "publishConfig": {
     "access": "public"

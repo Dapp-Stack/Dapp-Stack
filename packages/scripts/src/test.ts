@@ -8,20 +8,13 @@ import { globalError } from './shared/globalError'
 
 process.env.DAPP_ENV = 'test'
 
-const shouldRunCoverage = process.env.COVERAGE
-
 async function testAsync() {
   await ethereum.start()
   await ipfs.start()
-  if (shouldRunCoverage) {
-    await compiler.run()
-    tester.setupCoverage()
-  }
+  await tester.setupCoverage()
   await compiler.run()
   tester.run()
-  if (shouldRunCoverage) {
-    tester.finishCoverage()
-  }
+  await tester.finishCoverage()
   await lifecycle.stopAsync({ shouldExit: true })
 }
 

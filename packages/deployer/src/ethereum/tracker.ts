@@ -35,10 +35,6 @@ export class Tracker {
   }
 
   private readonly whileLock = (execution: Function) => {
-    if (this.isTest()) {
-      return
-    }
-
     fs.ensureFileSync(this.filename)
     try {
       lockfile.lockSync(this.filename)
@@ -49,9 +45,5 @@ export class Tracker {
     } finally {
       lockfile.unlockSync(this.filename)
     }
-  }
-
-  private readonly isTest = () => {
-    return process.env.DAPP_ENV === 'test'
   }
 }
