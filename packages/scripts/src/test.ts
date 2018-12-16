@@ -14,7 +14,7 @@ async function testAsync() {
   await tester.setupCoverage()
   await compiler.run()
   tester.run()
-  await tester.finishCoverage()
+  await tester.finish()
   await lifecycle.stopAsync({ shouldExit: true })
 }
 

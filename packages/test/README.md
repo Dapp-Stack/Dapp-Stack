@@ -58,19 +58,20 @@ and an ethereum node running.
 Then you will be able to run the following:
 
 ```js
-const { run } = require('@dapp-stack/test');
+const { finish, run } = require('@dapp-stack/test');
 
 run();
+finish();
 ```
 
 If you want to run the code coverage too, you can execute the following:
 
 ```js
-const { finishCoverage, run, setupCoverage } = require('@dapp-stack/test');
+const { finish, run, setupCoverage } = require('@dapp-stack/test');
 
 setupCoverage()
 run();
-finishCoverage()
+finish()
 ```
 
 You can then see the html reports at `contracts/coverage/index.html`

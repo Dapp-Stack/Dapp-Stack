@@ -24,7 +24,9 @@ export class Tracker {
 
   reset = () => {
     this.whileLock((data: ITrackerData) => {
-      data[this.network.chainId] = {}
+      if (!process.env.KEEP_TRACKER || !data[this.network.chainId]) {
+        data[this.network.chainId] = {}
+      }
     })
   }
 

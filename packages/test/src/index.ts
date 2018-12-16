@@ -1,6 +1,7 @@
 import { build, Structure } from '@dapp-stack/environment'
 import * as deployer from '@dapp-stack/deployer'
 import * as spawn from 'cross-spawn'
+import * as fs from 'fs-extra'
 import * as path from 'path'
 import { Signale } from 'signale'
 
@@ -59,6 +60,7 @@ export const setupCoverage = async () => {
 
 export const run = () => {
   const env = Object.create(process.env)
+  env.KEEP_TRACKER = true
   spawn.sync(
     'node',
     [mochaPath, `${Structure.contracts.test}**/*Test.js`, '--reporter', 'spec'],
@@ -69,9 +71,9 @@ export const run = () => {
   )
 }
 
-export const finishCoverage = async () => {
+export const finish = async () => {
+  const environment = build()
   if (process.env.COVERAGE) {
-    const environment = build()
     await coverage.registerContracts(environment.web.framework)
     await coverage.finish()
 
@@ -92,4 +94,7 @@ export const finishCoverage = async () => {
       }
     )
   }
+
+  const trackerPath = Structure.tracker(environment.web.framework)
+  fs.unlinkSync(trackerPath)
 }
