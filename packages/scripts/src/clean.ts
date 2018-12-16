@@ -8,11 +8,15 @@ const webDir = path.join(process.cwd(), 'build')
 const contractDir = Structure.contracts.build
 const securityDir = Structure.contracts.security
 const docDir = Structure.contracts.doc
+const coverageDir = Structure.contracts.coverage
 
 const signale = new Signale({ scope: 'Cleaner' })
 signale.await('Cleaner started')
-;[gethDir, webDir, contractDir, securityDir, docDir].forEach(dir => {
-  if (fs.existsSync(gethDir)) {
+
+const dirs = [gethDir, webDir, contractDir, securityDir, docDir, coverageDir]
+
+dirs.forEach(dir => {
+  if (fs.existsSync(dir)) {
     fs.removeSync(dir)
     signale.success(`${dir} directory removed`)
   }
