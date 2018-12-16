@@ -17,7 +17,7 @@ support of the stack.
 
 DApp Stack has been designed for gradual adoption from the start, and **you can use as little or as much DApp Stack as you need**:
 
-* [Create a New DApp](https://dapp-stack.org/docs/create-a-new-dapp.html) if you're looking for a powerful JavaScript toolkit.
+* [Create a New DApp](https://dapp-stack.org/docs/getting-started.html) if you're looking for a powerful JavaScript toolkit.
 
 ## Documentation
 You can find the DApp Stack documentation [on the website](https://dapp-stack.org/docs).
@@ -27,9 +27,8 @@ Check out the [Getting Started](https://dapp-stack.org/docs/getting-started.html
 The documentation is divided into several sections:
 
 * [Tutorial](https://dapp-stack.org/tutorial/tutorial.html)
-* [Main Concepts](https://dapp-stack.org/docs/hello-world.html)
-* [Advanced Guides](https://dapp-stack.org/docs/in-depth.html)
-* [API Reference](https://dapp-stack.org/docs/api.html)
+* [Main Concepts](https://dapp-stack.org/docs/getting-started.html)
+* [Advanced Guides](https://dapp-stack.org/docs/extra-commands.html)
 * [Contributing Guide](https://dapp-stack.org/docs/how-to-contribute.html)
 
 You can improve it by sending pull requests to [this repository](https://github.com/Dapp-Stack/Dapp-Stack).
