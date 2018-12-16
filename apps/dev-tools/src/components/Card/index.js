@@ -40,6 +40,8 @@ class Header extends React.Component {
   }
 }
 
+Header.displayName = 'Header';
+
 Header.propTypes = {
   underline: PropTypes.bool
 };
@@ -49,6 +51,7 @@ Header.defaultProps = {
 };
 
 class Body extends React.Component {
+
   render() {
     const { className } = this.props;
 
@@ -57,6 +60,8 @@ class Body extends React.Component {
     );
   }
 }
+
+Body.displayName = 'Body';
 
 Body.propTypes = {
   className: PropTypes.string
@@ -80,17 +85,16 @@ class Card extends React.Component {
 
   render() {
     const { hover, className } = this.props;
-
     let header, body;
     const children = Array.isArray(this.props.children)
       ? this.props.children
       : [this.props.children];
     children.forEach(child => {
-      const childName = child.type.name;
-      if (childName === Header.name) {
+      const childName = child.type.displayName;
+      if (childName === Header.displayName) {
         header = child;
       }
-      if (childName === Body.name) {
+      if (childName === Body.displayName) {
         body = child;
       }
     });

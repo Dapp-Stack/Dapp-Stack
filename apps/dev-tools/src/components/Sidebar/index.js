@@ -39,16 +39,20 @@ class TabIcon extends React.Component {
   }
 }
 
+TabIcon.displayName = 'TabIcon';
+
 class TabGroup extends React.Component {
   render() {
     return this.props.children;
   }
 }
 
+TabGroup.displayName = 'TabGroup';
+
 TabGroup.propTypes = {
   children: PropTypes.arrayOf(function(propValue, key) {
     for (let i = 0; i < propValue.length; i++) {
-      if (propValue[i].type.name !== TabIcon.name) {
+      if (propValue[i].type.displayName !== TabIcon.displayName) {
         return new Error('Children Must Be an Instance of TabIcon');
       }
     }
@@ -60,6 +64,8 @@ class Footer extends React.Component {
     return this.props.children;
   }
 }
+
+Footer.displayName = 'Footer';
 
 TabIcon.propTypes = {
   icon: PropTypes.object,
@@ -95,12 +101,12 @@ class Sidebar extends React.Component {
         return null;
       }
 
-      const childName = child.type.name;
-      if (childName === Footer.name) {
+      const childName = child.type.displayName;
+      if (childName === Footer.displayName) {
         footer = child;
       }
 
-      if (childName === TabGroup.name) {
+      if (childName === TabGroup.displayName) {
         tabGroup = child;
       }
     });
@@ -140,8 +146,8 @@ Sidebar.propTypes = {
         // if child is a boolean then abort because it is the remnants of
         // an expression that should not be displayed at this time
         typeof propValue[i] !== 'boolean' &&
-        propValue[i].type.name !== TabGroup.name &&
-        propValue[i].type.name !== Footer.name
+        propValue[i].type.displayName !== TabGroup.displayName &&
+        propValue[i].type.displayName !== Footer.displayName
       ) {
         return new Error('Children Must Be an Instance of TabGroup or Footer');
       }
