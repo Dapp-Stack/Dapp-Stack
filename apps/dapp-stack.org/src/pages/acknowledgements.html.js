@@ -16,7 +16,7 @@ const Acknowlegements = ({data, location}) => (
           <Header>Acknowledgements</Header>
           <TitleAndMetaTags
             ogUrl={`${urlRoot}/acknowledgements.html`}
-            title="React - Acknowledgements"
+            title="DApp Stack - Acknowledgements"
           />
 
           <div css={sharedStyles.markdown}>

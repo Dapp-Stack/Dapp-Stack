@@ -24,7 +24,7 @@ const AllBlogPosts = ({data, location}: Props) => (
           <Header>All Posts</Header>
           <TitleAndMetaTags
             ogUrl={`${urlRoot}/blog/all.html`}
-            title="React - All Posts"
+            title="DApp Stack - All Posts"
           />
           <ul
             css={{

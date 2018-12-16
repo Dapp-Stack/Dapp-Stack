@@ -18,7 +18,7 @@ const Versions = ({location}: Props) => (
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
           <Header>Dapp Stack Versions</Header>
-          <TitleAndMetaTags title="React - Versions" />
+          <TitleAndMetaTags title="DApp Stack - Versions" />
           <div css={sharedStyles.markdown}>
             <p>
               A complete release history for Dapp Stack is available{' '}

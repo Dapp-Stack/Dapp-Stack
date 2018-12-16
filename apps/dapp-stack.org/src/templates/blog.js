@@ -29,7 +29,7 @@ const Blog = ({data, location}) => (
       ogDescription={data.markdownRemark.excerpt}
       markdownRemark={data.markdownRemark}
       sectionList={toSectionList(data.allMarkdownRemark)}
-      titlePostfix=" &ndash; React Blog"
+      titlePostfix=" &ndash; DApp Stack Blog"
     />
   </Layout>
 );

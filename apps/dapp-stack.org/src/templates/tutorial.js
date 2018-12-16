@@ -14,7 +14,7 @@ const Tutorial = ({data, location}) => {
         location={location}
         markdownRemark={data.markdownRemark}
         sectionList={sectionListTutorial}
-        titlePostfix=" &ndash; React"
+        titlePostfix=" &ndash; DApp Stack"
       />
     </Layout>
   );
