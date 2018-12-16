@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/scripts",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "engines": {
     "node": ">=8.11"
   },
@@ -53,17 +53,17 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
-    "@dapp-stack/api": "^0.2.0",
-    "@dapp-stack/compiler": "^0.2.0",
-    "@dapp-stack/deployer": "^0.2.0",
-    "@dapp-stack/doc": "^0.2.0",
-    "@dapp-stack/environment": "^0.2.0",
-    "@dapp-stack/ethereum": "^0.2.0",
-    "@dapp-stack/ipfs": "^0.2.0",
-    "@dapp-stack/security": "^0.2.0",
-    "@dapp-stack/test": "^0.2.0",
-    "@dapp-stack/wallet": "^0.2.0",
-    "@dapp-stack/web": "^0.2.2",
+    "@dapp-stack/api": "^0.3.0",
+    "@dapp-stack/compiler": "^0.3.0",
+    "@dapp-stack/deployer": "^0.3.0",
+    "@dapp-stack/doc": "^0.3.0",
+    "@dapp-stack/environment": "^0.3.0",
+    "@dapp-stack/ethereum": "^0.3.0",
+    "@dapp-stack/ipfs": "^0.3.0",
+    "@dapp-stack/security": "^0.3.0",
+    "@dapp-stack/test": "^0.3.0",
+    "@dapp-stack/wallet": "^0.3.0",
+    "@dapp-stack/web": "^0.3.0",
     "chokidar": "^2.0.4",
     "commander": "^2.18.0",
     "fs-extra": "^7.0.0",

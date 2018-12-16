@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Dapp-Stack/Dapp-Stack.org/compare/v0.2.2...v0.3.0) (2018-12-16)
+
+
+### Bug Fixes
+
+* deploying the dapp to ipfs ([1d1f776](https://github.com/Dapp-Stack/Dapp-Stack.org/commit/1d1f776)), closes [#9](https://github.com/Dapp-Stack/Dapp-Stack.org/issues/9)
+
+
+### Features
+
+* add code coverage ([3a84b42](https://github.com/Dapp-Stack/Dapp-Stack.org/commit/3a84b42)), closes [#7](https://github.com/Dapp-Stack/Dapp-Stack.org/issues/7)
+* add support for next.js ([b608c1c](https://github.com/Dapp-Stack/Dapp-Stack.org/commit/b608c1c)), closes [#4](https://github.com/Dapp-Stack/Dapp-Stack.org/issues/4)
+
+
+
+
+
 # [0.2.0](https://github.com/Dapp-Stack/Dapp-Stack.org/compare/v0.1.6...v0.2.0) (2018-12-10)
 
 

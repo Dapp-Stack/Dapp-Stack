@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
+
+
+### Features
+
+* add support for next.js ([b608c1c](https://github.com/Dapp-Stack/Dapp-Stack/commit/b608c1c)), closes [#4](https://github.com/Dapp-Stack/Dapp-Stack/issues/4)
+* open the browser after deploy ([0677ab5](https://github.com/Dapp-Stack/Dapp-Stack/commit/0677ab5))
+
+
+
+
+
 ## [0.2.2](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.1...v0.2.2) (2018-12-10)
 
 

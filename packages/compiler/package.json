@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/compiler",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "engines": {
     "node": ">=8.11"
   },
@@ -49,7 +49,7 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
-    "@dapp-stack/environment": "^0.2.0",
+    "@dapp-stack/environment": "^0.3.0",
     "lodash": "^4.17.10",
     "signale": "^1.2.1",
     "solc": "^0.5.0"

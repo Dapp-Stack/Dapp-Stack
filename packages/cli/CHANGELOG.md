@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
+
+
+### Features
+
+* add code coverage ([3a84b42](https://github.com/Dapp-Stack/Dapp-Stack/commit/3a84b42)), closes [#7](https://github.com/Dapp-Stack/Dapp-Stack/issues/7)
+* add support for next.js ([b608c1c](https://github.com/Dapp-Stack/Dapp-Stack/commit/b608c1c)), closes [#4](https://github.com/Dapp-Stack/Dapp-Stack/issues/4)
+
+
+
+
+
 ## [0.2.1](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.0...v0.2.1) (2018-12-10)
 
 
