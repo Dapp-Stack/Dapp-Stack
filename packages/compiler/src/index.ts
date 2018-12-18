@@ -2,10 +2,11 @@ import { build, Maybe } from '@dapp-stack/environment'
 import { Signale } from 'signale'
 
 import { Solc } from './strategies/solc'
+import { Vyper } from './strategies/vyper'
 
 const signale = new Signale({ scope: 'Compiler' })
 
-export const run = (contracts: Maybe<string[]> = false): Promise<boolean> => {
+export const run = async (contracts: Maybe<string[]> = false) => {
   if (!contracts) {
     contracts = build().compile.contracts
   }
@@ -13,5 +14,18 @@ export const run = (contracts: Maybe<string[]> = false): Promise<boolean> => {
   const solcContracts = contracts.filter(contractName =>
     contractName.endsWith('.sol')
   )
-  return new Solc(solcContracts, signale).compile()
+
+  const vyperContracts = contracts.filter(contractName =>
+    contractName.endsWith('.vy')
+  )
+
+  if (solcContracts.length) {
+    const solc = new Solc(solcContracts, signale)
+    await solc.compile()
+  }
+
+  if (vyperContracts.length) {
+    const vyper = new Vyper(vyperContracts, signale)
+    await vyper.compile()
+  }
 }
