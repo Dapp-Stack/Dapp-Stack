@@ -100,7 +100,7 @@ export class Solc implements ICompileStrategy {
   }
 
   compile = () => {
-    this.signale.await('Starting to compile the contracts')
+    this.signale.await('Starting to compile the solidity contracts')
     return new Promise<boolean>(resolve => {
       const output: CompilationOutput = JSON.parse(
         solc.compile(this.input(), this.findImports)

@@ -70,7 +70,7 @@ Those are the minimum requirements before releasing the v1.0.0:
 * [X] Support [next.js](https://nextjs.org)
 * [ ] Debugger
 * [X] Code coverage
-* [ ] Vyper
+* [X] Vyper
 
 ## Contributing
 
