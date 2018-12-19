@@ -1,6 +1,7 @@
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 import * as cors from 'cors'
+import * as http from 'http'
 
 import { Routes } from './routes'
 
@@ -10,8 +11,24 @@ const corsOptions = {
   origin: ['http://localhost:3000', 'https://dev-tools.dapp-stack.org']
 }
 
-export const start = () => {
+export const start = async () => {
+  const isRunning = await ping()
+  if (isRunning) {
+    return
+  }
   new App().start()
+}
+
+const ping = () => {
+  return new Promise<boolean>(resolve => {
+    http
+      .get(`http://127.0.0.1:${PORT}/`, res => {
+        resolve(true)
+      })
+      .on('error', () => {
+        resolve(false)
+      })
+  })
 }
 
 class App {
