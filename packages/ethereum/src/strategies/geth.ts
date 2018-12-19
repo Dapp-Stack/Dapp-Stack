@@ -14,6 +14,7 @@ export class Geth implements IEthereumStrategy {
   private readonly signale: Signale
   private readonly binaryPath: string
   private readonly dataDir: string
+  private readonly ipcFile: string
   private readonly logStream: fs.WriteStream
 
   constructor(config: Ethereum, signale: Signale) {
@@ -21,6 +22,7 @@ export class Geth implements IEthereumStrategy {
     this.signale = signale
     this.binaryPath = path.resolve(__dirname, '..', '..', '..', 'bin', 'geth')
     this.dataDir = path.join(process.cwd(), '.geth')
+    this.ipcFile = path.join(this.dataDir, 'geth.ipc')
     fs.ensureDirSync(this.dataDir)
     fs.ensureDirSync(path.join(process.cwd(), 'logs'))
     this.logStream = fs.createWriteStream(
@@ -29,6 +31,15 @@ export class Geth implements IEthereumStrategy {
   }
 
   start = () => {
+    if (fs.existsSync(this.ipcFile)) {
+      this.signale.success('Connected to geth')
+      return new Promise<boolean>(resolve => resolve(true))
+    }
+
+    return this.startDaemon()
+  }
+
+  startDaemon = () => {
     this.signale.await('Starting geth...')
     return new Promise<boolean>(async resolve => {
       this.init()
@@ -49,7 +60,7 @@ export class Geth implements IEthereumStrategy {
     let attachTo: string = ''
     switch (this.config.network) {
       case 'dev':
-        attachTo = path.join(this.dataDir, 'geth.ipc')
+        attachTo = this.ipcFile
         break
       case 'external':
         attachTo = 'http://127.0.0.1:8545'
@@ -78,7 +89,7 @@ export class Geth implements IEthereumStrategy {
       '8546',
       '--rpc',
       '--rpcapi',
-      'db,personal,eth,net,web3,ssh',
+      'db,personal,eth,net,web3,ssh,debug',
       '--rpcaddr',
       '0.0.0.0',
       '--rpcport',
