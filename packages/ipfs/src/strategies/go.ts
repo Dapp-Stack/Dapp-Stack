@@ -1,6 +1,7 @@
 import { ChildProcess } from 'child_process'
 import * as spawn from 'cross-spawn'
 import * as fs from 'fs-extra'
+import * as http from 'http'
 import * as path from 'path'
 import { Signale } from 'signale'
 
@@ -31,7 +32,16 @@ export class Go implements IIpfsStrategy {
     )
   }
 
-  start = () => {
+  start = async () => {
+    const isRunning = await this.ping()
+    if (isRunning) {
+      this.signale.success('Connected to ipfs')
+      return new Promise<boolean>(resolve => resolve(true))
+    }
+    return this.startDaemon()
+  }
+
+  startDaemon = () => {
     this.signale.await('Starting ipfs...')
     return new Promise<boolean>(resolve => {
       this.init()
@@ -46,6 +56,18 @@ export class Go implements IIpfsStrategy {
     return new Promise<boolean>(resolve => {
       child && child.kill()
       resolve(true)
+    })
+  }
+
+  private readonly ping = () => {
+    return new Promise<boolean>(resolve => {
+      http
+        .get('http://127.0.0.1:5001/', res => {
+          resolve(true)
+        })
+        .on('error', () => {
+          resolve(false)
+        })
     })
   }
 
