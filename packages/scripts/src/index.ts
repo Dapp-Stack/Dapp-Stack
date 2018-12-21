@@ -1,6 +1,8 @@
 import * as program from 'commander'
 import { Signale } from 'signale'
 
+import * as debug from './debugger'
+
 program
   .command('build')
   .description('Generate the masket key and the encrypted secrets')
@@ -57,14 +59,25 @@ program
     require('./console')
   })
 
+program
+  .command('debug <txHash>')
+  .description('Debug a transaction')
+  .action((txHash: string) => {
+    debug.start(txHash)
+  })
+
 const signale = new Signale({ scope: 'Scipts' })
 
 if (process.env.COVERAGE) {
-  signale.pending("Code Coverage is enable and will instrument your contracts")
+  signale.pending('Code Coverage is enable and will instrument your contracts')
 }
 
-if (process.env.DAPP_ENV && process.env.DAPP_ENV !== 'local' && process.env.DAPP_ENV !== 'test') {
-  signale.pending("Non local or test environment, be careful")
+if (
+  process.env.DAPP_ENV &&
+  process.env.DAPP_ENV !== 'local' &&
+  process.env.DAPP_ENV !== 'test'
+) {
+  signale.pending('Non local or test environment, be careful')
 }
 
 program.parse(process.argv)

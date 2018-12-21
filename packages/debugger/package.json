@@ -1,17 +1,13 @@
 {
-  "name": "@dapp-stack/scripts",
+  "name": "@dapp-stack/debugger",
   "version": "0.3.0",
   "engines": {
     "node": ">=8.11"
   },
-  "description": "DApp Stack scripts, entrypoint for DApp Stack ecosystem",
-  "bin": {
-    "dapp-stack-scripts": "./bin/index.js"
-  },
+  "description": "DApp Stack debugger",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
-    "bin",
     "dist"
   ],
   "scripts": {
@@ -19,7 +15,7 @@
     "build": "tsc",
     "clean": "shx rm -rf lib",
     "lint": "tslint --fix --project .",
-    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/scripts"
+    "doc": "typedoc --options ../../typedoc.json --out ../../documentation/cli"
   },
   "repository": {
     "type": "git",
@@ -30,8 +26,7 @@
     "DApp Stack",
     "typescript",
     "ts",
-    "scripts",
-    "npm"
+    "debugger"
   ],
   "author": {
     "name": "John Solon",
@@ -43,32 +38,22 @@
   },
   "homepage": "https://dapp-stack.org",
   "devDependencies": {
-    "@types/chokidar": "^1.7.5",
     "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.9.4",
     "@types/signale": "^1.2.0",
+    "@types/web3": "^1.0.14",
     "shx": "^0.2.2",
     "tslint": "5.11.0",
     "typedoc": "^0.13.0",
     "typescript": "3.1.1"
   },
   "dependencies": {
-    "@dapp-stack/api": "^0.3.0",
-    "@dapp-stack/compiler": "^0.3.0",
-    "@dapp-stack/debugger": "^0.3.0",
-    "@dapp-stack/deployer": "^0.3.0",
-    "@dapp-stack/doc": "^0.3.0",
     "@dapp-stack/environment": "^0.3.0",
-    "@dapp-stack/ethereum": "^0.3.0",
-    "@dapp-stack/ipfs": "^0.3.0",
-    "@dapp-stack/security": "^0.3.0",
-    "@dapp-stack/test": "^0.3.0",
-    "@dapp-stack/wallet": "^0.3.0",
-    "@dapp-stack/web": "^0.3.0",
-    "chokidar": "^2.0.4",
-    "commander": "^2.18.0",
     "fs-extra": "^7.0.0",
-    "signale": "^1.2.1"
+    "signale": "^1.2.1",
+    "solidity-parser-antlr": "^0.2.1",
+    "truffle-debugger": "^4.1.0",
+    "web3": "^1.0.0-beta.37"
   },
   "publishConfig": {
     "access": "public"

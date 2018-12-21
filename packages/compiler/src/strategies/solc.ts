@@ -69,7 +69,9 @@ export class Solc implements ICompileStrategy {
               'evm.gasEstimates',
               'evm.assembly',
               'evm.bytecode.object',
-              'evm.bytecode.sourceMap'
+              'evm.bytecode.sourceMap',
+              'evm.deployedBytecode.object',
+              'evm.deployedBytecode.sourceMap'
             ]
           }
         }

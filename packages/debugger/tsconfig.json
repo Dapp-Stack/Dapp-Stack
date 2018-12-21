@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types"],
+    "outDir": "dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["../typings/*"]
+    }
+  },
+  "include": ["./**/*.ts"]
+}
