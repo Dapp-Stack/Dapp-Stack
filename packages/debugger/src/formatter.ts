@@ -54,8 +54,8 @@ export function formatValue(value: string, indent: number) {
 }
 
 export function formatRangeLines(source: string[], range: Location) {
-  const contextBefore = 2
-  const startBeforeIndex = Math.max(range.start.line - contextBefore, 0)
+  const startBeforeIndex = Math.max(range.start.line - 2, 0)
+  const endAfterIndex = Math.min(range.start.line + 3, source.length)
   const prefixLength = (range.start.line + 1 + '').length
 
   const beforeLines = source
@@ -64,6 +64,15 @@ export function formatRangeLines(source: string[], range: Location) {
     })
     .map((line, index) => {
       let n = startBeforeIndex + index + 1
+      return formatLineNumberPrefix(line, n, prefixLength)
+    })
+
+  const afterLines = source
+    .filter((line, index) => {
+      return index <= endAfterIndex && index > range.start.line
+    })
+    .map((line, index) => {
+      let n = range.start.line + index + 2
       return formatLineNumberPrefix(line, n, prefixLength)
     })
 
@@ -79,12 +88,14 @@ export function formatRangeLines(source: string[], range: Location) {
     pointerEnd = line.length
   }
 
-  let allLines = beforeLines.concat([
-    formatLineNumberPrefix(line, n, prefixLength),
-    formatLinePointer(line, pointerStart, pointerEnd, prefixLength)
-  ])
+  let allLines = beforeLines
+    .concat([
+      formatLineNumberPrefix(line, n, prefixLength),
+      formatLinePointer(line, pointerStart, pointerEnd, prefixLength)
+    ])
+    .concat(afterLines)
 
-  return allLines.join(OS.EOL)
+  return allLines
 }
 
 export function formatLineNumberPrefix(line: string, n: number, cols: number) {

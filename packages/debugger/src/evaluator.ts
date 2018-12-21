@@ -1,8 +1,7 @@
 import { Logger } from './logger'
 import * as Debugger from 'truffle-debugger'
 import * as path from 'path'
-
-const { solidity, trace, session, controller } = Debugger.selectors
+import { Signale } from 'signale'
 
 interface Breakpoint {
   node?: number
@@ -10,12 +9,22 @@ interface Breakpoint {
   sourceId?: number
 }
 
+const { solidity, trace, session, controller } = Debugger.selectors
+
 export class Evaluator {
   private lastCommand: string = ''
+  private signale: Signale
 
-  constructor(private session: any, private logger: Logger) {}
+  constructor(private session: any, private logger: Logger) {
+    this.signale = new Signale({ scope: 'Debugger' })
+  }
 
-  async run(cmd: string) {
+  async run(
+    cmd: string,
+    _context: any,
+    _filename: any,
+    callback: (err: Error | null, result: any) => void
+  ) {
     cmd = cmd.trim()
 
     if (cmd === '.exit') {
@@ -63,8 +72,7 @@ export class Evaluator {
         case 'n':
         case ';':
         case 'c':
-          console.log('Transaction has halted; cannot advance.')
-          console.log('')
+          this.signale.info('Transaction has halted; cannot advance.')
       }
     }
     if (cmd === 'r') {
@@ -72,17 +80,16 @@ export class Evaluator {
     }
 
     if (this.session.view(trace.finished) && !alreadyFinished) {
-      console.log('')
       if (!this.session.view(session.transaction.receipt).status) {
-        console.log('Transaction halted with a RUNTIME ERROR.')
-        console.log('')
-        console.log(
+        this.signale.error('Transaction halted with a RUNTIME ERROR.')
+        this.signale.error('')
+        this.signale.error(
           `This is likely due to an intentional halting expression, like assert(), require() or revert(). 
           It can also be due to out-of-gas exceptions. Please inspect your transaction parameters and contract
           code to determine the meaning of this error.`
         )
       } else {
-        console.log('Transaction completed successfully.')
+        this.signale.success('Transaction completed successfully.')
       }
     }
 
@@ -138,6 +145,7 @@ export class Evaluator {
     ) {
       this.lastCommand = cmd
     }
+    callback()
   }
 
   setOrClearBreakpoint(args: string[], setOrClear: boolean) {
@@ -158,16 +166,16 @@ export class Evaluator {
       breakpoint.sourceId = currentSourceId
     } else if (args[0] === 'all') {
       if (setOrClear) {
-        console.log('Cannot add breakpoint everywhere.\n')
+        this.signale.error('Cannot add breakpoint everywhere.\n')
       }
       session.removeAllBreakpoints()
-      console.log('Removed all breakpoints.\n')
+      this.signale.success('Removed all breakpoints.\n')
       return
     } else if (args[0][0] === '+' || args[0][0] === '-') {
       let delta = parseInt(args[0], 10)
 
       if (isNaN(delta)) {
-        console.log('Offset must be an integer.\n')
+        this.signale.error('Offset must be an integer.\n')
         return
       }
 
@@ -180,7 +188,7 @@ export class Evaluator {
 
       let line = parseInt(lineArg, 10)
       if (isNaN(line)) {
-        console.log('Line number must be an integer.\n')
+        this.signale.error('Line number must be an integer.\n')
         return
       }
 
@@ -191,14 +199,13 @@ export class Evaluator {
       )
 
       if (matchingSources.length === 0) {
-        console.log(`No source file found matching ${sourceArg}.\n`)
+        this.signale.error(`No source file found matching ${sourceArg}.\n`)
         return
       } else if (matchingSources.length > 1) {
-        console.log(
+        this.signale.error(
           `Multiple source files found matching ${sourceArg}.  Which did you mean?`
         )
         matchingSources.forEach((source: any) => console.log(source.sourcePath))
-        console.log('')
         return
       }
 
@@ -209,7 +216,7 @@ export class Evaluator {
       let line = parseInt(args[0], 10)
 
       if (isNaN(line)) {
-        console.log('Line number must be an integer.\n')
+        this.signale.error('Line number must be an integer.\n')
         return
       }
 
@@ -236,20 +243,20 @@ export class Evaluator {
 
     if (setOrClear === alreadyExists) {
       if (setOrClear) {
-        console.log(`Breakpoint at ${locationMessage} already exists.\n`)
+        this.signale.info(`Breakpoint at ${locationMessage} already exists.\n`)
         return
       } else {
-        console.log(`No breakpoint at ${locationMessage} to remove.\n`)
+        this.signale.info(`No breakpoint at ${locationMessage} to remove.\n`)
         return
       }
     }
 
     if (setOrClear) {
       this.session.addBreakpoint(breakpoint)
-      console.log(`Breakpoint added at ${locationMessage}.\n`)
+      this.signale.success(`Breakpoint added at ${locationMessage}.\n`)
     } else {
       this.session.removeBreakpoint(breakpoint)
-      console.log(`Breakpoint removed at ${locationMessage}.\n`)
+      this.signale.success(`Breakpoint removed at ${locationMessage}.\n`)
     }
     return
   }

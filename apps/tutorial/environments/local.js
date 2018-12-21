@@ -38,7 +38,7 @@ module.exports = {
       // Deploy an ERC721 contract
       // await deployer.erc721.bootstrap();
 
-      await deployer.deploy('SimpleStorage');
+      await deployer.deploy('SimpleStorage', 10);
     }
   },
 

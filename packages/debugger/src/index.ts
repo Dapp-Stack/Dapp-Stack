@@ -25,7 +25,7 @@ export async function start(txHash: string) {
   logger.state()
 
   repl.start({
-    prompt: `debug >`,
+    prompt: `debug (${txHash})>`,
     eval: evaluator.run.bind(evaluator)
   })
 }

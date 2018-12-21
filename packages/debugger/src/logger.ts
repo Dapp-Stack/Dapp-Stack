@@ -1,6 +1,7 @@
 import * as Debugger from 'truffle-debugger'
 import * as OS from 'os'
 import * as path from 'path'
+import { Signale } from 'signale'
 
 import * as formatter from './formatter'
 import { Location } from 'solidity-parser-antlr'
@@ -28,18 +29,21 @@ const commandReference: { [key: string]: string } = {
 }
 
 export class Logger {
-  constructor(private session: any) {}
+  private signale: Signale
+
+  constructor(private session: any) {
+    this.signale = new Signale({ scope: 'Debugger' })
+  }
 
   addressesAffected() {
     const affectedInstances = this.session.view(session.info.affectedInstances)
 
-    console.log('Addresses affected:')
-    console.log(affectedInstances)
+    this.signale.info('Addresses affected:')
+    this.signale.info(affectedInstances)
+    this.signale.info('')
   }
 
   help() {
-    console.log('')
-
     const formatCommandDescription = function(commandId: string) {
       return '(' + commandId + ') ' + commandReference[commandId]
     }
@@ -58,8 +62,8 @@ export class Logger {
     let suffix = ['']
 
     let lines = prefix.concat(commandSections).concat(suffix)
-
-    console.log(lines.join(OS.EOL))
+    lines.map(line => this.signale.note(line))
+    this.signale.note('')
   }
 
   file() {
@@ -73,8 +77,8 @@ export class Logger {
       message += '?'
     }
 
-    console.log('')
-    console.log(message + ':')
+    this.signale.info(message + ':')
+    this.signale.info('')
   }
 
   state() {
@@ -82,19 +86,17 @@ export class Logger {
     let range: Range = this.session.view(solidity.current.sourceRange)
 
     if (!source) {
-      console.log()
-      console.log('1: // No source code found.')
-      console.log('')
+      this.signale.pending('1: // No source code found.')
+      this.signale.pending('')
       return
     }
 
     let lines = source.split(/\r?\n/g)
 
-    console.log('')
-
-    console.log(formatter.formatRangeLines(lines, range.lines))
-
-    console.log('')
+    formatter
+      .formatRangeLines(lines, range.lines)
+      .forEach(line => this.signale.info(line))
+    this.signale.info('')
   }
 
   async variables() {
@@ -104,8 +106,6 @@ export class Logger {
       null,
       Object.keys(variables).map(name => name.length)
     )
-
-    console.log()
 
     Object.keys(variables).forEach(name => {
       let paddedName = name + ':'
@@ -117,10 +117,10 @@ export class Logger {
       let value = variables[name]
       let formatted = formatter.formatValue(value, longestNameLength + 5)
 
-      console.log('  ' + paddedName, formatted)
+      this.signale.info('  ' + paddedName, formatted)
     })
 
-    console.log()
+    this.signale.info()
   }
 
   instruction() {
@@ -128,8 +128,8 @@ export class Logger {
     let step = this.session.view(trace.step)
     let traceIndex = this.session.view(trace.index)
 
-    console.log('')
-    console.log(formatter.formatInstruction(traceIndex, instruction))
-    console.log(formatter.formatStack(step.stack))
+    this.signale.debug('')
+    this.signale.debug(formatter.formatInstruction(traceIndex, instruction))
+    this.signale.debug(formatter.formatStack(step.stack))
   }
 }
