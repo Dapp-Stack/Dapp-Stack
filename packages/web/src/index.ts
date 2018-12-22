@@ -6,21 +6,20 @@ import {
 } from '@dapp-stack/environment'
 import { Signale } from 'signale'
 
-import { IWebFrameworkStrategy, IWebDeployStrategy } from './types'
 import { Null } from './null'
-import { CreateReactApp } from './strategies/createReactApp'
-import { Angular } from './strategies/angular'
-import { Next } from './strategies/next'
-import { Vue } from './strategies/vue'
-import { Ipfs } from './strategies/ipfs'
+import { Web } from './web/web'
+import { CreateReactApp } from './web/createReactApp'
+import { Angular } from './web/angular'
+import { Next } from './web/next'
+import { Vue } from './web/vue'
+import { Deploy } from './deploy/deploy'
+import { Ipfs } from './deploy/ipfs'
 
 const signale = new Signale({ scope: 'Web' })
 
-const frameworkStrategy = (
-  strategy: Maybe<WebFramework>
-): IWebFrameworkStrategy => {
+const frameworkStrategy = (strategy: Maybe<WebFramework>): Web => {
   const framework = strategy || buildEnv().web.framework
-  if (!framework) return new Null()
+  if (!framework) return new Null(signale)
 
   switch (framework) {
     case 'create-react-app':
@@ -32,13 +31,13 @@ const frameworkStrategy = (
     case 'next':
       return new Next(signale)
     default:
-      return new Null()
+      return new Null(signale)
   }
 }
 
-const deployStrategy = (strategy: Maybe<WebDeploy>): IWebDeployStrategy => {
+const deployStrategy = (strategy: Maybe<WebDeploy>): Deploy => {
   const deploy = strategy || buildEnv().web.deploy
-  if (!deploy) return new Null()
+  if (!deploy) return new Null(signale)
 
   switch (deploy) {
     case 'ipfs':
@@ -59,5 +58,5 @@ export const stop = (strategy: Maybe<WebFramework> = false) => {
 }
 
 export const deploy = (strategy: Maybe<WebDeploy> = false) => {
-  return deployStrategy(strategy).deploy()
+  return deployStrategy(strategy).run()
 }
