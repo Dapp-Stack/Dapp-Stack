@@ -145,7 +145,7 @@ export class Evaluator {
     ) {
       this.lastCommand = cmd
     }
-    callback()
+    callback(null, '')
   }
 
   setOrClearBreakpoint(args: string[], setOrClear: boolean) {

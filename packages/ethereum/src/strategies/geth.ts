@@ -2,6 +2,7 @@ import { Ethereum } from '@dapp-stack/environment'
 import { ChildProcess } from 'child_process'
 import * as spawn from 'cross-spawn'
 import * as fs from 'fs-extra'
+import * as http from 'http'
 import * as path from 'path'
 import { Signale } from 'signale'
 
@@ -30,8 +31,9 @@ export class Geth implements IEthereumStrategy {
     )
   }
 
-  start = () => {
-    if (fs.existsSync(this.ipcFile)) {
+  start = async () => {
+    const isRunning = await this.ping()
+    if (isRunning) {
       this.signale.success('Connected to geth')
       return new Promise<boolean>(resolve => resolve(true))
     }
@@ -131,6 +133,18 @@ export class Geth implements IEthereumStrategy {
           resolve()
         }
       })
+    })
+  }
+
+  private readonly ping = () => {
+    return new Promise<boolean>(resolve => {
+      http
+        .get('http://127.0.0.1:8545/', res => {
+          resolve(true)
+        })
+        .on('error', () => {
+          resolve(false)
+        })
     })
   }
 }
