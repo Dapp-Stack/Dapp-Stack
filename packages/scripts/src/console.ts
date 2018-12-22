@@ -2,14 +2,16 @@ import * as ethereum from '@dapp-stack/ethereum'
 import * as lifecycle from './shared/lifecycle'
 import { globalError } from './shared/globalError'
 
-async function consoleAsync() {
+async function startConsole() {
   try {
     await ethereum.start()
-    lifecycle.after()
     ethereum.console()
   } catch (error) {
     globalError(error)
   }
 }
 
-consoleAsync()
+startConsole()
+  .then()
+  .catch()
+lifecycle.after()

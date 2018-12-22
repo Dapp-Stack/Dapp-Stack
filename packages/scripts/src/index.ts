@@ -63,7 +63,10 @@ program
   .command('debug <txHash>')
   .description('Debug a transaction')
   .action((txHash: string) => {
-    debug.start(txHash)
+    debug
+      .start(txHash)
+      .then()
+      .catch()
   })
 
 const signale = new Signale({ scope: 'Scipts' })

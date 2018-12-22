@@ -14,12 +14,12 @@ async function startAsync() {
   try {
     await ethereum.start()
     await ipfs.start()
+    await api.start()
     await compiler.run()
     doc.runAll()
     await deployer.run()
     watch()
     web.start()
-    api.start()
   } catch (error) {
     globalError(error)
   }

@@ -4,10 +4,11 @@ import * as lifecycle from './shared/lifecycle'
 import { globalError } from './shared/globalError'
 
 export async function start(txHash: string) {
+  lifecycle.after()
+
   try {
     await ethereum.start()
-    lifecycle.after()
-    debug.start(txHash)
+    await debug.start(txHash)
   } catch (error) {
     globalError(error)
   }
