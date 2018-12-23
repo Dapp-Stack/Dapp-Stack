@@ -76,7 +76,7 @@ export class Logger {
     } else {
       message += '?'
     }
-
+    this.signale.info('')
     this.signale.info(message + ':')
     this.signale.info('')
   }
@@ -86,6 +86,7 @@ export class Logger {
     let range: Range = this.session.view(solidity.current.sourceRange)
 
     if (!source) {
+      this.signale.pending('')
       this.signale.pending('1: // No source code found.')
       this.signale.pending('')
       return
@@ -93,6 +94,7 @@ export class Logger {
 
     let lines = source.split(/\r?\n/g)
 
+    this.signale.info('')
     formatter
       .formatRangeLines(lines, range.lines)
       .forEach(line => this.signale.info(line))
@@ -107,6 +109,7 @@ export class Logger {
       Object.keys(variables).map(name => name.length)
     )
 
+    this.signale.info('')
     Object.keys(variables).forEach(name => {
       let paddedName = name + ':'
 
@@ -120,7 +123,7 @@ export class Logger {
       this.signale.info('  ' + paddedName, formatted)
     })
 
-    this.signale.info()
+    this.signale.info('')
   }
 
   instruction() {
@@ -131,5 +134,6 @@ export class Logger {
     this.signale.debug('')
     this.signale.debug(formatter.formatInstruction(traceIndex, instruction))
     this.signale.debug(formatter.formatStack(step.stack))
+    this.signale.debug('')
   }
 }

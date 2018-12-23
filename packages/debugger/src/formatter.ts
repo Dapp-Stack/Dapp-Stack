@@ -46,7 +46,6 @@ export function formatValue(value: string, indent: number) {
     })
     .split(/\r?\n/g)
     .map(function(line, i) {
-      // don't indent first line
       let padding = i > 0 ? Array(indent).join(' ') : ''
       return padding + line
     })
