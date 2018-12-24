@@ -168,3 +168,15 @@ npm run das console
 You can run this command in order to start an ethereum console.
 That will give you the same benefit as the geth console:
 [https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console](https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console)
+
+### Debug
+
+```sh
+# Yarn
+yarn das debug <txHash>
+
+# NPM
+npm run das debug <txHash>
+```
+
+You can run this command in order to debug an ethereum transaction.
