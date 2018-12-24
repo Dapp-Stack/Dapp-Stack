@@ -31,7 +31,8 @@ export class Evaluator {
       cmd = 'q'
     }
 
-    const splitArgs = cmd.split(/ +/).slice(1)
+    const args = cmd.split(/ +/).slice(1)
+    cmd = cmd.split(/ +/)[0]
 
     if (cmd === '') {
       cmd = this.lastCommand
@@ -98,10 +99,10 @@ export class Evaluator {
         await this.logger.variables()
         break
       case 'b':
-        this.setOrClearBreakpoint(splitArgs, true)
+        this.setOrClearBreakpoint(args, true)
         break
       case 'B':
-        this.setOrClearBreakpoint(splitArgs, false)
+        this.setOrClearBreakpoint(args, false)
         break
       case ';':
       case 'p':
@@ -160,60 +161,12 @@ export class Evaluator {
 
     let breakpoint: Breakpoint = {}
 
-    if (args.length === 0) {
+    if (!args[0]) {
       breakpoint.node = currentNode
       breakpoint.line = currentLine
       breakpoint.sourceId = currentSourceId
-    } else if (args[0] === 'all') {
-      if (setOrClear) {
-        this.signale.error('Cannot add breakpoint everywhere.\n')
-      }
-      session.removeAllBreakpoints()
-      this.signale.success('Removed all breakpoints.\n')
-      return
-    } else if (args[0][0] === '+' || args[0][0] === '-') {
-      let delta = parseInt(args[0], 10)
-
-      if (isNaN(delta)) {
-        this.signale.error('Offset must be an integer.\n')
-        return
-      }
-
-      breakpoint.sourceId = currentSourceId
-      breakpoint.line = currentLine + delta
-    } else if (args[0].includes(':')) {
-      let sourceArgs = args[0].split(':')
-      let sourceArg = sourceArgs[0]
-      let lineArg = sourceArgs[1]
-
-      let line = parseInt(lineArg, 10)
-      if (isNaN(line)) {
-        this.signale.error('Line number must be an integer.\n')
-        return
-      }
-
-      let sources = session.view(solidity.info.sources)
-
-      let matchingSources: any[] = Object.values(sources).filter(
-        (source: any) => source.sourcePath.includes(sourceArg)
-      )
-
-      if (matchingSources.length === 0) {
-        this.signale.error(`No source file found matching ${sourceArg}.\n`)
-        return
-      } else if (matchingSources.length > 1) {
-        this.signale.error(
-          `Multiple source files found matching ${sourceArg}.  Which did you mean?`
-        )
-        matchingSources.forEach((source: any) => console.log(source.sourcePath))
-        return
-      }
-
-      sourceName = path.basename(matchingSources[0].sourcePath)
-      breakpoint.sourceId = matchingSources[0].id
-      breakpoint.line = line - 1
     } else {
-      let line = parseInt(args[0], 10)
+      const line = parseInt(args[0], 10)
 
       if (isNaN(line)) {
         this.signale.error('Line number must be an integer.\n')
