@@ -72,7 +72,7 @@ program
 const signale = new Signale({ scope: 'Scipts' })
 
 if (process.env.COVERAGE) {
-  signale.pending('Code Coverage is enable and will instrument your contracts')
+  signale.pending('Code Coverage is running and will instrument your contracts')
 }
 
 if (
