@@ -1,9 +1,7 @@
-import { build, Structure } from '@dapp-stack/environment'
+import { artifacts } from '@dapp-stack/contract-utils'
 import * as repl from 'repl'
 import * as Debugger from 'truffle-debugger'
 import Web3 = require('web3')
-import * as path from 'path'
-import * as fs from 'fs-extra'
 import * as parser from 'solidity-parser-antlr'
 
 import { Logger } from './logger'
@@ -31,23 +29,8 @@ export async function start(txHash: string) {
 }
 
 function getContracts() {
-  const environment = build()
-  return environment.compile.contracts.map(name => {
-    const data = fs.readJSONSync(
-      path.join(Structure.contracts.build, name, 'SimpleStorage.json')
-    )
-    const sourcePath = path.join(Structure.contracts.src, name)
-    const source = fs.readFileSync(sourcePath, 'utf-8')
-    const ast = parser.parse(source, { loc: true, range: true })
-    return {
-      contractName: 'SimpleStorage',
-      source,
-      sourcePath,
-      ast: ast,
-      binary: data.evm.bytecode.object,
-      sourceMap: data.evm.bytecode.sourceMap,
-      deployedBinary: data.evm.deployedBytecode.object,
-      deployedSourceMap: data.evm.deployedBytecode.sourceMap
-    }
+  return artifacts().map(artifact => {
+    const ast = parser.parse(artifact.source, { loc: true, range: true })
+    return { ...artifact, ast }
   })
 }

@@ -1,7 +1,7 @@
+import { Artifact } from '@dapp-stack/contract-utils'
+import { Structure } from '@dapp-stack/environment'
 import * as child_process from 'child_process'
-import { Compile, Structure } from '@dapp-stack/environment'
 import * as fs from 'fs-extra'
-import { forEach } from 'lodash'
 import * as path from 'path'
 import { Signale } from 'signale'
 import * as spawn from 'cross-spawn'
@@ -18,33 +18,52 @@ export class Vyper implements ICompileStrategy {
     this.signale = signale
   }
 
-  commandArgs = () => {
-    const contractsFilepath = this.contracts.map(contract =>
-      path.join(Structure.contracts.src, contract)
-    )
-    return ['-f=combined_json'].concat(contractsFilepath)
+  private commandArgs = () => {
+    return ['-f=combined_json'].concat(this.contracts)
   }
 
-  writeResults(results: string) {
+  private buildArtifact(
+    sourcePath: string,
+    contractName: string,
+    result: any
+  ): Artifact {
+    return {
+      contractName,
+      abi: result.abi,
+      source: fs.readFileSync(sourcePath, 'utf-8'),
+      sourcePath,
+      bytecode: result.bytecode,
+      deployedBytecode: result.runtimeBytecode
+    }
+  }
+
+  private writeResults(results: string) {
     const compiledContracts = JSON.parse(results)
-    Object.keys(compiledContracts).forEach((filepath: string) => {
-      if (filepath === 'version') {
+    Object.keys(compiledContracts).forEach((sourcePath: string) => {
+      if (sourcePath === 'version') {
         return
       }
-      const dir = filepath.replace(
+
+      const buildPath = sourcePath.replace(
         Structure.contracts.src,
         Structure.contracts.build
       )
-      const filename = filepath
+
+      const contractName = sourcePath
         .replace(Structure.contracts.src, '')
         .replace('.vy', '.json')
 
-      compiledContracts[filepath]['evm'] = {
-        bytecode: { object: compiledContracts[filepath].bytecode.substring(2) }
-      }
+      const artifact = this.buildArtifact(
+        sourcePath,
+        contractName,
+        compiledContracts[sourcePath]
+      )
 
-      fs.ensureDirSync(dir)
-      fs.writeJSONSync(path.join(dir, filename), compiledContracts[filepath])
+      fs.writeFileSync(
+        path.join(buildPath, `${contractName}.json`),
+        JSON.stringify(artifact, null, 2),
+        'utf-8'
+      )
     })
   }
 

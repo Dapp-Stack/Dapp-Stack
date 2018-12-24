@@ -1,4 +1,5 @@
 import { Ethereum, Structure, Web } from '@dapp-stack/environment'
+import { findArtifact } from '@dapp-stack/contract-utils'
 import * as ethers from 'ethers'
 import * as fs from 'fs-extra'
 import * as globule from 'globule'
@@ -11,7 +12,6 @@ import { Erc20 } from './erc20'
 import { Erc721 } from './erc721'
 
 export class EthererumDeployer {
-  public contracts: string[]
   public signer: ethers.Signer
   public network!: ethers.utils.Network
   public gasPrice!: ethers.utils.BigNumber
@@ -22,7 +22,6 @@ export class EthererumDeployer {
   private readonly config: Ethereum
   private readonly webConfig: Web
   private readonly signale: Signale
-  private readonly contractFiles: { [basename: string]: string }
 
   constructor(config: Ethereum, webConfig: Web, signer: ethers.Signer) {
     this.config = config
@@ -32,8 +31,6 @@ export class EthererumDeployer {
     this.erc20 = new Erc20(this)
     this.erc721 = new Erc721(this)
     this.signale = new Signale({ scope: 'Deployer' })
-    this.contractFiles = this.getContractFiles()
-    this.contracts = Object.keys(this.contractFiles)
   }
 
   initialize = async () => {
@@ -55,27 +52,20 @@ export class EthererumDeployer {
   }
 
   attach(contractName: string, address: string): ethers.Contract {
-    const contractFile = this.contractFiles[contractName]
-    if (!contractFile) {
-      this.contractNotFound(contractName)
-    }
-
-    const source = JSON.parse(fs.readFileSync(contractFile).toString())
-    this.tracker.update(contractName, address, JSON.stringify(source.abi))
-    return new ethers.Contract(address, source.abi, this.signer)
+    const artifact = findArtifact(contractName)
+    this.tracker.update(contractName, address, artifact.abi)
+    return new ethers.Contract(address, artifact.abi, this.signer)
   }
 
   async deploy(contractName: string, ...args: any[]): Promise<ethers.Contract> {
-    const contractFile = this.contractFiles[contractName]
-    if (!contractFile) {
-      this.contractNotFound(contractName)
-    }
+    const artifact = findArtifact(contractName)
 
-    const source = JSON.parse(fs.readFileSync(contractFile).toString())
-
-    const abi = source.abi
-    const bytecode = `0x${source.evm.bytecode.object}`
-    const factory = new ethers.ContractFactory(abi, bytecode, this.signer)
+    const bytecode = `0x${artifact.bytecode}`
+    const factory = new ethers.ContractFactory(
+      artifact.abi,
+      bytecode,
+      this.signer
+    )
     return this.deployContractFactory(contractName, factory, ...args)
   }
 
@@ -89,22 +79,10 @@ export class EthererumDeployer {
     const contract = await factory.deploy(...args)
     await contract.deployed()
 
-    this.tracker.update(
-      contractName,
-      contract.address,
-      JSON.stringify(factory.interface.abi)
-    )
+    this.tracker.update(contractName, contract.address, factory.interface.abi)
     const receipt = await contract.deployTransaction.wait(1)
     this.printResult(contractName, contract, receipt)
     return contract
-  }
-
-  private readonly getContractFiles = () => {
-    const files = globule.find(`${Structure.contracts.build}/**/*.json`)
-    return files.reduce((acc: { [basename: string]: string }, file) => {
-      acc[path.basename(file, '.json')] = file
-      return acc
-    }, {})
   }
 
   private readonly initializeEthereum = async () => {
@@ -112,12 +90,6 @@ export class EthererumDeployer {
       this.gasPrice = await this.signer.provider.getGasPrice()
       this.network = await this.signer.provider.getNetwork()
     }
-  }
-
-  private readonly contractNotFound = (contractName: string) => {
-    throw new Error(
-      `Contract not found: ${contractName}, make sure this contract exists.`
-    )
   }
 
   private readonly printResult = (

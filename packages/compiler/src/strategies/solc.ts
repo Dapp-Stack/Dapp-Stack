@@ -1,4 +1,6 @@
-import { Compile, Structure } from '@dapp-stack/environment'
+import { Artifact } from '@dapp-stack/contract-utils'
+import { Structure } from '@dapp-stack/environment'
+import { FunctionFragment } from 'ethers/utils/abi-coder'
 import * as fs from 'fs-extra'
 import { forEach } from 'lodash'
 import * as path from 'path'
@@ -7,20 +9,29 @@ import * as solc from 'solc'
 
 import { ICompileStrategy } from '../types'
 
-type CompilationOutput = {
+interface CompilationResult {
+  evm: {
+    bytecode: {
+      object: string
+      sourceMap: string
+    }
+    deployedBytecode: {
+      object: string
+      sourceMap: string
+    }
+  }
+  abi: FunctionFragment[]
+}
+
+interface CompilationOutput {
   errors?: [
     {
       severity: string
     }
   ]
   contracts: {
-    [contractName: string]: {
-      [contract: string]: {
-        evm: {
-          bytecode: string
-        }
-        abi: string
-      }
+    [sourcePath: string]: {
+      [contractName: string]: CompilationResult
     }
   }
 }
@@ -34,15 +45,14 @@ export class Solc implements ICompileStrategy {
     this.signale = signale
   }
 
-  input = (): string => {
+  private input = (): string => {
     const sources = this.contracts.reduce(
-      (acc: { [contractName: string]: { content: string } }, contractName) => {
-        const filepath = path.join(Structure.contracts.src, contractName)
+      (acc: { [filepath: string]: { content: string } }, filepath) => {
         if (!fs.existsSync(filepath)) {
           this.signale.error(`File not found: ${filepath}`)
           return acc
         }
-        acc[contractName] = {
+        acc[filepath] = {
           content: fs.readFileSync(filepath, 'utf-8').toString()
         }
         return acc
@@ -79,7 +89,7 @@ export class Solc implements ICompileStrategy {
     })
   }
 
-  findImports(filename: string) {
+  private findImports(filename: string) {
     if (fs.existsSync(filename)) {
       return { contents: fs.readFileSync(filename).toString() }
     }
@@ -99,6 +109,23 @@ export class Solc implements ICompileStrategy {
       }
     }
     return { error: 'File not found' }
+  }
+
+  private buildArtifact(
+    sourcePath: string,
+    contractName: string,
+    result: CompilationResult
+  ): Artifact {
+    return {
+      contractName,
+      abi: result.abi,
+      source: fs.readFileSync(sourcePath, 'utf-8'),
+      sourcePath,
+      bytecode: result.evm.bytecode.object,
+      sourceMap: result.evm.bytecode.sourceMap,
+      deployedBytecode: result.evm.deployedBytecode.object,
+      deployedSourceMap: result.evm.deployedBytecode.sourceMap
+    }
   }
 
   compile = () => {
@@ -121,16 +148,19 @@ export class Solc implements ICompileStrategy {
         }
       }
 
-      forEach(output.contracts, (compilationResult, contractFile) => {
-        fs.ensureDirSync(path.join(Structure.contracts.build, contractFile))
-        forEach(compilationResult, (result, contract) => {
+      forEach(output.contracts, (compilationResult, sourcePath) => {
+        const buildPath = sourcePath.replace(
+          Structure.contracts.src,
+          Structure.contracts.build
+        )
+        fs.ensureDirSync(buildPath)
+
+        forEach(compilationResult, (result, contractName) => {
+          const artifact = this.buildArtifact(sourcePath, contractName, result)
+
           fs.writeFileSync(
-            path.join(
-              Structure.contracts.build,
-              contractFile,
-              `${contract}.json`
-            ),
-            JSON.stringify(result),
+            path.join(buildPath, `${contractName}.json`),
+            JSON.stringify(artifact, null, 2),
             'utf-8'
           )
         })

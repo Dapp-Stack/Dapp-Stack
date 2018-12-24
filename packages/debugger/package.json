@@ -48,6 +48,7 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
+    "@dapp-stack/contract-utils": "^0.3.0",
     "@dapp-stack/environment": "^0.3.0",
     "fs-extra": "^7.0.0",
     "signale": "^1.2.1",

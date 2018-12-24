@@ -56,6 +56,7 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
+    "@dapp-stack/contract-utils": "^0.3.0",
     "@dapp-stack/wallet": "^0.3.0",
     "ethers": "^4.0.3",
     "fs-extra": "^7.0.0",

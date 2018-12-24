@@ -3,12 +3,13 @@ import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as lockfile from 'proper-lockfile'
 import { ethers } from 'ethers'
+import { FunctionFragment, EventFragment } from 'ethers/utils/abi-coder'
 
 interface ITrackerData {
   [network: number]: {
     [address: string]: {
       name: string
-      abi: string
+      abi: Array<FunctionFragment | EventFragment>
     }
   }
 }
@@ -30,7 +31,11 @@ export class Tracker {
     })
   }
 
-  update = (name: string, address: string, abi: string) => {
+  update = (
+    name: string,
+    address: string,
+    abi: Array<FunctionFragment | EventFragment>
+  ) => {
     this.whileLock((data: ITrackerData) => {
       data[this.network.chainId][address] = { name, abi }
     })
