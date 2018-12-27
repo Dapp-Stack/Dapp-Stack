@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
+
+
+### Bug Fixes
+
+* **test:** tracker abi is already parsed ([cfacd5f](https://github.com/Dapp-Stack/Dapp-Stack/commit/cfacd5f))
+
+
+### Features
+
+* coverage only for solidity ([5726905](https://github.com/Dapp-Stack/Dapp-Stack/commit/5726905))
+* debugger only for solidity ([5cfbec8](https://github.com/Dapp-Stack/Dapp-Stack/commit/5cfbec8))
+* keep tracker ([4b3d256](https://github.com/Dapp-Stack/Dapp-Stack/commit/4b3d256))
+
+
+
+
+
 # [0.3.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
+
+
+### Bug Fixes
+
+* build is successfull ([7567608](https://github.com/Dapp-Stack/Dapp-Stack/commit/7567608))
+
+
+### Features
+
+* do not try to connect twice to geth ([374d83b](https://github.com/Dapp-Stack/Dapp-Stack/commit/374d83b)), closes [#24](https://github.com/Dapp-Stack/Dapp-Stack/issues/24)
+
+
+
+
+
 # [0.3.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
 
 

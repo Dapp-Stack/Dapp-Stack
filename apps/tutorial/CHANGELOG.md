@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
+
+
+### Bug Fixes
+
+* improve text ([00ed34c](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/00ed34c))
+
+
+### Features
+
+* debugger use signale ([0e41421](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/0e41421))
+
+
+
+
+
 # [0.3.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
 
 

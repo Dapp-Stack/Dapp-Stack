@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
+
+
+### Bug Fixes
+
+* improve text ([00ed34c](https://github.com/Dapp-Stack/Dapp-Stack/commit/00ed34c))
+* linter ([346c4ed](https://github.com/Dapp-Stack/Dapp-Stack/commit/346c4ed))
+
+
+### Features
+
+* avoid debugger to crash in case of bad tx ([dbd6024](https://github.com/Dapp-Stack/Dapp-Stack/commit/dbd6024))
+* clean coverage ([0d51487](https://github.com/Dapp-Stack/Dapp-Stack/commit/0d51487))
+* initial version of debugger ([2032eba](https://github.com/Dapp-Stack/Dapp-Stack/commit/2032eba))
+* keep tracker ([4b3d256](https://github.com/Dapp-Stack/Dapp-Stack/commit/4b3d256))
+* make console command self aware of eth node ([d3e6ecc](https://github.com/Dapp-Stack/Dapp-Stack/commit/d3e6ecc))
+
+
+
+
+
 # [0.3.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
 
 

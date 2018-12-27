@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/web",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "engines": {
     "node": ">=8.11"
   },
@@ -49,7 +49,7 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
-    "@dapp-stack/environment": "^0.3.0",
+    "@dapp-stack/environment": "^0.4.0",
     "cross-spawn": "^6.0.5",
     "go-ipfs": "0.4.17",
     "opn": "^5.4.0",

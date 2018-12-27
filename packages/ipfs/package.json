@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/ipfs",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "engines": {
     "node": ">=8.11"
   },
@@ -39,7 +39,7 @@
   },
   "homepage": "https://dapp-stack.org",
   "devDependencies": {
-    "@dapp-stack/environment": "^0.3.0",
+    "@dapp-stack/environment": "^0.4.0",
     "@types/cross-spawn": "^6.0.0",
     "@types/node": "^10.9.4",
     "shx": "^0.2.2",
