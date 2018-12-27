@@ -153,6 +153,13 @@ export class Evaluator {
     const currentLocation = this.session.view(controller.current.location)
     const breakpoints: Breakpoint[] = this.session.view(controller.breakpoints)
 
+    if (!currentLocation.node) {
+      this.signale.error(
+        'No source found, we cannot use breakpoint in such case.'
+      )
+      return
+    }
+
     const currentNode: number = currentLocation.node.id
     const currentLine: number = currentLocation.sourceRange.lines.start.line
     const currentSourceId: number = currentLocation.source.id
@@ -169,7 +176,7 @@ export class Evaluator {
       const line = parseInt(args[0], 10)
 
       if (isNaN(line)) {
-        this.signale.error('Line number must be an integer.\n')
+        this.signale.error('Line number must be an integer.')
         return
       }
 
@@ -196,20 +203,20 @@ export class Evaluator {
 
     if (setOrClear === alreadyExists) {
       if (setOrClear) {
-        this.signale.info(`Breakpoint at ${locationMessage} already exists.\n`)
+        this.signale.info(`Breakpoint at ${locationMessage} already exists.`)
         return
       } else {
-        this.signale.info(`No breakpoint at ${locationMessage} to remove.\n`)
+        this.signale.info(`No breakpoint at ${locationMessage} to remove.`)
         return
       }
     }
 
     if (setOrClear) {
       this.session.addBreakpoint(breakpoint)
-      this.signale.success(`Breakpoint added at ${locationMessage}.\n`)
+      this.signale.success(`Breakpoint added at ${locationMessage}.`)
     } else {
       this.session.removeBreakpoint(breakpoint)
-      this.signale.success(`Breakpoint removed at ${locationMessage}.\n`)
+      this.signale.success(`Breakpoint removed at ${locationMessage}.`)
     }
     return
   }
