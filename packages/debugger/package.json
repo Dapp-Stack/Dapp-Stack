@@ -38,7 +38,6 @@
   },
   "homepage": "https://dapp-stack.org",
   "devDependencies": {
-    "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.9.4",
     "@types/signale": "^1.2.0",
     "@types/web3": "^1.0.14",
@@ -49,8 +48,6 @@
   },
   "dependencies": {
     "@dapp-stack/contract-utils": "^0.3.0",
-    "@dapp-stack/environment": "^0.3.0",
-    "fs-extra": "^7.0.0",
     "signale": "^1.2.1",
     "solidity-parser-antlr": "^0.2.1",
     "truffle-debugger": "^4.1.0",

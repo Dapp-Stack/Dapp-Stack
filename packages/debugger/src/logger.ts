@@ -1,10 +1,9 @@
 import * as Debugger from 'truffle-debugger'
-import * as OS from 'os'
 import * as path from 'path'
 import { Signale } from 'signale'
+import { Location } from 'solidity-parser-antlr'
 
 import * as formatter from './formatter'
-import { Location } from 'solidity-parser-antlr'
 
 const { solidity, trace, session } = Debugger.selectors
 

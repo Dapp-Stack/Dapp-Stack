@@ -1,9 +1,6 @@
-import { Ethereum, Structure, Web } from '@dapp-stack/environment'
+import { Ethereum, Web } from '@dapp-stack/environment'
 import { findArtifact } from '@dapp-stack/contract-utils'
 import * as ethers from 'ethers'
-import * as fs from 'fs-extra'
-import * as globule from 'globule'
-import * as path from 'path'
 import { Signale } from 'signale'
 
 import { Tracker } from './tracker'

@@ -1,6 +1,5 @@
 import { Structure, Web } from '@dapp-stack/environment'
 import * as fs from 'fs-extra'
-import * as path from 'path'
 import * as lockfile from 'proper-lockfile'
 import { ethers } from 'ethers'
 import { FunctionFragment, EventFragment } from 'ethers/utils/abi-coder'

@@ -1,6 +1,5 @@
 import { Logger } from './logger'
 import * as Debugger from 'truffle-debugger'
-import * as path from 'path'
 import { Signale } from 'signale'
 
 interface Breakpoint {
