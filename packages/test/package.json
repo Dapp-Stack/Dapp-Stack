@@ -55,6 +55,7 @@
   "dependencies": {
     "@dapp-stack/deployer": "^0.3.0",
     "@dapp-stack/environment": "^0.3.0",
+    "@dapp-stack/contract-utils": "^0.3.0",
     "cross-spawn": "^6.0.5",
     "fs-extra": "^7.0.0",
     "istanbul": "^0.4.5",
