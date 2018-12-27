@@ -68,7 +68,7 @@ Those are the minimum requirements before releasing the v1.0.0:
 * [X] Support [vue.js](https://vuejs.org)
 * [X] Support [angular](https://angular.io)
 * [X] Support [next.js](https://nextjs.org)
-* [ ] Debugger
+* [X] Debugger
 * [X] Code coverage
 * [X] Vyper
 
