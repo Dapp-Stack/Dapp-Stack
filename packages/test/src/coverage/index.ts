@@ -9,20 +9,22 @@ import { Coverage as ICoverage } from './types'
 export class Coverage {
   private contracts: ContractCoverage[] = []
   private deployedContracts: Contract[] = []
-  private web3: Web3 = new Web3();
-  private chainId: number = 0;
-  private fromBlockNumber: number = 0;
+  private web3: Web3 = new Web3()
+  private chainId: number = 0
+  private fromBlockNumber: number = 0
 
   async setup(contracts: string[]) {
-    this.web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'))
+    this.web3 = new Web3(
+      new Web3.providers.WebsocketProvider('ws://localhost:8546')
+    )
     this.chainId = await this.web3.eth.net.getId()
     this.fromBlockNumber = await this.web3.eth.getBlockNumber()
 
     fs.ensureDirSync(Structure.contracts.coverage)
-  
+
     fs.copySync(Structure.contracts.realSrc, Structure.contracts.src)
 
-    contracts.forEach((contract) => {
+    contracts.forEach(contract => {
       const contractCoverage = new ContractCoverage(contract)
       contractCoverage.instrument()
       this.contracts.push(contractCoverage)
@@ -32,10 +34,10 @@ export class Coverage {
   async registerContracts(framework: Maybe<WebFramework>) {
     const tracker = Structure.tracker(framework)
     const trackerData = fs.readJsonSync(tracker)
-    const deployedContracts = trackerData[this.chainId] 
+    const deployedContracts = trackerData[this.chainId]
 
-    Object.keys(deployedContracts).forEach((address) => {
-      const abi = JSON.parse(deployedContracts[address].abi)
+    Object.keys(deployedContracts).forEach(address => {
+      const abi = deployedContracts[address].abi
       this.deployedContracts.push(new this.web3.eth.Contract(abi, address))
     })
   }
@@ -43,19 +45,27 @@ export class Coverage {
   async finish() {
     await Promise.all(this.collectEvents())
 
-    const coverageReport = this.contracts.reduce((acc: {[name: string]: ICoverage}, contract) => {
-      acc[contract.name] = contract.coverage;
-      return acc;
-    }, {});
-    
-    const coveragePath = path.join(Structure.contracts.coverage, 'coverage.json')
-    fs.writeFileSync(coveragePath, JSON.stringify(coverageReport, null, 2));
+    const coverageReport = this.contracts.reduce(
+      (acc: { [name: string]: ICoverage }, contract) => {
+        acc[contract.name] = contract.coverage
+        return acc
+      },
+      {}
+    )
+
+    const coveragePath = path.join(
+      Structure.contracts.coverage,
+      'coverage.json'
+    )
+    fs.writeFileSync(coveragePath, JSON.stringify(coverageReport, null, 2))
   }
 
   private collectEvents() {
-    return this.deployedContracts.map(async (deployedContract) => {
-      const events = await deployedContract.getPastEvents("allEvents", {fromBlock: this.fromBlockNumber})
-      this.contracts.forEach((contract) => contract.updateCoverage(events));
+    return this.deployedContracts.map(async deployedContract => {
+      const events = await deployedContract.getPastEvents('allEvents', {
+        fromBlock: this.fromBlockNumber
+      })
+      this.contracts.forEach(contract => contract.updateCoverage(events))
     })
   }
 }
