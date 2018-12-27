@@ -15,6 +15,8 @@ regarding the usage:
 * [cli](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/cli)
 * [compiler](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/compiler)
 * [connect](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/connect)
+* [contract-utils](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/contract-utils)
+* [debugger](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/debugger)
 * [deployer](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/deployer)
 * [doc](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/doc)
 * [environment](https://github.com/Dapp-Stack/Dapp-Stack/tree/master/packages/environment)

@@ -20,6 +20,8 @@
     { "path": "./packages/cli" },
     { "path": "./packages/compiler" },
     { "path": "./packages/connect" },
+    { "path": "./packages/contract-utils" },
+    { "path": "./packages/debugger" },
     { "path": "./packages/deployer" },
     { "path": "./packages/doc" },
     { "path": "./packages/environment" },

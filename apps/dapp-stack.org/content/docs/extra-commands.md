@@ -5,6 +5,21 @@ permalink: docs/extra-commands.html
 layout: docs
 ---
 
+### Debugger
+
+Using npm
+```bash
+npm run das debugger <txHash>
+```
+
+Using yarn
+```bash
+yarn das debugger <txHash>
+```
+
+This command will start a debugger, in order to see all possible options, you can
+press `h` for help.
+
 ### Ethereum Console
 
 Using npm
