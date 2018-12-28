@@ -7,6 +7,9 @@ import { Environment, WebFramework, Maybe } from './types'
 
 const signale = new Signale({ scope: 'Environment' })
 
+const ajv = new Ajv({ allErrors: true, jsonPointers: true })
+require('ajv-errors')(ajv, { singleError: true })
+
 export const Structure = {
   contracts: {
     realSrc: path.join(process.cwd(), 'contracts', 'src'),
@@ -50,7 +53,9 @@ const schema = {
       properties: {
         network: {
           type: 'string',
-          enum: ['homestead', 'rinkeby', 'ropsten', 'kovan', 'dev', 'external']
+          enum: ['homestead', 'rinkeby', 'ropsten', 'kovan', 'dev', 'external'],
+          errorMessage:
+            'should be equal to one of the allowed values: homestead, rinkeby, ropsten, kovan, dev or external'
         },
         apiKey: {
           type: 'string'
@@ -70,11 +75,15 @@ const schema = {
       properties: {
         framework: {
           type: ['string', 'boolean'],
-          enum: ['create-react-app', 'angular', 'vue', 'test', 'next', false]
+          enum: ['create-react-app', 'angular', 'vue', 'test', 'next', false],
+          errorMessage:
+            'should be equal to one of the allowed values: create-react-app, angular, vue, test, next or false'
         },
         deploy: {
           type: ['string', 'boolean'],
-          enum: ['ipfs', false]
+          enum: ['ipfs', false],
+          errorMessage:
+            'should be equal to one of the allowed values: ipfs or false'
         }
       },
       required: ['framework', 'deploy']
@@ -97,7 +106,6 @@ const schema = {
   required: ['ipfs', 'web', 'compile']
 }
 
-const ajv = new Ajv()
 const environmentSchema = ajv.compile(schema)
 
 const defaultEnvironment: Environment = {
