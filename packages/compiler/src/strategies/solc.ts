@@ -65,10 +65,6 @@ export class Solc implements ICompileStrategy {
       sources,
       settings: {
         outputSelection: {
-          optimizer: {
-            enabled: true,
-            runs: 200
-          },
           '*': {
             '*': [
               'abi',
