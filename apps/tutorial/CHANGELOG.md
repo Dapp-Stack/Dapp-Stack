@@ -3,34 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.4.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
+# [0.4.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
 
 
 ### Bug Fixes
 
-* improve text ([00ed34c](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/00ed34c))
+* improve text ([00ed34c](https://github.com/Dapp-Stack/Dapp-Stack/commit/00ed34c))
 
 
 ### Features
 
-* debugger use signale ([0e41421](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/0e41421))
+* debugger use signale ([0e41421](https://github.com/Dapp-Stack/Dapp-Stack/commit/0e41421))
 
 
 
 
 
-# [0.3.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
+# [0.3.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
 
 
 ### Bug Fixes
 
-* deploying the dapp to ipfs ([1d1f776](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/1d1f776)), closes [#9](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/9)
+* deploying the dapp to ipfs ([1d1f776](https://github.com/Dapp-Stack/Dapp-Stack/commit/1d1f776)), closes [#9](https://github.com/Dapp-Stack/Dapp-Stack/issues/9)
 
 
 ### Features
 
-* add code coverage ([3a84b42](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/3a84b42)), closes [#7](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/7)
-* add support for next.js ([b608c1c](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/b608c1c)), closes [#4](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/4)
+* add code coverage ([3a84b42](https://github.com/Dapp-Stack/Dapp-Stack/commit/3a84b42)), closes [#7](https://github.com/Dapp-Stack/Dapp-Stack/issues/7)
+* add support for next.js ([b608c1c](https://github.com/Dapp-Stack/Dapp-Stack/commit/b608c1c)), closes [#4](https://github.com/Dapp-Stack/Dapp-Stack/issues/4)
 
 
 

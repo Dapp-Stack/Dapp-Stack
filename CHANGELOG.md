@@ -3,36 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.4.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
+# [0.4.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
 
 
 ### Bug Fixes
 
-* build is successfull ([7567608](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/7567608))
-* dev-tools use display name ([6f482d2](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/6f482d2))
-* improve text ([00ed34c](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/00ed34c))
-* linter ([346c4ed](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/346c4ed))
-* **test:** tracker abi is already parsed ([cfacd5f](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/cfacd5f))
+* build is successfull ([7567608](https://github.com/Dapp-Stack/Dapp-Stack/commit/7567608))
+* dev-tools use display name ([6f482d2](https://github.com/Dapp-Stack/Dapp-Stack/commit/6f482d2))
+* improve text ([00ed34c](https://github.com/Dapp-Stack/Dapp-Stack/commit/00ed34c))
+* linter ([346c4ed](https://github.com/Dapp-Stack/Dapp-Stack/commit/346c4ed))
+* **test:** tracker abi is already parsed ([cfacd5f](https://github.com/Dapp-Stack/Dapp-Stack/commit/cfacd5f))
 
 
 ### Features
 
-* add vyper support ([200c9ee](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/200c9ee)), closes [#6](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/6)
-* avoid debugger to crash in case of bad tx ([dbd6024](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/dbd6024))
-* clean coverage ([0d51487](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/0d51487))
-* cleanup packages and import ([daf3006](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/daf3006))
-* coverage only for solidity ([5726905](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/5726905))
-* debugger only for solidity ([5cfbec8](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/5cfbec8))
-* debugger use signale ([0e41421](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/0e41421))
-* do not try to connect twice to geth ([374d83b](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/374d83b)), closes [#24](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/24)
-* do not try to connect twice to ipfs ([8317cd9](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/8317cd9)), closes [#25](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/25)
-* do not try to run multiple api ([2ff1d26](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/2ff1d26))
-* handle case where no source found for debugger ([e0adb2b](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/e0adb2b))
-* initial version of debugger ([2032eba](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/2032eba))
-* keep tracker ([4b3d256](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/4b3d256))
-* **debugger:** add better spacing ([6c947f1](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/6c947f1))
-* make console command self aware of eth node ([d3e6ecc](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/d3e6ecc))
-* **debugger:** add/remove breakpoints ([7d593cc](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/7d593cc))
+* add vyper support ([200c9ee](https://github.com/Dapp-Stack/Dapp-Stack/commit/200c9ee)), closes [#6](https://github.com/Dapp-Stack/Dapp-Stack/issues/6)
+* avoid debugger to crash in case of bad tx ([dbd6024](https://github.com/Dapp-Stack/Dapp-Stack/commit/dbd6024))
+* clean coverage ([0d51487](https://github.com/Dapp-Stack/Dapp-Stack/commit/0d51487))
+* cleanup packages and import ([daf3006](https://github.com/Dapp-Stack/Dapp-Stack/commit/daf3006))
+* coverage only for solidity ([5726905](https://github.com/Dapp-Stack/Dapp-Stack/commit/5726905))
+* debugger only for solidity ([5cfbec8](https://github.com/Dapp-Stack/Dapp-Stack/commit/5cfbec8))
+* debugger use signale ([0e41421](https://github.com/Dapp-Stack/Dapp-Stack/commit/0e41421))
+* do not try to connect twice to geth ([374d83b](https://github.com/Dapp-Stack/Dapp-Stack/commit/374d83b)), closes [#24](https://github.com/Dapp-Stack/Dapp-Stack/issues/24)
+* do not try to connect twice to ipfs ([8317cd9](https://github.com/Dapp-Stack/Dapp-Stack/commit/8317cd9)), closes [#25](https://github.com/Dapp-Stack/Dapp-Stack/issues/25)
+* do not try to run multiple api ([2ff1d26](https://github.com/Dapp-Stack/Dapp-Stack/commit/2ff1d26))
+* handle case where no source found for debugger ([e0adb2b](https://github.com/Dapp-Stack/Dapp-Stack/commit/e0adb2b))
+* initial version of debugger ([2032eba](https://github.com/Dapp-Stack/Dapp-Stack/commit/2032eba))
+* keep tracker ([4b3d256](https://github.com/Dapp-Stack/Dapp-Stack/commit/4b3d256))
+* **debugger:** add better spacing ([6c947f1](https://github.com/Dapp-Stack/Dapp-Stack/commit/6c947f1))
+* make console command self aware of eth node ([d3e6ecc](https://github.com/Dapp-Stack/Dapp-Stack/commit/d3e6ecc))
+* **debugger:** add/remove breakpoints ([7d593cc](https://github.com/Dapp-Stack/Dapp-Stack/commit/7d593cc))
 
 
 

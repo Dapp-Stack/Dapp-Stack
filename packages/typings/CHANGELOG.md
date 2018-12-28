@@ -3,23 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.4.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
+# [0.4.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
 
 
 ### Features
 
-* initial version of debugger ([2032eba](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/2032eba))
+* initial version of debugger ([2032eba](https://github.com/Dapp-Stack/Dapp-Stack/commit/2032eba))
 
 
 
 
 
-# [0.3.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
+# [0.3.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0) (2018-12-16)
 
 
 ### Features
 
-* add code coverage ([3a84b42](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/3a84b42)), closes [#7](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/7)
+* add code coverage ([3a84b42](https://github.com/Dapp-Stack/Dapp-Stack/commit/3a84b42)), closes [#7](https://github.com/Dapp-Stack/Dapp-Stack/issues/7)
 
 
 
