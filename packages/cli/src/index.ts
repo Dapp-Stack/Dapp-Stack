@@ -46,9 +46,9 @@ if (fs.existsSync(packageDest)) {
   packageData.scripts.secrets = 'dapp-stack-secrets'
 
   packageData.devDependencies = packageData.devDependencies || {}
-  packageData.devDependencies['@dapp-stack/scripts'] = '^0.2.0'
-  packageData.devDependencies['@dapp-stack/test'] = '^0.2.0'
-  packageData.devDependencies['@dapp-stack/secrets'] = '^0.2.0'
+  packageData.devDependencies['@dapp-stack/scripts'] = '^0.4.0'
+  packageData.devDependencies['@dapp-stack/test'] = '^0.4.0'
+  packageData.devDependencies['@dapp-stack/secrets'] = '^0.4.0'
   packageData.devDependencies.chai = '^4.2.0'
   packageData.devDependencies.solium = '^1.1.8'
 
@@ -75,9 +75,9 @@ if (fs.existsSync(packageDest)) {
       secrets: 'dapp-stack-secrets'
     },
     devDependencies: {
-      '@dapp-stack/scripts': '^0.2.0',
-      '@dapp-stack/test': '^0.2.0',
-      '@dapp-stack/secrets': '^0.2.0',
+      '@dapp-stack/scripts': '^0.4.0',
+      '@dapp-stack/test': '^0.4.0',
+      '@dapp-stack/secrets': '^0.4.0',
       chai: '^4.2.0',
       solium: '^1.1.8'
     }
