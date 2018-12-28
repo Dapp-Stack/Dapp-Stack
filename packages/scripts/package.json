@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/scripts",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "engines": {
     "node": ">=8.11"
   },
@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@dapp-stack/api": "^0.4.0",
-    "@dapp-stack/compiler": "^0.4.0",
+    "@dapp-stack/compiler": "^0.4.2",
     "@dapp-stack/debugger": "^0.4.0",
     "@dapp-stack/deployer": "^0.4.0",
     "@dapp-stack/doc": "^0.4.0",

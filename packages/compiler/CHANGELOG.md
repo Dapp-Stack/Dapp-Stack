@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.4.1...v0.4.2) (2018-12-28)
+
+
+### Bug Fixes
+
+* **compiler:** remove optimizer ([52923b5](https://github.com/Dapp-Stack/Dapp-Stack/commit/52923b5))
+
+
+
+
+
 # [0.4.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0) (2018-12-27)
 
 
