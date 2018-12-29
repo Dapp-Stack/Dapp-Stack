@@ -28,11 +28,11 @@ npm run das start
 
 That's it! You have a DApp running and you already deployed a Smart Contract to your local node.
 
-There is a lot more, feel free to have a look to the [full documentation](docs/getting-started.html) or the [tutorial](docs/tutorial.html)
+There is a lot more, feel free to have a look to the [full documentation](/docs/getting-started.html) or the [tutorial](/tutorial/tutorial.html)
 
-Also this is only the V0.1.0 and as such the beginning of our journey, you can have a look to our [issues](https://github.com/Dapp-Stack/Dapp-Stack/issues) to see what's next or even open one if you encouter any problem.
+Also this is only the V0.4.0 and as such the beginning of our journey, you can have a look to our [issues](https://github.com/Dapp-Stack/Dapp-Stack/issues) to see what's next or even open one if you encounter any problem.
 
-Finally DApp Stack is open source and welcome any contribution, have a look at our [contributing guide](docs/how-to-contribute.html), we are looking forward to see your PR's.
+Finally DApp Stack is open source and welcome any contribution, have a look at our [contributing guide](/docs/how-to-contribute.html), we are looking forward to see your PR's.
 
 We hope you will enjoy using DApp Stack has much as we enjoy developing it.
 
