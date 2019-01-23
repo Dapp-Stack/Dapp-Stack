@@ -77,11 +77,7 @@ export class Go implements IIpfsStrategy {
 
   private readonly updateCorsConfig = () => {
     ;[
-      [
-        '--json',
-        'API.HTTPHeaders.Access-Control-Allow-Origin',
-        '["http://localhost:3000"]'
-      ],
+      ['--json', 'API.HTTPHeaders.Access-Control-Allow-Origin', '["*"]'],
       [
         '--json',
         'API.HTTPHeaders.Access-Control-Allow-Methods',
