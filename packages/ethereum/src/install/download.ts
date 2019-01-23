@@ -5,7 +5,7 @@ import * as path from 'path'
 import * as request from 'request'
 import * as tarFS from 'tar-fs'
 
-const VERSION = '1.8.15-89451f7c'
+const VERSION = '1.8.21-9dc5d1a9'
 
 type DownloadResult = { filename: string; installPath: string }
 

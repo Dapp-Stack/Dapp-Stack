@@ -6,7 +6,7 @@ var gunzip = require("gunzip-maybe");
 var path = require("path");
 var request = require("request");
 var tarFS = require("tar-fs");
-var VERSION = '1.8.15-89451f7c';
+var VERSION = '1.8.21-9dc5d1a9';
 exports.download = function () {
     return new Promise(function (resolve, reject) {
         var platform = goenv.GOOS;
