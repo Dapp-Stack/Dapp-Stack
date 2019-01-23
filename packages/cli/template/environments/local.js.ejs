@@ -8,6 +8,13 @@ module.exports = {
     contracts: [
       "SimpleStorage.sol"
     ]
+
+    // Optimize solidity compilation, you can learn more about it here:
+    // https://solidity.readthedocs.io/en/v0.4.24/using-the-compiler.html
+    // optimizer: {
+    //   enabled: false,
+    //   runs: 200
+    // },
   },
 
   // Ethererum configuration, it can be false if not needed

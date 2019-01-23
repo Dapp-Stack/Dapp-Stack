@@ -98,6 +98,18 @@ const schema = {
               type: 'string'
             }
           ]
+        },
+        optimizer: {
+          type: 'object',
+          properties: {
+            enabled: {
+              type: 'boolean'
+            },
+            runs: {
+              type: 'number'
+            }
+          },
+          required: ['enabled', 'runs']
         }
       },
       required: ['contracts']
@@ -121,7 +133,11 @@ const defaultEnvironment: Environment = {
     deploy: 'ipfs'
   },
   compile: {
-    contracts: []
+    contracts: [],
+    optimizer: {
+      enabled: false,
+      runs: 200
+    }
   }
 }
 

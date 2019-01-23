@@ -1,5 +1,5 @@
 import { Artifact } from '@dapp-stack/contract-utils'
-import { Structure } from '@dapp-stack/environment'
+import { Structure, Optimizer, build } from '@dapp-stack/environment'
 import { FunctionFragment } from 'ethers/utils/abi-coder'
 import * as fs from 'fs-extra'
 import { forEach } from 'lodash'
@@ -39,10 +39,12 @@ interface CompilationOutput {
 export class Solc implements ICompileStrategy {
   private readonly contracts: string[]
   private readonly signale: Signale
+  private readonly optimizer: Optimizer
 
   constructor(contracts: string[], signale: Signale) {
     this.contracts = contracts
     this.signale = signale
+    this.optimizer = build().compile.optimizer
   }
 
   private input = (): string => {
@@ -64,6 +66,7 @@ export class Solc implements ICompileStrategy {
       language: 'Solidity',
       sources,
       settings: {
+        optimizer: this.optimizer,
         outputSelection: {
           '*': {
             '*': [

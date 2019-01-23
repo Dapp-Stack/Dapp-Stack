@@ -28,8 +28,14 @@ export type Ethereum = {
   migrate: (deployer: any) => Promise<void>
 }
 
+export interface Optimizer {
+  enabled: boolean
+  runs: number
+}
+
 export interface Compile {
   contracts: string[]
+  optimizer: Optimizer
 }
 
 export interface Environment {
