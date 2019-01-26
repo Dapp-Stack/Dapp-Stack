@@ -1,8 +1,10 @@
 module.exports = {
   compile: {
-    contracts: [
-      "SimpleStorage.sol"
-    ]
+    solidity: {
+      "latest": [
+        "SimpleStorage.sol"
+      ]
+    }
   },
   ipfs: false,
   web: {

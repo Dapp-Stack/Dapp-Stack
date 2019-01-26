@@ -4,10 +4,16 @@ const secrets = require("@dapp-stack/secrets");
 
 module.exports = {
   compile: {
-    // List of contracts to compile
-    contracts: [
-      "SimpleStorage.sol"
-    ]
+    // List of solidity contracts to compile with version
+    solidity: {
+      "latest": [
+        "SimpleStorage.sol"
+      ]
+    }
+
+    // List of vyper contracts to compile
+    // vyper: [
+    // ]
 
     // Optimize solidity compilation, you can learn more about it here:
     // https://solidity.readthedocs.io/en/v0.4.24/using-the-compiler.html

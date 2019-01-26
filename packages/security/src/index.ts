@@ -1,4 +1,5 @@
-import { build, Structure, Maybe } from '@dapp-stack/environment'
+import { Structure, Maybe } from '@dapp-stack/environment'
+import { soliditySourcePath } from '@dapp-stack/contract-utils'
 import * as dockerode from 'dockerode'
 import * as fs from 'fs-extra'
 import * as path from 'path'
@@ -11,7 +12,7 @@ const signale = new Signale({ scope: 'Security' })
 
 export const run = async (contracts: Maybe<string[]> = false) => {
   if (!contracts) {
-    contracts = build().compile.contracts
+    contracts = soliditySourcePath()
   }
 
   const isDockerRunning: boolean = await pingDocker()

@@ -2,6 +2,7 @@ node_modules
 .geth
 logs
 build
+.solcVersions
 contracts/build
 contracts/doc
 contracts/security

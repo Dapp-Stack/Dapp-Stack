@@ -53,8 +53,11 @@ export const setup = async (migrate: (_deployer: any) => Promise<void>) => {
 
 export const setupCoverage = async () => {
   if (process.env.COVERAGE) {
-    const environment = build()
-    await coverage.setup(environment.compile.contracts)
+    const contracts = Object.values(build().compile.solidity).reduce(
+      (acc, contracts) => acc.concat(contracts),
+      []
+    )
+    await coverage.setup(contracts)
   }
 }
 

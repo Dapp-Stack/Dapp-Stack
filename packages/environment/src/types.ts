@@ -33,9 +33,14 @@ export interface Optimizer {
   runs: number
 }
 
+export interface Solidity {
+  [semver: string]: string[]
+}
+
 export interface Compile {
-  contracts: string[]
+  vyper: string[]
   optimizer: Optimizer
+  solidity: Solidity
 }
 
 export interface Environment {

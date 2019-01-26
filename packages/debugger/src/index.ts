@@ -1,4 +1,4 @@
-import { artifacts, solidityFilter } from '@dapp-stack/contract-utils'
+import { artifacts } from '@dapp-stack/contract-utils'
 import * as repl from 'repl'
 import * as Debugger from 'truffle-debugger'
 import * as parser from 'solidity-parser-antlr'
@@ -41,7 +41,7 @@ export async function start(txHash: string) {
 
 function getContracts() {
   return artifacts()
-    .filter(artifact => solidityFilter(artifact.contractName))
+    .filter(artifact => artifact.contractName.endsWith('.sol'))
     .map(artifact => {
       const ast = parser.parse(artifact.source, { loc: true, range: true })
       return { ...artifact, ast }

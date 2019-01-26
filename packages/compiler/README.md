@@ -27,7 +27,7 @@ The  output will be in `my-dapp/contracts/build`
 ```js
 import * as compiler from "@dapp-stack/compiler";
 
-compiler.run(["SimpleStorage.sol", "Token.vy"])
+compiler.run({ "0.5.2": ["SimpleStorage.sol"] }, ["Token.vy"], { enabled: true, runs: 200 })
 ```
 
 If you call the function `compiler.run` without any arguments,

@@ -1,11 +1,10 @@
 import { Artifact } from '@dapp-stack/contract-utils'
-import { Structure, Optimizer, build } from '@dapp-stack/environment'
+import { Structure, Optimizer } from '@dapp-stack/environment'
 import { FunctionFragment } from 'ethers/utils/abi-coder'
 import * as fs from 'fs-extra'
 import { forEach } from 'lodash'
 import * as path from 'path'
 import { Signale } from 'signale'
-import * as solc from 'solc'
 
 import { ICompileStrategy } from '../types'
 
@@ -40,11 +39,18 @@ export class Solc implements ICompileStrategy {
   private readonly contracts: string[]
   private readonly signale: Signale
   private readonly optimizer: Optimizer
+  private readonly solcCompiler: any
 
-  constructor(contracts: string[], signale: Signale) {
+  constructor(
+    solcCompiler: any,
+    contracts: string[],
+    optimizer: Optimizer,
+    signale: Signale
+  ) {
     this.contracts = contracts
     this.signale = signale
-    this.optimizer = build().compile.optimizer
+    this.optimizer = optimizer
+    this.solcCompiler = solcCompiler
   }
 
   private input = (): string => {
@@ -129,9 +135,12 @@ export class Solc implements ICompileStrategy {
 
   compile = () => {
     this.signale.await('Starting to compile the solidity contracts')
-    return new Promise<boolean>(resolve => {
+    return new Promise<boolean>(async resolve => {
+      const compileFunc =
+        this.solcCompiler.compileStandardWrapper || this.solcCompiler.compile
+
       const output: CompilationOutput = JSON.parse(
-        solc.compile(this.input(), this.findImports)
+        compileFunc(this.input(), this.findImports)
       )
 
       if (output.errors) {
