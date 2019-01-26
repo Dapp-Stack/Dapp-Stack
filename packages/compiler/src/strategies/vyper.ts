@@ -49,6 +49,8 @@ export class Vyper implements ICompileStrategy {
         Structure.contracts.build
       )
 
+      fs.ensureDirSync(buildPath)
+
       const contractName = sourcePath
         .replace(Structure.contracts.src, '')
         .replace('.vy', '.json')

@@ -1,5 +1,4 @@
 import { Structure, WebFramework, Maybe } from '@dapp-stack/environment'
-import { solidityFilter } from '@dapp-stack/contract-utils'
 import * as fs from 'fs-extra'
 import * as path from 'path'
 import Contract from 'web3/eth/contract'
@@ -25,7 +24,7 @@ export class Coverage {
 
     fs.copySync(Structure.contracts.realSrc, Structure.contracts.src)
 
-    contracts.filter(solidityFilter).forEach(contract => {
+    contracts.forEach(contract => {
       const contractCoverage = new ContractCoverage(contract)
       contractCoverage.instrument()
       this.contracts.push(contractCoverage)

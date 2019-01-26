@@ -91,7 +91,7 @@ const schema = {
     compile: {
       type: 'object',
       properties: {
-        contracts: {
+        vyper: {
           type: 'array',
           items: [
             {
@@ -110,9 +110,12 @@ const schema = {
             }
           },
           required: ['enabled', 'runs']
+        },
+        solidity: {
+          type: 'object'
         }
       },
-      required: ['contracts']
+      required: ['vyper', 'solidity', 'optimizer']
     }
   },
   required: ['ipfs', 'web', 'compile']
@@ -133,7 +136,8 @@ const defaultEnvironment: Environment = {
     deploy: 'ipfs'
   },
   compile: {
-    contracts: [],
+    solidity: {},
+    vyper: [],
     optimizer: {
       enabled: false,
       runs: 200

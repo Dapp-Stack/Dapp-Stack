@@ -1,4 +1,5 @@
 import { build, Structure } from '@dapp-stack/environment'
+import { allContracts } from '@dapp-stack/contract-utils'
 import * as chokidar from 'chokidar'
 import * as path from 'path'
 import { Signale } from 'signale'
@@ -11,10 +12,7 @@ export function watch(): void {
   const compile = build().compile
   const signale = new Signale({ scope: 'Watcher' })
   signale.success('Watcher started.')
-  const contracts = compile.contracts.map(contract =>
-    path.join(Structure.contracts.src, contract)
-  )
-  const watcher = chokidar.watch(contracts, { persistent: true })
+  const watcher = chokidar.watch(allContracts(), { persistent: true })
   watcher.on('change', complileAndDeployAsync.bind(null))
 }
 

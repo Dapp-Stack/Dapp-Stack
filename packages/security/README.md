@@ -29,7 +29,7 @@ The  output will be in `my-dapp/contracts/security`
 ```js
 import * as security from "@dapp-stack/security";
 
-security.run(["SimpleStorage.sol"])
+security.run("/code/simple-react/contracts/src/SimpleStorage.sol")
 ```
 
 If you call the function `security.run`

@@ -53,7 +53,6 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
-    "@dapp-stack/contract-utils": "^0.4.0",
     "@dapp-stack/deployer": "^0.4.0",
     "@dapp-stack/environment": "^0.4.0",
     "cross-spawn": "^6.0.5",

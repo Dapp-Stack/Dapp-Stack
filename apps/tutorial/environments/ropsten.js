@@ -5,9 +5,15 @@ const decryptedSecrets = JSON.parse(secrets.decrypt());
 module.exports = {
   compile: {
     // List of contracts to compile
-    contracts: [
-      "SimpleStorage.sol"
-    ]
+    solidity: {
+      "latest": [
+        "SimpleStorage.sol"
+      ]
+    }
+
+    // List of vyper contracts to compile
+    // vyper: [
+    // ]
 
     // Optimize solidity compilation, you can learn more about it here:
     // https://solidity.readthedocs.io/en/v0.4.24/using-the-compiler.html

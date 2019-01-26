@@ -1,4 +1,5 @@
-import { build, Structure, Maybe } from '@dapp-stack/environment'
+import { Structure, Maybe } from '@dapp-stack/environment'
+import { soliditySourcePath } from '@dapp-stack/contract-utils'
 import * as fs from 'fs-extra'
 import * as path from 'path'
 import * as sha1File from 'sha1-file'
@@ -9,13 +10,10 @@ const signale = new Signale({ scope: 'Doc' })
 
 export const runAll = (contracts: Maybe<string[]> = false) => {
   if (!contracts) {
-    contracts = build().compile.contracts
+    contracts = soliditySourcePath()
   }
 
-  contracts
-    .filter(contract => contract.endsWith('.sol'))
-    .map(contract => path.join(Structure.contracts.src, contract))
-    .forEach(contractFile => run(contractFile))
+  contracts.forEach(contractFile => run(contractFile))
 }
 
 export const run = async (contractFile: string) => {

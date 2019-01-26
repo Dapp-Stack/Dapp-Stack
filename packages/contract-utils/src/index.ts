@@ -1,4 +1,4 @@
-import { build, Structure } from '@dapp-stack/environment'
+import { build, Structure, Solidity } from '@dapp-stack/environment'
 import * as fs from 'fs-extra'
 import * as globule from 'globule'
 import * as path from 'path'
@@ -15,10 +15,31 @@ export interface Artifact {
   deployedSourceMap?: string
 }
 
-export function sourcesPath() {
-  return build().compile.contracts.map(name =>
+export function solidityContracts(): Solidity {
+  const contracts = build().compile.solidity
+  return Object.keys(contracts).reduce((acc: Solidity, version) => {
+    acc[version] = contracts[version].map(name =>
+      path.join(Structure.contracts.src, name)
+    )
+    return acc
+  }, {})
+}
+
+export function soliditySourcePath() {
+  return Object.values(solidityContracts()).reduce(
+    (acc, contracts) => acc.concat(contracts),
+    []
+  )
+}
+
+export function vyperContracts() {
+  return build().compile.vyper.map(name =>
     path.join(Structure.contracts.src, name)
   )
+}
+
+export function allContracts() {
+  return globule.find(`${Structure.contracts.src}/**/*.{sol,vy}`)
 }
 
 export function artifactsPath() {
@@ -41,12 +62,4 @@ export function findArtifact(contractName: string): Artifact {
 
 export function artifacts(): Artifact[] {
   return artifactsPath().map(artifactPath => fs.readJSONSync(artifactPath))
-}
-
-export function solidityFilter(name: string) {
-  return name.endsWith('.sol')
-}
-
-export function vyperFilter(name: string) {
-  return name.endsWith('.vy')
 }
