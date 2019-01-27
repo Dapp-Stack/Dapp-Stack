@@ -1,6 +1,9 @@
+- title: '0.5.0'
+  changelog: https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.4.0...v0.5.0
+  url: https://dapp-stack.org
 - title: '0.4.0'
   changelog: https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.3.0...v0.4.0
-  url: https://dapp-stack.org
+  url: https://5c262385c81df30008d39ba5--dapp-stack-org.netlify.com/
 - title: '0.3.0'
   changelog: https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.2.2...v0.3.0
   url: https://5c164da803d6c70008f303f2--dapp-stack-org.netlify.com/

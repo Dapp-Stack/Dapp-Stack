@@ -3,42 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.5.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.4.2...v0.5.0) (2019-01-27)
+# [0.5.0](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.4.2...v0.5.0) (2019-01-27)
 
 
 ### Bug Fixes
 
-* open ipfs api ([2e1dbe8](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/2e1dbe8))
+* open ipfs api ([2e1dbe8](https://github.com/Dapp-Stack/Dapp-Stack/commit/2e1dbe8))
 
 
 ### Features
 
-* **environment:** add better error for enum ([cd74f7c](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/cd74f7c)), closes [#19](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/19)
-* allow multiple solc version ([31bd581](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/31bd581)), closes [#29](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/29)
-* allow to optimize solc ([1b5eb1e](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/1b5eb1e)), closes [#28](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/28)
-* update geth version ([7d75164](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/7d75164)), closes [#26](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/26)
+* **environment:** add better error for enum ([cd74f7c](https://github.com/Dapp-Stack/Dapp-Stack/commit/cd74f7c)), closes [#19](https://github.com/Dapp-Stack/Dapp-Stack/issues/19)
+* allow multiple solc version ([31bd581](https://github.com/Dapp-Stack/Dapp-Stack/commit/31bd581)), closes [#29](https://github.com/Dapp-Stack/Dapp-Stack/issues/29)
+* allow to optimize solc ([1b5eb1e](https://github.com/Dapp-Stack/Dapp-Stack/commit/1b5eb1e)), closes [#28](https://github.com/Dapp-Stack/Dapp-Stack/issues/28)
+* update geth version ([7d75164](https://github.com/Dapp-Stack/Dapp-Stack/commit/7d75164)), closes [#26](https://github.com/Dapp-Stack/Dapp-Stack/issues/26)
 
 
 
 
 
-## [0.4.2](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.4.1...v0.4.2) (2018-12-28)
-
-
-### Bug Fixes
-
-* **compiler:** remove optimizer ([52923b5](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/52923b5))
-
-
-
-
-
-## [0.4.1](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.4.0...v0.4.1) (2018-12-28)
+## [0.4.2](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.4.1...v0.4.2) (2018-12-28)
 
 
 ### Bug Fixes
 
-* **cli:** update version ([7456570](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/7456570))
+* **compiler:** remove optimizer ([52923b5](https://github.com/Dapp-Stack/Dapp-Stack/commit/52923b5))
+
+
+
+
+
+## [0.4.1](https://github.com/Dapp-Stack/Dapp-Stack/compare/v0.4.0...v0.4.1) (2018-12-28)
+
+
+### Bug Fixes
+
+* **cli:** update version ([7456570](https://github.com/Dapp-Stack/Dapp-Stack/commit/7456570))
 
 
 
