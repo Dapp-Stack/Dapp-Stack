@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/dev-tools",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "engines": {
     "node": ">=8.11"
   },
@@ -27,8 +27,8 @@
     "url": "https://github.com/Dapp-Stack/Dapp-Stack/issues"
   },
   "dependencies": {
-    "@dapp-stack/redux-eth": "^0.4.0",
-    "@dapp-stack/redux-ipfs": "^0.4.0",
+    "@dapp-stack/redux-eth": "^0.5.0",
+    "@dapp-stack/redux-ipfs": "^0.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@fortawesome/react-fontawesome": "^0.1.3",

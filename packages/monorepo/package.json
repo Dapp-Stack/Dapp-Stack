@@ -1,7 +1,7 @@
 {
   "name": "@dapp-stack/monorepo",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "engines": {
     "node": ">=8.11"
   },

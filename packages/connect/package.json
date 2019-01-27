@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/connect",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "engines": {
     "node": ">=8.11"
   },
@@ -47,7 +47,7 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
-    "@dapp-stack/environment": "^0.4.0",
+    "@dapp-stack/environment": "^0.5.0",
     "ethers": "^4.0.3",
     "signale": "^1.2.1"
   },

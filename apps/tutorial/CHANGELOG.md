@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.4.2...v0.5.0) (2019-01-27)
+
+
+### Features
+
+* allow multiple solc version ([31bd581](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/31bd581)), closes [#29](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/29)
+* allow to optimize solc ([1b5eb1e](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/commit/1b5eb1e)), closes [#28](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/issues/28)
+
+
+
+
+
 ## [0.4.2](https://github-dapp-stack/Dapp-Stack/Dapp-Stack/compare/v0.4.1...v0.4.2) (2018-12-28)
 
 **Note:** Version bump only for package @dapp-stack/tutorial

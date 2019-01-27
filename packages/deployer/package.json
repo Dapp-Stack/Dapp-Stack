@@ -1,6 +1,6 @@
 {
   "name": "@dapp-stack/deployer",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "engines": {
     "node": ">=8.11"
   },
@@ -55,9 +55,9 @@
     "typescript": "3.1.1"
   },
   "dependencies": {
-    "@dapp-stack/contract-utils": "^0.4.0",
-    "@dapp-stack/environment": "^0.4.0",
-    "@dapp-stack/wallet": "^0.4.0",
+    "@dapp-stack/contract-utils": "^0.5.0",
+    "@dapp-stack/environment": "^0.5.0",
+    "@dapp-stack/wallet": "^0.5.0",
     "ethers": "^4.0.3",
     "fs-extra": "^7.0.0",
     "proper-lockfile": "^3.0.2",
