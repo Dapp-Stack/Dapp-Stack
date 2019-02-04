@@ -50,7 +50,11 @@ const defaultEnvironment = {
     deploy: 'ipfs'
   },
   compile: {
-    contracts: []
+    solidity: {
+      "latest": [
+        "SimpleStorage.sol"
+      ]
+    }
   }
 }
 ```
